@@ -1,14 +1,9 @@
 name: cis-controls
 description: 'LinkML schema for the CIS Critical Security Controls (CIS Controls)
-  Version 8.1.2
-
-  (March 2025). Models the 18 Controls and their Safeguards, including asset types,
-
-  security functions, and Implementation Groups as defined by the Center for Internet
-
-  Security. Source document: CIS Controls v8.1.2 (March 2025),
-
-  licensed CC BY-NC-ND 4.0 (https://creativecommons.org/licenses/by-nc-nd/4.0/).'
+  Version 8.1.2 (March 2025). Models the 18 Controls and their Safeguards, including
+  asset types, security functions, and Implementation Groups as defined by the Center
+  for Internet Security. Source document: CIS Controls v8.1.2 (March 2025), licensed
+  CC BY-NC-ND 4.0 (https://creativecommons.org/licenses/by-nc-nd/4.0/).'
 title: CIS Controls
 see_also:
 - https://www.cisecurity.org/controls/
@@ -785,9 +780,8 @@ classes:
     id_prefixes:
     - cis_controls
     definition_uri: https://w3id.org/lmodel/cis-controls/CISControl
-    description: "One of the 18 CIS Critical Security Controls \u2014 a high-level\
-      \ defensive action category that enterprises should implement to reduce cyber\
-      \ risk."
+    description: One of the CIS Critical Security Controls; a high-level defensive
+      action category that enterprises should implement to reduce cyber risk.
     from_schema: https://w3id.org/lmodel/cis-controls
     see_also:
     - https://www.cisecurity.org/controls/
@@ -854,7 +848,7 @@ classes:
     class_uri: cis_controls:Safeguard
 metamodel_version: 1.7.0
 source_file: cis_controls.yaml
-source_file_date: '2026-04-15T22:15:30'
-source_file_size: 14667
-generation_date: '2026-04-15T22:15:40'
+source_file_date: '2026-04-15T22:32:03'
+source_file_size: 14606
+generation_date: '2026-04-15T22:32:14'
 
