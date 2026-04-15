@@ -1,0 +1,12 @@
+{
+   "WIKIDATA": "https://www.wikidata.org/wiki/",
+   "cis_controls": "https://w3id.org/lmodel/cis-controls/",
+   "dct": "http://purl.org/dc/terms/",
+   "iso27001": "https://w3id.org/lmodel/iso27001/",
+   "linkml": "https://w3id.org/linkml/",
+   "nist_csf_v2": "https://w3id.org/lmodel/nist-csf-v2/",
+   "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+   "schema": "http://schema.org/",
+   "skos": "http://www.w3.org/2004/02/skos/core#",
+   "xsd": "http://www.w3.org/2001/XMLSchema#"
+}

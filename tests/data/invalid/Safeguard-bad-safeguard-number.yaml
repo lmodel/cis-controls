@@ -1,0 +1,10 @@
+# INVALID: safeguard_number "19.1" violates pattern ^([1-9]|1[0-8])\.[0-9]+$
+# Control 19 does not exist — valid range is 1-18
+id: CIS-19.1
+title: Nonexistent Safeguard
+safeguard_number: "19.1"
+description: Control 19 does not exist in CIS Controls v8.1.2.
+asset_type: Devices
+security_function: Identify
+implementation_groups:
+  - IG1

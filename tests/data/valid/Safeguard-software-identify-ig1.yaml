@@ -1,0 +1,17 @@
+# Safeguard 2.1: Software asset type, Identify security function, IG1/IG2/IG3
+id: CIS-2.1
+title: Establish and Maintain a Software Inventory
+safeguard_number: "2.1"
+description: >-
+  Establish and maintain a detailed inventory of all licensed software installed on
+  enterprise assets. The software inventory must document the title, publisher,
+  initial install/use date, and business purpose for each entry; where appropriate,
+  include the URL, app store(s), version(s), deployment mechanism, decommission date,
+  and number of licenses. Review and update the software inventory bi-annually,
+  or more frequently.
+asset_type: Software
+security_function: Identify
+implementation_groups:
+  - IG1
+  - IG2
+  - IG3

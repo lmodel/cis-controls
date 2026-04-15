@@ -1,7 +1,7 @@
 ---
 id: https://w3id.org/lmodel/cis-controls
 name: cis-controls
-title: CIS Critical Security Controls v8.1.2
+title: CIS Controls
 description: |-
   LinkML schema for the CIS Critical Security Controls (CIS Controls) Version 8.1.2
   (March 2025). Models the 18 Controls and their Safeguards, including asset types,

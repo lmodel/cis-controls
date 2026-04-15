@@ -1,0 +1,13 @@
+# Safeguard 2.5: Software asset type, Protect security function, IG2+IG3 only
+id: CIS-2.5
+title: Allowlist Authorized Software
+safeguard_number: "2.5"
+description: >-
+  Use technical controls, such as application allowlisting, to ensure that only
+  authorized software can execute or be accessed. Reassess bi-annually,
+  or more frequently.
+asset_type: Software
+security_function: Protect
+implementation_groups:
+  - IG2
+  - IG3

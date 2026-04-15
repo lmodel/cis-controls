@@ -1,0 +1,4 @@
+# CISControl with only required fields — no optional prose or safeguards
+id: CIS-18
+title: Penetration Testing
+control_number: "18"

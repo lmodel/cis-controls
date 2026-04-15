@@ -1,0 +1,5 @@
+# INVALID: 'control_number' is required on CISControl but is omitted here
+id: CIS-3
+title: Data Protection
+overview: Develop processes and technical controls to identify, classify, and handle data.
+safeguards: []

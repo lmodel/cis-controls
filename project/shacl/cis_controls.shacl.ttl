@@ -1,0 +1,155 @@
+@prefix cis_controls: <https://w3id.org/lmodel/cis-controls/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix nist_csf_v2: <https://w3id.org/lmodel/nist-csf-v2/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+cis_controls:CISControlsDocument a sh:NodeShape ;
+    rdfs:comment "Root container for a versioned edition of the CIS Critical Security Controls publication." ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "Descriptive text for the element." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path dct:description ],
+        [ sh:datatype xsd:string ;
+            sh:description "Human-readable title of the element." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path dct:title ],
+        [ sh:datatype xsd:string ;
+            sh:description "Unique identifier for the element." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path dct:identifier ],
+        [ sh:datatype xsd:string ;
+            sh:description "Publication date of the CIS Controls document (ISO 8601)." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path dct:date ],
+        [ sh:class cis_controls:CISControl ;
+            sh:description "List of CIS Controls in this document." ;
+            sh:nodeKind sh:IRI ;
+            sh:order 5 ;
+            sh:path cis_controls:controls ],
+        [ sh:datatype xsd:string ;
+            sh:description "Version string of the CIS Controls document (e.g. \"8.1\")." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path dct:hasVersion ] ;
+    sh:targetClass cis_controls:CISControlsDocument .
+
+cis_controls:CISControl a sh:NodeShape ;
+    rdfs:comment "One of the 18 CIS Critical Security Controls — a high-level defensive action category that enterprises should implement to reduce cyber risk." ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "Technical description of the processes and technologies that enable implementation and automation of this Control." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path cis_controls:procedures_and_tools ],
+        [ sh:datatype xsd:string ;
+            sh:description "Explanation of the importance of this Control in blocking, mitigating, or identifying attacks, and how attackers exploit its absence." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path cis_controls:why_critical ],
+        [ sh:datatype xsd:string ;
+            sh:description "Human-readable title of the element." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path dct:title ],
+        [ sh:datatype xsd:string ;
+            sh:description "Numeric identifier of the parent CIS Control (1–18)." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path cis_controls:control_number ;
+            sh:pattern "^([1-9]|1[0-8])$" ],
+        [ sh:datatype xsd:string ;
+            sh:description "Brief description of the intent of a Control and its utility as a defensive action." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path cis_controls:overview ],
+        [ sh:class cis_controls:Safeguard ;
+            sh:description "List of Safeguards belonging to a CIS Control." ;
+            sh:nodeKind sh:IRI ;
+            sh:order 6 ;
+            sh:path cis_controls:safeguards ],
+        [ sh:datatype xsd:string ;
+            sh:description "Composite identifier for the control (e.g. \"CIS-1\")." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path dct:identifier ;
+            sh:pattern "^CIS-([1-9]|1[0-8])$" ] ;
+    sh:targetClass cis_controls:CISControl .
+
+cis_controls:Safeguard a sh:NodeShape ;
+    rdfs:comment "A specific, measurable action that an enterprise should take to implement a CIS Control. Formerly called \"Sub-Controls\" prior to CIS Controls v8." ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "Descriptive text for the element." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path dct:description ],
+        [ sh:datatype xsd:string ;
+            sh:description "Human-readable title of the element." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path dct:title ],
+        [ sh:description "Implementation Group(s) for which this Safeguard is applicable. A Safeguard listed under IG2 is also required for IG3 enterprises; a Safeguard listed under IG1 is required for all enterprises." ;
+            sh:in ( "IG1" "IG2" "IG3" ) ;
+            sh:minCount 1 ;
+            sh:order 6 ;
+            sh:path cis_controls:implementation_groups ],
+        [ sh:datatype xsd:string ;
+            sh:description "Dotted identifier of this Safeguard (e.g. \"1.1\"). Combines the parent control number with a sequential Safeguard index." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path cis_controls:safeguard_number ;
+            sh:pattern "^([1-9]|1[0-8])\\.[0-9]+$" ],
+        [ sh:description "The class of enterprise asset primarily addressed by this Safeguard." ;
+            sh:in ( "Devices" "Software" "Data" "Users" "Network" "Documentation" ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 4 ;
+            sh:path cis_controls:asset_type ],
+        [ sh:description "NIST CSF 2.0 function category to which this Safeguard is mapped." ;
+            sh:in ( nist_csf_v2:GV nist_csf_v2:ID nist_csf_v2:PR nist_csf_v2:DE nist_csf_v2:RS nist_csf_v2:RC ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 5 ;
+            sh:path cis_controls:security_function ],
+        [ sh:datatype xsd:string ;
+            sh:description "Composite identifier for the safeguard (e.g. \"CIS-1.1\")." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path dct:identifier ;
+            sh:pattern "^CIS-([1-9]|1[0-8])\\.[0-9]+$" ] ;
+    sh:targetClass cis_controls:Safeguard .
+

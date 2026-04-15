@@ -6,7 +6,7 @@ from pathlib import Path
 
 import cis_controls.datamodel.cis_controls
 from linkml_runtime.loaders import yaml_loader
-from linkml.validators.jsonschema import JsonSchemaDataValidator
+from linkml.validator import validate_file as linkml_validate_file
 
 SCHEMA_PATH = Path(__file__).parent.parent / "src" / "cis_controls" / "schema" / "cis_controls.yaml"
 
@@ -33,9 +33,8 @@ def test_valid_data_files(filepath):
 def test_invalid_data_files(filepath):
     """Test that invalid data files fail JSON schema validation."""
     target_class_name = Path(filepath).stem.split("-")[0]
-    validator = JsonSchemaDataValidator(str(SCHEMA_PATH))
-    results = validator.validate_file(str(filepath), target_class=target_class_name)
-    assert results, (
+    report = linkml_validate_file(filepath, str(SCHEMA_PATH), target_class=target_class_name)
+    assert report.results, (
         f"Expected validation errors in {filepath} but none were raised. "
         "Check that this file genuinely violates the schema."
     )

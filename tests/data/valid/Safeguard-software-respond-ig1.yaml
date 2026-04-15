@@ -1,0 +1,13 @@
+# Safeguard 2.3: Software asset type, Respond security function, IG1/IG2/IG3
+id: CIS-2.3
+title: Address Unauthorized Software
+safeguard_number: "2.3"
+description: >-
+  Ensure that unauthorized software is either removed from use on enterprise assets
+  or receives a documented exception. Review monthly, or more frequently.
+asset_type: Software
+security_function: Respond
+implementation_groups:
+  - IG1
+  - IG2
+  - IG3

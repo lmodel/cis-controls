@@ -1,0 +1,14 @@
+# Safeguard 3.3: Data asset type, Protect security function, IG1/IG2/IG3
+id: CIS-3.3
+title: Configure Data Access Control Lists
+safeguard_number: "3.3"
+description: >-
+  Configure data access control lists based on a user's need to know. Apply data
+  access control lists, also known as access permissions, to local and remote file
+  systems, databases, and applications.
+asset_type: Data
+security_function: Protect
+implementation_groups:
+  - IG1
+  - IG2
+  - IG3
