@@ -1,0 +1,15 @@
+# Safeguard 18.2: Network asset type, Detect security function, IG2+IG3
+id: CIS-18.2
+title: Perform Periodic External Penetration Tests
+safeguard_number: "18.2"
+description: >-
+  Perform periodic external penetration tests based on program requirements, no less
+  than annually. External penetration testing must include enterprise and environmental
+  reconnaissance to detect exploitable information. Penetration testing requires
+  specialized skills and experience and must be conducted through a qualified party.
+  The testing may be clear box or opaque box.
+asset_type: Network
+security_function: Detect
+implementation_groups:
+  - IG2
+  - IG3

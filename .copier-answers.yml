@@ -9,7 +9,7 @@ gh_action_docs_preview: true
 gh_action_pypi: true
 github_org: lmodel
 license: Apache-2.0
-project_description: CIS Critical Security Controls
+project_description: "CIS Critical Security Controls: LinkML Schema"
 project_name: cis-controls
 project_slug: cis_controls
 

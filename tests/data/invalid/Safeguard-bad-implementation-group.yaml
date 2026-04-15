@@ -1,0 +1,9 @@
+# INVALID: "IG4" is not a valid ImplementationGroup enum value (only IG1, IG2, IG3)
+id: CIS-1.1
+title: Establish and Maintain Detailed Enterprise Asset Inventory
+safeguard_number: "1.1"
+description: Establish and maintain a detailed asset inventory.
+asset_type: Devices
+security_function: Identify
+implementation_groups:
+  - IG4

@@ -1,0 +1,60 @@
+# metamodel_version: 1.7.0
+# version: 8.1.2
+enum AssetType
+  {
+    Devices
+    Software
+    Data
+    Users
+    Network
+    Documentation
+  }
+
+enum ImplementationGroup
+  {
+    IG1
+    IG2
+    IG3
+  }
+
+enum SecurityFunction
+  {
+    Govern
+    Identify
+    Protect
+    Detect
+    Respond
+    Recover
+  }
+
+type CISControl
+  {
+    id: String!
+    title: String!
+    controlNumber: ControlId!
+    overview: String
+    whyCritical: String
+    proceduresAndTools: String
+    safeguards: [Safeguard]
+  }
+
+type CISControlsDocument
+  {
+    id: String!
+    title: String!
+    description: String
+    version: String
+    publicationDate: String
+    controls: [CISControl]
+  }
+
+type Safeguard
+  {
+    id: String!
+    title: String!
+    safeguardNumber: SafeguardId!
+    description: String
+    assetType: AssetType!
+    securityFunction: SecurityFunction!
+    implementationGroups: [ImplementationGroup]!
+  }

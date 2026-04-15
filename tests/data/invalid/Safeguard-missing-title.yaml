@@ -1,0 +1,10 @@
+# INVALID: 'title' is required on Safeguard but is omitted here
+id: CIS-2.1
+safeguard_number: "2.1"
+description: Establish and maintain a software inventory.
+asset_type: Software
+security_function: Identify
+implementation_groups:
+  - IG1
+  - IG2
+  - IG3

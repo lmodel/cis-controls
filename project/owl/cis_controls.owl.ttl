@@ -1,0 +1,445 @@
+@prefix WIKIDATA: <https://www.wikidata.org/wiki/> .
+@prefix cis_controls: <https://w3id.org/lmodel/cis-controls/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix iso27001: <https://w3id.org/lmodel/iso27001/> .
+@prefix linkml: <https://w3id.org/linkml/> .
+@prefix nist_csf_v2: <https://w3id.org/lmodel/nist-csf-v2/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix pav: <http://purl.org/pav/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema1: <http://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/lmodel/cis-controls.owl.ttl> a owl:Ontology ;
+    rdfs:label "cis-controls" ;
+    dct:license "Apache-2.0" ;
+    dct:title "CIS Controls" ;
+    pav:version "8.1.2" ;
+    rdfs:seeAlso <https://lmodel.github.io/cis-controls>,
+        <https://www.cisecurity.org/controls/> ;
+    skos:definition "LinkML schema for the CIS Critical Security Controls (CIS Controls) Version 8.1.2 (March 2025). Models the 18 Controls and their Safeguards, including asset types, security functions, and Implementation Groups as defined by the Center for Internet Security. Source document: CIS Controls v8.1.2 (March 2025), licensed CC BY-NC-ND 4.0 (https://creativecommons.org/licenses/by-nc-nd/4.0/)." .
+
+cis_controls:CISControlsDocument a owl:Class ;
+    rdfs:label "CISControlsDocument" ;
+    rdfs:seeAlso <https://www.cisecurity.org/controls/> ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty cis_controls:version ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty cis_controls:title ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty cis_controls:description ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty cis_controls:description ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty cis_controls:version ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty cis_controls:title ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom cis_controls:CISControl ;
+            owl:onProperty cis_controls:controls ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty cis_controls:publication_date ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty cis_controls:controls ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty cis_controls:id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty cis_controls:publication_date ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty cis_controls:publication_date ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty cis_controls:version ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty cis_controls:description ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty cis_controls:id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty cis_controls:title ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty cis_controls:id ] ;
+    skos:closeMatch nist_csf_v2:CSFDocument ;
+    skos:definition "Root container for a versioned edition of the CIS Critical Security Controls publication." ;
+    skos:exactMatch schema1:CreativeWork ;
+    skos:inScheme <https://w3id.org/lmodel/cis-controls> ;
+    skos:relatedMatch iso27001:InformationSecurityManagementSystem .
+
+<https://w3id.org/lmodel/cis-controls/AssetType#Data> a owl:Class ;
+    rdfs:label "Data" ;
+    rdfs:subClassOf cis_controls:AssetType ;
+    skos:definition "A collection of facts that can be examined, considered, and used for decision-making. Although data may be physical, the CIS Controls primarily provide protection for digital data stored, transferred, and processed by enterprise assets. Sub-classes: sensitive data, log data, and physical data." .
+
+<https://w3id.org/lmodel/cis-controls/AssetType#Devices> a owl:Class ;
+    rdfs:label "Devices" ;
+    rdfs:subClassOf cis_controls:AssetType ;
+    skos:definition "Enterprise assets (data processing and storage assets), end-user devices (including portable and mobile devices), servers, Internet of Things (IoT) and non-computing devices, network devices, and removable media. Devices may exist in physical, virtual, or cloud-based environments and can remotely connect to these systems." .
+
+<https://w3id.org/lmodel/cis-controls/AssetType#Documentation> a owl:Class ;
+    rdfs:label "Documentation" ;
+    rdfs:subClassOf cis_controls:AssetType ;
+    skos:definition "Policies, processes, procedures, plans, diagrams, and other written material (physical or digital), such as compliance reports. Examples include methods of governance for an enterprise, processes users follow, or descriptions of network architecture. Sub-classes: plans, policies, processes, and procedures." .
+
+<https://w3id.org/lmodel/cis-controls/AssetType#Network> a owl:Class ;
+    rdfs:label "Network" ;
+    rdfs:subClassOf cis_controls:AssetType ;
+    skos:definition "A group of interconnected devices that exchange data. A superset of network infrastructure (hardware and software providing connectivity and communication) and network architecture (the logical and physical design of the network)." .
+
+<https://w3id.org/lmodel/cis-controls/AssetType#Software> a owl:Class ;
+    rdfs:label "Software" ;
+    rdfs:subClassOf cis_controls:AssetType ;
+    skos:definition "Sets of data and instructions used to direct a computer to complete a specific task. Includes applications, operating systems (with their services, libraries, and APIs), and firmware. Both applications and operating systems are considered software assets." .
+
+<https://w3id.org/lmodel/cis-controls/AssetType#Users> a owl:Class ;
+    rdfs:label "Users" ;
+    rdfs:subClassOf cis_controls:AssetType ;
+    skos:definition "Employees, third-party vendors, contractors, service providers, consultants, or any other person authorized to access an enterprise asset. Includes workforce, service providers, and user/administrator/service accounts." .
+
+cis_controls:CISControl a owl:Class ;
+    rdfs:label "CISControl" ;
+    rdfs:seeAlso <https://www.cisecurity.org/controls/> ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( xsd:string [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:string ;
+                                owl:withRestrictions ( [ xsd:pattern "^CIS-([1-9]|1[0-8])$" ] ) ] ) ] ;
+            owl:onProperty cis_controls:id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty cis_controls:title ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty cis_controls:overview ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty cis_controls:control_number ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty cis_controls:procedures_and_tools ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty cis_controls:overview ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty cis_controls:control_number ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty cis_controls:id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty cis_controls:why_critical ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty cis_controls:control_number ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty cis_controls:title ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty cis_controls:why_critical ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty cis_controls:title ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty cis_controls:safeguards ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty cis_controls:procedures_and_tools ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty cis_controls:overview ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty cis_controls:procedures_and_tools ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty cis_controls:why_critical ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom cis_controls:Safeguard ;
+            owl:onProperty cis_controls:safeguards ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty cis_controls:id ] ;
+    skos:closeMatch nist_csf_v2:CSFCategory ;
+    skos:definition "One of the CIS Critical Security Controls; a high-level defensive action category that enterprises should implement to reduce cyber risk." ;
+    skos:exactMatch schema1:Action ;
+    skos:inScheme <https://w3id.org/lmodel/cis-controls> ;
+    skos:relatedMatch WIKIDATA:Q2695280 .
+
+<https://w3id.org/lmodel/cis-controls/ImplementationGroup#IG1> a owl:Class ;
+    rdfs:label "IG1" ;
+    rdfs:subClassOf cis_controls:ImplementationGroup ;
+    skos:definition "Small to medium-sized enterprise with limited IT and cybersecurity expertise to dedicate toward protecting IT assets and personnel. The principal concern is to keep the business operational; limited tolerance for downtime; data sensitivity is low, principally surrounding employee and financial information. Safeguards should be implementable with limited cybersecurity expertise and designed to thwart general, non-targeted attacks using COTS hardware and software. Also called \"Essential Cyber Hygiene.\"" .
+
+<https://w3id.org/lmodel/cis-controls/ImplementationGroup#IG2> a owl:Class ;
+    rdfs:label "IG2" ;
+    rdfs:subClassOf cis_controls:ImplementationGroup ;
+    skos:definition "Enterprise employing individuals responsible for managing and protecting IT infrastructure. Supports multiple departments with differing risk profiles based on job function and mission; may have regulatory compliance burdens; often stores and processes sensitive client or enterprise information and can withstand short interruptions of service. A major concern is loss of public confidence if a breach occurs. Safeguards help security teams cope with increased operational complexity; some depend on enterprise-grade technology and specialized expertise to properly install and configure. Includes all IG1 safeguards." .
+
+<https://w3id.org/lmodel/cis-controls/ImplementationGroup#IG3> a owl:Class ;
+    rdfs:label "IG3" ;
+    rdfs:subClassOf cis_controls:ImplementationGroup ;
+    skos:definition "Enterprise employing security experts that specialize in the different facets of cybersecurity (e.g., risk management, penetration testing, application security). Assets and data contain sensitive information or functions subject to regulatory and compliance oversight; must address availability of services and the confidentiality and integrity of sensitive data; successful attacks can cause significant harm to the public welfare. Safeguards must abate targeted attacks from a sophisticated adversary and reduce the impact of zero-day attacks. Includes all IG1 and IG2 safeguards." .
+
+cis_controls:Safeguard a owl:Class ;
+    rdfs:label "Safeguard" ;
+    rdfs:seeAlso <https://www.cisecurity.org/controls/> ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty cis_controls:description ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom cis_controls:ImplementationGroup ;
+            owl:onProperty cis_controls:implementation_groups ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty cis_controls:title ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom cis_controls:SecurityFunction ;
+            owl:onProperty cis_controls:security_function ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty cis_controls:description ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty cis_controls:asset_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( xsd:string [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:string ;
+                                owl:withRestrictions ( [ xsd:pattern "^CIS-([1-9]|1[0-8])\\.[0-9]+$" ] ) ] ) ] ;
+            owl:onProperty cis_controls:id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty cis_controls:safeguard_number ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom cis_controls:AssetType ;
+            owl:onProperty cis_controls:asset_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty cis_controls:title ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty cis_controls:safeguard_number ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty cis_controls:safeguard_number ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty cis_controls:description ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty cis_controls:implementation_groups ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty cis_controls:asset_type ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty cis_controls:security_function ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty cis_controls:id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty cis_controls:title ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty cis_controls:security_function ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty cis_controls:id ] ;
+    skos:altLabel "sub-control" ;
+    skos:closeMatch nist_csf_v2:CSFSubcategory ;
+    skos:definition "A specific, measurable action that an enterprise should take to implement a CIS Control. Formerly called \"Sub-Controls\" prior to CIS Controls v8." ;
+    skos:exactMatch schema1:Action ;
+    skos:inScheme <https://w3id.org/lmodel/cis-controls> ;
+    skos:relatedMatch iso27001:SecurityControl .
+
+cis_controls:controls a owl:ObjectProperty ;
+    rdfs:label "controls" ;
+    rdfs:range cis_controls:CISControl ;
+    skos:closeMatch nist_csf_v2:groups ;
+    skos:definition "List of CIS Controls in this document." ;
+    skos:inScheme <https://w3id.org/lmodel/cis-controls> .
+
+cis_controls:implementation_groups a owl:ObjectProperty ;
+    rdfs:label "implementation_groups" ;
+    rdfs:range cis_controls:ImplementationGroup ;
+    skos:definition "The Implementation Group(s) for which this Safeguard is applicable. IG2 implies IG1; IG3 implies IG1 and IG2." ;
+    skos:inScheme <https://w3id.org/lmodel/cis-controls> ;
+    skos:relatedMatch nist_csf_v2:props .
+
+cis_controls:safeguards a owl:ObjectProperty ;
+    rdfs:label "safeguards" ;
+    rdfs:range cis_controls:Safeguard ;
+    skos:closeMatch nist_csf_v2:controls ;
+    skos:definition "List of Safeguards belonging to a CIS Control." ;
+    skos:inScheme <https://w3id.org/lmodel/cis-controls> .
+
+nist_csf_v2:DE a owl:Class ;
+    rdfs:label "Detect" ;
+    rdfs:subClassOf cis_controls:SecurityFunction ;
+    skos:definition "Develop and implement appropriate activities to identify the occurrence of a cybersecurity event." .
+
+nist_csf_v2:GV a owl:Class ;
+    rdfs:label "Govern" ;
+    rdfs:subClassOf cis_controls:SecurityFunction ;
+    skos:definition "Establish and monitor the organization's cybersecurity risk management strategy, expectations, and policy." .
+
+nist_csf_v2:ID a owl:Class ;
+    rdfs:label "Identify" ;
+    rdfs:subClassOf cis_controls:SecurityFunction ;
+    skos:definition "Develop an organizational understanding of cybersecurity risk to systems, people, assets, data, and capabilities." .
+
+nist_csf_v2:PR a owl:Class ;
+    rdfs:label "Protect" ;
+    rdfs:subClassOf cis_controls:SecurityFunction ;
+    skos:definition "Develop and implement appropriate safeguards to ensure delivery of critical services." .
+
+nist_csf_v2:RC a owl:Class ;
+    rdfs:label "Recover" ;
+    rdfs:subClassOf cis_controls:SecurityFunction ;
+    skos:definition "Develop and implement appropriate activities to maintain plans for resilience and to restore capabilities impaired by a cybersecurity incident." .
+
+nist_csf_v2:RS a owl:Class ;
+    rdfs:label "Respond" ;
+    rdfs:subClassOf cis_controls:SecurityFunction ;
+    skos:definition "Develop and implement appropriate activities to take action regarding a detected cybersecurity incident." .
+
+cis_controls:asset_type a owl:ObjectProperty ;
+    rdfs:label "asset_type" ;
+    rdfs:range cis_controls:AssetType ;
+    skos:definition "The class of enterprise asset primarily addressed by this Safeguard." ;
+    skos:inScheme <https://w3id.org/lmodel/cis-controls> .
+
+cis_controls:control_number a owl:DatatypeProperty ;
+    rdfs:label "control_number" ;
+    rdfs:range xsd:string ;
+    skos:definition "Numeric identifier of the parent CIS Control (1–18)." ;
+    skos:inScheme <https://w3id.org/lmodel/cis-controls> .
+
+cis_controls:overview a owl:DatatypeProperty ;
+    rdfs:label "overview" ;
+    rdfs:range xsd:string ;
+    skos:closeMatch nist_csf_v2:prose ;
+    skos:definition "Brief description of the intent of a Control and its utility as a defensive action." ;
+    skos:inScheme <https://w3id.org/lmodel/cis-controls> .
+
+cis_controls:procedures_and_tools a owl:DatatypeProperty ;
+    rdfs:label "procedures_and_tools" ;
+    rdfs:range xsd:string ;
+    skos:definition "Technical description of the processes and technologies that enable implementation and automation of this Control." ;
+    skos:inScheme <https://w3id.org/lmodel/cis-controls> .
+
+cis_controls:publication_date a owl:DatatypeProperty ;
+    rdfs:label "publication_date" ;
+    rdfs:range xsd:string ;
+    skos:definition "Publication date of the CIS Controls document (ISO 8601)." ;
+    skos:inScheme <https://w3id.org/lmodel/cis-controls> .
+
+cis_controls:safeguard_number a owl:DatatypeProperty ;
+    rdfs:label "safeguard_number" ;
+    rdfs:range xsd:string ;
+    skos:definition "Dotted identifier of this Safeguard (e.g. \"1.1\"). Combines the parent control number with a sequential Safeguard index." ;
+    skos:inScheme <https://w3id.org/lmodel/cis-controls> .
+
+cis_controls:security_function a owl:ObjectProperty ;
+    rdfs:label "security_function" ;
+    rdfs:range cis_controls:SecurityFunction ;
+    skos:closeMatch nist_csf_v2:groups ;
+    skos:definition "NIST CSF 2.0 function category to which this Safeguard is mapped." ;
+    skos:inScheme <https://w3id.org/lmodel/cis-controls> .
+
+cis_controls:version a owl:DatatypeProperty ;
+    rdfs:label "version" ;
+    rdfs:range xsd:string ;
+    skos:definition "Version string of the CIS Controls document (e.g. \"8.1\")." ;
+    skos:exactMatch nist_csf_v2:version ;
+    skos:inScheme <https://w3id.org/lmodel/cis-controls> .
+
+cis_controls:why_critical a owl:DatatypeProperty ;
+    rdfs:label "why_critical" ;
+    rdfs:range xsd:string ;
+    skos:definition "Explanation of the importance of this Control in blocking, mitigating, or identifying attacks, and how attackers exploit its absence." ;
+    skos:inScheme <https://w3id.org/lmodel/cis-controls> .
+
+cis_controls:ImplementationGroup a owl:Class ;
+    rdfs:label "ImplementationGroup" ;
+    owl:unionOf ( <https://w3id.org/lmodel/cis-controls/ImplementationGroup#IG1> <https://w3id.org/lmodel/cis-controls/ImplementationGroup#IG2> <https://w3id.org/lmodel/cis-controls/ImplementationGroup#IG3> ) ;
+    skos:definition "Self-assessed tier of CIS Controls applicability based on an enterprise's risk profile and resources. Each IG is cumulative — IG2 includes IG1, IG3 includes both. Introduced in CIS Controls v7.1 as the recommended way to prioritize implementation." ;
+    skos:inScheme <https://w3id.org/lmodel/cis-controls> ;
+    linkml:permissible_values <https://w3id.org/lmodel/cis-controls/ImplementationGroup#IG1>,
+        <https://w3id.org/lmodel/cis-controls/ImplementationGroup#IG2>,
+        <https://w3id.org/lmodel/cis-controls/ImplementationGroup#IG3> .
+
+cis_controls:description a owl:DatatypeProperty ;
+    rdfs:label "description" ;
+    rdfs:range xsd:string ;
+    skos:closeMatch nist_csf_v2:prose ;
+    skos:definition "Descriptive text for the element." ;
+    skos:inScheme <https://w3id.org/lmodel/cis-controls> .
+
+cis_controls:AssetType a owl:Class ;
+    rdfs:label "AssetType" ;
+    owl:unionOf ( <https://w3id.org/lmodel/cis-controls/AssetType#Devices> <https://w3id.org/lmodel/cis-controls/AssetType#Software> <https://w3id.org/lmodel/cis-controls/AssetType#Data> <https://w3id.org/lmodel/cis-controls/AssetType#Users> <https://w3id.org/lmodel/cis-controls/AssetType#Network> <https://w3id.org/lmodel/cis-controls/AssetType#Documentation> ) ;
+    skos:definition "The category of enterprise asset primarily addressed by a Safeguard. Aligned with the CIS Controls Asset Classes taxonomy (v8.1, pg. 8). Sub-classes exist within each category but Safeguards reference the top-level class only." ;
+    skos:inScheme <https://w3id.org/lmodel/cis-controls> ;
+    linkml:permissible_values <https://w3id.org/lmodel/cis-controls/AssetType#Data>,
+        <https://w3id.org/lmodel/cis-controls/AssetType#Devices>,
+        <https://w3id.org/lmodel/cis-controls/AssetType#Documentation>,
+        <https://w3id.org/lmodel/cis-controls/AssetType#Network>,
+        <https://w3id.org/lmodel/cis-controls/AssetType#Software>,
+        <https://w3id.org/lmodel/cis-controls/AssetType#Users> .
+
+cis_controls:SecurityFunction a owl:Class ;
+    rdfs:label "SecurityFunction" ;
+    owl:unionOf ( nist_csf_v2:GV nist_csf_v2:ID nist_csf_v2:PR nist_csf_v2:DE nist_csf_v2:RS nist_csf_v2:RC ) ;
+    skos:closeMatch nist_csf_v2:CSFFunction ;
+    skos:definition "NIST Cybersecurity Framework 2.0 security function category to which a Safeguard is primarily mapped. Values correspond exactly to the six CSF 2.0 Functions; enum as a whole is a close match for nist_csf_v2:CSFFunction." ;
+    skos:inScheme <https://w3id.org/lmodel/cis-controls> ;
+    linkml:permissible_values nist_csf_v2:DE,
+        nist_csf_v2:GV,
+        nist_csf_v2:ID,
+        nist_csf_v2:PR,
+        nist_csf_v2:RC,
+        nist_csf_v2:RS .
+
+cis_controls:id a owl:DatatypeProperty ;
+    rdfs:label "id" ;
+    rdfs:range xsd:string ;
+    skos:definition "Unique identifier for the element." ;
+    skos:exactMatch nist_csf_v2:id ;
+    skos:inScheme <https://w3id.org/lmodel/cis-controls> .
+
+cis_controls:title a owl:DatatypeProperty ;
+    rdfs:label "title" ;
+    rdfs:range xsd:string ;
+    skos:definition "Human-readable title of the element." ;
+    skos:exactMatch nist_csf_v2:title ;
+    skos:inScheme <https://w3id.org/lmodel/cis-controls> .
+
+xsd:string a rdfs:Datatype ;
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:onDatatype xsd:string ;
+            owl:withRestrictions ( [ xsd:pattern "^([1-9]|1[0-8])\\.[0-9]+$" ] ) ],
+        [ a rdfs:Datatype ;
+            owl:onDatatype xsd:string ;
+            owl:withRestrictions ( [ xsd:pattern "^([1-9]|1[0-8])$" ] ) ] .
+
+

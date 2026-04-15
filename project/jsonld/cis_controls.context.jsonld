@@ -1,0 +1,84 @@
+{
+   "@context": {
+      "xsd": "http://www.w3.org/2001/XMLSchema#",
+      "WIKIDATA": "https://www.wikidata.org/wiki/",
+      "cis_controls": "https://w3id.org/lmodel/cis-controls/",
+      "dct": "http://purl.org/dc/terms/",
+      "iso27001": "https://w3id.org/lmodel/iso27001/",
+      "linkml": "https://w3id.org/linkml/",
+      "nist_csf_v2": "https://w3id.org/lmodel/nist-csf-v2/",
+      "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+      "schema": "http://schema.org/",
+      "skos": "http://www.w3.org/2004/02/skos/core#",
+      "@vocab": "https://w3id.org/lmodel/cis-controls/",
+      "asset_type": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "asset_type"
+      },
+      "id": "@id",
+      "control_number": {
+         "@id": "control_number"
+      },
+      "controls": {
+         "@type": "@id",
+         "@id": "controls"
+      },
+      "description": {
+         "@id": "dct:description"
+      },
+      "implementation_groups": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "implementation_groups"
+      },
+      "overview": {
+         "@id": "overview"
+      },
+      "procedures_and_tools": {
+         "@id": "procedures_and_tools"
+      },
+      "publication_date": {
+         "@id": "dct:date"
+      },
+      "safeguard_number": {
+         "@id": "safeguard_number"
+      },
+      "safeguards": {
+         "@type": "@id",
+         "@id": "safeguards"
+      },
+      "security_function": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "security_function"
+      },
+      "title": {
+         "@id": "dct:title"
+      },
+      "version": {
+         "@id": "dct:hasVersion"
+      },
+      "why_critical": {
+         "@id": "why_critical"
+      },
+      "CISControl": {
+         "@id": "CISControl"
+      },
+      "CISControlsDocument": {
+         "@id": "CISControlsDocument"
+      },
+      "Safeguard": {
+         "@id": "Safeguard"
+      }
+   }
+}

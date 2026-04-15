@@ -1,6 +1,6 @@
 # About cis-controls
 
-CIS Critical Security Controls
+CIS Critical Security Controls: LinkML Schema
 
 # Reference
 

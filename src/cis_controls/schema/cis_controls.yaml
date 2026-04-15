@@ -1,13 +1,13 @@
 ---
 id: https://w3id.org/lmodel/cis-controls
 name: cis-controls
-title: CIS Critical Security Controls v8.1.2
-description: |-
+title: CIS Controls
+description: >-
   LinkML schema for the CIS Critical Security Controls (CIS Controls) Version 8.1.2
   (March 2025). Models the 18 Controls and their Safeguards, including asset types,
   security functions, and Implementation Groups as defined by the Center for Internet
-  Security. Source document: CIS Controls v8.1.2 (March 2025),
-  licensed CC BY-NC-ND 4.0 (https://creativecommons.org/licenses/by-nc-nd/4.0/).
+  Security. Source document: CIS Controls v8.1.2 (March 2025), licensed
+  CC BY-NC-ND 4.0 (https://creativecommons.org/licenses/by-nc-nd/4.0/).
 license: Apache-2.0
 see_also:
   - https://www.cisecurity.org/controls/
@@ -16,15 +16,15 @@ version: 8.1.2
 
 prefixes:
   cis_controls: "https://w3id.org/lmodel/cis-controls/"
-  linkml:       "https://w3id.org/linkml/"
-  schema:       "http://schema.org/"
-  dct:          "http://purl.org/dc/terms/"
-  skos:         "http://www.w3.org/2004/02/skos/core#"
-  rdfs:         "http://www.w3.org/2000/01/rdf-schema#"
-  xsd:          "http://www.w3.org/2001/XMLSchema#"
-  nist_csf_v2:  "https://w3id.org/lmodel/nist-csf-v2/"
-  iso27001:     "https://w3id.org/lmodel/iso27001/"
-  WIKIDATA:     "https://www.wikidata.org/wiki/"
+  linkml: "https://w3id.org/linkml/"
+  schema: "http://schema.org/"
+  dct: "http://purl.org/dc/terms/"
+  skos: "http://www.w3.org/2004/02/skos/core#"
+  rdfs: "http://www.w3.org/2000/01/rdf-schema#"
+  xsd: "http://www.w3.org/2001/XMLSchema#"
+  nist_csf_v2: "https://w3id.org/lmodel/nist-csf-v2/"
+  iso27001: "https://w3id.org/lmodel/iso27001/"
+  WIKIDATA: "https://www.wikidata.org/wiki/"
 
 default_prefix: cis_controls
 default_range: string
@@ -326,7 +326,7 @@ classes:
 
   CISControl:
     description: >-
-      One of the 18 CIS Critical Security Controls — a high-level defensive
+      One of the CIS Critical Security Controls; a high-level defensive
       action category that enterprises should implement to reduce cyber risk.
     slots:
       - id

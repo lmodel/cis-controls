@@ -1,0 +1,36 @@
+ syntax="proto3";
+ package
+// metamodel_version: 1.7.0
+// version: 8.1.2
+// One of the CIS Critical Security Controls; a high-level defensive action category that enterprises should implement to reduce cyber risk.
+message CISControl
+ {
+  string id = 0
+  string title = 0
+  controlId controlNumber = 0
+  string overview = 0
+  string whyCritical = 0
+  string proceduresAndTools = 0
+ repeated  safeguard safeguards = 0
+ }
+// Root container for a versioned edition of the CIS Critical Security Controls publication.
+message CISControlsDocument
+ {
+  string id = 0
+  string title = 0
+  string description = 0
+  string version = 0
+  string publicationDate = 0
+ repeated  cISControl controls = 0
+ }
+// A specific, measurable action that an enterprise should take to implement a CIS Control. Formerly called "Sub-Controls" prior to CIS Controls v8.
+message Safeguard
+ {
+  string id = 0
+  string title = 0
+  safeguardId safeguardNumber = 0
+  string description = 0
+  assetType assetType = 0
+  securityFunction securityFunction = 0
+ repeated  implementationGroup implementationGroups = 0
+ }

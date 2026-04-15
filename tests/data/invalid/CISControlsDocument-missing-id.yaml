@@ -1,0 +1,4 @@
+# INVALID: 'id' is required (identifier slot) on CISControlsDocument but is omitted here
+title: "CIS Critical Security Controls: LinkML Schema"
+version: "8.1.2"
+controls: []

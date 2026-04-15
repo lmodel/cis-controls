@@ -1,0 +1,12 @@
+# Safeguard 1.5: Devices asset type, Detect security function, IG3 only
+id: CIS-1.5
+title: Use a Passive Asset Discovery Tool
+safeguard_number: "1.5"
+description: >-
+  Use a passive discovery tool to identify assets connected to the enterprise's
+  network. Review and use scans to update the asset inventory at least weekly,
+  or more frequently.
+asset_type: Devices
+security_function: Detect
+implementation_groups:
+  - IG3
