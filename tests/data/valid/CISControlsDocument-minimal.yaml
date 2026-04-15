@@ -1,0 +1,9 @@
+id: CIS-Controls-v8.1
+title: CIS Critical Security Controls Version 8.1
+version: "8.1"
+publication_date: "2025-03-01"
+description: >-
+  The CIS Critical Security Controls are a prioritized set of actions that
+  collectively form a defense-in-depth set of best practices that mitigate
+  the most common attacks against systems and networks.
+controls: []

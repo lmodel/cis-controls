@@ -1,0 +1,12 @@
+# INVALID: 'Hardware' is not a permissible value for AssetType
+# Valid values: Devices, Software, Data, Users, Network, Documentation
+id: CIS-2.1
+title: Establish and Maintain a Software Inventory
+safeguard_number: "2.1"
+description: Establish and maintain a detailed inventory of all licensed software.
+asset_type: Hardware
+security_function: Identify
+implementation_groups:
+  - IG1
+  - IG2
+  - IG3

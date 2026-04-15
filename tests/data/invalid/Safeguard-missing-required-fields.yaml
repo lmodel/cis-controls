@@ -1,0 +1,9 @@
+# INVALID: 'asset_type', 'security_function', and 'implementation_groups' are
+# all required on Safeguard but are omitted here
+id: CIS-3.1
+title: Establish and Maintain a Data Management Process
+safeguard_number: "3.1"
+description: >-
+  Establish and maintain a data management process. In the process, address
+  data sensitivity, data owner, handling of data, data retention limits, and
+  disposal requirements.

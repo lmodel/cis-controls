@@ -1,0 +1,14 @@
+# Safeguard exercising the Govern security function (new in NIST CSF 2.0 / CIS v8.1)
+id: CIS-14.1
+title: Establish and Maintain a Security Awareness Program
+safeguard_number: "14.1"
+description: >-
+  Establish and maintain a security awareness program. The purpose of a
+  security awareness program is to educate the enterprise's workforce on
+  how to interact with enterprise assets and data in a secure manner.
+asset_type: Users
+security_function: Govern
+implementation_groups:
+  - IG1
+  - IG2
+  - IG3

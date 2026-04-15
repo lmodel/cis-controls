@@ -1,0 +1,10 @@
+# INVALID: 'Monitor' is not a permissible value for SecurityFunction
+# Valid values: Govern, Identify, Protect, Detect, Respond, Recover
+id: CIS-1.1
+title: Establish and Maintain Detailed Enterprise Asset Inventory
+safeguard_number: "1.1"
+description: Inventory of enterprise assets.
+asset_type: Devices
+security_function: Monitor
+implementation_groups:
+  - IG1

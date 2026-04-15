@@ -1,0 +1,6 @@
+# INVALID: id must match ^CIS-([1-9]|1[0-8])$ — "CIS-99" exceeds the range 1-18
+id: CIS-99
+title: Nonexistent Control
+control_number: "99"
+overview: This control number is out of the valid range 1-18.
+safeguards: []

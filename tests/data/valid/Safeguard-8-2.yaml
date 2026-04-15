@@ -1,0 +1,12 @@
+id: CIS-8.2
+title: Collect Audit Logs
+safeguard_number: "8.2"
+description: >-
+  Collect audit logs. Ensure that logging, per the enterprise's audit log
+  management process, has been enabled across enterprise assets.
+asset_type: Devices
+security_function: Detect
+implementation_groups:
+  - IG1
+  - IG2
+  - IG3

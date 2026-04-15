@@ -1,0 +1,101 @@
+id: CIS-5
+title: Account Management
+control_number: "5"
+overview: >-
+  Use processes and tools to assign and manage authorization to credentials
+  for user accounts, including administrator accounts, as well as service
+  accounts, to enterprise assets and software.
+why_critical: >-
+  It is easier for an external or internal threat actor to gain unauthorized
+  access to enterprise assets or data through using valid user credentials
+  than through "hacking" the environment. There are many ways to covertly
+  obtain access to user accounts: compromising credentials with weak
+  passwords, finding credentials left in code repositories or configuration
+  files, credential stuffing, social engineering, or buying credentials on
+  the dark web.
+procedures_and_tools: >-
+  Where possible, the use of multi-factor authentication (MFA) is
+  recommended for all enterprise accounts, and required for all accounts
+  used for remote access. MFA options include hardware tokens, authenticator
+  apps, and SMS codes, although SMS codes are considered less secure.
+safeguards:
+  - id: CIS-5.1
+    title: Establish and Maintain an Inventory of Accounts
+    safeguard_number: "5.1"
+    description: >-
+      Establish and maintain an inventory of all accounts managed in the
+      enterprise. The inventory must include both user and administrator
+      accounts. The inventory, at a minimum, should contain the person's
+      name, username, start/stop dates, and department. Validate that all
+      active accounts are authorized, on a recurring schedule at a minimum
+      quarterly, or more frequently.
+    asset_type: Users
+    security_function: Identify
+    implementation_groups:
+      - IG1
+      - IG2
+      - IG3
+  - id: CIS-5.2
+    title: Use Unique Passwords
+    safeguard_number: "5.2"
+    description: >-
+      Use unique passwords for all enterprise assets. Best practice
+      implementation includes, at a minimum, an 8-character password for
+      accounts using MFA and a 14-character password for accounts not using
+      MFA.
+    asset_type: Users
+    security_function: Protect
+    implementation_groups:
+      - IG1
+      - IG2
+      - IG3
+  - id: CIS-5.3
+    title: Disable Dormant Accounts
+    safeguard_number: "5.3"
+    description: >-
+      Delete or disable any dormant accounts after a period of 45 days of
+      inactivity, where supported.
+    asset_type: Users
+    security_function: Respond
+    implementation_groups:
+      - IG1
+      - IG2
+      - IG3
+  - id: CIS-5.4
+    title: Restrict Administrator Privileges to Dedicated Administrator Accounts
+    safeguard_number: "5.4"
+    description: >-
+      Restrict administrator privileges to dedicated administrator accounts
+      on enterprise assets. Conduct general computing activities, such as
+      internet browsing, email, and productivity suite use, from the user's
+      primary, non-privileged account.
+    asset_type: Users
+    security_function: Protect
+    implementation_groups:
+      - IG1
+      - IG2
+      - IG3
+  - id: CIS-5.5
+    title: Establish and Maintain an Inventory of Service Accounts
+    safeguard_number: "5.5"
+    description: >-
+      Establish and maintain an inventory of service accounts. The inventory,
+      at a minimum, must contain department owner, review date, and purpose.
+      Perform service account reviews to validate that all active accounts
+      are authorized, on a recurring schedule at a minimum quarterly, or
+      more frequently.
+    asset_type: Users
+    security_function: Identify
+    implementation_groups:
+      - IG2
+      - IG3
+  - id: CIS-5.6
+    title: Centralize Account Management
+    safeguard_number: "5.6"
+    description: >-
+      Centralize account management through a directory or identity service.
+    asset_type: Users
+    security_function: Protect
+    implementation_groups:
+      - IG2
+      - IG3
