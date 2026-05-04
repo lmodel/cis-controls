@@ -848,7 +848,7 @@ classes:
     class_uri: cis_controls:Safeguard
 metamodel_version: 1.7.0
 source_file: cis_controls.yaml
-source_file_date: '2026-04-15T22:32:03'
+source_file_date: '2026-05-04T21:19:26'
 source_file_size: 14606
-generation_date: '2026-04-15T22:32:14'
+generation_date: '2026-05-04T21:19:37'
 
