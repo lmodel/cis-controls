@@ -1,0 +1,854 @@
+name: cis-controls
+description: 'LinkML schema for the CIS Critical Security Controls (CIS Controls)
+  Version 8.1.2 (March 2025). Models the 18 Controls and their Safeguards, including
+  asset types, security functions, and Implementation Groups as defined by the Center
+  for Internet Security. Source document: CIS Controls v8.1.2 (March 2025), licensed
+  CC BY-NC-ND 4.0 (https://creativecommons.org/licenses/by-nc-nd/4.0/).'
+title: CIS Controls
+see_also:
+- https://www.cisecurity.org/controls/
+- https://lmodel.github.io/cis-controls
+id: https://w3id.org/lmodel/cis-controls
+version: 8.1.2
+imports:
+- linkml:types
+license: Apache-2.0
+prefixes:
+  cis_controls:
+    prefix_prefix: cis_controls
+    prefix_reference: https://w3id.org/lmodel/cis-controls/
+  linkml:
+    prefix_prefix: linkml
+    prefix_reference: https://w3id.org/linkml/
+  schema:
+    prefix_prefix: schema
+    prefix_reference: http://schema.org/
+  dct:
+    prefix_prefix: dct
+    prefix_reference: http://purl.org/dc/terms/
+  skos:
+    prefix_prefix: skos
+    prefix_reference: http://www.w3.org/2004/02/skos/core#
+  rdfs:
+    prefix_prefix: rdfs
+    prefix_reference: http://www.w3.org/2000/01/rdf-schema#
+  xsd:
+    prefix_prefix: xsd
+    prefix_reference: http://www.w3.org/2001/XMLSchema#
+  nist_csf_v2:
+    prefix_prefix: nist_csf_v2
+    prefix_reference: https://w3id.org/lmodel/nist-csf-v2/
+  iso27001:
+    prefix_prefix: iso27001
+    prefix_reference: https://w3id.org/lmodel/iso27001/
+  WIKIDATA:
+    prefix_prefix: WIKIDATA
+    prefix_reference: https://www.wikidata.org/wiki/
+default_prefix: cis_controls
+default_range: string
+subsets:
+  essential_cyber_hygiene:
+    name: essential_cyber_hygiene
+    definition_uri: https://w3id.org/lmodel/cis-controls/EssentialCyberHygiene
+    description: Profile containing Safeguards where implementation_groups includes
+      IG1. The minimum set every enterprise should implement ("Essential Cyber Hygiene").
+      56 safeguards across all 18 Controls.
+    from_schema: https://w3id.org/lmodel/cis-controls
+  ig2_controls:
+    name: ig2_controls
+    definition_uri: https://w3id.org/lmodel/cis-controls/Ig2Controls
+    description: Profile containing Safeguards where implementation_groups includes
+      IG2 (a superset of essential_cyber_hygiene). For organizations managing sensitive
+      data with dedicated security staff.
+    from_schema: https://w3id.org/lmodel/cis-controls
+  ig3_controls:
+    name: ig3_controls
+    definition_uri: https://w3id.org/lmodel/cis-controls/Ig3Controls
+    description: Profile containing Safeguards where implementation_groups includes
+      IG3 (a superset of ig2_controls). For high-risk profiles with specialist security
+      expertise. All 153 safeguards across 18 Controls.
+    from_schema: https://w3id.org/lmodel/cis-controls
+types:
+  ControlId:
+    name: ControlId
+    definition_uri: https://w3id.org/lmodel/cis-controls/ControlId
+    description: Identifier for a CIS Control (e.g. "1", "18").
+    from_schema: https://w3id.org/lmodel/cis-controls
+    base: str
+    uri: xsd:string
+    pattern: ^([1-9]|1[0-8])$
+  SafeguardId:
+    name: SafeguardId
+    definition_uri: https://w3id.org/lmodel/cis-controls/SafeguardId
+    description: Identifier for a CIS Safeguard in the form <control>.<safeguard>
+      (e.g. "1.1", "16.14").
+    from_schema: https://w3id.org/lmodel/cis-controls
+    base: str
+    uri: xsd:string
+    pattern: ^([1-9]|1[0-8])\.[0-9]+$
+  string:
+    name: string
+    definition_uri: https://w3id.org/linkml/String
+    description: A character string
+    notes:
+    - In RDF serializations, a slot with range of string is treated as a literal or
+      type xsd:string.   If you are authoring schemas in LinkML YAML, the type is
+      referenced with the lower case "string".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    exact_mappings:
+    - schema:Text
+    base: str
+    uri: xsd:string
+  integer:
+    name: integer
+    definition_uri: https://w3id.org/linkml/Integer
+    description: An integer
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "integer".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    exact_mappings:
+    - schema:Integer
+    base: int
+    uri: xsd:integer
+  boolean:
+    name: boolean
+    definition_uri: https://w3id.org/linkml/Boolean
+    description: A binary (true or false) value
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "boolean".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    exact_mappings:
+    - schema:Boolean
+    base: Bool
+    uri: xsd:boolean
+    repr: bool
+  float:
+    name: float
+    definition_uri: https://w3id.org/linkml/Float
+    description: A real number that conforms to the xsd:float specification
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "float".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    exact_mappings:
+    - schema:Float
+    base: float
+    uri: xsd:float
+  double:
+    name: double
+    definition_uri: https://w3id.org/linkml/Double
+    description: A real number that conforms to the xsd:double specification
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "double".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    close_mappings:
+    - schema:Float
+    base: float
+    uri: xsd:double
+  decimal:
+    name: decimal
+    definition_uri: https://w3id.org/linkml/Decimal
+    description: A real number with arbitrary precision that conforms to the xsd:decimal
+      specification
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "decimal".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    broad_mappings:
+    - schema:Number
+    base: Decimal
+    uri: xsd:decimal
+  time:
+    name: time
+    definition_uri: https://w3id.org/linkml/Time
+    description: A time object represents a (local) time of day, independent of any
+      particular day
+    notes:
+    - URI is dateTime because OWL reasoners do not work with straight date or time
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "time".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    exact_mappings:
+    - schema:Time
+    base: XSDTime
+    uri: xsd:time
+    repr: str
+  date:
+    name: date
+    definition_uri: https://w3id.org/linkml/Date
+    description: a date (year, month and day) in an idealized calendar
+    notes:
+    - URI is dateTime because OWL reasoners don't work with straight date or time
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "date".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    exact_mappings:
+    - schema:Date
+    base: XSDDate
+    uri: xsd:date
+    repr: str
+  datetime:
+    name: datetime
+    definition_uri: https://w3id.org/linkml/Datetime
+    description: The combination of a date and time
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "datetime".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    exact_mappings:
+    - schema:DateTime
+    base: XSDDateTime
+    uri: xsd:dateTime
+    repr: str
+  date_or_datetime:
+    name: date_or_datetime
+    definition_uri: https://w3id.org/linkml/DateOrDatetime
+    description: Either a date or a datetime
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "date_or_datetime".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: str
+    uri: linkml:DateOrDatetime
+    repr: str
+  uriorcurie:
+    name: uriorcurie
+    definition_uri: https://w3id.org/linkml/Uriorcurie
+    description: a URI or a CURIE
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "uriorcurie".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: URIorCURIE
+    uri: xsd:anyURI
+    repr: str
+  curie:
+    name: curie
+    definition_uri: https://w3id.org/linkml/Curie
+    conforms_to: https://www.w3.org/TR/curie/
+    description: a compact URI
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "curie".
+    comments:
+    - in RDF serializations this MUST be expanded to a URI
+    - in non-RDF serializations MAY be serialized as the compact representation
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: Curie
+    uri: xsd:string
+    repr: str
+  uri:
+    name: uri
+    definition_uri: https://w3id.org/linkml/Uri
+    conforms_to: https://www.ietf.org/rfc/rfc3987.txt
+    description: a complete URI
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "uri".
+    comments:
+    - in RDF serializations a slot with range of uri is treated as a literal or type
+      xsd:anyURI unless it is an identifier or a reference to an identifier, in which
+      case it is translated directly to a node
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    close_mappings:
+    - schema:URL
+    base: URI
+    uri: xsd:anyURI
+    repr: str
+  ncname:
+    name: ncname
+    definition_uri: https://w3id.org/linkml/Ncname
+    description: Prefix part of CURIE
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "ncname".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: NCName
+    uri: xsd:string
+    repr: str
+  objectidentifier:
+    name: objectidentifier
+    definition_uri: https://w3id.org/linkml/Objectidentifier
+    description: A URI or CURIE that represents an object in the model.
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "objectidentifier".
+    comments:
+    - Used for inheritance and type checking
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: ElementIdentifier
+    uri: shex:iri
+    repr: str
+  nodeidentifier:
+    name: nodeidentifier
+    definition_uri: https://w3id.org/linkml/Nodeidentifier
+    description: A URI, CURIE or BNODE that represents a node in a model.
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "nodeidentifier".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: NodeIdentifier
+    uri: shex:nonLiteral
+    repr: str
+  jsonpointer:
+    name: jsonpointer
+    definition_uri: https://w3id.org/linkml/Jsonpointer
+    conforms_to: https://datatracker.ietf.org/doc/html/rfc6901
+    description: A string encoding a JSON Pointer. The value of the string MUST conform
+      to JSON Point syntax and SHOULD dereference to a valid object within the current
+      instance document when encoded in tree form.
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "jsonpointer".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: str
+    uri: xsd:string
+    repr: str
+  jsonpath:
+    name: jsonpath
+    definition_uri: https://w3id.org/linkml/Jsonpath
+    conforms_to: https://www.ietf.org/archive/id/draft-goessner-dispatch-jsonpath-00.html
+    description: A string encoding a JSON Path. The value of the string MUST conform
+      to JSON Point syntax and SHOULD dereference to zero or more valid objects within
+      the current instance document when encoded in tree form.
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "jsonpath".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: str
+    uri: xsd:string
+    repr: str
+  sparqlpath:
+    name: sparqlpath
+    definition_uri: https://w3id.org/linkml/Sparqlpath
+    conforms_to: https://www.w3.org/TR/sparql11-query/#propertypaths
+    description: A string encoding a SPARQL Property Path. The value of the string
+      MUST conform to SPARQL syntax and SHOULD dereference to zero or more valid objects
+      within the current instance document when encoded as RDF.
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "sparqlpath".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: str
+    uri: xsd:string
+    repr: str
+enums:
+  ImplementationGroup:
+    name: ImplementationGroup
+    definition_uri: https://w3id.org/lmodel/cis-controls/ImplementationGroup
+    description: "Self-assessed tier of CIS Controls applicability based on an enterprise's\
+      \ risk profile and resources. Each IG is cumulative \u2014 IG2 includes IG1,\
+      \ IG3 includes both. Introduced in CIS Controls v7.1 as the recommended way\
+      \ to prioritize implementation."
+    from_schema: https://w3id.org/lmodel/cis-controls
+    permissible_values:
+      IG1:
+        text: IG1
+        description: Small to medium-sized enterprise with limited IT and cybersecurity
+          expertise to dedicate toward protecting IT assets and personnel. The principal
+          concern is to keep the business operational; limited tolerance for downtime;
+          data sensitivity is low, principally surrounding employee and financial
+          information. Safeguards should be implementable with limited cybersecurity
+          expertise and designed to thwart general, non-targeted attacks using COTS
+          hardware and software. Also called "Essential Cyber Hygiene."
+      IG2:
+        text: IG2
+        description: Enterprise employing individuals responsible for managing and
+          protecting IT infrastructure. Supports multiple departments with differing
+          risk profiles based on job function and mission; may have regulatory compliance
+          burdens; often stores and processes sensitive client or enterprise information
+          and can withstand short interruptions of service. A major concern is loss
+          of public confidence if a breach occurs. Safeguards help security teams
+          cope with increased operational complexity; some depend on enterprise-grade
+          technology and specialized expertise to properly install and configure.
+          Includes all IG1 safeguards.
+      IG3:
+        text: IG3
+        description: Enterprise employing security experts that specialize in the
+          different facets of cybersecurity (e.g., risk management, penetration testing,
+          application security). Assets and data contain sensitive information or
+          functions subject to regulatory and compliance oversight; must address availability
+          of services and the confidentiality and integrity of sensitive data; successful
+          attacks can cause significant harm to the public welfare. Safeguards must
+          abate targeted attacks from a sophisticated adversary and reduce the impact
+          of zero-day attacks. Includes all IG1 and IG2 safeguards.
+  AssetType:
+    name: AssetType
+    definition_uri: https://w3id.org/lmodel/cis-controls/AssetType
+    description: The category of enterprise asset primarily addressed by a Safeguard.
+      Aligned with the CIS Controls Asset Classes taxonomy (v8.1, pg. 8). Sub-classes
+      exist within each category but Safeguards reference the top-level class only.
+    from_schema: https://w3id.org/lmodel/cis-controls
+    permissible_values:
+      Devices:
+        text: Devices
+        description: Enterprise assets (data processing and storage assets), end-user
+          devices (including portable and mobile devices), servers, Internet of Things
+          (IoT) and non-computing devices, network devices, and removable media. Devices
+          may exist in physical, virtual, or cloud-based environments and can remotely
+          connect to these systems.
+      Software:
+        text: Software
+        description: Sets of data and instructions used to direct a computer to complete
+          a specific task. Includes applications, operating systems (with their services,
+          libraries, and APIs), and firmware. Both applications and operating systems
+          are considered software assets.
+      Data:
+        text: Data
+        description: 'A collection of facts that can be examined, considered, and
+          used for decision-making. Although data may be physical, the CIS Controls
+          primarily provide protection for digital data stored, transferred, and processed
+          by enterprise assets. Sub-classes: sensitive data, log data, and physical
+          data.'
+      Users:
+        text: Users
+        description: Employees, third-party vendors, contractors, service providers,
+          consultants, or any other person authorized to access an enterprise asset.
+          Includes workforce, service providers, and user/administrator/service accounts.
+      Network:
+        text: Network
+        description: A group of interconnected devices that exchange data. A superset
+          of network infrastructure (hardware and software providing connectivity
+          and communication) and network architecture (the logical and physical design
+          of the network).
+      Documentation:
+        text: Documentation
+        description: 'Policies, processes, procedures, plans, diagrams, and other
+          written material (physical or digital), such as compliance reports. Examples
+          include methods of governance for an enterprise, processes users follow,
+          or descriptions of network architecture. Sub-classes: plans, policies, processes,
+          and procedures.'
+  SecurityFunction:
+    name: SecurityFunction
+    definition_uri: https://w3id.org/lmodel/cis-controls/SecurityFunction
+    description: NIST Cybersecurity Framework 2.0 security function category to which
+      a Safeguard is primarily mapped. Values correspond exactly to the six CSF 2.0
+      Functions; enum as a whole is a close match for nist_csf_v2:CSFFunction.
+    from_schema: https://w3id.org/lmodel/cis-controls
+    close_mappings:
+    - nist_csf_v2:CSFFunction
+    permissible_values:
+      Govern:
+        text: Govern
+        description: Establish and monitor the organization's cybersecurity risk management
+          strategy, expectations, and policy.
+        meaning: nist_csf_v2:GV
+      Identify:
+        text: Identify
+        description: Develop an organizational understanding of cybersecurity risk
+          to systems, people, assets, data, and capabilities.
+        meaning: nist_csf_v2:ID
+      Protect:
+        text: Protect
+        description: Develop and implement appropriate safeguards to ensure delivery
+          of critical services.
+        meaning: nist_csf_v2:PR
+      Detect:
+        text: Detect
+        description: Develop and implement appropriate activities to identify the
+          occurrence of a cybersecurity event.
+        meaning: nist_csf_v2:DE
+      Respond:
+        text: Respond
+        description: Develop and implement appropriate activities to take action regarding
+          a detected cybersecurity incident.
+        meaning: nist_csf_v2:RS
+      Recover:
+        text: Recover
+        description: Develop and implement appropriate activities to maintain plans
+          for resilience and to restore capabilities impaired by a cybersecurity incident.
+        meaning: nist_csf_v2:RC
+slots:
+  id:
+    name: id
+    definition_uri: https://w3id.org/lmodel/cis-controls/id
+    description: Unique identifier for the element.
+    from_schema: https://w3id.org/lmodel/cis-controls
+    mappings:
+    - dct:identifier
+    exact_mappings:
+    - nist_csf_v2:id
+    slot_uri: dct:identifier
+    identifier: true
+    owner: Safeguard
+    domain_of:
+    - CISControlsDocument
+    - CISControl
+    - Safeguard
+    range: string
+    required: true
+  title:
+    name: title
+    definition_uri: https://w3id.org/lmodel/cis-controls/title
+    description: Human-readable title of the element.
+    from_schema: https://w3id.org/lmodel/cis-controls
+    mappings:
+    - dct:title
+    exact_mappings:
+    - nist_csf_v2:title
+    slot_uri: dct:title
+    owner: Safeguard
+    domain_of:
+    - CISControlsDocument
+    - CISControl
+    - Safeguard
+    range: string
+    required: true
+  description:
+    name: description
+    definition_uri: https://w3id.org/lmodel/cis-controls/description
+    description: Descriptive text for the element.
+    from_schema: https://w3id.org/lmodel/cis-controls
+    mappings:
+    - dct:description
+    close_mappings:
+    - nist_csf_v2:prose
+    slot_uri: dct:description
+    owner: Safeguard
+    domain_of:
+    - CISControlsDocument
+    - Safeguard
+    range: string
+  overview:
+    name: overview
+    definition_uri: https://w3id.org/lmodel/cis-controls/overview
+    description: Brief description of the intent of a Control and its utility as a
+      defensive action.
+    from_schema: https://w3id.org/lmodel/cis-controls
+    close_mappings:
+    - nist_csf_v2:prose
+    slot_uri: cis_controls:overview
+    owner: CISControl
+    domain_of:
+    - CISControl
+    range: string
+  why_critical:
+    name: why_critical
+    definition_uri: https://w3id.org/lmodel/cis-controls/why_critical
+    description: Explanation of the importance of this Control in blocking, mitigating,
+      or identifying attacks, and how attackers exploit its absence.
+    from_schema: https://w3id.org/lmodel/cis-controls
+    slot_uri: cis_controls:why_critical
+    owner: CISControl
+    domain_of:
+    - CISControl
+    range: string
+  procedures_and_tools:
+    name: procedures_and_tools
+    definition_uri: https://w3id.org/lmodel/cis-controls/procedures_and_tools
+    description: Technical description of the processes and technologies that enable
+      implementation and automation of this Control.
+    from_schema: https://w3id.org/lmodel/cis-controls
+    slot_uri: cis_controls:procedures_and_tools
+    owner: CISControl
+    domain_of:
+    - CISControl
+    range: string
+  control_number:
+    name: control_number
+    definition_uri: https://w3id.org/lmodel/cis-controls/control_number
+    description: "Numeric identifier of the parent CIS Control (1\u201318)."
+    from_schema: https://w3id.org/lmodel/cis-controls
+    slot_uri: cis_controls:control_number
+    owner: CISControl
+    domain_of:
+    - CISControl
+    range: ControlId
+    required: true
+  safeguard_number:
+    name: safeguard_number
+    definition_uri: https://w3id.org/lmodel/cis-controls/safeguard_number
+    description: Dotted identifier of this Safeguard (e.g. "1.1"). Combines the parent
+      control number with a sequential Safeguard index.
+    from_schema: https://w3id.org/lmodel/cis-controls
+    slot_uri: cis_controls:safeguard_number
+    owner: Safeguard
+    domain_of:
+    - Safeguard
+    range: SafeguardId
+    required: true
+  asset_type:
+    name: asset_type
+    definition_uri: https://w3id.org/lmodel/cis-controls/asset_type
+    description: The class of enterprise asset primarily addressed by this Safeguard.
+    from_schema: https://w3id.org/lmodel/cis-controls
+    slot_uri: cis_controls:asset_type
+    owner: Safeguard
+    domain_of:
+    - Safeguard
+    range: AssetType
+    required: true
+  security_function:
+    name: security_function
+    definition_uri: https://w3id.org/lmodel/cis-controls/security_function
+    description: NIST CSF 2.0 function category to which this Safeguard is mapped.
+    from_schema: https://w3id.org/lmodel/cis-controls
+    close_mappings:
+    - nist_csf_v2:groups
+    slot_uri: cis_controls:security_function
+    owner: Safeguard
+    domain_of:
+    - Safeguard
+    range: SecurityFunction
+    required: true
+  implementation_groups:
+    name: implementation_groups
+    definition_uri: https://w3id.org/lmodel/cis-controls/implementation_groups
+    description: The Implementation Group(s) for which this Safeguard is applicable.
+      IG2 implies IG1; IG3 implies IG1 and IG2.
+    from_schema: https://w3id.org/lmodel/cis-controls
+    related_mappings:
+    - nist_csf_v2:props
+    slot_uri: cis_controls:implementation_groups
+    owner: Safeguard
+    domain_of:
+    - Safeguard
+    range: ImplementationGroup
+    required: true
+    multivalued: true
+  safeguards:
+    name: safeguards
+    definition_uri: https://w3id.org/lmodel/cis-controls/safeguards
+    description: List of Safeguards belonging to a CIS Control.
+    from_schema: https://w3id.org/lmodel/cis-controls
+    close_mappings:
+    - nist_csf_v2:controls
+    slot_uri: cis_controls:safeguards
+    owner: CISControl
+    domain_of:
+    - CISControl
+    range: Safeguard
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  controls:
+    name: controls
+    definition_uri: https://w3id.org/lmodel/cis-controls/controls
+    description: List of CIS Controls in this document.
+    from_schema: https://w3id.org/lmodel/cis-controls
+    close_mappings:
+    - nist_csf_v2:groups
+    slot_uri: cis_controls:controls
+    owner: CISControlsDocument
+    domain_of:
+    - CISControlsDocument
+    range: CISControl
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  version:
+    name: version
+    definition_uri: https://w3id.org/lmodel/cis-controls/version
+    description: Version string of the CIS Controls document (e.g. "8.1").
+    from_schema: https://w3id.org/lmodel/cis-controls
+    mappings:
+    - dct:hasVersion
+    exact_mappings:
+    - nist_csf_v2:version
+    slot_uri: dct:hasVersion
+    owner: CISControlsDocument
+    domain_of:
+    - CISControlsDocument
+    range: string
+  publication_date:
+    name: publication_date
+    definition_uri: https://w3id.org/lmodel/cis-controls/publication_date
+    description: Publication date of the CIS Controls document (ISO 8601).
+    from_schema: https://w3id.org/lmodel/cis-controls
+    mappings:
+    - dct:date
+    slot_uri: dct:date
+    owner: CISControlsDocument
+    domain_of:
+    - CISControlsDocument
+    range: string
+  CISControl_id:
+    name: CISControl_id
+    definition_uri: https://w3id.org/lmodel/cis-controls/id
+    description: Composite identifier for the control (e.g. "CIS-1").
+    from_schema: https://w3id.org/lmodel/cis-controls
+    mappings:
+    - dct:identifier
+    exact_mappings:
+    - nist_csf_v2:id
+    is_a: id
+    domain: CISControl
+    slot_uri: dct:identifier
+    identifier: true
+    alias: id
+    owner: CISControl
+    domain_of:
+    - CISControl
+    is_usage_slot: true
+    usage_slot_name: id
+    range: string
+    required: true
+    pattern: ^CIS-([1-9]|1[0-8])$
+  Safeguard_id:
+    name: Safeguard_id
+    definition_uri: https://w3id.org/lmodel/cis-controls/id
+    description: Composite identifier for the safeguard (e.g. "CIS-1.1").
+    from_schema: https://w3id.org/lmodel/cis-controls
+    mappings:
+    - dct:identifier
+    exact_mappings:
+    - nist_csf_v2:id
+    is_a: id
+    domain: Safeguard
+    slot_uri: dct:identifier
+    identifier: true
+    alias: id
+    owner: Safeguard
+    domain_of:
+    - Safeguard
+    is_usage_slot: true
+    usage_slot_name: id
+    range: string
+    required: true
+    pattern: ^CIS-([1-9]|1[0-8])\.[0-9]+$
+  Safeguard_implementation_groups:
+    name: Safeguard_implementation_groups
+    definition_uri: https://w3id.org/lmodel/cis-controls/implementation_groups
+    description: Implementation Group(s) for which this Safeguard is applicable. A
+      Safeguard listed under IG2 is also required for IG3 enterprises; a Safeguard
+      listed under IG1 is required for all enterprises.
+    from_schema: https://w3id.org/lmodel/cis-controls
+    related_mappings:
+    - nist_csf_v2:props
+    is_a: implementation_groups
+    domain: Safeguard
+    slot_uri: cis_controls:implementation_groups
+    alias: implementation_groups
+    owner: Safeguard
+    domain_of:
+    - Safeguard
+    is_usage_slot: true
+    usage_slot_name: implementation_groups
+    range: ImplementationGroup
+    required: true
+    multivalued: true
+classes:
+  CISControlsDocument:
+    name: CISControlsDocument
+    id_prefixes:
+    - cis_controls
+    definition_uri: https://w3id.org/lmodel/cis-controls/CISControlsDocument
+    description: Root container for a versioned edition of the CIS Critical Security
+      Controls publication.
+    from_schema: https://w3id.org/lmodel/cis-controls
+    see_also:
+    - https://www.cisecurity.org/controls/
+    exact_mappings:
+    - schema:CreativeWork
+    close_mappings:
+    - nist_csf_v2:CSFDocument
+    related_mappings:
+    - iso27001:InformationSecurityManagementSystem
+    slots:
+    - id
+    - title
+    - description
+    - version
+    - publication_date
+    - controls
+    class_uri: cis_controls:CISControlsDocument
+    tree_root: true
+  CISControl:
+    name: CISControl
+    id_prefixes:
+    - cis_controls
+    definition_uri: https://w3id.org/lmodel/cis-controls/CISControl
+    description: One of the CIS Critical Security Controls; a high-level defensive
+      action category that enterprises should implement to reduce cyber risk.
+    from_schema: https://w3id.org/lmodel/cis-controls
+    see_also:
+    - https://www.cisecurity.org/controls/
+    exact_mappings:
+    - schema:Action
+    close_mappings:
+    - nist_csf_v2:CSFCategory
+    related_mappings:
+    - WIKIDATA:Q2695280
+    slots:
+    - CISControl_id
+    - title
+    - control_number
+    - overview
+    - why_critical
+    - procedures_and_tools
+    - safeguards
+    slot_usage:
+      id:
+        name: id
+        description: Composite identifier for the control (e.g. "CIS-1").
+        pattern: ^CIS-([1-9]|1[0-8])$
+    class_uri: cis_controls:CISControl
+  Safeguard:
+    name: Safeguard
+    id_prefixes:
+    - cis_controls
+    definition_uri: https://w3id.org/lmodel/cis-controls/Safeguard
+    description: A specific, measurable action that an enterprise should take to implement
+      a CIS Control. Formerly called "Sub-Controls" prior to CIS Controls v8.
+    in_subset:
+    - essential_cyber_hygiene
+    - ig2_controls
+    - ig3_controls
+    from_schema: https://w3id.org/lmodel/cis-controls
+    see_also:
+    - https://www.cisecurity.org/controls/
+    aliases:
+    - sub-control
+    exact_mappings:
+    - schema:Action
+    close_mappings:
+    - nist_csf_v2:CSFSubcategory
+    related_mappings:
+    - iso27001:SecurityControl
+    slots:
+    - Safeguard_id
+    - title
+    - safeguard_number
+    - description
+    - asset_type
+    - security_function
+    - Safeguard_implementation_groups
+    slot_usage:
+      id:
+        name: id
+        description: Composite identifier for the safeguard (e.g. "CIS-1.1").
+        pattern: ^CIS-([1-9]|1[0-8])\.[0-9]+$
+      implementation_groups:
+        name: implementation_groups
+        description: Implementation Group(s) for which this Safeguard is applicable.
+          A Safeguard listed under IG2 is also required for IG3 enterprises; a Safeguard
+          listed under IG1 is required for all enterprises.
+    class_uri: cis_controls:Safeguard
+metamodel_version: 1.7.0
+source_file: cis_controls.yaml
+source_file_date: '2026-07-01T18:27:46'
+source_file_size: 14606
+generation_date: '2026-07-01T18:27:57'
+
