@@ -67,7 +67,9 @@ skip = [
   "project/*",
   "src/cis_controls/datamodel/cis_controls_pydantic.py",
   "src/cis_controls/datamodel/cis_controls.py",
-  # Files copied in by the KTL sidecar sync or written by npm, not by hand.
+  # The neighbours' adapt copies, copied as released, and files copied in by
+  # the KTL sidecar sync or written by npm, not by hand.
+  "tests/neighbours/*",
   ".lokf/scripts/*",
   "website/package-lock.json",
 ]
@@ -88,6 +90,7 @@ extend-exclude = [
   "project/*",
   "src/cis_controls/datamodel/cis_controls_pydantic.py",
   "src/cis_controls/datamodel/cis_controls.py",
+  "tests/neighbours/*",
   ".lokf/scripts/*",
   "website/package-lock.json",
 ]
