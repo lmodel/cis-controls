@@ -23,7 +23,7 @@ status: draft
 
 # CIS's pages on the CIS Controls
 
-CIS's list of the Controls is titled with their number, 18, and links the resources for Version 8.1 and the earlier Versions 8 and 7.1.[^cis-controls-list] CIS's page on the Implementation Groups says that Versions 8 and 8.1 hold 153 Safeguards, and links a page for each group, which gives its count: 56 in IG1, 74 more in IG2 and 23 more in IG3.[^cis-implementation-groups] CIS's page on its guide to the asset classes, published on May 12, 2025, says that Version 8.1 restructured the asset classes and their definitions; the guide itself asks for a registration.[^cis-asset-classes]
+CIS's list of the Controls is titled with their number, 18, and links the resources for Version 8.1 and the earlier Versions 8 and 7.1.[^cis-controls-list] CIS's page on the Implementation Groups says that Versions 8 and 8.1 hold 153 Safeguards. It links a page for each group, which gives the group's count: 56 in IG1, 74 more in IG2 and 23 more in IG3.[^cis-implementation-groups] CIS's page on its guide to the asset classes, published on May 12, 2025, says that Version 8.1 restructured the asset classes and their definitions. The guide itself asks for a registration.[^cis-asset-classes]
 
 The schema's `see_also` names these pages, and its comments take the counts from them. The upstream watch reads the list page and the page for Version 8.1 every week.
 

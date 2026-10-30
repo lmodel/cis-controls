@@ -17,11 +17,16 @@ status: draft
 
 # AI covenant
 
-`AI_COVENANT.md` says that everything a contributor submits is theirs, whatever tools helped make it, and that they must understand, verify and defend it.[^ai_covenant.md] Its note for this project says that the repository models someone else's framework, the CIS Controls, and names two failure modes worse here than elsewhere: a rule or element a model produced, presented as what the CIS Controls say, and CIS's own text, which the repository may not carry. Three rules follow:
+`AI_COVENANT.md` says that everything a contributor submits is theirs, whatever tools helped make it, and that they must understand, verify and defend it.[^ai_covenant.md] Its note for this project says that the repository models someone else's framework, the CIS Controls. It names two failure modes that are worse here than elsewhere:
+
+- a rule or element a model produced, presented as what the CIS Controls say;
+- CIS's own text, which the repository may not carry.
+
+Three rules follow:
 
 - an element under `src/cis_controls/schema/` says what the CIS Controls say, in the project's own words, with the part of CIS's guide cited in the pull request;
 - no CIS text goes into the schema, the examples, the docs or the bundle, copied or closely paraphrased, and a model's text is checked for CIS's wording before it is submitted;
-- everything the schema defines lives under `cis_controls:`, with CIS's numbers appearing only as values.
+- everything the schema defines is in the `cis_controls:` namespace, with CIS's numbers appearing only as values.
 
 The covenant forbids posting AI output as an independent voice in issues or discussions. It sets four rules for the scheduled librarian:
 

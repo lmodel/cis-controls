@@ -21,8 +21,8 @@ status: draft
 
 # Control 16 (CIS-16)
 
-Control 16 is one of the 18 Controls of the CIS Controls, Version 8.1. CIS's guide, at its v8.1.2 revision, lists 14 Safeguards under it, numbered 16.1 to 16.14, which the schema names `CIS-16.1` to `CIS-16.14`.[^cis-v8-1] Of these, none is in Implementation Group 1, 11 in Implementation Group 2 and all 14 in Implementation Group 3. Its Safeguards are about the asset classes Software (9), Documentation (3), Network (1) and Users (1).
+Control 16 is one of the 18 Controls of the CIS Controls, Version 8.1. CIS's guide, at its v8.1.2 revision, lists 14 Safeguards under it, numbered 16.1 to 16.14.[^cis-v8-1] The schema names them `CIS-16.1` to `CIS-16.14`. Of these, none is in Implementation Group 1, 11 in Implementation Group 2 and all 14 in Implementation Group 3. Its Safeguards are about the asset classes Software (9), Documentation (3), Network (1) and Users (1).
 
-This bundle carries none of CIS's text, which CIS licenses under CC BY-NC-ND 4.0, so the Control's name, its description and the text of its Safeguards are left out. CIS's guide gives them; [the guide's reference](../references/cis-controls-guide.md) says where it is.
+This bundle leaves out the Control's name, its description and the text of its Safeguards, because CIS licenses that text under CC BY-NC-ND 4.0. CIS's guide gives them, and [the guide's reference](../references/cis-controls-guide.md) says where to find it.
 
 [^cis-v8-1]: <https://www.cisecurity.org/controls/v8-1>, the guide this page offers, the Safeguards of Control 16

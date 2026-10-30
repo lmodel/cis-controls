@@ -38,7 +38,7 @@ Every file here is generated from `src/cis_controls/schema/cis_controls.yaml`, s
 
 `just gen-doc` writes `docs/schema/cis_controls.yaml` and the element pages under `docs/elements/`, which git ignores and the website builds. `just lokf-adapt` writes `.lokf/cis-controls.yaml`. `just test` regenerates the dataclasses too, and leaves no change, because the generated files carry no generation date.
 
-The pre-commit hooks leave these folders alone, with the neighbours' copies, the release tools' lockfile and the sidecar's scripts, because no hook may rewrite a file the repository does not write by hand.[^pre-commit-config.yaml]
+The pre-commit hooks leave these folders alone, and also the neighbours' copies, the release tools' lockfile and the sidecar's scripts, because no hook may rewrite a file the repository does not write by hand.[^pre-commit-config.yaml]
 
 [^justfile]: justfile, the gen-project and gen-doc recipes
 [^generators.yaml]: .linkml/generators.yaml, excludes and generator_args

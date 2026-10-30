@@ -21,8 +21,8 @@ status: draft
 
 # Control 8 (CIS-8)
 
-Control 8 is one of the 18 Controls of the CIS Controls, Version 8.1. CIS's guide, at its v8.1.2 revision, lists 12 Safeguards under it, numbered 8.1 to 8.12, which the schema names `CIS-8.1` to `CIS-8.12`.[^cis-v8-1] Of these, 3 are in Implementation Group 1, 11 in Implementation Group 2 and all 12 in Implementation Group 3. Its Safeguards are about the asset classes Data (10), Documentation (1) and Network (1).
+Control 8 is one of the 18 Controls of the CIS Controls, Version 8.1. CIS's guide, at its v8.1.2 revision, lists 12 Safeguards under it, numbered 8.1 to 8.12.[^cis-v8-1] The schema names them `CIS-8.1` to `CIS-8.12`. Of these, 3 are in Implementation Group 1, 11 in Implementation Group 2 and all 12 in Implementation Group 3. Its Safeguards are about the asset classes Data (10), Documentation (1) and Network (1).
 
-This bundle carries none of CIS's text, which CIS licenses under CC BY-NC-ND 4.0, so the Control's name, its description and the text of its Safeguards are left out. CIS's guide gives them; [the guide's reference](../references/cis-controls-guide.md) says where it is.
+This bundle leaves out the Control's name, its description and the text of its Safeguards, because CIS licenses that text under CC BY-NC-ND 4.0. CIS's guide gives them, and [the guide's reference](../references/cis-controls-guide.md) says where to find it.
 
 [^cis-v8-1]: <https://www.cisecurity.org/controls/v8-1>, the guide this page offers, the Safeguards of Control 8

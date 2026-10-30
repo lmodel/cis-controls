@@ -107,7 +107,7 @@ status: draft
 
 # Knowledge sources
 
-Steady-state refresh runs re-verify these sources instead of discovering them again. Update this map whenever the repository's knowledge geography changes.
+A refresh run checks these sources again instead of finding them anew. Update this table whenever a source of the repository's knowledge moves, appears or goes.
 
 Each concept derived from a file or folder of this repository names it by its path from the repository root, in `resource` and in `sources`. `knowledge-report.sh worklist` lists the concepts whose source moved since their stamp. It never fetches a page, so re-read the external pages this table names when the schema header's version or the upstream pins move.
 
@@ -131,6 +131,6 @@ Each concept derived from a file or folder of this repository names it by its pa
 | <https://www.cisecurity.org/controls/v8-1>, the guide it offers at v8.1.2 | `references/cis-controls-guide`, the 18 `controls/` concepts, `glossary/asset-class`, `glossary/security-function` | the guide asks for a registration; re-read it when the upstream watch reports a new version |
 | <https://www.cisecurity.org/controls/cis-controls-list>, <https://www.cisecurity.org/controls/implementation-groups> and its three group pages, <https://www.cisecurity.org/insights/white-papers/guide-to-asset-classes-cis-critical-security-controls-v8-1> | `references/cis-controls-site`, `glossary/control`, `glossary/safeguard`, `glossary/implementation-group` | external pages, read on 2026-10-30; re-read them when the upstream watch reports a new version |
 
-The paths under `exclusions` were looked at and left out, each for the reason it gives. They are governance text, tooling settings, template text, package plumbing, the pointer for agents, and the sidecar's own files. Of the sidecar's files, the domain schema, the justfile's `schema :=` line and the `[tool.lokf]` table are sources.
+The paths under `exclusions` were looked at and left out, each for the reason it gives. They are governance text, tooling settings, template text, package plumbing, the pointer for agents, and the sidecar's files. Some of the sidecar's files are sources even so: the domain schema, the justfile's `schema :=` line and the `[tool.lokf]` table.
 
 No concept here quotes CIS's guide. The Controls are named by number, and the bundle's descriptions are its own words, because CIS licenses the guide under CC BY-NC-ND 4.0.

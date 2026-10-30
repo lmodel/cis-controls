@@ -21,8 +21,8 @@ status: draft
 
 # Control 2 (CIS-2)
 
-Control 2 is one of the 18 Controls of the CIS Controls, Version 8.1. CIS's guide, at its v8.1.2 revision, lists 7 Safeguards under it, numbered 2.1 to 2.7, which the schema names `CIS-2.1` to `CIS-2.7`.[^cis-v8-1] Of these, 3 are in Implementation Group 1, 6 in Implementation Group 2 and all 7 in Implementation Group 3. All its Safeguards are about the asset class Software.
+Control 2 is one of the 18 Controls of the CIS Controls, Version 8.1. CIS's guide, at its v8.1.2 revision, lists 7 Safeguards under it, numbered 2.1 to 2.7.[^cis-v8-1] The schema names them `CIS-2.1` to `CIS-2.7`. Of these, 3 are in Implementation Group 1, 6 in Implementation Group 2 and all 7 in Implementation Group 3. All its Safeguards are about the asset class Software.
 
-This bundle carries none of CIS's text, which CIS licenses under CC BY-NC-ND 4.0, so the Control's name, its description and the text of its Safeguards are left out. CIS's guide gives them; [the guide's reference](../references/cis-controls-guide.md) says where it is.
+This bundle leaves out the Control's name, its description and the text of its Safeguards, because CIS licenses that text under CC BY-NC-ND 4.0. CIS's guide gives them, and [the guide's reference](../references/cis-controls-guide.md) says where to find it.
 
 [^cis-v8-1]: <https://www.cisecurity.org/controls/v8-1>, the guide this page offers, the Safeguards of Control 2

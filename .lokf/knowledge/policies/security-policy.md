@@ -20,11 +20,15 @@ status: draft
 
 # Security policy
 
-`SECURITY.md` asks for a vulnerability to be reported through GitHub's private vulnerability reporting, not in a public issue. It says that one person maintains the repository, so a first reply takes days and there is no bounty, and that only the latest release receives fixes.[^security.md]
+`SECURITY.md` asks for a vulnerability to be reported through GitHub's private vulnerability reporting, not in a public issue. It says that one person maintains the repository, so a first reply takes days and there is no bounty. It also says that only the latest release receives fixes.[^security.md]
 
-The repository releases the schema, the Python models generated from it, and the adapt copy as a release asset; nothing is published to PyPI. The upstream watch reads two public pages of CIS, sends no credentials and writes nothing but its report. The policy's table of surfaces names each workflow and what holds it. The pull request checks run read-only. The release job runs only on a push to `main`, in the `release` Environment. The website's deploy job alone holds the Pages scopes. The upstream watch writes only issues. The librarian's agent runs without a write token, and its `publish` job runs no agent.
+The repository releases the schema, the Python models generated from it, and the adapt copy as a release asset. Nothing is published to PyPI. The upstream watch reads two public pages of CIS, sends no credentials and writes nothing but its report.
 
-Every workflow declares `permissions: {}` at the top, pins its actions to commit hashes and runs harden-runner in audit mode. Dependabot keeps the pins, the package's lock, the sidecar's lock, the website's npm packages and the release tools' npm lock current, each monthly.[^dependabot.yml] The policy says that a ruleset on `main` blocks deletion and force-pushes and keeps the history linear. It names two settings not yet in force: required reviewers on the `release` Environment, and secret scanning with push protection. It leaves out the CIS Controls themselves, LinkML, a compromised runner or harness, and whether the knowledge bundle is true.
+The policy's table of surfaces names each workflow and what holds it. The pull request checks run read-only. The release job runs only on a push to `main`, in the `release` Environment. The website's deploy job alone holds the Pages scopes. The upstream watch writes only issues. The librarian's agent runs without a write token, and its `publish` job runs no agent.
+
+Every workflow declares `permissions: {}` at the top, pins its actions to commit hashes and runs harden-runner in audit mode. Dependabot keeps the pins, the package's lock, the sidecar's lock, the website's npm packages and the release tools' npm lock current, each monthly.[^dependabot.yml] The policy says that a ruleset on `main` blocks deletion and force-pushes and keeps the history linear. It names two settings not yet in force: required reviewers on the `release` Environment, and secret scanning with push protection.
+
+The policy leaves out the CIS Controls themselves, LinkML, a compromised runner or harness, and whether the knowledge bundle is true.
 
 [^security.md]: SECURITY.md, every section
 [^dependabot.yml]: .github/dependabot.yml, the five entries

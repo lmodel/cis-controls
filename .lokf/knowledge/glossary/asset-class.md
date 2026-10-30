@@ -28,7 +28,7 @@ status: draft
 
 # Asset class
 
-CIS's page on its guide to the asset classes says that CIS restructured the asset classes and their definitions in Version 8.1.[^cis-asset-classes] The guide names six classes, Devices, Software, Data, Users, Network and Documentation, divides each into subclasses, and gives each Safeguard one class.[^cis-v8-1] The schema renders the classes as `CisAssetClass`, in upper case, such as `DEVICES`, with CIS's spelling as each value's title, and a Safeguard names its class in `safeguard_asset_class`. The schema leaves the subclasses out.[^cis_controls.yaml]
+CIS's page on its guide to the asset classes says that CIS restructured the asset classes and their definitions in Version 8.1.[^cis-asset-classes] The guide names six classes: Devices, Software, Data, Users, Network and Documentation. It divides each into subclasses and gives each Safeguard one class.[^cis-v8-1] The schema renders the classes as `CisAssetClass`, with upper-case values such as `DEVICES` and CIS's spelling as each value's title. A Safeguard names its class in `safeguard_asset_class`. The schema leaves the subclasses out.[^cis_controls.yaml]
 
 [^cis-asset-classes]: <https://www.cisecurity.org/insights/white-papers/guide-to-asset-classes-cis-critical-security-controls-v8-1>, the page's summary
 [^cis-v8-1]: <https://www.cisecurity.org/controls/v8-1>, the guide this page offers, the section on asset classes

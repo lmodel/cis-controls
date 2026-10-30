@@ -2,6 +2,7 @@
 
 ## 2026-10-30
 
+* **Prose**: reworded 35 concept bodies in plain English. No fact, link, number or frontmatter changed.
 * **Added**: cis-controls LinkML schema, from `src/cis_controls/schema/cis_controls.yaml`.
 * **Added**: Generated artefacts, from the justfile, `.linkml/generators.yaml` and `project/`.
 * **Added**: Test data and tests, from `tests/`.

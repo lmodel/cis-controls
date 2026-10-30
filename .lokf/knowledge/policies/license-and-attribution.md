@@ -28,10 +28,10 @@ status: draft
 The schema and the code are under the Apache License, Version 2.0.[^license] NOTICE describes the third-party work the repository models or derives from.[^notice]
 
 - The schema, the generated models and `project/` model the structure of the CIS Critical Security Controls, Version 8.1, as CIS revised it in March 2025, in the project's own words. They are not CIS's, and their use implies no endorsement by CIS.
-- CIS licenses the CIS Controls under CC BY-NC-ND 4.0. NOTICE says that the licence lets anyone share the guide unchanged, for non-commercial purposes and with credit to CIS, lets no one share a changed version, and that CIS requires its prior approval for commercial use. So the repository carries no CIS text, names each Control and Safeguard by its number, and records only the structure the guide sets out.
+- CIS licenses the CIS Controls under CC BY-NC-ND 4.0. NOTICE says that the licence lets anyone share the guide unchanged, for non-commercial purposes and with credit to CIS. It also says that the licence lets no one share a changed version, and that CIS requires its prior approval for commercial use. So the repository carries no CIS text, names each Control and Safeguard by its number, and records only the structure the guide sets out.
 - The schema's `title` and `description` slots are for text their user has the right to use: the user's own words, or CIS's under CIS's terms. The Apache License does not cover CIS's text.
 - The justfile, configuration and documentation scaffolding derive from linkml-project-copier, under the MIT License, whose text NOTICE carries.
-- The sidecar's scripts and workflows are copies of the ktl-sidecar templates, and the site under `website/` derives from the ktl-website templates, all under the Apache License 2.0. `website/NOTICE` lists the part adapted from the LOKF toolkit's site.
+- The sidecar's scripts and workflows are copies of the ktl-sidecar templates, and the site under `website/` derives from the ktl-website templates, all under the Apache License 2.0. `website/NOTICE` lists the part adapted from the site of the Linked Open Knowledge Format (LOKF) toolkit.
 
 The README says that the knowledge bundle in `.lokf/knowledge/` is under the Creative Commons Attribution 4.0 International licence (CC BY 4.0), as its `index.md` declares. It adds that this is not an official CIS project, and that its use implies no endorsement by CIS.[^readme.md]
 
