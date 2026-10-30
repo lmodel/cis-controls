@@ -6,12 +6,12 @@ build-backend = "hatchling.build"
 # Named like lmodel/slsa's slsa-linkml, so the PyPI name says what it holds;
 # the import package stays cis_controls. PyPI publishing is off.
 name = "cis-controls-linkml"
-description = "CIS Critical Security Controls: LinkML Schema"
+description = "CIS Critical Security Controls v8.1 (LinkML)"
 authors = [
   {name = "Noel McLoughlin", email = "noel.mcloughlin@gmail.com"},
 ]
 license = "Apache-2.0"
-license-files = ["LICENSE"]
+license-files = ["LICENSE", "NOTICE"]
 readme = "README.md"
 requires-python = ">=3.10"
 dynamic = ["version"]
@@ -67,6 +67,9 @@ skip = [
   "project/*",
   "src/cis_controls/datamodel/cis_controls_pydantic.py",
   "src/cis_controls/datamodel/cis_controls.py",
+  # Files copied in by the KTL sidecar sync or written by npm, not by hand.
+  ".lokf/scripts/*",
+  "website/package-lock.json",
 ]
 
 # Reminder: words have to be lowercased for the ignore-words-list
@@ -85,4 +88,6 @@ extend-exclude = [
   "project/*",
   "src/cis_controls/datamodel/cis_controls_pydantic.py",
   "src/cis_controls/datamodel/cis_controls.py",
+  ".lokf/scripts/*",
+  "website/package-lock.json",
 ]
