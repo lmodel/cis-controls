@@ -1,11 +1,11 @@
 # cis-controls
 
 This project is a LinkML model of the structure of the CIS Critical Security
-Controls, Version 8.1, which the Center for Internet Security (CIS)
-publishes, at the guide's v8.1.2 revision of March 2025. It covers the
-Controls, the Safeguards of each Control, and each Safeguard's asset class,
-security function and Implementation Groups. It names every element by its
-number and carries none of CIS's text.
+Controls, Version 8.1, which the Center for Internet Security (CIS) publishes.
+It follows the guide's v8.1.2 revision of March 2025, and covers the Controls,
+the Safeguards of each Control, and each Safeguard's asset class, security
+function and Implementation Groups. It names every element by its number and
+carries none of CIS's text.
 
 - [Schema documentation](elements/index.md), generated from the schema
 - [About](about.md): how the elements are named and what the model leaves out

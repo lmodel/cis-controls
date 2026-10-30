@@ -5,9 +5,9 @@ elements: it says how they are named and what the model leaves out.
 
 The CIS Critical Security Controls sort an enterprise's security work into
 Controls, each a group of Safeguards on one subject. Each Safeguard is about
-one class of enterprise asset and serves one security function, and CIS
-places it in one or more of three Implementation Groups, which say how soon
-an enterprise should take it up. The schema gives the Control and the
+one class of enterprise asset and serves one security function. CIS places
+it in one or more of three Implementation Groups, which say how soon an
+enterprise should take it up. The schema gives the Control and the
 Safeguard a class each, and holds them in one document for an edition.
 
 Element names are the schema's own. Classes and enums carry the `Cis` prefix
@@ -23,8 +23,8 @@ element is in the `cis_controls:` namespace
 
 The descriptions are this project's own words. CIS licenses the CIS Controls
 under CC BY-NC-ND 4.0, so the schema, its examples and these pages carry no
-CIS text, and the `title` and `description` slots are for text their user has
-the right to use.
+CIS text. The `title` and `description` slots are for text their user has the
+right to use.
 
 ## What is left out
 

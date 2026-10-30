@@ -4,7 +4,7 @@
 
 ## What this project is
 
-A LinkML schema of the structure of the CIS Critical Security Controls, which the Center for Internet Security (CIS) publishes. A knowledge bundle can type its concepts with them. The schema carries no CIS text; [NOTICE](NOTICE) says why.
+A LinkML schema of the structure of the CIS Critical Security Controls, which the Center for Internet Security (CIS) publishes. A knowledge bundle can type its concepts with them. The schema carries no CIS text, and [NOTICE](NOTICE) says why.
 
 | Path | Holds |
 | --- | --- |
@@ -27,7 +27,7 @@ just --list
 
 ### Agent skills (optional, only for this repo's `.lokf/` bundle)
 
-The bundle is maintained with the Knowledge Trust Ladder (KTL) skills, **installed, never committed**; continuous integration (CI) installs the librarian skill at run time, pinned to a release. Nothing in the schema depends on them. [The install page](https://w3id.org/ktl/docs/install/) lists every route; with npm:
+The bundle is maintained with the Knowledge Trust Ladder (KTL) skills, **installed, never committed**. Continuous integration (CI) installs the librarian skill at run time, pinned to a release. Nothing in the schema depends on them. [The install page](https://w3id.org/ktl/docs/install/) lists every route. With npm:
 
 ```bash
 npx skills add noelmcloughlin/knowledge-trust-ladder --skill ktl-librarian --yes   # derive concepts
@@ -36,10 +36,10 @@ npx skills add noelmcloughlin/knowledge-trust-ladder --skill ktl-curator --yes  
 
 ## Before opening a pull request
 
-- **Edit the schema, then regenerate.** Edit `src/cis_controls/schema/cis_controls.yaml`, run `just gen-project`, `just gen-doc` and `just lokf-adapt`, and commit the output; `project/`, `src/cis_controls/datamodel/`, `docs/schema/` and `.lokf/cis-controls.yaml` are generated.
-- **Carry no CIS text.** The CIS Controls are licensed CC BY-NC-ND 4.0, so no title, description or other passage of CIS's guide goes into the schema, the examples, the docs or the bundle, copied or closely paraphrased. Name elements by number and cite the guide's section in the pull request; [AI_COVENANT.md](AI_COVENANT.md) says why.
+- **Edit the schema, then regenerate.** Edit `src/cis_controls/schema/cis_controls.yaml`, run `just gen-project`, `just gen-doc` and `just lokf-adapt`, and commit the output. `project/`, `src/cis_controls/datamodel/`, `docs/schema/` and `.lokf/cis-controls.yaml` are generated.
+- **Carry no CIS text.** The CIS Controls are licensed CC BY-NC-ND 4.0, so no title, description or other passage of CIS's guide goes into the schema, the examples, the docs or the bundle, copied or closely paraphrased. Name elements by number and cite the guide's section in the pull request. [AI_COVENANT.md](AI_COVENANT.md) says why.
 - **Render the pinned edition.** The schema header and `scripts/check_upstream_release.py` name the same edition, and `tests/test_upstream.py` holds them equal.
-- **Keep names apart.** A host imports this adapt copy beside the Linked Open Knowledge Format (LOKF) schema and the released neighbours' copies in `tests/neighbours/`, so a shared name carries one Internationalized Resource Identifier (IRI). `tests/test_schema_rules.py` checks, and holds each mapping into a neighbour to a term its copy declares.
+- **Keep names apart.** A host imports this adapt copy beside the Linked Open Knowledge Format (LOKF) schema and the released neighbours' copies in `tests/neighbours/`, so a shared name carries one Internationalized Resource Identifier (IRI). `tests/test_schema_rules.py` checks this, and holds each mapping into a neighbour to a term its copy declares.
 - **Run the tests**: `just test` (schema generation, `pytest` and the examples under `tests/data/`). Example data goes in `tests/data/valid/` and `tests/data/invalid/`, named `ClassName-suffix.yaml`, with an invalid example per constraint whose first line, `# Fails at: <pointer>`, names where it fails.
 - **Follow the schema's conventions**: UpperCamelCase classes and enums with the `Cis` prefix, snake_case slots, each identifier a top-level slot listed first in its class, a short description on every element. `just lint` checks, under `.linkmllint.yaml`.
 - **Run the pre-commit hooks** on what you staged: `uvx pre-commit run`.
@@ -65,13 +65,13 @@ Use the [issue tracker](https://github.com/lmodel/cis-controls/issues) for the s
 
 ## Releasing (maintainers)
 
-- Write `## [Unreleased]` in [CHANGELOG.md](CHANGELOG.md) as you go; the release job refuses an empty one (`.github/scripts/changelog-release.mjs check`).
-- Type the commit ([Conventional Commits](https://www.conventionalcommits.org/)) for what the change *is*. Only `feat:`, `fix:`, `security:` and a breaking `!` start a release; other types leave their entries for the next release that does. A pull request that would release must carry a releasing type in its title too, since a squash merge takes its subject from it.
+- Write `## [Unreleased]` in [CHANGELOG.md](CHANGELOG.md) as you go. The release job refuses an empty one (`.github/scripts/changelog-release.mjs check`).
+- Type the commit ([Conventional Commits](https://www.conventionalcommits.org/)) for what the change *is*. Only `feat:`, `fix:`, `security:` and a breaking `!` start a release. Other types leave their entries for the next release that does. A pull request that would release must carry a releasing type in its title too, since a squash merge takes its subject from it.
 - On merge, [`semantic-release.yml`](.github/workflows/semantic-release.yml) retitles the section to `## [X.Y.Z] - YYYY-MM-DD`, commits `CHANGELOG.md`, tags `vX.Y.Z` and publishes the GitHub Release. No file is bumped. Once `KNOWLEDGE_RELEASE_ENABLED` is `true`, it dispatches `.github/workflows/knowledge-release.yaml`, which attaches the schema copy and the bundle when the bundle or the schema changed.
-- That step runs behind the `release` GitHub Environment; configure required reviewers on it in Settings → Environments, or every qualifying merge is released unattended.
-- Below 1.0.0: push the `v0.0.0` baseline tag on `main` before the first releasing merge, which then releases 0.1.0; both release jobs refuse to run without a `v*` tag, as semantic-release would otherwise start at 1.0.0. `.releaserc.json` maps `breaking: true` to `minor`; reaching 1.0.0 means removing that rule in a pull request of its own.
-- A branch rule requiring pull requests, status checks or signed commits would reject the release job's own push to `main`; leave them off. [SECURITY.md](SECURITY.md) says what holds `main` instead, and the shared design is on [KTL's releasing page](https://github.com/noelmcloughlin/knowledge-trust-ladder/blob/main/docs/releasing.md).
+- That step runs behind the `release` GitHub Environment. Configure required reviewers on it in Settings → Environments, or every qualifying merge is released unattended.
+- Below 1.0.0: push the `v0.0.0` baseline tag on `main` before the first releasing merge, which then releases 0.1.0. Both release jobs refuse to run without a `v*` tag, because semantic-release would otherwise start at 1.0.0. `.releaserc.json` maps `breaking: true` to `minor`, and reaching 1.0.0 means removing that rule in a pull request of its own.
+- A branch rule requiring pull requests, status checks or signed commits would reject the release job's own push to `main`, so leave them off. [SECURITY.md](SECURITY.md) says what holds `main` instead, and the shared design is on [KTL's releasing page](https://github.com/noelmcloughlin/knowledge-trust-ladder/blob/main/docs/releasing.md).
 
 ## License
 
-By contributing, you agree that your contributions are licensed under the [Apache License 2.0](LICENSE). The CIS Controls are CIS's, under CIS's own terms; [NOTICE](NOTICE) says what they allow, so update it when you add something new from elsewhere.
+By contributing, you agree that your contributions are licensed under the [Apache License 2.0](LICENSE). The CIS Controls are CIS's, under CIS's own terms. [NOTICE](NOTICE) says what they allow: update it when you add something new from elsewhere.

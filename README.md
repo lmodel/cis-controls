@@ -24,7 +24,7 @@ CIS Critical Security Controls v8.1 (LinkML)
 
 ## What it models
 
-The structure of the [CIS Critical Security Controls, Version 8.1](https://www.cisecurity.org/controls/v8-1), which the Center for Internet Security (CIS) publishes, as CIS revised it in March 2025, when the guide's pages were labelled v8.1.2:
+The schema models the structure of the [CIS Critical Security Controls, Version 8.1](https://www.cisecurity.org/controls/v8-1), which the Center for Internet Security (CIS) publishes, as CIS revised it in March 2025. The guide's pages label that revision v8.1.2. The schema holds:
 
 * **Controls** (`CisControl`): the 18 Controls, each named by its number, as `CIS-1` to `CIS-18`, and holding its Safeguards.
 * **Safeguards** (`CisSafeguard`): the 153 Safeguards, each named by its Control's number and its own, such as `CIS-1.1`. Each Safeguard has:
@@ -43,7 +43,7 @@ None beyond the CIS Controls: the schema renders one publication, and its releas
 
 ## Mappings
 
-The schema crosses to two vocabularies and borrows from none.
+The schema maps to two vocabularies and borrows from neither.
 
 * **OSCAL**: a CIS Control is a group of Safeguards, and a Safeguard a single control, in the sense of the Open Security Controls Assessment Language (OSCAL). Each class names its counterpart in [lmodel/oscal](https://github.com/lmodel/oscal) in `broad_mappings`, because the OSCAL class is the more general one.
 * **NIST CSF 2.0**: the security functions are the six functions of CSF 2.0. `CisSecurityFunction` names the function class of [lmodel/nist-csf-v2](https://github.com/lmodel/nist-csf-v2) in `related_mappings`, and each value carries the function's two letters, such as `GV`, in a `csf_function_id` annotation. nist-csf-v2 gives no single function an IRI of its own, so the values carry no `meaning`.
@@ -54,7 +54,7 @@ The schema names no mapping from a Safeguard to any other framework's elements. 
 
 * CIS's text: the titles and descriptions of the Controls and Safeguards, and the guide's overviews, explanations, procedures and glossary.
 * CIS's mappings from the Safeguards to other frameworks, and its companion guides.
-* The subclasses into which CIS's guide divides each asset class; a Safeguard names only the class.
+* The subclasses into which CIS's guide divides each asset class. A Safeguard names only the class.
 * Earlier versions of the CIS Controls.
 * The rules no validator can check, which [docs/index.md](docs/index.md) lists.
 

@@ -12,7 +12,7 @@ Use GitHub's [private vulnerability reporting](https://github.com/lmodel/cis-con
 
 ## What this repository releases
 
-A LinkML schema, the Python datamodel generated from it, and the schema's `lokf adapt` copy as a release asset. Nothing is published to PyPI. `scripts/check_upstream_release.py` runs only in `upstream-watch.yaml`. It reads two public pages of the Center for Internet Security (CIS), sends no credentials, and writes nothing but its report. A schema is data: loading one from an untrusted source with any LinkML tool is that tool's risk, not this repository's.
+It releases a LinkML schema, the Python datamodel generated from it, and the schema's `lokf adapt` copy as a release asset. Nothing is published to PyPI. `scripts/check_upstream_release.py` runs only in `upstream-watch.yaml`. It reads two public pages of the Center for Internet Security (CIS), sends no credentials, and writes nothing but its report. A schema is data: loading one from an untrusted source with any LinkML tool is that tool's risk, not this repository's.
 
 ## What executes here
 
@@ -33,4 +33,4 @@ Every workflow declares `permissions: {}` at the top, pins its actions to commit
 - The CIS Critical Security Controls themselves: report a problem in them to [CIS](https://www.cisecurity.org/controls).
 - LinkML, its generators and runtime: report them to [LinkML](https://github.com/linkml/linkml/security).
 - A compromised runner, upstream action or agent harness: this is a baseline, not a sandbox. Report a finding in one anyway, with scope and reproduction.
-- Whether the knowledge bundle is *true*. The gate proves who vouched, not what they read; [AI_COVENANT.md](AI_COVENANT.md) sets the human-accountability rules.
+- Whether the knowledge bundle is *true*. The gate proves who vouched, not what they read. [AI_COVENANT.md](AI_COVENANT.md) sets the human-accountability rules.
