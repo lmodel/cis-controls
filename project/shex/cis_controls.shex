@@ -1,16 +1,15 @@
-# metamodel_version: 1.7.0
+# metamodel_version: 1.12.0
 # version: 8.1.2
 BASE <https://w3id.org/lmodel/cis-controls/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX linkml: <https://w3id.org/linkml/>
-PREFIX dct: <http://purl.org/dc/terms/>
-PREFIX nist_csf_v2: <https://w3id.org/lmodel/nist-csf-v2/>
+PREFIX schema1: <http://schema.org/>
 
 
-<ControlId> xsd:string
+<CisControlIdentifier> xsd:string
 
-<SafeguardId> xsd:string
+<CisSafeguardIdentifier> xsd:string
 
 linkml:String xsd:string
 
@@ -50,42 +49,43 @@ linkml:Jsonpath xsd:string
 
 linkml:Sparqlpath xsd:string
 
-<CISControl> CLOSED {
-    (  $<CISControl_tes> (  dct:title @linkml:String ;
-          <control_number> @<ControlId> ;
-          <overview> @linkml:String ? ;
-          <why_critical> @linkml:String ? ;
-          <procedures_and_tools> @linkml:String ? ;
-          <safeguards> @<Safeguard> *
+<CisControl> CLOSED {
+    (  $<CisControl_tes> (  <cis_control_id> @<CisControlIdentifier> ;
+          schema1:name @linkml:String ? ;
+          schema1:description @linkml:String ? ;
+          <control_safeguards> @<CisSafeguard> *
        ) ;
-       rdf:type [ <CISControl> ]
+       rdf:type [ <Control> ] ?
     )
 }
 
-<CISControlsDocument> CLOSED {
-    (  $<CISControlsDocument_tes> (  dct:title @linkml:String ;
-          dct:description @linkml:String ? ;
-          dct:hasVersion @linkml:String ? ;
-          dct:date @linkml:String ? ;
-          <controls> @<CISControl> *
+<CisControls> CLOSED {
+    (  $<CisControls_tes> (  <cis_version> @linkml:String ;
+          <cis_controls> @<CisControl> +
        ) ;
-       rdf:type [ <CISControlsDocument> ]
+       rdf:type [ <Controls> ] ?
     )
 }
 
-<Safeguard> CLOSED {
-    (  $<Safeguard_tes> (  dct:title @linkml:String ;
-          <safeguard_number> @<SafeguardId> ;
-          dct:description @linkml:String ? ;
-          <asset_type> [ <https://w3id.org/lmodel/cis-controls/AssetType#Devices>
-             <https://w3id.org/lmodel/cis-controls/AssetType#Software> <https://w3id.org/lmodel/cis-controls/AssetType#Data>
-             <https://w3id.org/lmodel/cis-controls/AssetType#Users> <https://w3id.org/lmodel/cis-controls/AssetType#Network>
-             <https://w3id.org/lmodel/cis-controls/AssetType#Documentation> ] ;
-          <security_function> [ nist_csf_v2:GV nist_csf_v2:ID nist_csf_v2:PR nist_csf_v2:DE nist_csf_v2:RS nist_csf_v2:RC ] ;
-          <implementation_groups> [ <https://w3id.org/lmodel/cis-controls/ImplementationGroup#IG1>
-             <https://w3id.org/lmodel/cis-controls/ImplementationGroup#IG2>
-             <https://w3id.org/lmodel/cis-controls/ImplementationGroup#IG3> ] +
+<CisSafeguard> CLOSED {
+    (  $<CisSafeguard_tes> (  <cis_safeguard_id> @<CisSafeguardIdentifier> ;
+          schema1:name @linkml:String ? ;
+          schema1:description @linkml:String ? ;
+          <safeguard_asset_class> [ <https://w3id.org/lmodel/cis-controls/CisAssetClass#DEVICES>
+             <https://w3id.org/lmodel/cis-controls/CisAssetClass#SOFTWARE>
+             <https://w3id.org/lmodel/cis-controls/CisAssetClass#DATA> <https://w3id.org/lmodel/cis-controls/CisAssetClass#USERS>
+             <https://w3id.org/lmodel/cis-controls/CisAssetClass#NETWORK>
+             <https://w3id.org/lmodel/cis-controls/CisAssetClass#DOCUMENTATION> ] ;
+          <safeguard_security_function> [ <https://w3id.org/lmodel/cis-controls/CisSecurityFunction#GOVERN>
+             <https://w3id.org/lmodel/cis-controls/CisSecurityFunction#IDENTIFY>
+             <https://w3id.org/lmodel/cis-controls/CisSecurityFunction#PROTECT>
+             <https://w3id.org/lmodel/cis-controls/CisSecurityFunction#DETECT>
+             <https://w3id.org/lmodel/cis-controls/CisSecurityFunction#RESPOND>
+             <https://w3id.org/lmodel/cis-controls/CisSecurityFunction#RECOVER> ] ;
+          <safeguard_implementation_groups> [ <https://w3id.org/lmodel/cis-controls/CisImplementationGroup#IG1>
+             <https://w3id.org/lmodel/cis-controls/CisImplementationGroup#IG2>
+             <https://w3id.org/lmodel/cis-controls/CisImplementationGroup#IG3> ] +
        ) ;
-       rdf:type [ <Safeguard> ]
+       rdf:type [ <Safeguard> ] ?
     )
 }

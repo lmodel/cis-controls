@@ -1,83 +1,66 @@
 {
    "@context": {
       "xsd": "http://www.w3.org/2001/XMLSchema#",
-      "WIKIDATA": "https://www.wikidata.org/wiki/",
-      "cis_controls": "https://w3id.org/lmodel/cis-controls/",
-      "dct": "http://purl.org/dc/terms/",
-      "iso27001": "https://w3id.org/lmodel/iso27001/",
+      "cis_controls": {
+         "@type": "@id",
+         "@id": "cis_controls"
+      },
       "linkml": "https://w3id.org/linkml/",
       "nist_csf_v2": "https://w3id.org/lmodel/nist-csf-v2/",
-      "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+      "oscal": "https://w3id.org/lmodel/oscal/",
       "schema": "http://schema.org/",
       "skos": "http://www.w3.org/2004/02/skos/core#",
       "@vocab": "https://w3id.org/lmodel/cis-controls/",
-      "asset_type": {
+      "cis_control_id": {
+         "@id": "cis_control_id"
+      },
+      "cis_safeguard_id": {
+         "@id": "cis_safeguard_id"
+      },
+      "control_safeguards": {
+         "@type": "@id",
+         "@id": "control_safeguards"
+      },
+      "cis_version": {
+         "@id": "cis_version"
+      },
+      "safeguard_asset_class": {
          "@context": {
             "text": "skos:notation",
             "description": "skos:prefLabel",
             "meaning": "@id"
          },
-         "@id": "asset_type"
+         "@id": "safeguard_asset_class"
       },
-      "id": "@id",
-      "control_number": {
-         "@id": "control_number"
+      "safeguard_implementation_groups": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "safeguard_implementation_groups"
       },
-      "controls": {
-         "@type": "@id",
-         "@id": "controls"
+      "safeguard_security_function": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "safeguard_security_function"
       },
       "description": {
-         "@id": "dct:description"
-      },
-      "implementation_groups": {
-         "@context": {
-            "text": "skos:notation",
-            "description": "skos:prefLabel",
-            "meaning": "@id"
-         },
-         "@id": "implementation_groups"
-      },
-      "overview": {
-         "@id": "overview"
-      },
-      "procedures_and_tools": {
-         "@id": "procedures_and_tools"
-      },
-      "publication_date": {
-         "@id": "dct:date"
-      },
-      "safeguard_number": {
-         "@id": "safeguard_number"
-      },
-      "safeguards": {
-         "@type": "@id",
-         "@id": "safeguards"
-      },
-      "security_function": {
-         "@context": {
-            "text": "skos:notation",
-            "description": "skos:prefLabel",
-            "meaning": "@id"
-         },
-         "@id": "security_function"
+         "@id": "schema:description"
       },
       "title": {
-         "@id": "dct:title"
+         "@id": "schema:name"
       },
-      "version": {
-         "@id": "dct:hasVersion"
+      "CisControl": {
+         "@id": "Control"
       },
-      "why_critical": {
-         "@id": "why_critical"
+      "CisControls": {
+         "@id": "Controls"
       },
-      "CISControl": {
-         "@id": "CISControl"
-      },
-      "CISControlsDocument": {
-         "@id": "CISControlsDocument"
-      },
-      "Safeguard": {
+      "CisSafeguard": {
          "@id": "Safeguard"
       }
    }

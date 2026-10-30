@@ -1,4 +1,0 @@
-# INVALID: 'title' is required on CISControlsDocument but is omitted
-id: CIS-Controls-v8.1
-version: "8.1"
-controls: []

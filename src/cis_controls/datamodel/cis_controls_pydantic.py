@@ -29,7 +29,7 @@ from pydantic import (
 )
 
 
-metamodel_version = "1.7.0"
+metamodel_version = "1.12.0"
 version = "8.1.2"
 
 
@@ -66,297 +66,269 @@ class LinkMLMeta(RootModel):
         return key in self.root
 
 
-linkml_meta = LinkMLMeta({'default_prefix': 'cis_controls',
+linkml_meta = LinkMLMeta({'annotations': {'cis_site_version': {'tag': 'cis_site_version',
+                                          'value': '8.1'},
+                     'pages_read_on': {'tag': 'pages_read_on',
+                                       'value': '2026-10-30'},
+                     'revision_date': {'tag': 'revision_date', 'value': '2025-03'}},
+     'comments': ["The version is the label that the pages of CIS's guide carry "
+                  "for its revision of March 2025. CIS's site calls the edition "
+                  "Version 8.1, and the guide's change log names two minor "
+                  'revisions of it, v8.1.1 in August 2024 and v8.1.2 in March '
+                  '2025, which corrected small errors, among them the security '
+                  "function of two Safeguards. The source is CIS's page for "
+                  'Version 8.1. scripts/check_upstream_release.py holds the same '
+                  "pins and reports when CIS's pages name a newer version.",
+                  'CIS licenses the CIS Controls under CC BY-NC-ND 4.0 and '
+                  'requires its prior approval for commercial use, while this '
+                  'schema is Apache-2.0. So the schema carries no CIS text: no '
+                  'Control or Safeguard title or description, and none of the '
+                  "guide's overviews or explanations. The descriptions here are "
+                  "this project's own words. The text slots, title and "
+                  'description, are optional and hold text their user has the '
+                  "right to use; NOTICE says what CIS's licence allows.",
+                  'The edition holds 18 Controls and 153 Safeguards. '
+                  'Implementation Group 1 holds 56 of the Safeguards, '
+                  'Implementation Group 2 adds 74 to make 130, and Implementation '
+                  "Group 3 adds the last 23, so it holds all 153. CIS's pages on "
+                  'the CIS Controls list and on each Implementation Group state '
+                  'these numbers.'],
+     'default_prefix': 'cis_controls',
      'default_range': 'string',
-     'description': 'LinkML schema for the CIS Critical Security Controls (CIS '
-                    'Controls) Version 8.1.2 (March 2025). Models the 18 Controls '
-                    'and their Safeguards, including asset types, security '
-                    'functions, and Implementation Groups as defined by the Center '
-                    'for Internet Security. Source document: CIS Controls v8.1.2 '
-                    '(March 2025), licensed CC BY-NC-ND 4.0 '
-                    '(https://creativecommons.org/licenses/by-nc-nd/4.0/).',
+     'description': 'A LinkML model of the structure of the CIS Critical Security '
+                    'Controls (CIS Controls), Version 8.1, which the Center for '
+                    'Internet Security (CIS) publishes: its Controls, the '
+                    'Safeguards of each Control, and for each Safeguard its asset '
+                    'class, its security function and the Implementation Groups '
+                    'that include it. It names each Control and Safeguard by its '
+                    "number and carries none of CIS's text.",
      'id': 'https://w3id.org/lmodel/cis-controls',
      'imports': ['linkml:types'],
      'license': 'Apache-2.0',
-     'name': 'cis-controls',
-     'prefixes': {'WIKIDATA': {'prefix_prefix': 'WIKIDATA',
-                               'prefix_reference': 'https://www.wikidata.org/wiki/'},
-                  'cis_controls': {'prefix_prefix': 'cis_controls',
+     'name': 'cis_controls',
+     'prefixes': {'cis_controls': {'prefix_prefix': 'cis_controls',
                                    'prefix_reference': 'https://w3id.org/lmodel/cis-controls/'},
-                  'dct': {'prefix_prefix': 'dct',
-                          'prefix_reference': 'http://purl.org/dc/terms/'},
-                  'iso27001': {'prefix_prefix': 'iso27001',
-                               'prefix_reference': 'https://w3id.org/lmodel/iso27001/'},
                   'linkml': {'prefix_prefix': 'linkml',
                              'prefix_reference': 'https://w3id.org/linkml/'},
                   'nist_csf_v2': {'prefix_prefix': 'nist_csf_v2',
                                   'prefix_reference': 'https://w3id.org/lmodel/nist-csf-v2/'},
-                  'rdfs': {'prefix_prefix': 'rdfs',
-                           'prefix_reference': 'http://www.w3.org/2000/01/rdf-schema#'},
+                  'oscal': {'prefix_prefix': 'oscal',
+                            'prefix_reference': 'https://w3id.org/lmodel/oscal/'},
                   'schema': {'prefix_prefix': 'schema',
                              'prefix_reference': 'http://schema.org/'},
-                  'skos': {'prefix_prefix': 'skos',
-                           'prefix_reference': 'http://www.w3.org/2004/02/skos/core#'},
                   'xsd': {'prefix_prefix': 'xsd',
                           'prefix_reference': 'http://www.w3.org/2001/XMLSchema#'}},
-     'see_also': ['https://www.cisecurity.org/controls/',
-                  'https://lmodel.github.io/cis-controls'],
+     'see_also': ['https://lmodel.github.io/cis-controls',
+                  'https://www.cisecurity.org/controls/cis-controls-list',
+                  'https://www.cisecurity.org/controls/implementation-groups',
+                  'https://www.cisecurity.org/insights/white-papers/guide-to-asset-classes-cis-critical-security-controls-v8-1'],
+     'source': 'https://www.cisecurity.org/controls/v8-1',
      'source_file': 'src/cis_controls/schema/cis_controls.yaml',
-     'subsets': {'essential_cyber_hygiene': {'description': 'Profile containing '
-                                                            'Safeguards where '
-                                                            'implementation_groups '
-                                                            'includes IG1. The '
-                                                            'minimum set every '
-                                                            'enterprise should '
-                                                            'implement ("Essential '
-                                                            'Cyber Hygiene"). 56 '
-                                                            'safeguards across all '
-                                                            '18 Controls.',
-                                             'from_schema': 'https://w3id.org/lmodel/cis-controls',
-                                             'name': 'essential_cyber_hygiene'},
-                 'ig2_controls': {'description': 'Profile containing Safeguards '
-                                                 'where implementation_groups '
-                                                 'includes IG2 (a superset of '
-                                                 'essential_cyber_hygiene). For '
-                                                 'organizations managing sensitive '
-                                                 'data with dedicated security '
-                                                 'staff.',
-                                  'from_schema': 'https://w3id.org/lmodel/cis-controls',
-                                  'name': 'ig2_controls'},
-                 'ig3_controls': {'description': 'Profile containing Safeguards '
-                                                 'where implementation_groups '
-                                                 'includes IG3 (a superset of '
-                                                 'ig2_controls). For high-risk '
-                                                 'profiles with specialist '
-                                                 'security expertise. All 153 '
-                                                 'safeguards across 18 Controls.',
-                                  'from_schema': 'https://w3id.org/lmodel/cis-controls',
-                                  'name': 'ig3_controls'}},
-     'title': 'CIS Controls',
-     'types': {'ControlId': {'base': 'str',
-                             'description': 'Identifier for a CIS Control (e.g. '
-                                            '"1", "18").',
-                             'from_schema': 'https://w3id.org/lmodel/cis-controls',
-                             'name': 'ControlId',
-                             'pattern': '^([1-9]|1[0-8])$',
-                             'uri': 'xsd:string'},
-               'SafeguardId': {'base': 'str',
-                               'description': 'Identifier for a CIS Safeguard in '
-                                              'the form <control>.<safeguard> '
-                                              '(e.g. "1.1", "16.14").',
-                               'from_schema': 'https://w3id.org/lmodel/cis-controls',
-                               'name': 'SafeguardId',
-                               'pattern': '^([1-9]|1[0-8])\\.[0-9]+$',
-                               'uri': 'xsd:string'}}} )
+     'title': 'CIS Critical Security Controls',
+     'types': {'cis_control_identifier': {'base': 'str',
+                                          'description': "A Control's identifier: "
+                                                         'CIS, a hyphen and the '
+                                                         "Control's number from 1 "
+                                                         'to 18, such as CIS-4 for '
+                                                         'Control 4.',
+                                          'from_schema': 'https://w3id.org/lmodel/cis-controls',
+                                          'name': 'cis_control_identifier',
+                                          'pattern': '^CIS-([1-9]|1[0-8])$',
+                                          'typeof': 'string',
+                                          'uri': 'xsd:string'},
+               'cis_safeguard_identifier': {'base': 'str',
+                                            'description': "A Safeguard's "
+                                                           'identifier: CIS, a '
+                                                           'hyphen, the number of '
+                                                           'its Control, a dot and '
+                                                           "the Safeguard's number "
+                                                           'within the Control, '
+                                                           'such as CIS-4.1 for '
+                                                           'Safeguard 4.1.',
+                                            'from_schema': 'https://w3id.org/lmodel/cis-controls',
+                                            'name': 'cis_safeguard_identifier',
+                                            'pattern': '^CIS-([1-9]|1[0-8])\\.[1-9][0-9]?$',
+                                            'typeof': 'string',
+                                            'uri': 'xsd:string'}}} )
 
-class ImplementationGroup(str, Enum):
+class CisImplementationGroup(str, Enum):
     """
-    Self-assessed tier of CIS Controls applicability based on an enterprise's risk profile and resources. Each IG is cumulative — IG2 includes IG1, IG3 includes both. Introduced in CIS Controls v7.1 as the recommended way to prioritize implementation.
+    One of the three Implementation Groups, CIS's tiers for deciding which Safeguards an enterprise puts in place first. Each group includes every Safeguard of the groups before it.
     """
-    IG1 = "IG1"
+    Implementation_Group_1 = "IG1"
     """
-    Small to medium-sized enterprise with limited IT and cybersecurity expertise to dedicate toward protecting IT assets and personnel. The principal concern is to keep the business operational; limited tolerance for downtime; data sensitivity is low, principally surrounding employee and financial information. Safeguards should be implementable with limited cybersecurity expertise and designed to thwart general, non-targeted attacks using COTS hardware and software. Also called "Essential Cyber Hygiene."
+    The first group, where every enterprise starts.
     """
-    IG2 = "IG2"
+    Implementation_Group_2 = "IG2"
     """
-    Enterprise employing individuals responsible for managing and protecting IT infrastructure. Supports multiple departments with differing risk profiles based on job function and mission; may have regulatory compliance burdens; often stores and processes sensitive client or enterprise information and can withstand short interruptions of service. A major concern is loss of public confidence if a breach occurs. Safeguards help security teams cope with increased operational complexity; some depend on enterprise-grade technology and specialized expertise to properly install and configure. Includes all IG1 safeguards.
+    The second group, which adds Safeguards to the first.
     """
-    IG3 = "IG3"
+    Implementation_Group_3 = "IG3"
     """
-    Enterprise employing security experts that specialize in the different facets of cybersecurity (e.g., risk management, penetration testing, application security). Assets and data contain sensitive information or functions subject to regulatory and compliance oversight; must address availability of services and the confidentiality and integrity of sensitive data; successful attacks can cause significant harm to the public welfare. Safeguards must abate targeted attacks from a sophisticated adversary and reduce the impact of zero-day attacks. Includes all IG1 and IG2 safeguards.
+    The third group, which adds the rest and so holds every Safeguard.
     """
 
 
-class AssetType(str, Enum):
+class CisAssetClass(str, Enum):
     """
-    The category of enterprise asset primarily addressed by a Safeguard. Aligned with the CIS Controls Asset Classes taxonomy (v8.1, pg. 8). Sub-classes exist within each category but Safeguards reference the top-level class only.
+    One of the classes of enterprise asset that the CIS Controls sort their Safeguards by. Each Safeguard is about one class.
     """
-    Devices = "Devices"
+    Devices = "DEVICES"
     """
-    Enterprise assets (data processing and storage assets), end-user devices (including portable and mobile devices), servers, Internet of Things (IoT) and non-computing devices, network devices, and removable media. Devices may exist in physical, virtual, or cloud-based environments and can remotely connect to these systems.
+    The enterprise's hardware, wherever it runs.
     """
-    Software = "Software"
+    Software = "SOFTWARE"
     """
-    Sets of data and instructions used to direct a computer to complete a specific task. Includes applications, operating systems (with their services, libraries, and APIs), and firmware. Both applications and operating systems are considered software assets.
+    The programs and systems that run on the enterprise's devices.
     """
-    Data = "Data"
+    Data = "DATA"
     """
-    A collection of facts that can be examined, considered, and used for decision-making. Although data may be physical, the CIS Controls primarily provide protection for digital data stored, transferred, and processed by enterprise assets. Sub-classes: sensitive data, log data, and physical data.
+    The information the enterprise holds, uses and moves.
     """
-    Users = "Users"
+    Users = "USERS"
     """
-    Employees, third-party vendors, contractors, service providers, consultants, or any other person authorized to access an enterprise asset. Includes workforce, service providers, and user/administrator/service accounts.
+    The people and accounts with access to the enterprise's assets.
     """
-    Network = "Network"
+    Network = "NETWORK"
     """
-    A group of interconnected devices that exchange data. A superset of network infrastructure (hardware and software providing connectivity and communication) and network architecture (the logical and physical design of the network).
+    How the enterprise's devices connect, and how its networks are laid out.
     """
-    Documentation = "Documentation"
+    Documentation = "DOCUMENTATION"
     """
-    Policies, processes, procedures, plans, diagrams, and other written material (physical or digital), such as compliance reports. Examples include methods of governance for an enterprise, processes users follow, or descriptions of network architecture. Sub-classes: plans, policies, processes, and procedures.
+    The enterprise's written governance, such as its policies and procedures.
     """
 
 
-class SecurityFunction(str, Enum):
+class CisSecurityFunction(str, Enum):
     """
-    NIST Cybersecurity Framework 2.0 security function category to which a Safeguard is primarily mapped. Values correspond exactly to the six CSF 2.0 Functions; enum as a whole is a close match for nist_csf_v2:CSFFunction.
+    The security function a Safeguard serves. The values are the six functions of the NIST Cybersecurity Framework (CSF) 2.0, to which Version 8.1 aligned the CIS Controls.
     """
-    Govern = "Govern"
+    Govern = "GOVERN"
     """
-    Establish and monitor the organization's cybersecurity risk management strategy, expectations, and policy.
+    The CSF 2.0 function GOVERN.
     """
-    Identify = "Identify"
+    Identify = "IDENTIFY"
     """
-    Develop an organizational understanding of cybersecurity risk to systems, people, assets, data, and capabilities.
+    The CSF 2.0 function IDENTIFY.
     """
-    Protect = "Protect"
+    Protect = "PROTECT"
     """
-    Develop and implement appropriate safeguards to ensure delivery of critical services.
+    The CSF 2.0 function PROTECT.
     """
-    Detect = "Detect"
+    Detect = "DETECT"
     """
-    Develop and implement appropriate activities to identify the occurrence of a cybersecurity event.
+    The CSF 2.0 function DETECT.
     """
-    Respond = "Respond"
+    Respond = "RESPOND"
     """
-    Develop and implement appropriate activities to take action regarding a detected cybersecurity incident.
+    The CSF 2.0 function RESPOND.
     """
-    Recover = "Recover"
+    Recover = "RECOVER"
     """
-    Develop and implement appropriate activities to maintain plans for resilience and to restore capabilities impaired by a cybersecurity incident.
+    The CSF 2.0 function RECOVER.
     """
 
 
 
-class CISControlsDocument(ConfiguredBaseModel):
+class CisControls(ConfiguredBaseModel):
     """
-    Root container for a versioned edition of the CIS Critical Security Controls publication.
+    One edition of the CIS Controls as a whole: its Controls, each holding its Safeguards.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'close_mappings': ['nist_csf_v2:CSFDocument'],
-         'exact_mappings': ['schema:CreativeWork'],
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'broad_mappings': ['oscal:Catalog'],
+         'class_uri': 'cis_controls:Controls',
          'from_schema': 'https://w3id.org/lmodel/cis-controls',
-         'id_prefixes': ['cis_controls'],
-         'related_mappings': ['iso27001:InformationSecurityManagementSystem'],
-         'see_also': ['https://www.cisecurity.org/controls/'],
+         'see_also': ['https://www.cisecurity.org/controls/cis-controls-list'],
          'tree_root': True})
 
-    id: str = Field(default=..., description="""Unique identifier for the element.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CISControlsDocument', 'CISControl', 'Safeguard'],
-         'exact_mappings': ['nist_csf_v2:id'],
-         'slot_uri': 'dct:identifier'} })
-    title: str = Field(default=..., description="""Human-readable title of the element.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CISControlsDocument', 'CISControl', 'Safeguard'],
-         'exact_mappings': ['nist_csf_v2:title'],
-         'slot_uri': 'dct:title'} })
-    description: Optional[str] = Field(default=None, description="""Descriptive text for the element.""", json_schema_extra = { "linkml_meta": {'close_mappings': ['nist_csf_v2:prose'],
-         'domain_of': ['CISControlsDocument', 'Safeguard'],
-         'slot_uri': 'dct:description'} })
-    version: Optional[str] = Field(default=None, description="""Version string of the CIS Controls document (e.g. \"8.1\").""", json_schema_extra = { "linkml_meta": {'domain_of': ['CISControlsDocument'],
-         'exact_mappings': ['nist_csf_v2:version'],
-         'slot_uri': 'dct:hasVersion'} })
-    publication_date: Optional[str] = Field(default=None, description="""Publication date of the CIS Controls document (ISO 8601).""", json_schema_extra = { "linkml_meta": {'domain_of': ['CISControlsDocument'], 'slot_uri': 'dct:date'} })
-    controls: Optional[list[CISControl]] = Field(default=None, description="""List of CIS Controls in this document.""", json_schema_extra = { "linkml_meta": {'close_mappings': ['nist_csf_v2:groups'], 'domain_of': ['CISControlsDocument']} })
+    cis_version: str = Field(default=..., description="""The edition, as CIS numbers it, such as 8.1, or the revision the guide's pages carry, such as 8.1.2.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CisControls']} })
+    cis_controls: list[CisControl] = Field(default=..., description="""The Controls, in CIS's order.""", min_length=1, json_schema_extra = { "linkml_meta": {'domain_of': ['CisControls']} })
 
-
-class CISControl(ConfiguredBaseModel):
-    """
-    One of the CIS Critical Security Controls; a high-level defensive action category that enterprises should implement to reduce cyber risk.
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'close_mappings': ['nist_csf_v2:CSFCategory'],
-         'exact_mappings': ['schema:Action'],
-         'from_schema': 'https://w3id.org/lmodel/cis-controls',
-         'id_prefixes': ['cis_controls'],
-         'related_mappings': ['WIKIDATA:Q2695280'],
-         'see_also': ['https://www.cisecurity.org/controls/'],
-         'slot_usage': {'id': {'description': 'Composite identifier for the control '
-                                              '(e.g. "CIS-1").',
-                               'name': 'id',
-                               'pattern': '^CIS-([1-9]|1[0-8])$'}}})
-
-    id: str = Field(default=..., description="""Composite identifier for the control (e.g. \"CIS-1\").""", json_schema_extra = { "linkml_meta": {'domain_of': ['CISControlsDocument', 'CISControl', 'Safeguard'],
-         'exact_mappings': ['nist_csf_v2:id'],
-         'slot_uri': 'dct:identifier'} })
-    title: str = Field(default=..., description="""Human-readable title of the element.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CISControlsDocument', 'CISControl', 'Safeguard'],
-         'exact_mappings': ['nist_csf_v2:title'],
-         'slot_uri': 'dct:title'} })
-    control_number: str = Field(default=..., description="""Numeric identifier of the parent CIS Control (1–18).""", json_schema_extra = { "linkml_meta": {'domain_of': ['CISControl']} })
-    overview: Optional[str] = Field(default=None, description="""Brief description of the intent of a Control and its utility as a defensive action.""", json_schema_extra = { "linkml_meta": {'close_mappings': ['nist_csf_v2:prose'], 'domain_of': ['CISControl']} })
-    why_critical: Optional[str] = Field(default=None, description="""Explanation of the importance of this Control in blocking, mitigating, or identifying attacks, and how attackers exploit its absence.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CISControl']} })
-    procedures_and_tools: Optional[str] = Field(default=None, description="""Technical description of the processes and technologies that enable implementation and automation of this Control.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CISControl']} })
-    safeguards: Optional[list[Safeguard]] = Field(default=None, description="""List of Safeguards belonging to a CIS Control.""", json_schema_extra = { "linkml_meta": {'close_mappings': ['nist_csf_v2:controls'], 'domain_of': ['CISControl']} })
-
-    @field_validator('id')
-    def pattern_id(cls, v):
-        pattern=re.compile(r"^CIS-([1-9]|1[0-8])$")
+    @field_validator('cis_version')
+    def pattern_cis_version(cls, v):
+        pattern=re.compile(r"^[0-9]+\.[0-9]+(\.[0-9]+)?$")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid id format: {element}"
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid cis_version format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid id format: {v}"
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid cis_version format: {v}"
             raise ValueError(err_msg)
         return v
 
 
-class Safeguard(ConfiguredBaseModel):
+class CisControl(ConfiguredBaseModel):
     """
-    A specific, measurable action that an enterprise should take to implement a CIS Control. Formerly called \"Sub-Controls\" prior to CIS Controls v8.
+    One of the CIS Controls: a group of Safeguards on one subject, named by its number, such as Control 4.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'aliases': ['sub-control'],
-         'close_mappings': ['nist_csf_v2:CSFSubcategory'],
-         'exact_mappings': ['schema:Action'],
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'broad_mappings': ['oscal:Group'],
+         'class_uri': 'cis_controls:Control',
          'from_schema': 'https://w3id.org/lmodel/cis-controls',
-         'id_prefixes': ['cis_controls'],
-         'in_subset': ['essential_cyber_hygiene', 'ig2_controls', 'ig3_controls'],
-         'related_mappings': ['iso27001:SecurityControl'],
-         'see_also': ['https://www.cisecurity.org/controls/'],
-         'slot_usage': {'id': {'description': 'Composite identifier for the safeguard '
-                                              '(e.g. "CIS-1.1").',
-                               'name': 'id',
-                               'pattern': '^CIS-([1-9]|1[0-8])\\.[0-9]+$'},
-                        'implementation_groups': {'description': 'Implementation '
-                                                                 'Group(s) for which '
-                                                                 'this Safeguard is '
-                                                                 'applicable. A '
-                                                                 'Safeguard listed '
-                                                                 'under IG2 is also '
-                                                                 'required for IG3 '
-                                                                 'enterprises; a '
-                                                                 'Safeguard listed '
-                                                                 'under IG1 is '
-                                                                 'required for all '
-                                                                 'enterprises.',
-                                                  'name': 'implementation_groups'}}})
+         'see_also': ['https://www.cisecurity.org/controls/cis-controls-list']})
 
-    id: str = Field(default=..., description="""Composite identifier for the safeguard (e.g. \"CIS-1.1\").""", json_schema_extra = { "linkml_meta": {'domain_of': ['CISControlsDocument', 'CISControl', 'Safeguard'],
-         'exact_mappings': ['nist_csf_v2:id'],
-         'slot_uri': 'dct:identifier'} })
-    title: str = Field(default=..., description="""Human-readable title of the element.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CISControlsDocument', 'CISControl', 'Safeguard'],
-         'exact_mappings': ['nist_csf_v2:title'],
-         'slot_uri': 'dct:title'} })
-    safeguard_number: str = Field(default=..., description="""Dotted identifier of this Safeguard (e.g. \"1.1\"). Combines the parent control number with a sequential Safeguard index.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Safeguard']} })
-    description: Optional[str] = Field(default=None, description="""Descriptive text for the element.""", json_schema_extra = { "linkml_meta": {'close_mappings': ['nist_csf_v2:prose'],
-         'domain_of': ['CISControlsDocument', 'Safeguard'],
-         'slot_uri': 'dct:description'} })
-    asset_type: AssetType = Field(default=..., description="""The class of enterprise asset primarily addressed by this Safeguard.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Safeguard']} })
-    security_function: SecurityFunction = Field(default=..., description="""NIST CSF 2.0 function category to which this Safeguard is mapped.""", json_schema_extra = { "linkml_meta": {'close_mappings': ['nist_csf_v2:groups'], 'domain_of': ['Safeguard']} })
-    implementation_groups: list[ImplementationGroup] = Field(default=..., description="""Implementation Group(s) for which this Safeguard is applicable. A Safeguard listed under IG2 is also required for IG3 enterprises; a Safeguard listed under IG1 is required for all enterprises.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Safeguard'], 'related_mappings': ['nist_csf_v2:props']} })
+    cis_control_id: str = Field(default=..., description="""The Control's identifier, such as CIS-4.""", json_schema_extra = { "linkml_meta": {'comments': ['CIS names a Control by its number alone. The CIS- prefix is '
+                      "this schema's: YAML reads a bare 4 as a number, and a bare 1.10 "
+                      'as the number 1.1, so the prefix keeps every identifier a '
+                      'string and keeps Safeguards 1.1 and 1.10 apart.'],
+         'domain_of': ['CisControl']} })
+    title: Optional[str] = Field(default=None, description="""A name for the Control or Safeguard, in words its user has the right to use.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's title means and carries the same IRI, so "
+                      "lokf adapt folds it into LOKF's slot and a knowledge bundle "
+                      'reads one title key.',
+                      "CIS's own names for the Controls and Safeguards are CIS's text "
+                      "under CC BY-NC-ND 4.0, so the schema's examples leave them "
+                      'out.'],
+         'domain_of': ['CisControl', 'CisSafeguard'],
+         'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""What the Control or Safeguard means to its user, in words its user has the right to use.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's description means and carries the same "
+                      "IRI, so lokf adapt folds it into LOKF's slot and a knowledge "
+                      'bundle reads one description key.'],
+         'domain_of': ['CisControl', 'CisSafeguard'],
+         'slot_uri': 'schema:description'} })
+    control_safeguards: Optional[list[CisSafeguard]] = Field(default=None, description="""The Safeguards of the Control. A knowledge bundle relates a Safeguard to its Control with isPartOf instead.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CisControl']} })
 
-    @field_validator('id')
-    def pattern_id(cls, v):
-        pattern=re.compile(r"^CIS-([1-9]|1[0-8])\.[0-9]+$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid id format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid id format: {v}"
-            raise ValueError(err_msg)
-        return v
+
+class CisSafeguard(ConfiguredBaseModel):
+    """
+    One Safeguard of a Control: a single action an enterprise takes, named by its Control's number and its own, such as Safeguard 4.1.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'broad_mappings': ['oscal:Control'],
+         'class_uri': 'cis_controls:Safeguard',
+         'from_schema': 'https://w3id.org/lmodel/cis-controls',
+         'see_also': ['https://www.cisecurity.org/controls/cis-controls-list']})
+
+    cis_safeguard_id: str = Field(default=..., description="""The Safeguard's identifier, such as CIS-4.1.""", json_schema_extra = { "linkml_meta": {'comments': ['It starts with the number of the Control that holds the '
+                      'Safeguard. The validator cannot check that against the Control '
+                      'a Safeguard is listed under; tests/test_data.py checks it over '
+                      'the examples.'],
+         'domain_of': ['CisSafeguard']} })
+    title: Optional[str] = Field(default=None, description="""A name for the Control or Safeguard, in words its user has the right to use.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's title means and carries the same IRI, so "
+                      "lokf adapt folds it into LOKF's slot and a knowledge bundle "
+                      'reads one title key.',
+                      "CIS's own names for the Controls and Safeguards are CIS's text "
+                      "under CC BY-NC-ND 4.0, so the schema's examples leave them "
+                      'out.'],
+         'domain_of': ['CisControl', 'CisSafeguard'],
+         'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""What the Control or Safeguard means to its user, in words its user has the right to use.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's description means and carries the same "
+                      "IRI, so lokf adapt folds it into LOKF's slot and a knowledge "
+                      'bundle reads one description key.'],
+         'domain_of': ['CisControl', 'CisSafeguard'],
+         'slot_uri': 'schema:description'} })
+    safeguard_asset_class: CisAssetClass = Field(default=..., description="""The class of enterprise asset the Safeguard is about.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CisSafeguard']} })
+    safeguard_security_function: CisSecurityFunction = Field(default=..., description="""The security function the Safeguard serves, one of the six functions of the NIST Cybersecurity Framework (CSF) 2.0.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CisSafeguard']} })
+    safeguard_implementation_groups: list[CisImplementationGroup] = Field(default=..., description="""The Implementation Groups that include the Safeguard.""", min_length=1, max_length=3, json_schema_extra = { "linkml_meta": {'comments': ['The groups are cumulative: a Safeguard in IG1 is in IG2 and IG3 '
+                      'too, and one in IG2 is in IG3. The schema states the part of '
+                      'that rule the validator can check, that every Safeguard is in '
+                      'IG3. It cannot state the rest in a form the JSON Schema that '
+                      'LinkML 1.12.1 generates enforces, so a list of IG1 and IG3 '
+                      'without IG2 passes the validator; tests/test_data.py checks the '
+                      'whole rule over the examples.'],
+         'domain_of': ['CisSafeguard'],
+         'has_member': {'equals_string': 'IG3'}} })
 
 
 # Model rebuild
 # see https://pydantic-docs.helpmanual.io/usage/models/#rebuilding-a-model
-CISControlsDocument.model_rebuild()
-CISControl.model_rebuild()
-Safeguard.model_rebuild()
+CisControls.model_rebuild()
+CisControl.model_rebuild()
+CisSafeguard.model_rebuild()

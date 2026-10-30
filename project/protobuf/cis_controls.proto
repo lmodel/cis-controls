@@ -1,36 +1,65 @@
- syntax="proto3";
- package
-// metamodel_version: 1.7.0
+syntax = "proto3";
+package cis_controls;
+// metamodel_version: 1.12.0
 // version: 8.1.2
-// One of the CIS Critical Security Controls; a high-level defensive action category that enterprises should implement to reduce cyber risk.
-message CISControl
- {
-  string id = 0
-  string title = 0
-  controlId controlNumber = 0
-  string overview = 0
-  string whyCritical = 0
-  string proceduresAndTools = 0
- repeated  safeguard safeguards = 0
- }
-// Root container for a versioned edition of the CIS Critical Security Controls publication.
-message CISControlsDocument
- {
-  string id = 0
-  string title = 0
-  string description = 0
-  string version = 0
-  string publicationDate = 0
- repeated  cISControl controls = 0
- }
-// A specific, measurable action that an enterprise should take to implement a CIS Control. Formerly called "Sub-Controls" prior to CIS Controls v8.
-message Safeguard
- {
-  string id = 0
-  string title = 0
-  safeguardId safeguardNumber = 0
-  string description = 0
-  assetType assetType = 0
-  securityFunction securityFunction = 0
- repeated  implementationGroup implementationGroups = 0
- }
+// One of the CIS Controls: a group of Safeguards on one subject, named by its number, such as Control 4.
+message CisControl {
+  // The Control's identifier, such as CIS-4.
+  string cis_control_id = 1;
+  // A name for the Control or Safeguard, in words its user has the right to use.
+  string title = 2;
+  // What the Control or Safeguard means to its user, in words its user has the right to use.
+  string description = 3;
+  // The Safeguards of the Control. A knowledge bundle relates a Safeguard to its Control with isPartOf instead.
+  repeated CisSafeguard control_safeguards = 4;
+}
+// One edition of the CIS Controls as a whole: its Controls, each holding its Safeguards.
+message CisControls {
+  // The edition, as CIS numbers it, such as 8.1, or the revision the guide's pages carry, such as 8.1.2.
+  string cis_version = 1;
+  // The Controls, in CIS's order.
+  repeated CisControl cis_controls = 2;
+}
+// One Safeguard of a Control: a single action an enterprise takes, named by its Control's number and its own, such as Safeguard 4.1.
+message CisSafeguard {
+  // The Safeguard's identifier, such as CIS-4.1.
+  string cis_safeguard_id = 1;
+  // A name for the Control or Safeguard, in words its user has the right to use.
+  string title = 2;
+  // What the Control or Safeguard means to its user, in words its user has the right to use.
+  string description = 3;
+  // The class of enterprise asset the Safeguard is about.
+  CisAssetClass safeguard_asset_class = 4;
+  // The security function the Safeguard serves, one of the six functions of the NIST Cybersecurity Framework (CSF) 2.0.
+  CisSecurityFunction safeguard_security_function = 5;
+  // The Implementation Groups that include the Safeguard.
+  repeated CisImplementationGroup safeguard_implementation_groups = 6;
+}
+
+// One of the classes of enterprise asset that the CIS Controls sort their Safeguards by. Each Safeguard is about one class.
+enum CisAssetClass {
+  CIS_ASSET_CLASS_UNSPECIFIED = 0;
+  CIS_ASSET_CLASS_DEVICES = 1;
+  CIS_ASSET_CLASS_SOFTWARE = 2;
+  CIS_ASSET_CLASS_DATA = 3;
+  CIS_ASSET_CLASS_USERS = 4;
+  CIS_ASSET_CLASS_NETWORK = 5;
+  CIS_ASSET_CLASS_DOCUMENTATION = 6;
+}
+// One of the three Implementation Groups, CIS's tiers for deciding which Safeguards an enterprise puts in place first. Each group includes every Safeguard of the groups before it.
+enum CisImplementationGroup {
+  CIS_IMPLEMENTATION_GROUP_UNSPECIFIED = 0;
+  CIS_IMPLEMENTATION_GROUP_IG1 = 1;
+  CIS_IMPLEMENTATION_GROUP_IG2 = 2;
+  CIS_IMPLEMENTATION_GROUP_IG3 = 3;
+}
+// The security function a Safeguard serves. The values are the six functions of the NIST Cybersecurity Framework (CSF) 2.0, to which Version 8.1 aligned the CIS Controls.
+enum CisSecurityFunction {
+  CIS_SECURITY_FUNCTION_UNSPECIFIED = 0;
+  CIS_SECURITY_FUNCTION_GOVERN = 1;
+  CIS_SECURITY_FUNCTION_IDENTIFY = 2;
+  CIS_SECURITY_FUNCTION_PROTECT = 3;
+  CIS_SECURITY_FUNCTION_DETECT = 4;
+  CIS_SECURITY_FUNCTION_RESPOND = 5;
+  CIS_SECURITY_FUNCTION_RECOVER = 6;
+}
