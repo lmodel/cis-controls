@@ -1,3 +1,8 @@
+"""cis-controls.
+
+CIS Critical Security Controls: LinkML Schema
+"""
+
 try:
     from cis_controls._version import __version__, __version_tuple__
 except ImportError:  # pragma: no cover
