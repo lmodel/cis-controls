@@ -11,7 +11,7 @@ machine-readable form of them: its spreadsheet sits behind a registration,
 under the same licence as the guide. So nothing here is copied or matched by
 hash.
 
-Instead this script reads two public pages of CIS's site: the page of the
+Instead, this script reads two public pages of CIS's site: the page of the
 pinned version and the list of the Controls. On each it looks for two kinds
 of version string:
 
@@ -20,10 +20,11 @@ of version string:
 - the version in the address of a version's page, such as /controls/v8-1.
 
 It matches those strings and never the markup around them, so a change of
-layout does not break it. It prints a Markdown report and exits 1 when a
-page names a version newer than the pinned edition (such as v8.2 or v9),
-when a page no longer names the pinned version or is gone, or when a page
-could not be read because it was blocked, failed or timed out.
+layout does not break it. It prints a Markdown report, and exits 1 when:
+
+- a page names a version newer than the pinned edition, such as v8.2 or v9;
+- a page no longer names the pinned version, or is gone;
+- a page could not be read because it was blocked, failed or timed out.
 
 The script has two limits:
 
