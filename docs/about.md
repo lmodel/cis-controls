@@ -1,7 +1,42 @@
 # About cis-controls
 
-CIS Critical Security Controls: LinkML Schema
+This page is for anyone reading the [LinkML](https://linkml.io) schema's
+elements: it says how they are named and what the model leaves out.
 
-# Reference
+The CIS Critical Security Controls sort an enterprise's security work into
+Controls, each a group of Safeguards on one subject. Each Safeguard is about
+one class of enterprise asset and serves one security function, and CIS
+places it in one or more of three Implementation Groups, which say how soon
+an enterprise should take it up. The schema gives the Control and the
+Safeguard a class each, and holds them in one document for an edition.
 
--   [http://www.cisecurity.org/controls/](http://www.cisecurity.org/controls/)
+Element names are the schema's own. Classes and enums carry the `Cis` prefix
+(`CisControl`, `CisSafeguard`, `CisAssetClass`) so they can be imported
+beside other vocabularies. Slots are snake_case. The identifiers sit in
+`cis_control_id` and `cis_safeguard_id`, and the fields of a Safeguard start
+with `safeguard_`. An identifier is CIS's number with `CIS-` before it, such
+as `CIS-4` for Control 4 and `CIS-4.1` for Safeguard 4.1, because YAML would
+read a bare `1.10` as the number 1.1. The enum values are upper case, such as
+`IG1`, `DEVICES` and `GOVERN`, each with CIS's spelling as its title. Every
+element is in the `cis_controls:` namespace
+(`https://w3id.org/lmodel/cis-controls/`).
+
+The descriptions are this project's own words. CIS licenses the CIS Controls
+under CC BY-NC-ND 4.0, so the schema, its examples and these pages carry no
+CIS text, and the `title` and `description` slots are for text their user has
+the right to use.
+
+## What is left out
+
+The schema models the structure of the Controls and nothing of their text:
+no title, description, overview or procedure of a Control or Safeguard, and
+none of the guide's glossary. It leaves out the subclasses into which CIS's
+guide divides each asset class, CIS's mappings from the Safeguards to other
+frameworks, its companion guides, and earlier versions of the Controls.
+
+## Reference
+
+- [CIS Critical Security Controls, Version 8.1](https://www.cisecurity.org/controls/v8-1)
+- [The CIS Controls list](https://www.cisecurity.org/controls/cis-controls-list)
+- [The Implementation Groups](https://www.cisecurity.org/controls/implementation-groups)
+- [CIS's guide to the asset classes of Version 8.1](https://www.cisecurity.org/insights/white-papers/guide-to-asset-classes-cis-critical-security-controls-v8-1)
