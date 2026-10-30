@@ -1,0 +1,4 @@
+# Fails at: /cis_control_id
+# Invalid: the identifier is CIS, a hyphen and the number, never the bare
+# number, which YAML would read as a number.
+cis_control_id: "4"

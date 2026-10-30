@@ -1,0 +1,6 @@
+# Fails at: /safeguard_security_function
+# Invalid: the security function is one of the six functions of CSF 2.0.
+cis_safeguard_id: CIS-1.1
+safeguard_asset_class: DEVICES
+safeguard_security_function: PREVENT
+safeguard_implementation_groups: [IG1, IG2, IG3]

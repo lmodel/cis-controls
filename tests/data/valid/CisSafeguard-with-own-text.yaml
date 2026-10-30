@@ -1,0 +1,10 @@
+# The text slots hold the user's own words, here a note on how one
+# organisation meets Safeguard 1.1, never CIS's title or description of it.
+cis_safeguard_id: CIS-1.1
+title: How Example Ltd meets Safeguard 1.1
+description: >-
+  The IT team keeps this in the company's asset register, which the
+  operations lead owns.
+safeguard_asset_class: DEVICES
+safeguard_security_function: IDENTIFY
+safeguard_implementation_groups: [IG1, IG2, IG3]

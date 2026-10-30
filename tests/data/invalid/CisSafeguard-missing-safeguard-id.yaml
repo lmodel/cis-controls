@@ -1,0 +1,5 @@
+# Fails at: /
+# Invalid: a Safeguard is named by its identifier.
+safeguard_asset_class: DEVICES
+safeguard_security_function: IDENTIFY
+safeguard_implementation_groups: [IG1, IG2, IG3]

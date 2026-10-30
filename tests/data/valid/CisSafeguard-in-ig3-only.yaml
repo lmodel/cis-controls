@@ -1,0 +1,6 @@
+# Safeguard 16.13, in Implementation Group 3 alone, as CIS's guide gives it
+# at v8.1.2; no text of CIS's is here.
+cis_safeguard_id: CIS-16.13
+safeguard_asset_class: SOFTWARE
+safeguard_security_function: DETECT
+safeguard_implementation_groups: [IG3]

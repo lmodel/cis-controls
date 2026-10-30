@@ -1,0 +1,5 @@
+# Fails at: /cis_controls
+# Invalid: an edition holds at least one Control, so an empty list fails as
+# a missing one does.
+cis_version: "8.1"
+cis_controls: []

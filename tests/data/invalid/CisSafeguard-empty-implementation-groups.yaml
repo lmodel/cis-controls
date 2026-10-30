@@ -1,0 +1,7 @@
+# Fails at: /safeguard_implementation_groups
+# Invalid: an empty list of Implementation Groups fails as a missing one
+# does.
+cis_safeguard_id: CIS-1.1
+safeguard_asset_class: DEVICES
+safeguard_security_function: IDENTIFY
+safeguard_implementation_groups: []
