@@ -6,6 +6,8 @@ The `v0.0.0` tag is a baseline, not a release: it marks where versioning starts 
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-10-31
+
 ### Added
 
 - **The edition file, `src/cis_controls/data/cis-controls-8.1.2.yaml`: the 18 Controls and 153 Safeguards as one `CisControls` document**, with each Safeguard's asset class, security function and Implementation Groups, and a title and description for every Control and Safeguard in this project's own words. `tests/test_edition.py` holds it to the schema, to CIS's counts and to the rules no validator checks.
