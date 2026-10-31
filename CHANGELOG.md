@@ -26,3 +26,4 @@ The `v0.0.0` tag is a baseline, not a release: it marks where versioning starts 
 - **The `overview`, `why_critical` and `procedures_and_tools` slots and the three subsets.** The slots held CIS's text, and a subset marks schema elements, not a Safeguard's Implementation Group.
 - **The SSSOM mappings to lmodel/nist-csf-v2 and the `iso27001:` mappings.** Every SSSOM row named an element that nist-csf-v2 v0.1.0 no longer has, and lmodel/iso27001 is being rewritten.
 - **The PyPI publishing workflow and the mkdocs site and its preview.** The knowledge website replaces the site.
+- **The unused `yamllint` runtime dependency.** No code imports it, and the pre-commit hook installs its own copy.
