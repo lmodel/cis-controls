@@ -10,6 +10,9 @@ carries none of CIS's text.
 - [Schema documentation](elements/index.md), generated from the schema
 - [About](about.md): how the elements are named and what the model leaves out
 - [`cis_controls.yaml`](schema/cis_controls.yaml): the schema
+- `src/cis_controls/data/cis-controls-8.1.2.yaml`: the edition file, every
+  Control and Safeguard with a title and description in the project's own
+  words
 
 ## Validating data
 

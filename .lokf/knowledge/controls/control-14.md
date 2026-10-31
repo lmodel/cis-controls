@@ -13,6 +13,9 @@ sources:
   - id: cis-v8-1
     resource: https://www.cisecurity.org/controls/v8-1
     title: the guide this page offers, v8.1.2 of March 2025, read on 2026-10-30
+  - id: edition
+    resource: src/cis_controls/data/cis-controls-8.1.2.yaml
+    title: Control 14 and its Safeguards
 generated:
   by: process:ktl-librarian
   at: "2026-10-31T00:10:39Z"
@@ -23,6 +26,7 @@ status: draft
 
 Control 14 is one of the 18 Controls of the CIS Controls, Version 8.1. CIS's guide, at its v8.1.2 revision, lists 9 Safeguards under it, numbered 14.1 to 14.9.[^cis-v8-1] The schema uses those numbers as their identifiers. Of the Safeguards, 8 are in Implementation Group 1, all 9 in Implementation Group 2 and all 9 in Implementation Group 3. Its Safeguards are about the asset classes Users (8) and Documentation (1).
 
-This bundle leaves out the Control's name, its description and the text of its Safeguards, because CIS licenses that text under CC BY-NC-ND 4.0. CIS's guide gives them, and [the guide's reference](../references/cis-controls-guide.md) says where to find it.
+This bundle leaves out CIS's name and description for the Control and CIS's text for its Safeguards, because CIS licenses that text under CC BY-NC-ND 4.0; CIS's guide gives them, and [the guide's reference](../references/cis-controls-guide.md) says where to find it. The edition file describes the Control and each of its Safeguards in the project's own words, written from what each requires.[^edition]
 
 [^cis-v8-1]: <https://www.cisecurity.org/controls/v8-1>, the guide this page offers, the Safeguards of Control 14
+[^edition]: src/cis_controls/data/cis-controls-8.1.2.yaml, Control 14 and its Safeguards

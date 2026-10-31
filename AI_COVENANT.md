@@ -26,7 +26,7 @@ Two failure modes are worse here than elsewhere. One is a rule or element that a
 So:
 
 - **An element says what the CIS Controls say.** Every class, slot and enum under `src/cis_controls/schema/` renders the structure of the CIS Controls at the pinned edition, in this project's own words. Cite the part of CIS's guide it rests on in the pull request, and never give a CIS term a meaning its source does not carry. "The model said so" is not a source.
-- **No CIS text, however it was produced.** A Safeguard's title or description, a Control's overview, or any other passage of the guide, copied or closely paraphrased, does not belong in the schema, the examples, the docs or the knowledge bundle. A model asked about a Safeguard is likely to reproduce CIS's wording; check what it wrote against that risk before you submit it. Name a Control or Safeguard by its number.
+- **No CIS text, however it was produced.** A Safeguard's title or description, a Control's overview, or any other passage of the guide, copied or closely paraphrased, does not belong in the schema, the edition file, the examples, the docs or the knowledge bundle. A model asked about a Safeguard is likely to reproduce CIS's wording; check what it wrote against that risk before you submit it. Name a Control or Safeguard by its number, and where the edition file or the bundle describes one, write the description from what it requires, in your own words, never by rewording CIS's sentence. NOTICE states the position.
 - **The namespace is this project's.** Everything the schema defines lives under `cis_controls:` (`https://w3id.org/lmodel/cis-controls/`). CIS's own numbers, such as Safeguard 1.1, appear only as values the schema documents.
 
 ## AI-Assisted Code Reviews

@@ -24,15 +24,18 @@ Safeguard 4.1, so data joins with CIS's guide and the crosswalks that cite it.
 Quote it in YAML, which reads an unquoted `1.10` as the number 1.1.
 
 The descriptions are this project's own words. CIS licenses the CIS Controls
-under CC BY-NC-ND 4.0, so the schema, its examples and these pages carry no
-CIS text. The `title` and `description` slots are for text their user has the
-right to use.
+under CC BY-NC-ND 4.0, so the schema, its examples, the edition file and
+these pages carry no CIS text, copied or paraphrased. The edition file,
+`src/cis_controls/data/cis-controls-8.1.2.yaml`, gives each Control and
+Safeguard a title and a short description in the project's words, written
+from what each requires. The `title` and `description` slots are for text
+their user has the right to use. NOTICE states the position.
 
 ## What is left out
 
-The schema models the structure of the Controls and nothing of their text:
-no title, description, overview or procedure of a Control or Safeguard, and
-none of the guide's glossary. It leaves out the subclasses into which CIS's
+The schema models the structure of the Controls and nothing of CIS's text:
+no title, description, overview or procedure of a Control or Safeguard as
+CIS wrote it, and none of the guide's glossary. It leaves out the subclasses into which CIS's
 guide divides each asset class, CIS's mappings from the Safeguards to other
 frameworks, its companion guides, and earlier versions of the Controls.
 

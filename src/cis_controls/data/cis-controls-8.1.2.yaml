@@ -1,0 +1,1809 @@
+# The CIS Critical Security Controls, Version 8.1, at the v8.1.2 revision of
+# March 2025, as one CisControls document: the 18 Controls, the 153
+# Safeguards, and each Safeguard's asset class, security function and
+# Implementation Groups, as CIS's guide sets them out. The titles and
+# descriptions are this project's own words, written from what each Control
+# and Safeguard requires; none is CIS's text. NOTICE says why.
+cis_version: 8.1.2
+cis_controls:
+  - cis_control_id: "1"
+    title: Knowing every device
+    description: >-
+      Keeping track of every device that can hold or handle the enterprise's
+      data, so that only known and approved devices are on its network and
+      unknown ones are found and dealt with.
+    control_safeguards:
+      - cis_safeguard_id: "1.1"
+        title: A record of every device
+        description: >-
+          The enterprise keeps a current record of every device that can hold
+          or handle its data, from user devices and servers to network equipment
+          and other connected things, on site, remote, virtual or in a cloud,
+          and including devices it does not own but that join its network
+          regularly. For each it notes the owner, department, name and addresses,
+          and whether the device may connect, and it checks the record at
+          least twice a year.
+        safeguard_asset_class: DEVICES
+        safeguard_security_function: IDENTIFY
+        safeguard_implementation_groups:
+          - IG1
+          - IG2
+          - IG3
+      - cis_safeguard_id: "1.2"
+        title: Dealing with unknown devices
+        description: >-
+          Every week the enterprise acts on devices found on its network that
+          it has not approved, by disconnecting them, refusing them remote
+          access or isolating them.
+        safeguard_asset_class: DEVICES
+        safeguard_security_function: RESPOND
+        safeguard_implementation_groups:
+          - IG1
+          - IG2
+          - IG3
+      - cis_safeguard_id: "1.3"
+        title: Active discovery scans
+        description: >-
+          A tool probes the network at least once a day to find the devices
+          connected to it.
+        safeguard_asset_class: DEVICES
+        safeguard_security_function: DETECT
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "1.4"
+        title: Address-assignment logs feed the record
+        description: >-
+          The logs of the servers or tools that hand out network addresses
+          are read at least weekly, and what they show brings the device record
+          up to date.
+        safeguard_asset_class: DEVICES
+        safeguard_security_function: IDENTIFY
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "1.5"
+        title: Passive discovery
+        description: >-
+          A tool that listens to network traffic finds the devices on the
+          network, and its findings update the device record at least weekly.
+        safeguard_asset_class: DEVICES
+        safeguard_security_function: DETECT
+        safeguard_implementation_groups:
+          - IG3
+  - cis_control_id: "2"
+    title: Knowing every program
+    description: >-
+      Keeping track of the software installed across the enterprise, so that
+      only approved and supported programs can run and anything else is found
+      and removed.
+    control_safeguards:
+      - cis_safeguard_id: "2.1"
+        title: A record of installed software
+        description: >-
+          The enterprise keeps a record of the licensed software on its devices,
+          noting for each what it is, who publishes it, when it was first
+          used and what it is for, with version, source, deployment method,
+          licence count and retirement date where they matter. It checks the
+          record at least twice a year.
+        safeguard_asset_class: SOFTWARE
+        safeguard_security_function: IDENTIFY
+        safeguard_implementation_groups:
+          - IG1
+          - IG2
+          - IG3
+      - cis_safeguard_id: "2.2"
+        title: Only supported software is approved
+        description: >-
+          Software counts as approved only while its maker still supports
+          it. Unsupported software the enterprise cannot do without gets a
+          written exception that names the compensating measures and the accepted
+          risk; without one it is treated as unapproved. The check runs at
+          least monthly.
+        safeguard_asset_class: SOFTWARE
+        safeguard_security_function: IDENTIFY
+        safeguard_implementation_groups:
+          - IG1
+          - IG2
+          - IG3
+      - cis_safeguard_id: "2.3"
+        title: Removing unapproved software
+        description: >-
+          At least monthly, the enterprise removes unapproved software from
+          its devices or records a written exception for it.
+        safeguard_asset_class: SOFTWARE
+        safeguard_security_function: RESPOND
+        safeguard_implementation_groups:
+          - IG1
+          - IG2
+          - IG3
+      - cis_safeguard_id: "2.4"
+        title: Automated software discovery
+        description: >-
+          Where it can, the enterprise uses tools that find and record installed
+          software across its devices without manual work.
+        safeguard_asset_class: SOFTWARE
+        safeguard_security_function: DETECT
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "2.5"
+        title: Only approved programs run
+        description: >-
+          An allowlist of applications, or a similar technical control, stops
+          any program the enterprise has not approved from running or being
+          opened. It is reviewed at least twice a year.
+        safeguard_asset_class: SOFTWARE
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "2.6"
+        title: Only approved libraries load
+        description: >-
+          Technical controls let a process load only the software libraries
+          the enterprise has approved, such as named shared-object or DLL
+          files, and block the rest. The controls are reviewed at least twice
+          a year.
+        safeguard_asset_class: SOFTWARE
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "2.7"
+        title: Only approved scripts run
+        description: >-
+          Signatures, version control or similar technical controls let only
+          approved scripts run and block the rest. They are reviewed at least
+          twice a year.
+        safeguard_asset_class: SOFTWARE
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG3
+  - cis_control_id: "3"
+    title: Looking after data
+    description: >-
+      Having processes and technical controls for finding, classifying, handling,
+      keeping and disposing of data safely.
+    control_safeguards:
+      - cis_safeguard_id: "3.1"
+        title: A written data-handling process
+        description: >-
+          A written process says how the enterprise handles its data: how
+          sensitive each kind is, who owns it, how it is handled, how long
+          it is kept and how it is disposed of. It is reviewed every year
+          and after any major change.
+        safeguard_asset_class: DATA
+        safeguard_security_function: GOVERN
+        safeguard_implementation_groups:
+          - IG1
+          - IG2
+          - IG3
+      - cis_safeguard_id: "3.2"
+        title: A record of the data held
+        description: >-
+          The enterprise keeps a record of its data, following its data-handling
+          process, covering sensitive data first and foremost, and reviews
+          it at least yearly.
+        safeguard_asset_class: DATA
+        safeguard_security_function: IDENTIFY
+        safeguard_implementation_groups:
+          - IG1
+          - IG2
+          - IG3
+      - cis_safeguard_id: "3.3"
+        title: Access rights on data
+        description: >-
+          Permissions on files, databases and applications, local and remote,
+          give each user access only to the data they need.
+        safeguard_asset_class: DATA
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG1
+          - IG2
+          - IG3
+      - cis_safeguard_id: "3.4"
+        title: Data kept for a set time
+        description: >-
+          Data is kept for the periods the data-handling process sets, which
+          give both a shortest and a longest time to hold it.
+        safeguard_asset_class: DATA
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG1
+          - IG2
+          - IG3
+      - cis_safeguard_id: "3.5"
+        title: Safe disposal of data
+        description: >-
+          Data is disposed of as the data-handling process says, by a method
+          that matches how sensitive the data is.
+        safeguard_asset_class: DATA
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG1
+          - IG2
+          - IG3
+      - cis_safeguard_id: "3.6"
+        title: Encryption on user devices
+        description: >-
+          User devices that hold sensitive data are encrypted, for example
+          with the whole-disk encryption built into the operating system.
+        safeguard_asset_class: DATA
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG1
+          - IG2
+          - IG3
+      - cis_safeguard_id: "3.7"
+        title: A classification scheme
+        description: >-
+          The enterprise sorts its data into sensitivity levels under a scheme
+          of its own, with labels such as public, confidential or sensitive,
+          and reviews the scheme yearly and after any major change.
+        safeguard_asset_class: DATA
+        safeguard_security_function: IDENTIFY
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "3.8"
+        title: Data flows written down
+        description: >-
+          The enterprise writes down how its data moves, including to and
+          from its service providers, in line with its data-handling process,
+          and reviews that yearly and after any major change.
+        safeguard_asset_class: DATA
+        safeguard_security_function: IDENTIFY
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "3.9"
+        title: Encryption on removable media
+        description: >-
+          Data on removable media is encrypted.
+        safeguard_asset_class: DATA
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "3.10"
+        title: Sensitive data encrypted in transit
+        description: >-
+          Sensitive data is encrypted while it travels over a network, for
+          example with TLS or SSH.
+        safeguard_asset_class: DATA
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "3.11"
+        title: Sensitive data encrypted at rest
+        description: >-
+          Sensitive data stored on servers, in applications and in databases
+          is encrypted. Encrypting the storage layer meets the minimum; encrypting
+          in the application, so that reaching the storage does not reveal
+          the data, goes further.
+        safeguard_asset_class: DATA
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "3.12"
+        title: Processing kept apart by sensitivity
+        description: >-
+          Sensitive data is processed and stored separately from less sensitive
+          data, never on systems meant for the lower level.
+        safeguard_asset_class: DATA
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "3.13"
+        title: Automated discovery of sensitive data
+        description: >-
+          A data-loss-prevention tool or similar automation finds sensitive
+          data wherever the enterprise's systems store, process or send it,
+          on site or at a provider, and feeds the data record.
+        safeguard_asset_class: DATA
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG3
+      - cis_safeguard_id: "3.14"
+        title: Access to sensitive data logged
+        description: >-
+          Reads, changes and deletions of sensitive data are logged.
+        safeguard_asset_class: DATA
+        safeguard_security_function: DETECT
+        safeguard_implementation_groups:
+          - IG3
+  - cis_control_id: "4"
+    title: Secure settings for devices and software
+    description: >-
+      Setting up devices and software securely rather than as delivered, and
+      keeping those settings in place over their lifetime.
+    control_safeguards:
+      - cis_safeguard_id: "4.1"
+        title: A written hardening process
+        description: >-
+          A written process says how the enterprise configures its devices
+          and software securely, from user devices and servers to other connected
+          things, operating systems and applications. It is reviewed yearly
+          and after any major change.
+        safeguard_asset_class: DOCUMENTATION
+        safeguard_security_function: GOVERN
+        safeguard_implementation_groups:
+          - IG1
+          - IG2
+          - IG3
+      - cis_safeguard_id: "4.2"
+        title: A written hardening process for network equipment
+        description: >-
+          A written process says how network devices are configured securely,
+          and is reviewed yearly and after any major change.
+        safeguard_asset_class: DOCUMENTATION
+        safeguard_security_function: GOVERN
+        safeguard_implementation_groups:
+          - IG1
+          - IG2
+          - IG3
+      - cis_safeguard_id: "4.3"
+        title: Screens lock when idle
+        description: >-
+          Devices lock their session after a period without use: no more than
+          15 minutes on a general-purpose operating system and no more than
+          2 minutes on a mobile device.
+        safeguard_asset_class: DEVICES
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG1
+          - IG2
+          - IG3
+      - cis_safeguard_id: "4.4"
+        title: A firewall on every server
+        description: >-
+          Each server runs a firewall where it can, whether the operating
+          system's own, a virtual one or a third-party agent, and the enterprise
+          manages it.
+        safeguard_asset_class: DEVICES
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG1
+          - IG2
+          - IG3
+      - cis_safeguard_id: "4.5"
+        title: A firewall on every user device
+        description: >-
+          Each user device runs a host firewall or port filter that blocks
+          all traffic by default and lets through only the services and ports
+          the enterprise has allowed.
+        safeguard_asset_class: DEVICES
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG1
+          - IG2
+          - IG3
+      - cis_safeguard_id: "4.6"
+        title: Administration over secure channels
+        description: >-
+          Devices and software are administered over encrypted protocols,
+          SSH or HTTPS for example, with configuration kept as version-controlled
+          code where possible. Unencrypted protocols, Telnet or plain HTTP
+          for example, are not used unless there is no alternative.
+        safeguard_asset_class: DEVICES
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG1
+          - IG2
+          - IG3
+      - cis_safeguard_id: "4.7"
+        title: Default accounts dealt with
+        description: >-
+          Preset accounts, whether root, administrator or a vendor's own,
+          are disabled or otherwise made unusable on every device and program.
+        safeguard_asset_class: USERS
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG1
+          - IG2
+          - IG3
+      - cis_safeguard_id: "4.8"
+        title: Unneeded services removed
+        description: >-
+          Services nobody needs, an idle file-sharing service or web module
+          for instance, are removed or switched off.
+        safeguard_asset_class: DEVICES
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "4.9"
+        title: Trusted name servers
+        description: >-
+          Network equipment is set to resolve names through DNS servers the
+          enterprise controls or reputable public ones.
+        safeguard_asset_class: DEVICES
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "4.10"
+        title: Portable devices lock after failed logins
+        description: >-
+          A portable device locks itself after a set number of failed local
+          login attempts, where it can: at most 20 on a laptop and at most
+          10 on a tablet or phone.
+        safeguard_asset_class: DEVICES
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "4.11"
+        title: Remote wipe of portable devices
+        description: >-
+          The enterprise can erase its data remotely from a portable device
+          it owns, and does so when the device is lost or stolen or its user
+          leaves.
+        safeguard_asset_class: DATA
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "4.12"
+        title: Work kept apart on mobile devices
+        description: >-
+          On mobile devices that support it, a separate work profile keeps
+          the enterprise's applications and data apart from the user's personal
+          ones.
+        safeguard_asset_class: DATA
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG3
+  - cis_control_id: "5"
+    title: Managing accounts
+    description: >-
+      Processes and tools for granting and managing the credentials of users,
+      administrators and services on the enterprise's devices and software.
+    control_safeguards:
+      - cis_safeguard_id: "5.1"
+        title: A record of accounts
+        description: >-
+          The enterprise keeps a record of its accounts, whether for users,
+          administrators or services, with the holder's name, username, department
+          and start and end dates. At least quarterly it confirms that every
+          active account is still authorised.
+        safeguard_asset_class: USERS
+        safeguard_security_function: IDENTIFY
+        safeguard_implementation_groups:
+          - IG1
+          - IG2
+          - IG3
+      - cis_safeguard_id: "5.2"
+        title: Unique passwords
+        description: >-
+          Every account on the enterprise's systems has a password of its
+          own. As a minimum, a password has 8 characters where multi-factor
+          authentication is also used and 14 where it is not.
+        safeguard_asset_class: USERS
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG1
+          - IG2
+          - IG3
+      - cis_safeguard_id: "5.3"
+        title: Dormant accounts disabled
+        description: >-
+          An account unused for 45 days is disabled or deleted, where the
+          system allows.
+        safeguard_asset_class: USERS
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG1
+          - IG2
+          - IG3
+      - cis_safeguard_id: "5.4"
+        title: Separate accounts for administration
+        description: >-
+          Administrative rights sit only on dedicated administrator accounts.
+          Everyday work such as browsing, email and office applications is
+          done from an ordinary account without them.
+        safeguard_asset_class: USERS
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG1
+          - IG2
+          - IG3
+      - cis_safeguard_id: "5.5"
+        title: A record of service accounts
+        description: >-
+          The enterprise keeps a record of its service accounts, with the
+          owning department, purpose and last review date, and at least quarterly
+          confirms that each active one is still authorised.
+        safeguard_asset_class: USERS
+        safeguard_security_function: IDENTIFY
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "5.6"
+        title: Accounts managed in one place
+        description: >-
+          Accounts are managed through one central directory or identity provider.
+        safeguard_asset_class: USERS
+        safeguard_security_function: GOVERN
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+  - cis_control_id: "6"
+    title: Managing access rights
+    description: >-
+      Processes and tools for granting, changing and revoking the access and
+      privileges of every kind of account, whether a user's, an administrator's
+      or a service's, with strong authentication where it matters.
+    control_safeguards:
+      - cis_safeguard_id: "6.1"
+        title: A process for granting access
+        description: >-
+          A written process, automated where possible, grants a user access
+          when they join or change role.
+        safeguard_asset_class: DOCUMENTATION
+        safeguard_security_function: GOVERN
+        safeguard_implementation_groups:
+          - IG1
+          - IG2
+          - IG3
+      - cis_safeguard_id: "6.2"
+        title: A process for revoking access
+        description: >-
+          A written process, automated where possible, removes a user's access
+          as soon as they leave or change role, by disabling the account at
+          once. Disabling rather than deleting keeps the audit trail.
+        safeguard_asset_class: DOCUMENTATION
+        safeguard_security_function: GOVERN
+        safeguard_implementation_groups:
+          - IG1
+          - IG2
+          - IG3
+      - cis_safeguard_id: "6.3"
+        title: Multi-factor login to internet-facing applications
+        description: >-
+          Every application reachable from the internet, the enterprise's
+          own or a third party's, requires multi-factor authentication where
+          it supports it. Enforcing it through the directory or a single sign-on
+          provider counts.
+        safeguard_asset_class: USERS
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG1
+          - IG2
+          - IG3
+      - cis_safeguard_id: "6.4"
+        title: Multi-factor login for remote network access
+        description: >-
+          Reaching the enterprise's network from outside requires multi-factor
+          authentication.
+        safeguard_asset_class: USERS
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG1
+          - IG2
+          - IG3
+      - cis_safeguard_id: "6.5"
+        title: Multi-factor login for administrators
+        description: >-
+          Every administrative account requires multi-factor authentication
+          where the system supports it, on every device, whether run in-house
+          or by a provider.
+        safeguard_asset_class: USERS
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG1
+          - IG2
+          - IG3
+      - cis_safeguard_id: "6.6"
+        title: A record of authentication systems
+        description: >-
+          The enterprise keeps a record of the systems that authenticate and
+          authorise its users, in-house and at providers, and reviews it at
+          least yearly.
+        safeguard_asset_class: SOFTWARE
+        safeguard_security_function: IDENTIFY
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "6.7"
+        title: Access controlled in one place
+        description: >-
+          Access to the enterprise's devices and systems is controlled through
+          a central directory or single sign-on service where supported.
+        safeguard_asset_class: USERS
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "6.8"
+        title: Access by role
+        description: >-
+          The enterprise defines and writes down the access each role needs
+          to do its work, grants access by role, and at least yearly reviews
+          that every privilege in place is authorised.
+        safeguard_asset_class: USERS
+        safeguard_security_function: GOVERN
+        safeguard_implementation_groups:
+          - IG3
+  - cis_control_id: "7"
+    title: Finding and fixing vulnerabilities
+    description: >-
+      Continually finding, tracking and fixing weaknesses in the enterprise's
+      devices and software, and watching public and private sources for new
+      threats and vulnerabilities.
+    control_safeguards:
+      - cis_safeguard_id: "7.1"
+        title: A written vulnerability process
+        description: >-
+          A written process says how the enterprise manages vulnerabilities
+          in its devices and software, and is reviewed yearly and after any
+          major change.
+        safeguard_asset_class: DOCUMENTATION
+        safeguard_security_function: GOVERN
+        safeguard_implementation_groups:
+          - IG1
+          - IG2
+          - IG3
+      - cis_safeguard_id: "7.2"
+        title: A written remediation process
+        description: >-
+          A written process sets a risk-based strategy for fixing vulnerabilities,
+          and is reviewed at least monthly.
+        safeguard_asset_class: DOCUMENTATION
+        safeguard_security_function: GOVERN
+        safeguard_implementation_groups:
+          - IG1
+          - IG2
+          - IG3
+      - cis_safeguard_id: "7.3"
+        title: Automated operating-system updates
+        description: >-
+          Operating systems are updated by automated patch management at least
+          monthly.
+        safeguard_asset_class: SOFTWARE
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG1
+          - IG2
+          - IG3
+      - cis_safeguard_id: "7.4"
+        title: Automated application updates
+        description: >-
+          Applications are updated by automated patch management at least
+          monthly.
+        safeguard_asset_class: SOFTWARE
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG1
+          - IG2
+          - IG3
+      - cis_safeguard_id: "7.5"
+        title: Internal vulnerability scans
+        description: >-
+          Internal systems get an automated vulnerability scan at least quarterly,
+          both with and without credentials.
+        safeguard_asset_class: SOFTWARE
+        safeguard_security_function: IDENTIFY
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "7.6"
+        title: External vulnerability scans
+        description: >-
+          Internet-facing systems get an automated vulnerability scan at least
+          monthly.
+        safeguard_asset_class: SOFTWARE
+        safeguard_security_function: IDENTIFY
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "7.7"
+        title: Vulnerabilities fixed
+        description: >-
+          Vulnerabilities found in software are fixed at least monthly, following
+          the remediation process.
+        safeguard_asset_class: SOFTWARE
+        safeguard_security_function: RESPOND
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+  - cis_control_id: "8"
+    title: Keeping and reviewing logs
+    description: >-
+      Collecting, reviewing and keeping the logs that would help detect, understand
+      and recover from an attack, and raising alerts from them.
+    control_safeguards:
+      - cis_safeguard_id: "8.1"
+        title: A written logging process
+        description: >-
+          A written process sets the enterprise's logging requirements and
+          covers at least how logs are collected, reviewed and kept. It is
+          reviewed yearly and after any major change.
+        safeguard_asset_class: DOCUMENTATION
+        safeguard_security_function: GOVERN
+        safeguard_implementation_groups:
+          - IG1
+          - IG2
+          - IG3
+      - cis_safeguard_id: "8.2"
+        title: Logging switched on
+        description: >-
+          Logging is enabled across the enterprise's devices as the logging
+          process requires, and the logs are collected.
+        safeguard_asset_class: DATA
+        safeguard_security_function: DETECT
+        safeguard_implementation_groups:
+          - IG1
+          - IG2
+          - IG3
+      - cis_safeguard_id: "8.3"
+        title: Room for the logs
+        description: >-
+          Wherever logs are sent has enough storage to keep them for as long
+          as the logging process requires.
+        safeguard_asset_class: DATA
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG1
+          - IG2
+          - IG3
+      - cis_safeguard_id: "8.4"
+        title: Clocks kept in step
+        description: >-
+          Devices take their time from at least two synchronised sources where
+          they can, so that log timestamps agree.
+        safeguard_asset_class: NETWORK
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "8.5"
+        title: Detailed logs on sensitive systems
+        description: >-
+          Systems that hold sensitive data log in detail: the source of each
+          event, the date and time, the user, the addresses at both ends and
+          whatever else an investigation would need.
+        safeguard_asset_class: DATA
+        safeguard_security_function: DETECT
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "8.6"
+        title: Name-lookup logs
+        description: >-
+          DNS queries are logged on devices where that is appropriate and
+          supported.
+        safeguard_asset_class: DATA
+        safeguard_security_function: DETECT
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "8.7"
+        title: Web-request logs
+        description: >-
+          Requests for web addresses are logged on devices where that is appropriate
+          and supported.
+        safeguard_asset_class: DATA
+        safeguard_security_function: DETECT
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "8.8"
+        title: Command-line logs
+        description: >-
+          Commands typed into shells such as PowerShell and bash, and into
+          remote administrative sessions, are logged.
+        safeguard_asset_class: DATA
+        safeguard_security_function: DETECT
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "8.9"
+        title: Logs gathered in one place
+        description: >-
+          As far as possible, logs from across the enterprise are collected
+          and kept centrally, as the logging process says, for example in
+          a security information and event management (SIEM) tool.
+        safeguard_asset_class: DATA
+        safeguard_security_function: DETECT
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "8.10"
+        title: Logs kept for 90 days
+        description: >-
+          Logs are kept for at least 90 days.
+        safeguard_asset_class: DATA
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "8.11"
+        title: Logs reviewed weekly
+        description: >-
+          Logs are reviewed at least weekly for anything unusual that could
+          signal a threat.
+        safeguard_asset_class: DATA
+        safeguard_security_function: DETECT
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "8.12"
+        title: Providers' logs collected
+        description: >-
+          Logs from service providers are collected where they offer them,
+          such as logins, authorisation decisions, data created or deleted,
+          and changes to user accounts.
+        safeguard_asset_class: DATA
+        safeguard_security_function: DETECT
+        safeguard_implementation_groups:
+          - IG3
+  - cis_control_id: "9"
+    title: Email and browser protections
+    description: >-
+      Protecting against, and detecting, threats that arrive by email and
+      the web, the channels attackers use to reach people directly.
+    control_safeguards:
+      - cis_safeguard_id: "9.1"
+        title: Only supported browsers and mail clients
+        description: >-
+          Only browsers and mail clients the vendor fully supports may run,
+          and only their current versions.
+        safeguard_asset_class: SOFTWARE
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG1
+          - IG2
+          - IG3
+      - cis_safeguard_id: "9.2"
+        title: Name-lookup filtering
+        description: >-
+          A DNS filtering service on every user device, in the office or remote,
+          blocks lookups of domains known to be malicious.
+        safeguard_asset_class: DEVICES
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG1
+          - IG2
+          - IG3
+      - cis_safeguard_id: "9.3"
+        title: Web filtering on the network
+        description: >-
+          Filters on the network, by category, reputation or block list, stop
+          devices reaching websites that are malicious or not approved. The
+          filters are kept current and applied to every device.
+        safeguard_asset_class: NETWORK
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "9.4"
+        title: Unneeded browser and mail extensions removed
+        description: >-
+          Plug-ins, extensions and add-ons for browsers and mail clients that
+          are not approved or not needed are removed or disabled.
+        safeguard_asset_class: SOFTWARE
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "9.5"
+        title: Email domain authentication
+        description: >-
+          The enterprise's email domains carry a DMARC policy and checks,
+          built on SPF and DKIM, so that spoofed or altered mail from them
+          is less likely to get through.
+        safeguard_asset_class: NETWORK
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "9.6"
+        title: Unneeded attachment types blocked
+        description: >-
+          The email gateway blocks file types the enterprise does not need
+          to receive.
+        safeguard_asset_class: NETWORK
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "9.7"
+        title: Malware checks on the mail server
+        description: >-
+          The mail server scans attachments, or opens them in a sandbox, to
+          catch malware, and the protection is kept up to date.
+        safeguard_asset_class: NETWORK
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG3
+  - cis_control_id: "10"
+    title: Defending against malware
+    description: >-
+      Preventing or containing the installation, spread and running of malicious
+      programs, code and scripts on the enterprise's devices.
+    control_safeguards:
+      - cis_safeguard_id: "10.1"
+        title: Anti-malware on every device
+        description: >-
+          Anti-malware software runs on every device and is kept up to date.
+        safeguard_asset_class: DEVICES
+        safeguard_security_function: DETECT
+        safeguard_implementation_groups:
+          - IG1
+          - IG2
+          - IG3
+      - cis_safeguard_id: "10.2"
+        title: Automatic signature updates
+        description: >-
+          Anti-malware signatures update automatically on every device.
+        safeguard_asset_class: DEVICES
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG1
+          - IG2
+          - IG3
+      - cis_safeguard_id: "10.3"
+        title: No autorun from removable media
+        description: >-
+          Removable media cannot start programs on their own, because autorun
+          and autoplay are switched off.
+        safeguard_asset_class: DEVICES
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG1
+          - IG2
+          - IG3
+      - cis_safeguard_id: "10.4"
+        title: Removable media scanned
+        description: >-
+          Anti-malware software scans removable media automatically when it
+          is connected.
+        safeguard_asset_class: DEVICES
+        safeguard_security_function: DETECT
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "10.5"
+        title: Exploit protections switched on
+        description: >-
+          The exploit-mitigation features that operating systems and software
+          offer, such as data execution prevention, exploit guards and system
+          integrity protection, are enabled wherever possible.
+        safeguard_asset_class: DEVICES
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "10.6"
+        title: Anti-malware managed centrally
+        description: >-
+          Anti-malware software across the enterprise is managed from one
+          place.
+        safeguard_asset_class: DEVICES
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "10.7"
+        title: Behaviour-based detection
+        description: >-
+          The anti-malware software detects malicious behaviour, not only
+          known signatures.
+        safeguard_asset_class: DEVICES
+        safeguard_security_function: DETECT
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+  - cis_control_id: "11"
+    title: Recovering data
+    description: >-
+      Being able to restore the enterprise's systems and data to a known,
+      trusted state from before an incident.
+    control_safeguards:
+      - cis_safeguard_id: "11.1"
+        title: A written recovery process
+        description: >-
+          A written process says what the enterprise will recover, in what
+          order, and how backup data is protected. It is reviewed yearly and
+          after any major change.
+        safeguard_asset_class: DOCUMENTATION
+        safeguard_security_function: GOVERN
+        safeguard_implementation_groups:
+          - IG1
+          - IG2
+          - IG3
+      - cis_safeguard_id: "11.2"
+        title: Automatic backups
+        description: >-
+          Systems in scope are backed up automatically, at least weekly and
+          more often for sensitive data.
+        safeguard_asset_class: DATA
+        safeguard_security_function: RECOVER
+        safeguard_implementation_groups:
+          - IG1
+          - IG2
+          - IG3
+      - cis_safeguard_id: "11.3"
+        title: Backups protected like the originals
+        description: >-
+          Backup data gets the same protection as the data it copies, through
+          encryption or separation as the requirements demand.
+        safeguard_asset_class: DATA
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG1
+          - IG2
+          - IG3
+      - cis_safeguard_id: "11.4"
+        title: A copy kept apart
+        description: >-
+          One copy of the backups is kept isolated from the live systems,
+          offline, off site or in a separate cloud, with its versions preserved.
+        safeguard_asset_class: DATA
+        safeguard_security_function: RECOVER
+        safeguard_implementation_groups:
+          - IG1
+          - IG2
+          - IG3
+      - cis_safeguard_id: "11.5"
+        title: Restores tested
+        description: >-
+          At least quarterly, the enterprise restores a sample of its backups
+          to prove that recovery works.
+        safeguard_asset_class: DATA
+        safeguard_security_function: RECOVER
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+  - cis_control_id: "12"
+    title: Managing network equipment
+    description: >-
+      Setting up, tracking and correcting the enterprise's network devices
+      so that attackers cannot exploit weak network services and access points.
+    control_safeguards:
+      - cis_safeguard_id: "12.1"
+        title: Network equipment kept current
+        description: >-
+          Network devices run the latest stable software, or a network service
+          bought from a provider and still supported, and their software versions
+          are checked monthly or more often to confirm continued support.
+        safeguard_asset_class: NETWORK
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG1
+          - IG2
+          - IG3
+      - cis_safeguard_id: "12.2"
+        title: A secure network design
+        description: >-
+          The enterprise designs and maintains its network for security, covering
+          at least how it is segmented, least privilege as a principle, and
+          the availability of the network, in its design and policy as well
+          as its documentation.
+        safeguard_asset_class: NETWORK
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "12.3"
+        title: Network equipment administered securely
+        description: >-
+          Network devices are administered over encrypted protocols, SSH or
+          HTTPS for example, with their configuration kept as version-controlled
+          code where possible.
+        safeguard_asset_class: NETWORK
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "12.4"
+        title: Network diagrams kept current
+        description: >-
+          Diagrams or other documentation of the network are kept, and reviewed
+          yearly and after any major change.
+        safeguard_asset_class: DOCUMENTATION
+        safeguard_security_function: GOVERN
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "12.5"
+        title: Network logins handled centrally
+        description: >-
+          Authentication, authorisation and accounting for network access
+          are handled by a central service.
+        safeguard_asset_class: NETWORK
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "12.6"
+        title: Secure network protocols
+        description: >-
+          Managing the network, and the traffic that crosses it, uses secure
+          protocols, 802.1X for access control and WPA2 Enterprise or better
+          for wireless among them.
+        safeguard_asset_class: NETWORK
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "12.7"
+        title: Remote devices connect through the enterprise's VPN
+        description: >-
+          A user device away from the office must log in to the enterprise's
+          VPN and its authentication service before it can reach the enterprise's
+          resources.
+        safeguard_asset_class: DEVICES
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "12.8"
+        title: Separate systems for administration
+        description: >-
+          Administrative work is done from computing resources set aside for
+          it, kept apart physically or logically, on their own network segment
+          and without internet access.
+        safeguard_asset_class: DEVICES
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG3
+  - cis_control_id: "13"
+    title: Watching and defending the network
+    description: >-
+      Processes and tools that monitor the enterprise's network and users
+      for threats and defend against them.
+    control_safeguards:
+      - cis_safeguard_id: "13.1"
+        title: Security alerts in one place
+        description: >-
+          Security events from across the enterprise are brought together,
+          correlated and analysed in one place, typically a SIEM with correlation
+          rules, or an equivalent log-analytics platform with security alerts
+          configured.
+        safeguard_asset_class: NETWORK
+        safeguard_security_function: DETECT
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "13.2"
+        title: Host intrusion detection
+        description: >-
+          Devices run a host-based intrusion-detection agent where that is
+          appropriate and supported.
+        safeguard_asset_class: DEVICES
+        safeguard_security_function: DETECT
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "13.3"
+        title: Network intrusion detection
+        description: >-
+          A network intrusion-detection system, or the equivalent service
+          from a cloud provider, watches the enterprise's network traffic
+          where appropriate.
+        safeguard_asset_class: NETWORK
+        safeguard_security_function: DETECT
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "13.4"
+        title: Traffic filtered between segments
+        description: >-
+          Traffic passing between network segments is filtered where appropriate.
+        safeguard_asset_class: NETWORK
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "13.5"
+        title: Remote devices checked before access
+        description: >-
+          How much a remotely connecting device may reach depends on its state:
+          current anti-malware, settings that meet the enterprise's hardening
+          process, and an up-to-date operating system and applications.
+        safeguard_asset_class: DEVICES
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "13.6"
+        title: Traffic flow logs
+        description: >-
+          Network devices record traffic flows, or the traffic itself, for
+          review and alerting.
+        safeguard_asset_class: NETWORK
+        safeguard_security_function: DETECT
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "13.7"
+        title: Host intrusion prevention
+        description: >-
+          Devices run a host-based intrusion-prevention agent where that is
+          appropriate and supported, for example an EDR client, which detects
+          and responds to threats on the endpoint.
+        safeguard_asset_class: DEVICES
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG3
+      - cis_safeguard_id: "13.8"
+        title: Network intrusion prevention
+        description: >-
+          A network intrusion-prevention system, or the equivalent cloud service,
+          blocks attacks on the network where appropriate.
+        safeguard_asset_class: NETWORK
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG3
+      - cis_safeguard_id: "13.9"
+        title: Access control at the network port
+        description: >-
+          A device must authenticate, by 802.1X, certificates or a similar
+          protocol, and perhaps its user too, before a network port lets it
+          on.
+        safeguard_asset_class: NETWORK
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG3
+      - cis_safeguard_id: "13.10"
+        title: Filtering at the application layer
+        description: >-
+          Traffic is filtered at the application layer, by a filtering proxy,
+          application-layer firewall or gateway.
+        safeguard_asset_class: NETWORK
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG3
+      - cis_safeguard_id: "13.11"
+        title: Alert thresholds tuned
+        description: >-
+          The thresholds that raise security alerts are tuned at least monthly.
+        safeguard_asset_class: NETWORK
+        safeguard_security_function: DETECT
+        safeguard_implementation_groups:
+          - IG3
+  - cis_control_id: "14"
+    title: Training the workforce
+    description: >-
+      A programme that makes the workforce security-conscious and skilled
+      enough to reduce the enterprise's cyber risk.
+    control_safeguards:
+      - cis_safeguard_id: "14.1"
+        title: A security awareness programme
+        description: >-
+          The enterprise runs a programme that teaches its workforce to use
+          its devices and data securely, with training on joining and at least
+          yearly after that. The content is reviewed yearly and after any
+          major change.
+        safeguard_asset_class: DOCUMENTATION
+        safeguard_security_function: GOVERN
+        safeguard_implementation_groups:
+          - IG1
+          - IG2
+          - IG3
+      - cis_safeguard_id: "14.2"
+        title: Spotting social engineering
+        description: >-
+          The workforce is trained to recognise social-engineering attacks:
+          phishing, fraudulent email from a supposed executive or supplier,
+          pretexting and tailgating.
+        safeguard_asset_class: USERS
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG1
+          - IG2
+          - IG3
+      - cis_safeguard_id: "14.3"
+        title: Good authentication habits
+        description: >-
+          The workforce is trained in authentication practice, such as multi-factor
+          authentication, choosing passwords and looking after credentials.
+        safeguard_asset_class: USERS
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG1
+          - IG2
+          - IG3
+      - cis_safeguard_id: "14.4"
+        title: Handling data properly
+        description: >-
+          The workforce is trained to recognise sensitive data and to store,
+          send, archive and destroy it properly, and in clear-screen and clear-desk
+          habits such as locking a screen on leaving and wiping whiteboards
+          after meetings.
+        safeguard_asset_class: USERS
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG1
+          - IG2
+          - IG3
+      - cis_safeguard_id: "14.5"
+        title: How data leaks by accident
+        description: >-
+          The workforce is trained in the ways data gets exposed by mistake,
+          such as sending it to the wrong person, losing a portable device
+          or publishing it to the wrong audience.
+        safeguard_asset_class: USERS
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG1
+          - IG2
+          - IG3
+      - cis_safeguard_id: "14.6"
+        title: Recognising and reporting incidents
+        description: >-
+          The workforce is trained to recognise a possible security incident
+          and to report it.
+        safeguard_asset_class: USERS
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG1
+          - IG2
+          - IG3
+      - cis_safeguard_id: "14.7"
+        title: Noticing missing updates
+        description: >-
+          The workforce is trained to check whether their devices are missing
+          software updates, and to tell IT when they are or when an automated
+          process or tool fails.
+        safeguard_asset_class: USERS
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG1
+          - IG2
+          - IG3
+      - cis_safeguard_id: "14.8"
+        title: The risks of insecure networks
+        description: >-
+          The workforce is trained in the dangers of insecure networks, whether
+          working over them or sending the enterprise's data across them,
+          and remote workers in setting up their home networks securely.
+        safeguard_asset_class: USERS
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG1
+          - IG2
+          - IG3
+      - cis_safeguard_id: "14.9"
+        title: Training for particular roles
+        description: >-
+          People in particular roles get security training for that role,
+          such as secure administration for IT staff, common web vulnerabilities
+          for developers and advanced social-engineering awareness for prominent
+          roles.
+        safeguard_asset_class: USERS
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+  - cis_control_id: "15"
+    title: Managing service providers
+    description: >-
+      A process for assessing the providers that hold the enterprise's sensitive
+      data or run its important platforms and processes, so that they protect
+      them properly.
+    control_safeguards:
+      - cis_safeguard_id: "15.1"
+        title: A record of service providers
+        description: >-
+          The enterprise keeps a record of all its known service providers,
+          with each one's classification and a contact person inside the enterprise,
+          and reviews it yearly and after any major change.
+        safeguard_asset_class: USERS
+        safeguard_security_function: IDENTIFY
+        safeguard_implementation_groups:
+          - IG1
+          - IG2
+          - IG3
+      - cis_safeguard_id: "15.2"
+        title: A service-provider policy
+        description: >-
+          A written policy covers how providers are classified, recorded,
+          assessed, monitored and retired, and is reviewed yearly and after
+          any major change.
+        safeguard_asset_class: DOCUMENTATION
+        safeguard_security_function: GOVERN
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "15.3"
+        title: Providers classified
+        description: >-
+          Each provider is classified by factors such as the sensitivity and
+          volume of the data it handles, the availability it must give, the
+          regulations that apply, and its inherent and residual risk. Classifications
+          are reviewed yearly and after any major change.
+        safeguard_asset_class: USERS
+        safeguard_security_function: GOVERN
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "15.4"
+        title: Security terms in provider contracts
+        description: >-
+          Contracts with providers carry security requirements consistent
+          with the policy, such as a minimum security programme, incident
+          and breach notification, encryption and data disposal, and are reviewed
+          yearly for gaps.
+        safeguard_asset_class: DOCUMENTATION
+        safeguard_security_function: GOVERN
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "15.5"
+        title: Providers assessed
+        description: >-
+          Providers are assessed as the policy requires, in a depth that matches
+          their classification, by means such as standard assurance reports,
+          questionnaires or other rigorous checks, at least yearly and on
+          each new or renewed contract.
+        safeguard_asset_class: USERS
+        safeguard_security_function: GOVERN
+        safeguard_implementation_groups:
+          - IG3
+      - cis_safeguard_id: "15.6"
+        title: Providers monitored
+        description: >-
+          Providers are monitored as the policy requires, through periodic
+          reassessment, their release notes and watching for their data on
+          the dark web.
+        safeguard_asset_class: DATA
+        safeguard_security_function: GOVERN
+        safeguard_implementation_groups:
+          - IG3
+      - cis_safeguard_id: "15.7"
+        title: Providers retired safely
+        description: >-
+          When a provider's service ends, its user and service accounts are
+          deactivated, data flows are stopped and the enterprise's data held
+          in its systems is disposed of securely.
+        safeguard_asset_class: DATA
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG3
+  - cis_control_id: "16"
+    title: Secure applications
+    description: >-
+      Managing the security of software the enterprise develops, hosts or
+      buys throughout its life, so that weaknesses are prevented, found and
+      fixed before they cause harm.
+    control_safeguards:
+      - cis_safeguard_id: "16.1"
+        title: A written secure-development process
+        description: >-
+          A written process covers standards for secure design, secure coding
+          practice, the training of developers, how vulnerabilities are managed,
+          how third-party code is kept safe and how security is tested. It
+          is reviewed yearly and after any major change.
+        safeguard_asset_class: DOCUMENTATION
+        safeguard_security_function: GOVERN
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "16.2"
+        title: A process for reported vulnerabilities
+        description: >-
+          A written process takes in and handles reports of vulnerabilities
+          in the enterprise's software, including reports from outside: a
+          handling policy, a responsible party, and steps for intake, assignment,
+          fixing and retesting, tracked with severity ratings and timing metrics.
+          It is reviewed yearly and after any major change, and a developer
+          of third-party software publishes it for outside reporters.
+        safeguard_asset_class: DOCUMENTATION
+        safeguard_security_function: GOVERN
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "16.3"
+        title: Root causes of vulnerabilities
+        description: >-
+          When vulnerabilities are reviewed, the team looks for the underlying
+          causes in the code, so that it fixes the pattern and not only the
+          instance.
+        safeguard_asset_class: SOFTWARE
+        safeguard_security_function: DETECT
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "16.4"
+        title: A record of third-party components
+        description: >-
+          The enterprise keeps a list of the third-party components it uses
+          in development and plans to use, a software bill of materials, with
+          the risk each carries, and checks it at least monthly for changes
+          and continued support.
+        safeguard_asset_class: SOFTWARE
+        safeguard_security_function: IDENTIFY
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "16.5"
+        title: Current, trusted components
+        description: >-
+          Third-party components are kept up to date, come from sources the
+          enterprise trusts or are checked for vulnerabilities first, and
+          are chosen where possible from established frameworks and libraries
+          with adequate security.
+        safeguard_asset_class: SOFTWARE
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "16.6"
+        title: A severity scale for application vulnerabilities
+        description: >-
+          A severity scale, and the process around it, rank application vulnerabilities
+          so that the worst are fixed first, and set the minimum security
+          a release must meet. Both are reviewed yearly.
+        safeguard_asset_class: DOCUMENTATION
+        safeguard_security_function: GOVERN
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "16.7"
+        title: Standard hardening for application infrastructure
+        description: >-
+          Servers, databases, web servers, containers and the platform and
+          software services under an application follow standard, industry-recommended
+          hardening templates, and the enterprise's own software may not weaken
+          them.
+        safeguard_asset_class: SOFTWARE
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "16.8"
+        title: Production kept apart
+        description: >-
+          Production systems and non-production systems run in separate environments.
+        safeguard_asset_class: NETWORK
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "16.9"
+        title: Developers trained in secure coding
+        description: >-
+          Everyone who develops software is trained at least yearly to write
+          secure code for the environment and role they work in, in a way
+          that builds a security culture in the team.
+        safeguard_asset_class: USERS
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "16.10"
+        title: Secure design principles
+        description: >-
+          Applications are designed on principles such as least privilege,
+          checking every operation a user makes and never trusting input,
+          with explicit checks on its size, type and range, and keeping the
+          attack surface small by removing unneeded ports, services, programs
+          and default accounts.
+        safeguard_asset_class: SOFTWARE
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "16.11"
+        title: Vetted components for security functions
+        description: >-
+          For security functions such as identity, encryption and logging,
+          applications use components that have been vetted, such as the operating
+          system's own mechanisms and standard, well-reviewed encryption algorithms,
+          rather than code of their own.
+        safeguard_asset_class: SOFTWARE
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "16.12"
+        title: Static and dynamic code analysis
+        description: >-
+          Tools that analyse code, both static and at run time, check throughout
+          the application's life that secure coding practice is followed.
+        safeguard_asset_class: SOFTWARE
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG3
+      - cis_safeguard_id: "16.13"
+        title: Application penetration tests
+        description: >-
+          Applications are penetration-tested, and for critical ones authenticated
+          testing by a skilled tester finds business-logic flaws that scanners
+          miss.
+        safeguard_asset_class: SOFTWARE
+        safeguard_security_function: DETECT
+        safeguard_implementation_groups:
+          - IG3
+      - cis_safeguard_id: "16.14"
+        title: Threat modelling
+        description: >-
+          Trained people examine an application's design before any code is
+          written, mapping the application, its architecture and its infrastructure
+          to find weaknesses at every point of entry and level of access.
+        safeguard_asset_class: SOFTWARE
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG3
+  - cis_control_id: "17"
+    title: Responding to incidents
+    description: >-
+      A programme that builds and maintains the ability to prepare for, detect
+      and respond quickly to an attack, through policies, plans, procedures,
+      roles, training and communications.
+    control_safeguards:
+      - cis_safeguard_id: "17.1"
+        title: Someone in charge of incidents
+        description: >-
+          One named person, with at least one deputy, manages incident handling,
+          coordinating and documenting response and recovery, whether in-house,
+          through a provider or both, with at least one insider overseeing
+          any provider. The choice is reviewed yearly and after any major
+          change.
+        safeguard_asset_class: USERS
+        safeguard_security_function: RESPOND
+        safeguard_implementation_groups:
+          - IG1
+          - IG2
+          - IG3
+      - cis_safeguard_id: "17.2"
+        title: Who to tell about an incident
+        description: >-
+          The enterprise keeps contact details for everyone who must hear
+          of a security incident, such as staff, vendors, law enforcement,
+          the cyber insurer, government bodies and information-sharing partners,
+          and verifies them yearly.
+        safeguard_asset_class: DOCUMENTATION
+        safeguard_security_function: GOVERN
+        safeguard_implementation_groups:
+          - IG1
+          - IG2
+          - IG3
+      - cis_safeguard_id: "17.3"
+        title: How the workforce reports incidents
+        description: >-
+          A written process, available to the whole workforce, says how to
+          report a security incident: how soon, to whom, by what means and
+          with what minimum information. It is reviewed yearly and after any
+          major change.
+        safeguard_asset_class: DOCUMENTATION
+        safeguard_security_function: GOVERN
+        safeguard_implementation_groups:
+          - IG1
+          - IG2
+          - IG3
+      - cis_safeguard_id: "17.4"
+        title: A written incident response process
+        description: >-
+          A written process says who does what in an incident, what rules
+          and obligations apply, and how the enterprise communicates. It is
+          reviewed yearly and after any major change.
+        safeguard_asset_class: DOCUMENTATION
+        safeguard_security_function: GOVERN
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "17.5"
+        title: Incident roles assigned
+        description: >-
+          Key incident-response roles are assigned, to responders and analysts
+          and to the legal, IT, security, facilities, press and human-resources
+          functions, and reviewed yearly and after any major change.
+        safeguard_asset_class: USERS
+        safeguard_security_function: RESPOND
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "17.6"
+        title: Channels for incident communication
+        description: >-
+          The enterprise decides in advance its primary and backup channels
+          for communicating during an incident, such as phone, email, secure
+          chat or letters, remembering that some, like email, may be compromised.
+          The choice is reviewed yearly and after any major change.
+        safeguard_asset_class: USERS
+        safeguard_security_function: RESPOND
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "17.7"
+        title: Incident exercises
+        description: >-
+          At least yearly, the people involved in incident response rehearse
+          realistic scenarios that test communication channels, decision-making
+          and workflows.
+        safeguard_asset_class: USERS
+        safeguard_security_function: RECOVER
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "17.8"
+        title: Lessons after an incident
+        description: >-
+          After an incident the enterprise reviews what happened, draws lessons
+          and follows them up so that it does not recur.
+        safeguard_asset_class: USERS
+        safeguard_security_function: RECOVER
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "17.9"
+        title: What counts as an incident
+        description: >-
+          The enterprise defines thresholds that tell an incident from a mere
+          event, across cases such as unusual activity, a vulnerability or
+          weakness, a data breach or a privacy incident, and reviews them
+          yearly and after any major change.
+        safeguard_asset_class: DOCUMENTATION
+        safeguard_security_function: RECOVER
+        safeguard_implementation_groups:
+          - IG3
+  - cis_control_id: "18"
+    title: Testing the defences as an attacker would
+    description: >-
+      Testing how well the enterprise's defences hold up by finding and exploiting
+      weaknesses in people, processes and technology, as an attacker would.
+    control_safeguards:
+      - cis_safeguard_id: "18.1"
+        title: A penetration-testing programme
+        description: >-
+          A programme sized to the enterprise sets what its penetration tests
+          cover, from the network and web applications to APIs, hosted services
+          and the premises, and how often they run. It also sets what is off
+          limits, such as the hours allowed and the attacks ruled out, who
+          the contacts are, how findings reach the people who fix them, and
+          how each test is reviewed afterwards.
+        safeguard_asset_class: DOCUMENTATION
+        safeguard_security_function: GOVERN
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "18.2"
+        title: External penetration tests
+        description: >-
+          A qualified party tests the enterprise from outside at least yearly,
+          as the programme requires, starting with reconnaissance for information
+          an attacker could exploit, with or without inside knowledge of the
+          systems.
+        safeguard_asset_class: NETWORK
+        safeguard_security_function: DETECT
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "18.3"
+        title: Findings fixed
+        description: >-
+          Findings from penetration tests are fixed under the enterprise's
+          remediation process, with a timeline and effort set by each finding's
+          impact and priority.
+        safeguard_asset_class: NETWORK
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG2
+          - IG3
+      - cis_safeguard_id: "18.4"
+        title: Defences checked after each test
+        description: >-
+          After each penetration test the enterprise confirms its security
+          measures held, and where needed adjusts its rules and tooling so
+          that they catch the techniques the testers used.
+        safeguard_asset_class: NETWORK
+        safeguard_security_function: PROTECT
+        safeguard_implementation_groups:
+          - IG3
+      - cis_safeguard_id: "18.5"
+        title: Internal penetration tests
+        description: >-
+          The enterprise is tested from inside at least yearly, as the programme
+          requires, with or without inside knowledge of the systems.
+        safeguard_asset_class: NETWORK
+        safeguard_security_function: DETECT
+        safeguard_implementation_groups:
+          - IG3

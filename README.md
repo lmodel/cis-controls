@@ -33,7 +33,7 @@ The schema models the structure of the [CIS Critical Security Controls, Version 
   * the Implementation Groups that include it (`CisImplementationGroup`): IG1 holds 56 Safeguards, IG2 130 and IG3 all 153, since each group includes the one before it.
 * **The edition** (`CisControls`): one edition of the CIS Controls as a single document that holds all of these.
 
-The schema carries none of CIS's text: no Control or Safeguard title or description. It names each element by its number, and records which Safeguards belong to which Control and the three properties above.
+The schema carries none of CIS's text. It names each element by its number, and records which Safeguards belong to which Control and the three properties above. The edition file, [src/cis_controls/data/cis-controls-8.1.2.yaml](src/cis_controls/data/cis-controls-8.1.2.yaml), holds the whole edition as one `CisControls` document, and gives each Control and Safeguard a title and a one- or two-sentence description in this project's own words, written from what each requires. CIS's titles and text are in the guide. `tests/test_edition.py` holds the file to the schema and to the counts above.
 
 The schema header's `version` is 8.1.2, and its `source` is CIS's page for Version 8.1. Release tags number the schema's versions. CIS publishes no openly licensed, machine-readable form of the Controls, so the repository holds no copy of them. A weekly workflow reads CIS's pages and opens an issue when they name a newer version or no longer name the pinned one.
 
@@ -54,7 +54,7 @@ The schema names no mapping from a Safeguard to any other framework's elements. 
 
 ## Not modelled here
 
-* CIS's text: the titles and descriptions of the Controls and Safeguards, and the guide's overviews, explanations, procedures and glossary.
+* CIS's text: its titles and descriptions of the Controls and Safeguards, and the guide's overviews, explanations, procedures and glossary. The edition file describes each Control and Safeguard in this project's words instead.
 * CIS's mappings from the Safeguards to other frameworks, and its companion guides.
 * The subclasses into which CIS's guide divides each asset class. A Safeguard names only the class.
 * Earlier versions of the CIS Controls.
@@ -67,6 +67,7 @@ The schema names no mapping from a Safeguard to any other framework's elements. 
 * [project/](project/): generated project files (do not edit them)
 * [scripts/](scripts/): the upstream watch
 * [src/cis_controls/schema/](src/cis_controls/schema): the LinkML schema, `cis_controls.yaml` (edit this)
+* [src/cis_controls/data/](src/cis_controls/data): the edition file, `cis-controls-8.1.2.yaml`
 * [src/cis_controls/datamodel/](src/cis_controls/datamodel): the generated Python datamodel
 * [tests/](tests/): Python tests, with example data in [data/](tests/data) and the neighbours' adapt copies in [neighbours/](tests/neighbours)
 * [website/](website/): the Astro Starlight site built from the README, `docs/`, the schema's pages and the knowledge bundle
@@ -97,7 +98,7 @@ The schema and the code are under the Apache License 2.0 ([LICENSE](LICENSE)).
 
 The knowledge bundle in `.lokf/knowledge/` is under the Creative Commons Attribution 4.0 International licence (CC BY 4.0), as its `index.md` declares.
 
-CIS licenses the CIS Controls under CC BY-NC-ND 4.0. That licence lets anyone share CIS's guide unchanged, for non-commercial purposes and with credit to CIS. It lets no one share a changed version, and CIS requires its prior approval for commercial use. So this repository carries no CIS text, and the schema's `title` and `description` slots are for text you have the right to use: your own words, or CIS's under CIS's terms. The Apache License does not extend to CIS's text. [NOTICE](NOTICE) says more.
+CIS licenses the CIS Controls under CC BY-NC-ND 4.0. That licence lets anyone share CIS's guide unchanged, for non-commercial purposes and with credit to CIS. It lets no one share a changed version, and CIS requires its prior approval for commercial use. So this repository carries no CIS text, copied or paraphrased. The titles and descriptions in the edition file are this project's own words, written from what each Control and Safeguard requires, and the schema's `title` and `description` slots are for text you have the right to use. The Apache License does not extend to CIS's text. [NOTICE](NOTICE) states the position.
 
 This is not an official CIS project, and its use implies no endorsement by CIS.
 

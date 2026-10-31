@@ -2,6 +2,7 @@
 
 ## 2026-10-31
 
+* **Changed**: the 18 Control concepts and the licence policy now point to the edition file, `src/cis_controls/data/cis-controls-8.1.2.yaml`, which describes each Control and Safeguard in the project's own words; no Control's counts changed.
 * **Prose**: reworded 9 concept bodies in plain English, splitting long sentences and blocks. No fact, link, number or frontmatter changed.
 * **Changed**: `tests/test_data.py` now checks that no example repeats a Control or Safeguard identifier, so the validate-data playbook and the test-data concept say it checks all three rules.
 * **Changed**: the security policy now names the three assets a release carries, as SECURITY.md does.

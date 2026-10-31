@@ -8,15 +8,15 @@ its own terms, described below.
 The CIS Critical Security Controls
 ----------------------------------
 
-src/cis_controls/schema/*.yaml, src/cis_controls/datamodel/ and project/
-model the structure of the CIS Critical Security Controls (CIS Controls),
-Version 8.1, as the Center for Internet Security, Inc. (CIS) revised it in
-March 2025, when the guide's pages were labelled v8.1.2:
-https://www.cisecurity.org/controls/v8-1, read on 2026-10-30. They are
+src/cis_controls/schema/*.yaml, src/cis_controls/datamodel/, project/ and
+src/cis_controls/data/cis-controls-8.1.2.yaml model the structure of the
+CIS Critical Security Controls (CIS Controls), Version 8.1, as the Center
+for Internet Security, Inc. (CIS) revised it in March 2025, labeling the
+guide's pages v8.1.2: https://www.cisecurity.org/controls/v8-1. They are
 this project's work, written in its own words. They are not CIS's, and
-their use does not imply endorsement by CIS. CIS Critical Security
-Controls and CIS Controls are registered trademarks of CIS, named here
-only to say which framework is modelled.
+their use does not imply endorsement by CIS.
+
+CIS Critical Security Controls and CIS Controls are registered trademarks of CIS.
 
 CIS licenses the CIS Controls under the Creative Commons
 Attribution-NonCommercial-NoDerivatives 4.0 International licence
@@ -24,18 +24,34 @@ Attribution-NonCommercial-NoDerivatives 4.0 International licence
 That licence lets anyone copy and share CIS's guide unchanged, for
 non-commercial purposes, with credit to CIS and a link to the licence. It
 does not let anyone share a changed or adapted version, and CIS requires
-its prior approval for any commercial use. So this repository carries no
-CIS text: no Control or Safeguard title or description, and none of the
-guide's overviews, explanations or procedures. It names each Control and
-Safeguard by its number and records only the structure the guide sets
-out: which Safeguards belong to which Control, and each Safeguard's asset
-class, security function and Implementation Groups.
+its prior approval for any commercial use. Therefore, this repository
+contains no text of CIS's: no title, description, overview, explanation
+or procedure from the guide, copied or paraphrased.
 
-The schema's text slots, such as title and description, are optional and
-hold whatever their user writes into them. Fill them only with text you
-have the right to use: your own words, or CIS's text under CIS's licence
-and any approval CIS has given you. The Apache License of this repository
-does not cover CIS's text.
+What the repository carries is fact, the structure the guide sets out, and
+this project's own words about it. The edition file,
+src/cis_controls/data/cis-controls-8.1.2.yaml, names each Control and
+Safeguard by its CIS number, records which Safeguards belong to which
+Control and each Safeguard's asset class, security function and
+Implementation Groups, and gives every Control and Safeguard a title and
+a description that this project wrote. Each description was written from
+what the Control or Safeguard requires, in one or two sentences, not by
+rewording CIS's sentences; each title is this project's own name for the
+element, never CIS's. Copyright protects the way CIS expressed the
+Controls, not the methods, procedures and facts they describe, and CC
+BY-NC-ND 4.0 restricts nothing that copyright does not (its section 8(a)).
+
+The project nevertheless takes the stricter reading that European law
+allows, under which even a short extract can be protected when it shows
+its author's own choices, so it reuses no title or phrase of CIS's. CIS's
+guide remains the authority on what the CIS Controls say; this project's
+words describe the Controls and do not replace them.
+
+The schema's text slots, title and description, hold whatever their user
+writes into them. Fill them only with text you have the right to use: your
+own words, this project's under its licence, or CIS's text under CIS's
+licence and any approval CIS has given you. The Apache License of this
+repository does not cover CIS's text.
 
 linkml-project-copier
 ---------------------
