@@ -29,7 +29,7 @@ sources:
     title: the tool.lokf table
 generated:
   by: process:ktl-librarian
-  at: "2026-10-30T23:47:49Z"
+  at: "2026-10-31T00:10:19Z"
 status: draft
 ---
 
@@ -42,8 +42,8 @@ The schema's comments say that CIS licenses the CIS Controls under CC BY-NC-ND 4
 ## Classes
 
 - **`CisControls`** is the tree root: one edition of the CIS Controls as a whole. It requires `cis_version`, such as `8.1` or `8.1.2`, and `cis_controls`, which holds at least one Control.
-- **`CisControl`** is one Control. It requires `cis_control_id`, such as `CIS-4`, and it may hold `title`, `description` and its Safeguards in `control_safeguards`.
-- **`CisSafeguard`** is one Safeguard. It requires `cis_safeguard_id`, such as `CIS-4.1`, `safeguard_asset_class`, `safeguard_security_function` and `safeguard_implementation_groups`, and it may hold `title` and `description`.
+- **`CisControl`** is one Control. It requires `cis_control_id`, such as `"4"`, and it may hold `title`, `description` and its Safeguards in `control_safeguards`.
+- **`CisSafeguard`** is one Safeguard. It requires `cis_safeguard_id`, such as `"4.1"`, `safeguard_asset_class`, `safeguard_security_function` and `safeguard_implementation_groups`, and it may hold `title` and `description`.
 
 The list of Implementation Groups holds one to three values and must hold `IG3`, because Implementation Group 3 includes every Safeguard. The schema's comment says that the groups are cumulative, that the validator cannot check the rest of that rule, and that `tests/test_data.py` checks it over the examples.
 
@@ -55,8 +55,8 @@ The list of Implementation Groups holds one to three values and must hold `IG3`,
 
 Each value has a title in CIS's spelling, such as `Devices`. Two types hold the forms of the identifiers:
 
-- `cis_control_identifier` is `CIS-` and a number from 1 to 18.
-- `cis_safeguard_identifier` is `CIS-`, the Control's number, a dot and the Safeguard's number.
+- `cis_control_identifier` is a number from 1 to 18, as CIS writes it.
+- `cis_safeguard_identifier` is the Control's number, a dot and the Safeguard's number, as CIS writes it.
 
 `title` and `description` carry the IRIs `schema:name` and `schema:description`, and their descriptions say that they hold text their user has the right to use.
 

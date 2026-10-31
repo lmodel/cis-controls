@@ -2,8 +2,8 @@
 type: CisControl
 id: https://w3id.org/lmodel/cis-controls/knowledge/controls/control-11
 title: Control 11
-description: "Control 11 of the CIS Controls, Version 8.1, `CIS-11` in the schema, named by its number alone: it holds 5 Safeguards, `CIS-11.1` to `CIS-11.5`, of which 4 are in Implementation Group 1, all 5 in Implementation Group 2 and all 5 in Implementation Group 3."
-cis_control_id: CIS-11
+description: "Control 11 of the CIS Controls, Version 8.1, named by its number alone: it holds 5 Safeguards, 11.1 to 11.5, of which 4 are in Implementation Group 1, all 5 in Implementation Group 2 and all 5 in Implementation Group 3."
+cis_control_id: "11"
 resource: https://www.cisecurity.org/controls/v8-1
 definedBy:
   - https://w3id.org/lmodel/cis-controls/knowledge/references/cis-controls-guide
@@ -15,13 +15,13 @@ sources:
     title: the guide this page offers, v8.1.2 of March 2025, read on 2026-10-30
 generated:
   by: process:ktl-librarian
-  at: "2026-10-30T23:47:49Z"
+  at: "2026-10-31T00:10:39Z"
 status: draft
 ---
 
-# Control 11 (CIS-11)
+# Control 11
 
-Control 11 is one of the 18 Controls of the CIS Controls, Version 8.1. CIS's guide, at its v8.1.2 revision, lists 5 Safeguards under it, numbered 11.1 to 11.5.[^cis-v8-1] The schema names them `CIS-11.1` to `CIS-11.5`. Of these, 4 are in Implementation Group 1, all 5 in Implementation Group 2 and all 5 in Implementation Group 3. Its Safeguards are about the asset classes Data (4) and Documentation (1).
+Control 11 is one of the 18 Controls of the CIS Controls, Version 8.1. CIS's guide, at its v8.1.2 revision, lists 5 Safeguards under it, numbered 11.1 to 11.5.[^cis-v8-1] The schema uses those numbers as their identifiers. Of the Safeguards, 4 are in Implementation Group 1, all 5 in Implementation Group 2 and all 5 in Implementation Group 3. Its Safeguards are about the asset classes Data (4) and Documentation (1).
 
 This bundle leaves out the Control's name, its description and the text of its Safeguards, because CIS licenses that text under CC BY-NC-ND 4.0. CIS's guide gives them, and [the guide's reference](../references/cis-controls-guide.md) says where to find it.
 

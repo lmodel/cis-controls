@@ -2,8 +2,8 @@
 type: CisControl
 id: https://w3id.org/lmodel/cis-controls/knowledge/controls/control-16
 title: Control 16
-description: "Control 16 of the CIS Controls, Version 8.1, `CIS-16` in the schema, named by its number alone: it holds 14 Safeguards, `CIS-16.1` to `CIS-16.14`, of which none is in Implementation Group 1, 11 in Implementation Group 2 and all 14 in Implementation Group 3."
-cis_control_id: CIS-16
+description: "Control 16 of the CIS Controls, Version 8.1, named by its number alone: it holds 14 Safeguards, 16.1 to 16.14, of which none is in Implementation Group 1, 11 in Implementation Group 2 and all 14 in Implementation Group 3."
+cis_control_id: "16"
 resource: https://www.cisecurity.org/controls/v8-1
 definedBy:
   - https://w3id.org/lmodel/cis-controls/knowledge/references/cis-controls-guide
@@ -15,13 +15,13 @@ sources:
     title: the guide this page offers, v8.1.2 of March 2025, read on 2026-10-30
 generated:
   by: process:ktl-librarian
-  at: "2026-10-30T23:47:49Z"
+  at: "2026-10-31T00:10:39Z"
 status: draft
 ---
 
-# Control 16 (CIS-16)
+# Control 16
 
-Control 16 is one of the 18 Controls of the CIS Controls, Version 8.1. CIS's guide, at its v8.1.2 revision, lists 14 Safeguards under it, numbered 16.1 to 16.14.[^cis-v8-1] The schema names them `CIS-16.1` to `CIS-16.14`. Of these, none is in Implementation Group 1, 11 in Implementation Group 2 and all 14 in Implementation Group 3. Its Safeguards are about the asset classes Software (9), Documentation (3), Network (1) and Users (1).
+Control 16 is one of the 18 Controls of the CIS Controls, Version 8.1. CIS's guide, at its v8.1.2 revision, lists 14 Safeguards under it, numbered 16.1 to 16.14.[^cis-v8-1] The schema uses those numbers as their identifiers. Of the Safeguards, none is in Implementation Group 1, 11 in Implementation Group 2 and all 14 in Implementation Group 3. Its Safeguards are about the asset classes Software (9), Documentation (3), Network (1) and Users (1).
 
 This bundle leaves out the Control's name, its description and the text of its Safeguards, because CIS licenses that text under CC BY-NC-ND 4.0. CIS's guide gives them, and [the guide's reference](../references/cis-controls-guide.md) says where to find it.
 

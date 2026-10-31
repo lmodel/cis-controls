@@ -1,5 +1,9 @@
 # Change Log
 
+## 2026-10-31
+
+* **Changed**: the Controls and Safeguards are named by CIS's own numbers, such as "4" and "4.1", as the schema now names them.
+
 ## 2026-10-30
 
 * **Prose**: reworded 35 concept bodies in plain English. No fact, link, number or frontmatter changed.
