@@ -1,7 +1,7 @@
 # Fails at: /safeguard_implementation_groups
 # Invalid: Implementation Group 3 includes every Safeguard, so a list
 # without IG3 fails.
-cis_safeguard_id: CIS-1.1
+cis_safeguard_id: "1.1"
 safeguard_asset_class: DEVICES
 safeguard_security_function: IDENTIFY
 safeguard_implementation_groups: [IG1, IG2]

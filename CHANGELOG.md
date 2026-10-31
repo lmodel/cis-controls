@@ -17,7 +17,7 @@ The `v0.0.0` tag is a baseline, not a release: it marks where versioning starts 
 
 ### Changed
 
-- **Classes, enums and keys carry the schema's own prefix**: `CisControls`, `CisControl`, `CisSafeguard`, `CisImplementationGroup`, `CisAssetClass` and `CisSecurityFunction`, with the identifiers in `cis_control_id` and `cis_safeguard_id`, so none shares a name with LOKF or another lmodel schema.
+- **Classes, enums and keys carry the schema's own prefix**: `CisControls`, `CisControl`, `CisSafeguard`, `CisImplementationGroup`, `CisAssetClass` and `CisSecurityFunction`, with CIS's own numbers, such as `"4"` and `"4.1"`, as the identifiers in `cis_control_id` and `cis_safeguard_id`, so none shares a name with LOKF or another lmodel schema.
 - **The schema's name is `cis_controls`, as its file and package are, and the Python project's name is `cis-controls-linkml`.** PyPI publishing stays off.
 
 ### Removed

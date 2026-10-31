@@ -26,8 +26,8 @@ CIS Critical Security Controls v8.1 (LinkML)
 
 The schema models the structure of the [CIS Critical Security Controls, Version 8.1](https://www.cisecurity.org/controls/v8-1), which the Center for Internet Security (CIS) publishes, as CIS revised it in March 2025. The guide's pages label that revision v8.1.2. The schema holds:
 
-* **Controls** (`CisControl`): the 18 Controls, each named by its number, as `CIS-1` to `CIS-18`, and holding its Safeguards.
-* **Safeguards** (`CisSafeguard`): the 153 Safeguards, each named by its Control's number and its own, such as `CIS-1.1`. Each Safeguard has:
+* **Controls** (`CisControl`): the 18 Controls, each named by its number, `"1"` to `"18"`, and holding its Safeguards.
+* **Safeguards** (`CisSafeguard`): the 153 Safeguards, each named by its Control's number and its own, such as `"1.1"`. Each Safeguard has:
   * one asset class (`CisAssetClass`): Devices, Software, Data, Users, Network or Documentation;
   * one security function (`CisSecurityFunction`): one of the six functions of the NIST Cybersecurity Framework (CSF) 2.0, Govern, Identify, Protect, Detect, Respond or Recover;
   * the Implementation Groups that include it (`CisImplementationGroup`): IG1 holds 56 Safeguards, IG2 130 and IG3 all 153, since each group includes the one before it.

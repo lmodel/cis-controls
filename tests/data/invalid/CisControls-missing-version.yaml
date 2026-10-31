@@ -1,4 +1,4 @@
 # Fails at: /
 # Invalid: an edition names its version.
 cis_controls:
-  - cis_control_id: CIS-1
+  - cis_control_id: "1"

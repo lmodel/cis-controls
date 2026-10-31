@@ -14,9 +14,10 @@ Element names are the schema's own. Classes and enums carry the `Cis` prefix
 (`CisControl`, `CisSafeguard`, `CisAssetClass`) so they can be imported
 beside other vocabularies. Slots are snake_case. The identifiers sit in
 `cis_control_id` and `cis_safeguard_id`, and the fields of a Safeguard start
-with `safeguard_`. An identifier is CIS's number with `CIS-` before it, such
-as `CIS-4` for Control 4 and `CIS-4.1` for Safeguard 4.1, because YAML would
-read a bare `1.10` as the number 1.1. The enum values are upper case, such as
+with `safeguard_`. An identifier is CIS's own number as a string, such as
+`"4"` for Control 4 and `"4.1"` for Safeguard 4.1, so data joins with CIS's
+guide and the crosswalks that cite it. Quote it in YAML, which reads an
+unquoted `1.10` as the number 1.1. The enum values are upper case, such as
 `IG1`, `DEVICES` and `GOVERN`, each with CIS's spelling as its title. Every
 element is in the `cis_controls:` namespace
 (`https://w3id.org/lmodel/cis-controls/`).

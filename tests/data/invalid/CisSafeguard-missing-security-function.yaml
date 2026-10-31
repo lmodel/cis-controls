@@ -1,5 +1,5 @@
 # Fails at: /
 # Invalid: every Safeguard serves one security function.
-cis_safeguard_id: CIS-1.1
+cis_safeguard_id: "1.1"
 safeguard_asset_class: DEVICES
 safeguard_implementation_groups: [IG1, IG2, IG3]

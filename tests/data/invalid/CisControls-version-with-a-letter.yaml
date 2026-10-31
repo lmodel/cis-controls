@@ -3,4 +3,4 @@
 # without the v that CIS writes before it.
 cis_version: v8.1
 cis_controls:
-  - cis_control_id: CIS-1
+  - cis_control_id: "1"

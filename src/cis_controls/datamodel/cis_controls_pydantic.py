@@ -127,27 +127,26 @@ linkml_meta = LinkMLMeta({'annotations': {'cis_site_version': {'tag': 'cis_site_
      'title': 'CIS Critical Security Controls',
      'types': {'cis_control_identifier': {'base': 'str',
                                           'description': "A Control's identifier: "
-                                                         'CIS, a hyphen and the '
-                                                         "Control's number from 1 "
-                                                         'to 18, such as CIS-4 for '
-                                                         'Control 4.',
+                                                         'its number from 1 to 18, '
+                                                         'as CIS writes it, such '
+                                                         'as 4 for Control 4.',
                                           'from_schema': 'https://w3id.org/lmodel/cis-controls',
                                           'name': 'cis_control_identifier',
-                                          'pattern': '^CIS-([1-9]|1[0-8])$',
+                                          'pattern': '^([1-9]|1[0-8])$',
                                           'typeof': 'string',
                                           'uri': 'xsd:string'},
                'cis_safeguard_identifier': {'base': 'str',
                                             'description': "A Safeguard's "
-                                                           'identifier: CIS, a '
-                                                           'hyphen, the number of '
-                                                           'its Control, a dot and '
-                                                           "the Safeguard's number "
-                                                           'within the Control, '
-                                                           'such as CIS-4.1 for '
-                                                           'Safeguard 4.1.',
+                                                           'identifier, as CIS '
+                                                           'writes it: the number '
+                                                           'of its Control, a dot '
+                                                           "and the Safeguard's "
+                                                           'number within the '
+                                                           'Control, such as 4.1 '
+                                                           'for Safeguard 4.1.',
                                             'from_schema': 'https://w3id.org/lmodel/cis-controls',
                                             'name': 'cis_safeguard_identifier',
-                                            'pattern': '^CIS-([1-9]|1[0-8])\\.[1-9][0-9]?$',
+                                            'pattern': '^([1-9]|1[0-8])\\.[1-9][0-9]?$',
                                             'typeof': 'string',
                                             'uri': 'xsd:string'}}} )
 
@@ -266,10 +265,13 @@ class CisControl(ConfiguredBaseModel):
          'from_schema': 'https://w3id.org/lmodel/cis-controls',
          'see_also': ['https://www.cisecurity.org/controls/cis-controls-list']})
 
-    cis_control_id: str = Field(default=..., description="""The Control's identifier, such as CIS-4.""", json_schema_extra = { "linkml_meta": {'comments': ['CIS names a Control by its number alone. The CIS- prefix is '
-                      "this schema's: YAML reads a bare 4 as a number, and a bare 1.10 "
-                      'as the number 1.1, so the prefix keeps every identifier a '
-                      'string and keeps Safeguards 1.1 and 1.10 apart.'],
+    cis_control_id: str = Field(default=..., description="""The Control's identifier, its number, such as 4.""", json_schema_extra = { "linkml_meta": {'comments': ["The identifier is CIS's own number, so data joins with CIS's "
+                      'guide and with the crosswalks that cite it without a '
+                      'translation. It is a string, so quote it in YAML: YAML reads an '
+                      'unquoted 4 as a number and an unquoted 1.10 as the number 1.1. '
+                      'The validator rejects either as not a string, but a file loaded '
+                      'into the generated dataclasses without validation would turn '
+                      '1.10 into 1.1.'],
          'domain_of': ['CisControl']} })
     title: Optional[str] = Field(default=None, description="""A name for the Control or Safeguard, in words its user has the right to use.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's title means and carries the same IRI, so "
                       "lokf adapt folds it into LOKF's slot and a knowledge bundle "
@@ -296,7 +298,7 @@ class CisSafeguard(ConfiguredBaseModel):
          'from_schema': 'https://w3id.org/lmodel/cis-controls',
          'see_also': ['https://www.cisecurity.org/controls/cis-controls-list']})
 
-    cis_safeguard_id: str = Field(default=..., description="""The Safeguard's identifier, such as CIS-4.1.""", json_schema_extra = { "linkml_meta": {'comments': ['It starts with the number of the Control that holds the '
+    cis_safeguard_id: str = Field(default=..., description="""The Safeguard's identifier, its number, such as 4.1.""", json_schema_extra = { "linkml_meta": {'comments': ['It starts with the number of the Control that holds the '
                       'Safeguard. The validator cannot check that against the Control '
                       'a Safeguard is listed under; tests/test_data.py checks it over '
                       'the examples.'],

@@ -3,13 +3,13 @@
 --     * Slot: cis_version Description: The edition, as CIS numbers it, such as 8.1, or the revision the guide's pages carry, such as 8.1.2.
 -- # Class: CisControl Description: One of the CIS Controls: a group of Safeguards on one subject, named by its number, such as Control 4.
 --     * Slot: id
---     * Slot: cis_control_id Description: The Control's identifier, such as CIS-4.
+--     * Slot: cis_control_id Description: The Control's identifier, its number, such as 4.
 --     * Slot: title Description: A name for the Control or Safeguard, in words its user has the right to use.
 --     * Slot: description Description: What the Control or Safeguard means to its user, in words its user has the right to use.
 --     * Slot: CisControls_id Description: Autocreated FK slot
 -- # Class: CisSafeguard Description: One Safeguard of a Control: a single action an enterprise takes, named by its Control's number and its own, such as Safeguard 4.1.
 --     * Slot: id
---     * Slot: cis_safeguard_id Description: The Safeguard's identifier, such as CIS-4.1.
+--     * Slot: cis_safeguard_id Description: The Safeguard's identifier, its number, such as 4.1.
 --     * Slot: title Description: A name for the Control or Safeguard, in words its user has the right to use.
 --     * Slot: description Description: What the Control or Safeguard means to its user, in words its user has the right to use.
 --     * Slot: safeguard_asset_class Description: The class of enterprise asset the Safeguard is about.

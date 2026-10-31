@@ -15,13 +15,16 @@ carries none of CIS's text.
 
 `linkml-validate -s src/cis_controls/schema/cis_controls.yaml -C CisSafeguard safeguard.yaml`
 checks a file against the JSON Schema generated from the schema, and
-`tests/test_data.py` holds every example to it.
+`tests/test_data.py` holds every example to it. Quote each identifier, such as
+`"4"` or `"4.1"`: YAML reads an unquoted `4` as a number and an unquoted `1.10`
+as the number 1.1, and the validator rejects both as not a string.
 
 Validate a file before loading it into either model in
 `src/cis_controls/datamodel/`. LinkML 1.12.1 generates models that check
 less:
 
-- The dataclasses check required fields and enum values, but no pattern.
+- The dataclasses check required fields and enum values, but no pattern,
+  and they would read an unquoted `1.10` as Safeguard 1.1.
 - The Pydantic models also check the patterns a field carries itself, such
   as the form of `cis_version`. They do not check the patterns of the two
   identifier types, so a Control or Safeguard identifier goes unchecked.

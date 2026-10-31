@@ -18,8 +18,8 @@
             "description": "One of the CIS Controls: a group of Safeguards on one subject, named by its number, such as Control 4.",
             "properties": {
                 "cis_control_id": {
-                    "description": "The Control's identifier, such as CIS-4.",
-                    "pattern": "^CIS-([1-9]|1[0-8])$",
+                    "description": "The Control's identifier, its number, such as 4.",
+                    "pattern": "^([1-9]|1[0-8])$",
                     "type": "string"
                 },
                 "control_safeguards": {
@@ -93,8 +93,8 @@
             "description": "One Safeguard of a Control: a single action an enterprise takes, named by its Control's number and its own, such as Safeguard 4.1.",
             "properties": {
                 "cis_safeguard_id": {
-                    "description": "The Safeguard's identifier, such as CIS-4.1.",
-                    "pattern": "^CIS-([1-9]|1[0-8])\\.[1-9][0-9]?$",
+                    "description": "The Safeguard's identifier, its number, such as 4.1.",
+                    "pattern": "^([1-9]|1[0-8])\\.[1-9][0-9]?$",
                     "type": "string"
                 },
                 "description": {

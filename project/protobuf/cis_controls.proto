@@ -4,7 +4,7 @@ package cis_controls;
 // version: 8.1.2
 // One of the CIS Controls: a group of Safeguards on one subject, named by its number, such as Control 4.
 message CisControl {
-  // The Control's identifier, such as CIS-4.
+  // The Control's identifier, its number, such as 4.
   string cis_control_id = 1;
   // A name for the Control or Safeguard, in words its user has the right to use.
   string title = 2;
@@ -22,7 +22,7 @@ message CisControls {
 }
 // One Safeguard of a Control: a single action an enterprise takes, named by its Control's number and its own, such as Safeguard 4.1.
 message CisSafeguard {
-  // The Safeguard's identifier, such as CIS-4.1.
+  // The Safeguard's identifier, its number, such as 4.1.
   string cis_safeguard_id = 1;
   // A name for the Control or Safeguard, in words its user has the right to use.
   string title = 2;

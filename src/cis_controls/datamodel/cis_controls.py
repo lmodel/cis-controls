@@ -72,7 +72,7 @@ DEFAULT_ = CIS_CONTROLS
 
 # Types
 class CisControlIdentifier(String):
-    """ A Control's identifier: CIS, a hyphen and the Control's number from 1 to 18, such as CIS-4 for Control 4. """
+    """ A Control's identifier: its number from 1 to 18, as CIS writes it, such as 4 for Control 4. """
     type_class_uri = XSD["string"]
     type_class_curie = "xsd:string"
     type_name = "cis_control_identifier"
@@ -80,7 +80,7 @@ class CisControlIdentifier(String):
 
 
 class CisSafeguardIdentifier(String):
-    """ A Safeguard's identifier: CIS, a hyphen, the number of its Control, a dot and the Safeguard's number within the Control, such as CIS-4.1 for Safeguard 4.1. """
+    """ A Safeguard's identifier, as CIS writes it: the number of its Control, a dot and the Safeguard's number within the Control, such as 4.1 for Safeguard 4.1. """
     type_class_uri = XSD["string"]
     type_class_curie = "xsd:string"
     type_name = "cis_safeguard_identifier"

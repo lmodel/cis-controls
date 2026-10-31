@@ -1,6 +1,6 @@
 # Fails at: /safeguard_asset_class
 # Invalid: the asset class is one of the classes CisAssetClass lists.
-cis_safeguard_id: CIS-1.1
+cis_safeguard_id: "1.1"
 safeguard_asset_class: PEOPLE
 safeguard_security_function: IDENTIFY
 safeguard_implementation_groups: [IG1, IG2, IG3]

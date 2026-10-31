@@ -1,7 +1,7 @@
 # Fails at: /cis_safeguard_id
 # Invalid: a Safeguard identifier names the Safeguard within its Control,
 # not the Control alone.
-cis_safeguard_id: CIS-1
+cis_safeguard_id: "1"
 safeguard_asset_class: DEVICES
 safeguard_security_function: IDENTIFY
 safeguard_implementation_groups: [IG1, IG2, IG3]

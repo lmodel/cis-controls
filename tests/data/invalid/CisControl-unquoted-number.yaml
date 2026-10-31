@@ -1,0 +1,4 @@
+# Fails at: /cis_control_id
+# Invalid: YAML reads an unquoted 4 as a number, and the identifier is a
+# string, so it is quoted.
+cis_control_id: 4

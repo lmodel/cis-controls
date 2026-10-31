@@ -66,23 +66,23 @@
     {
       "name": "cis_control_identifier",
       "definition_uri": "https://w3id.org/lmodel/cis-controls/CisControlIdentifier",
-      "description": "A Control's identifier: CIS, a hyphen and the Control's number from 1 to 18, such as CIS-4 for Control 4.",
+      "description": "A Control's identifier: its number from 1 to 18, as CIS writes it, such as 4 for Control 4.",
       "from_schema": "https://w3id.org/lmodel/cis-controls",
       "typeof": "string",
       "base": "str",
       "uri": "http://www.w3.org/2001/XMLSchema#string",
-      "pattern": "^CIS-([1-9]|1[0-8])$",
+      "pattern": "^([1-9]|1[0-8])$",
       "@type": "TypeDefinition"
     },
     {
       "name": "cis_safeguard_identifier",
       "definition_uri": "https://w3id.org/lmodel/cis-controls/CisSafeguardIdentifier",
-      "description": "A Safeguard's identifier: CIS, a hyphen, the number of its Control, a dot and the Safeguard's number within the Control, such as CIS-4.1 for Safeguard 4.1.",
+      "description": "A Safeguard's identifier, as CIS writes it: the number of its Control, a dot and the Safeguard's number within the Control, such as 4.1 for Safeguard 4.1.",
       "from_schema": "https://w3id.org/lmodel/cis-controls",
       "typeof": "string",
       "base": "str",
       "uri": "http://www.w3.org/2001/XMLSchema#string",
-      "pattern": "^CIS-([1-9]|1[0-8])\\.[1-9][0-9]?$",
+      "pattern": "^([1-9]|1[0-8])\\.[1-9][0-9]?$",
       "@type": "TypeDefinition"
     },
     {
@@ -553,9 +553,9 @@
     {
       "name": "cis_control_id",
       "definition_uri": "https://w3id.org/lmodel/cis-controls/cis_control_id",
-      "description": "The Control's identifier, such as CIS-4.",
+      "description": "The Control's identifier, its number, such as 4.",
       "comments": [
-        "CIS names a Control by its number alone. The CIS- prefix is this schema's: YAML reads a bare 4 as a number, and a bare 1.10 as the number 1.1, so the prefix keeps every identifier a string and keeps Safeguards 1.1 and 1.10 apart."
+        "The identifier is CIS's own number, so data joins with CIS's guide and with the crosswalks that cite it without a translation. It is a string, so quote it in YAML: YAML reads an unquoted 4 as a number and an unquoted 1.10 as the number 1.1. The validator rejects either as not a string, but a file loaded into the generated dataclasses without validation would turn 1.10 into 1.1."
       ],
       "from_schema": "https://w3id.org/lmodel/cis-controls",
       "slot_uri": "https://w3id.org/lmodel/cis-controls/cis_control_id",
@@ -570,7 +570,7 @@
     {
       "name": "cis_safeguard_id",
       "definition_uri": "https://w3id.org/lmodel/cis-controls/cis_safeguard_id",
-      "description": "The Safeguard's identifier, such as CIS-4.1.",
+      "description": "The Safeguard's identifier, its number, such as 4.1.",
       "comments": [
         "It starts with the number of the Control that holds the Safeguard. The validator cannot check that against the Control a Safeguard is listed under; tests/test_data.py checks it over the examples."
       ],
@@ -868,8 +868,8 @@
   ],
   "metamodel_version": "1.12.0",
   "source_file": "cis_controls.yaml",
-  "source_file_date": "2026-10-30T23:32:17",
-  "source_file_size": 12127,
+  "source_file_date": "2026-10-31T00:08:17",
+  "source_file_size": 12287,
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/cis_controls.context.jsonld",

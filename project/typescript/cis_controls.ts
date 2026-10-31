@@ -63,7 +63,7 @@ export interface CisControls {
  * One of the CIS Controls: a group of Safeguards on one subject, named by its number, such as Control 4.
  */
 export interface CisControl {
-    /** The Control's identifier, such as CIS-4. */
+    /** The Control's identifier, its number, such as 4. */
     cis_control_id: string,
     /** A name for the Control or Safeguard, in words its user has the right to use. */
     title?: string,
@@ -78,7 +78,7 @@ export interface CisControl {
  * One Safeguard of a Control: a single action an enterprise takes, named by its Control's number and its own, such as Safeguard 4.1.
  */
 export interface CisSafeguard {
-    /** The Safeguard's identifier, such as CIS-4.1. */
+    /** The Safeguard's identifier, its number, such as 4.1. */
     cis_safeguard_id: string,
     /** A name for the Control or Safeguard, in words its user has the right to use. */
     title?: string,

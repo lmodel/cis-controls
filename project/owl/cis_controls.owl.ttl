@@ -56,7 +56,7 @@ cis_controls:CisAssetClass\#USERS dcterms:title "Users" ;
 cis_controls:CisAssetClass a owl:Class ;
 	rdfs:label "CisAssetClass" ;
 	rdfs:seeAlso <https://www.cisecurity.org/insights/white-papers/guide-to-asset-classes-cis-critical-security-controls-v8-1> ;
-	owl:unionOf _:c14n25 ;
+	owl:unionOf _:c14n26 ;
 	skos:definition "One of the classes of enterprise asset that the CIS Controls sort their Safeguards by. Each Safeguard is about one class." ;
 	skos:inScheme <https://w3id.org/lmodel/cis-controls> ;
 	skos:note "CIS revised the classes, and which Safeguard is about which, in Version 8.1. CIS's guide divides each class further, but a Safeguard names only the class." ;
@@ -64,7 +64,7 @@ cis_controls:CisAssetClass a owl:Class ;
 cis_controls:CisControl a owl:Class ;
 	rdfs:label "CisControl" ;
 	rdfs:seeAlso <https://www.cisecurity.org/controls/cis-controls-list> ;
-	rdfs:subClassOf _:c14n1 , _:c14n21 , _:c14n28 , _:c14n3 , _:c14n30 , _:c14n36 , _:c14n37 , _:c14n48 , _:c14n55 , _:c14n6 , _:c14n7 ;
+	rdfs:subClassOf _:c14n1 , _:c14n21 , _:c14n29 , _:c14n3 , _:c14n31 , _:c14n37 , _:c14n38 , _:c14n48 , _:c14n55 , _:c14n6 , _:c14n7 ;
 	skos:broadMatch oscal:Group ;
 	skos:definition "One of the CIS Controls: a group of Safeguards on one subject, named by its number, such as Control 4." ;
 	skos:exactMatch cis_controls:Control ;
@@ -72,7 +72,7 @@ cis_controls:CisControl a owl:Class ;
 cis_controls:CisControls a owl:Class ;
 	rdfs:label "CisControls" ;
 	rdfs:seeAlso <https://www.cisecurity.org/controls/cis-controls-list> ;
-	rdfs:subClassOf _:c14n26 , _:c14n32 , _:c14n40 , _:c14n42 , _:c14n45 ;
+	rdfs:subClassOf _:c14n27 , _:c14n33 , _:c14n40 , _:c14n42 , _:c14n45 ;
 	skos:broadMatch oscal:Catalog ;
 	skos:definition "One edition of the CIS Controls as a whole: its Controls, each holding its Safeguards." ;
 	skos:exactMatch cis_controls:Controls ;
@@ -102,7 +102,7 @@ cis_controls:CisImplementationGroup a owl:Class ;
 cis_controls:CisSafeguard a owl:Class ;
 	rdfs:label "CisSafeguard" ;
 	rdfs:seeAlso <https://www.cisecurity.org/controls/cis-controls-list> ;
-	rdfs:subClassOf _:c14n12 , _:c14n14 , _:c14n19 , _:c14n2 , _:c14n20 , _:c14n23 , _:c14n29 , _:c14n31 , _:c14n35 , _:c14n38 , _:c14n4 , _:c14n41 , _:c14n44 , _:c14n49 , _:c14n51 , _:c14n52 , _:c14n53 , _:c14n54 , _:c14n8 ;
+	rdfs:subClassOf _:c14n12 , _:c14n14 , _:c14n19 , _:c14n2 , _:c14n20 , _:c14n23 , _:c14n30 , _:c14n32 , _:c14n36 , _:c14n39 , _:c14n4 , _:c14n41 , _:c14n44 , _:c14n49 , _:c14n51 , _:c14n52 , _:c14n53 , _:c14n54 , _:c14n9 ;
 	skos:broadMatch oscal:Control ;
 	skos:definition "One Safeguard of a Control: a single action an enterprise takes, named by its Control's number and its own, such as Safeguard 4.1." ;
 	skos:exactMatch cis_controls:Safeguard ;
@@ -146,7 +146,7 @@ cis_controls:CisSecurityFunction\#RESPOND dcterms:title "Respond" ;
 cis_controls:CisSecurityFunction a owl:Class ;
 	rdfs:label "CisSecurityFunction" ;
 	rdfs:seeAlso <https://www.cisecurity.org/controls/v8-1> ;
-	owl:unionOf _:c14n33 ;
+	owl:unionOf _:c14n34 ;
 	skos:definition "The security function a Safeguard serves. The values are the six functions of the NIST Cybersecurity Framework (CSF) 2.0, to which Version 8.1 aligned the CIS Controls." ;
 	skos:inScheme <https://w3id.org/lmodel/cis-controls> ;
 	skos:note "lmodel/nist-csf-v2 v0.1.0 models a CSF function as an instance of its class CsfFunction, IRI nist_csf_v2:Function, named by the two letters in its csf_function_id. It publishes no IRI for each function, so the values carry no meaning; each value's csf_function_id annotation gives the letters, and the enum names the class in related_mappings." ;
@@ -155,9 +155,9 @@ cis_controls:CisSecurityFunction a owl:Class ;
 cis_controls:cis_control_id a owl:DatatypeProperty ;
 	rdfs:label "cis_control_id" ;
 	rdfs:range xsd:string ;
-	skos:definition "The Control's identifier, such as CIS-4." ;
+	skos:definition "The Control's identifier, its number, such as 4." ;
 	skos:inScheme <https://w3id.org/lmodel/cis-controls> ;
-	skos:note "CIS names a Control by its number alone. The CIS- prefix is this schema's: YAML reads a bare 4 as a number, and a bare 1.10 as the number 1.1, so the prefix keeps every identifier a string and keeps Safeguards 1.1 and 1.10 apart." .
+	skos:note "The identifier is CIS's own number, so data joins with CIS's guide and with the crosswalks that cite it without a translation. It is a string, so quote it in YAML: YAML reads an unquoted 4 as a number and an unquoted 1.10 as the number 1.1. The validator rejects either as not a string, but a file loaded into the generated dataclasses without validation would turn 1.10 into 1.1." .
 cis_controls:cis_controls a owl:ObjectProperty ;
 	rdfs:label "cis_controls" ;
 	skos:definition "The Controls, in CIS's order." ;
@@ -165,7 +165,7 @@ cis_controls:cis_controls a owl:ObjectProperty ;
 cis_controls:cis_safeguard_id a owl:DatatypeProperty ;
 	rdfs:label "cis_safeguard_id" ;
 	rdfs:range xsd:string ;
-	skos:definition "The Safeguard's identifier, such as CIS-4.1." ;
+	skos:definition "The Safeguard's identifier, its number, such as 4.1." ;
 	skos:inScheme <https://w3id.org/lmodel/cis-controls> ;
 	skos:note "It starts with the number of the Control that holds the Safeguard. The validator cannot check that against the Control a Safeguard is listed under; tests/test_data.py checks it over the examples." .
 cis_controls:cis_version a owl:DatatypeProperty ;
@@ -205,7 +205,7 @@ _:c14n1 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty cis_controls:title .
 _:c14n10 rdf:first cis_controls:CisSecurityFunction\#DETECT ;
-	rdf:rest _:c14n27 .
+	rdf:rest _:c14n28 .
 _:c14n11 rdf:first cis_controls:CisImplementationGroup\#IG2 ;
 	rdf:rest _:c14n15 .
 _:c14n12 a owl:Restriction ;
@@ -243,48 +243,48 @@ _:c14n23 a owl:Restriction ;
 _:c14n24 a rdfs:Datatype ;
 	owl:onDatatype xsd:string ;
 	owl:withRestrictions _:c14n60 .
-_:c14n25 rdf:first cis_controls:CisAssetClass\#DEVICES ;
+_:c14n25 xsd:pattern "^([1-9]|1[0-8])$" .
+_:c14n26 rdf:first cis_controls:CisAssetClass\#DEVICES ;
 	rdf:rest _:c14n17 .
-_:c14n26 a owl:Restriction ;
+_:c14n27 a owl:Restriction ;
 	owl:allValuesFrom cis_controls:CisControl ;
 	owl:onProperty cis_controls:cis_controls .
-_:c14n27 rdf:first cis_controls:CisSecurityFunction\#RESPOND ;
-	rdf:rest _:c14n34 .
-_:c14n28 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty cis_controls:title .
+_:c14n28 rdf:first cis_controls:CisSecurityFunction\#RESPOND ;
+	rdf:rest _:c14n35 .
 _:c14n29 a owl:Restriction ;
 	owl:maxCardinality 1 ;
-	owl:onProperty cis_controls:description .
+	owl:onProperty cis_controls:title .
 _:c14n3 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty cis_controls:description .
 _:c14n30 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty cis_controls:description .
+_:c14n31 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty cis_controls:cis_control_id .
-_:c14n31 a owl:Restriction ;
+_:c14n32 a owl:Restriction ;
 	owl:maxCardinality 3 ;
 	owl:onProperty cis_controls:safeguard_implementation_groups .
-_:c14n32 a owl:Restriction ;
+_:c14n33 a owl:Restriction ;
 	owl:minCardinality 1 ;
 	owl:onProperty cis_controls:cis_version .
-_:c14n33 rdf:first cis_controls:CisSecurityFunction\#GOVERN ;
+_:c14n34 rdf:first cis_controls:CisSecurityFunction\#GOVERN ;
 	rdf:rest _:c14n50 .
-_:c14n34 rdf:first cis_controls:CisSecurityFunction\#RECOVER ;
+_:c14n35 rdf:first cis_controls:CisSecurityFunction\#RECOVER ;
 	rdf:rest rdf:nil .
-_:c14n35 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty cis_controls:cis_safeguard_id .
 _:c14n36 a owl:Restriction ;
 	owl:maxCardinality 1 ;
-	owl:onProperty cis_controls:cis_control_id .
+	owl:onProperty cis_controls:cis_safeguard_id .
 _:c14n37 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty cis_controls:cis_control_id .
+_:c14n38 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty cis_controls:description .
-_:c14n38 a owl:Restriction ;
+_:c14n39 a owl:Restriction ;
 	owl:minCardinality 1 ;
 	owl:onProperty cis_controls:safeguard_asset_class .
-_:c14n39 xsd:pattern "^CIS-([1-9]|1[0-8])$" .
 _:c14n4 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty cis_controls:safeguard_security_function .
@@ -337,12 +337,12 @@ _:c14n55 a owl:Restriction ;
 _:c14n56 a rdfs:Datatype ;
 	owl:onDatatype xsd:string ;
 	owl:withRestrictions _:c14n57 .
-_:c14n57 rdf:first _:c14n39 ;
+_:c14n57 rdf:first _:c14n25 ;
 	rdf:rest rdf:nil .
 _:c14n58 a rdfs:Datatype ;
 	owl:onDatatype xsd:string ;
 	owl:withRestrictions _:c14n59 .
-_:c14n59 rdf:first _:c14n9 ;
+_:c14n59 rdf:first _:c14n8 ;
 	rdf:rest rdf:nil .
 _:c14n6 a owl:Restriction ;
 	owl:minCardinality 1 ;
@@ -352,8 +352,8 @@ _:c14n60 rdf:first _:c14n16 ;
 _:c14n7 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty cis_controls:control_safeguards .
-_:c14n8 a owl:Restriction ;
+_:c14n8 xsd:pattern "^([1-9]|1[0-8])\\.[1-9][0-9]?$" .
+_:c14n9 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty cis_controls:safeguard_asset_class .
-_:c14n9 xsd:pattern "^CIS-([1-9]|1[0-8])\\.[1-9][0-9]?$" .
 

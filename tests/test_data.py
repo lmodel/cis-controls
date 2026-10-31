@@ -107,5 +107,4 @@ def test_valid_examples_keep_the_rules_no_validator_checks(filepath):
         assert len(groups) == len(set(groups)), safeguard
         assert set(groups) in CUMULATIVE, safeguard
         if control:
-            number = control.removeprefix("CIS-")
-            assert safeguard["cis_safeguard_id"].startswith(f"CIS-{number}."), safeguard
+            assert safeguard["cis_safeguard_id"].startswith(f"{control}."), safeguard

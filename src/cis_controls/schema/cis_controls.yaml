@@ -65,19 +65,19 @@ types:
     base: str
     uri: xsd:string
     description: >-
-      A Control's identifier: CIS, a hyphen and the Control's number from 1
-      to 18, such as CIS-4 for Control 4.
-    pattern: "^CIS-([1-9]|1[0-8])$"
+      A Control's identifier: its number from 1 to 18, as CIS writes it,
+      such as 4 for Control 4.
+    pattern: "^([1-9]|1[0-8])$"
 
   cis_safeguard_identifier:
     typeof: string
     base: str
     uri: xsd:string
     description: >-
-      A Safeguard's identifier: CIS, a hyphen, the number of its Control, a
-      dot and the Safeguard's number within the Control, such as CIS-4.1 for
+      A Safeguard's identifier, as CIS writes it: the number of its Control,
+      a dot and the Safeguard's number within the Control, such as 4.1 for
       Safeguard 4.1.
-    pattern: "^CIS-([1-9]|1[0-8])\\.[1-9][0-9]?$"
+    pattern: "^([1-9]|1[0-8])\\.[1-9][0-9]?$"
 
 slots:
   # The two identifier keys are slots, not attributes, and each class lists
@@ -88,18 +88,20 @@ slots:
   # lokf:Concept, whose id is already their identifier. Their URIs stay
   # cis_controls:<name>.
   cis_control_id:
-    description: The Control's identifier, such as CIS-4.
+    description: The Control's identifier, its number, such as 4.
     range: cis_control_identifier
     required: true
     comments:
       - >-
-        CIS names a Control by its number alone. The CIS- prefix is this
-        schema's: YAML reads a bare 4 as a number, and a bare 1.10 as the
-        number 1.1, so the prefix keeps every identifier a string and keeps
-        Safeguards 1.1 and 1.10 apart.
+        The identifier is CIS's own number, so data joins with CIS's guide
+        and with the crosswalks that cite it without a translation. It is a
+        string, so quote it in YAML: YAML reads an unquoted 4 as a number and
+        an unquoted 1.10 as the number 1.1. The validator rejects either as
+        not a string, but a file loaded into the generated dataclasses without
+        validation would turn 1.10 into 1.1.
 
   cis_safeguard_id:
-    description: The Safeguard's identifier, such as CIS-4.1.
+    description: The Safeguard's identifier, its number, such as 4.1.
     range: cis_safeguard_identifier
     required: true
     comments:

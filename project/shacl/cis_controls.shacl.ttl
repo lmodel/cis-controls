@@ -8,7 +8,7 @@ cis_controls:Control a sh:NodeShape ;
 	rdfs:comment "One of the CIS Controls: a group of Safeguards on one subject, named by its number, such as Control 4." ;
 	sh:closed true ;
 	sh:ignoredProperties _:c14n10 ;
-	sh:property _:c14n11 , _:c14n13 , _:c14n22 , _:c14n9 ;
+	sh:property _:c14n11 , _:c14n13 , _:c14n22 , _:c14n3 ;
 	sh:targetClass cis_controls:Control .
 cis_controls:Controls a sh:NodeShape ;
 	rdfs:comment "One edition of the CIS Controls as a whole: its Controls, each holding its Safeguards." ;
@@ -20,7 +20,7 @@ cis_controls:Safeguard a sh:NodeShape ;
 	rdfs:comment "One Safeguard of a Control: a single action an enterprise takes, named by its Control's number and its own, such as Safeguard 4.1." ;
 	sh:closed true ;
 	sh:ignoredProperties _:c14n15 ;
-	sh:property _:c14n12 , _:c14n14 , _:c14n27 , _:c14n28 , _:c14n3 , _:c14n6 ;
+	sh:property _:c14n12 , _:c14n14 , _:c14n27 , _:c14n28 , _:c14n6 , _:c14n7 ;
 	sh:targetClass cis_controls:Safeguard .
 _:c14n0 rdf:first "RECOVER" ;
 	rdf:rest rdf:nil .
@@ -61,7 +61,7 @@ _:c14n15 rdf:first rdf:type ;
 _:c14n16 rdf:first "NETWORK" ;
 	rdf:rest _:c14n5 .
 _:c14n17 rdf:first "DETECT" ;
-	rdf:rest _:c14n7 .
+	rdf:rest _:c14n8 .
 _:c14n18 sh:datatype xsd:string ;
 	sh:description "The edition, as CIS numbers it, such as 8.1, or the revision the guide's pages carry, such as 8.1.2." ;
 	sh:maxCount 1 ;
@@ -86,7 +86,7 @@ _:c14n22 sh:class cis_controls:Safeguard ;
 _:c14n23 rdf:first "IG3" ;
 	rdf:rest rdf:nil .
 _:c14n24 rdf:first "DATA" ;
-	rdf:rest _:c14n8 .
+	rdf:rest _:c14n9 .
 _:c14n25 rdf:first "PROTECT" ;
 	rdf:rest _:c14n17 .
 _:c14n26 rdf:first "SOFTWARE" ;
@@ -106,32 +106,32 @@ _:c14n28 sh:datatype xsd:string ;
 _:c14n29 rdf:first "DEVICES" ;
 	rdf:rest _:c14n26 .
 _:c14n3 sh:datatype xsd:string ;
-	sh:description "The Safeguard's identifier, such as CIS-4.1." ;
-	sh:maxCount 1 ;
-	sh:minCount 1 ;
-	sh:nodeKind sh:Literal ;
-	sh:order 0 ;
-	sh:path cis_controls:cis_safeguard_id ;
-	sh:pattern "^CIS-([1-9]|1[0-8])\\.[1-9][0-9]?$" .
-_:c14n4 rdf:first "IDENTIFY" ;
-	rdf:rest _:c14n25 .
-_:c14n5 rdf:first "DOCUMENTATION" ;
-	rdf:rest rdf:nil .
-_:c14n6 sh:description "The security function the Safeguard serves, one of the six functions of the NIST Cybersecurity Framework (CSF) 2.0." ;
-	sh:in _:c14n21 ;
-	sh:maxCount 1 ;
-	sh:minCount 1 ;
-	sh:order 4 ;
-	sh:path cis_controls:safeguard_security_function .
-_:c14n7 rdf:first "RESPOND" ;
-	rdf:rest _:c14n0 .
-_:c14n8 rdf:first "USERS" ;
-	rdf:rest _:c14n16 .
-_:c14n9 sh:datatype xsd:string ;
-	sh:description "The Control's identifier, such as CIS-4." ;
+	sh:description "The Control's identifier, its number, such as 4." ;
 	sh:maxCount 1 ;
 	sh:minCount 1 ;
 	sh:nodeKind sh:Literal ;
 	sh:order 0 ;
 	sh:path cis_controls:cis_control_id ;
-	sh:pattern "^CIS-([1-9]|1[0-8])$" .
+	sh:pattern "^([1-9]|1[0-8])$" .
+_:c14n4 rdf:first "IDENTIFY" ;
+	rdf:rest _:c14n25 .
+_:c14n5 rdf:first "DOCUMENTATION" ;
+	rdf:rest rdf:nil .
+_:c14n6 sh:datatype xsd:string ;
+	sh:description "The Safeguard's identifier, its number, such as 4.1." ;
+	sh:maxCount 1 ;
+	sh:minCount 1 ;
+	sh:nodeKind sh:Literal ;
+	sh:order 0 ;
+	sh:path cis_controls:cis_safeguard_id ;
+	sh:pattern "^([1-9]|1[0-8])\\.[1-9][0-9]?$" .
+_:c14n7 sh:description "The security function the Safeguard serves, one of the six functions of the NIST Cybersecurity Framework (CSF) 2.0." ;
+	sh:in _:c14n21 ;
+	sh:maxCount 1 ;
+	sh:minCount 1 ;
+	sh:order 4 ;
+	sh:path cis_controls:safeguard_security_function .
+_:c14n8 rdf:first "RESPOND" ;
+	rdf:rest _:c14n0 .
+_:c14n9 rdf:first "USERS" ;
+	rdf:rest _:c14n16 .
