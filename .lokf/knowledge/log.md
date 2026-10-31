@@ -2,6 +2,11 @@
 
 ## 2026-10-31
 
+* **Changed**: the 18 Control concepts give each Control's title and description from the edition file, in the project's own words, and no longer say it is named by its number alone.
+* **Changed**: Control says the bundle names each Control by its number and by the title the edition file gives it.
+* **Changed**: Test data and tests adds `tests/test_edition.py`, which v0.2.0 added, and counts six tests in `tests/test_data.py`.
+* **Changed**: Knowledge sources lists the edition file, `src/cis_controls/data/`, and the concepts it yields.
+* **Added**: The edition file, from `src/cis_controls/data/cis-controls-8.1.2.yaml`, which v0.2.0 added.
 * **Changed**: the 18 Control concepts and the licence policy now point to the edition file, `src/cis_controls/data/cis-controls-8.1.2.yaml`, which describes each Control and Safeguard in the project's own words; no Control's counts changed.
 * **Prose**: reworded 9 concept bodies in plain English, splitting long sentences and blocks. No fact, link, number or frontmatter changed.
 * **Changed**: `tests/test_data.py` now checks that no example repeats a Control or Safeguard identifier, so the validate-data playbook and the test-data concept say it checks all three rules.
