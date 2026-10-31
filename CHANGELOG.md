@@ -6,6 +6,8 @@ The `v0.0.0` tag is a baseline, not a release: it marks where versioning starts 
 
 ## [Unreleased]
 
+## [0.1.0] - 2026-10-31
+
 ### Added
 
 - **A LinkML schema of the structure of the CIS Critical Security Controls, Version 8.1, at its v8.1.2 revision.** It holds the Controls, the Safeguards of each, and each Safeguard's asset class, security function and Implementation Groups, names each element by its number, and carries no text of the Center for Internet Security (CIS).
