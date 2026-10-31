@@ -12,15 +12,16 @@ Safeguard a class each, and holds them in one document for an edition.
 
 Element names are the schema's own. Classes and enums carry the `Cis` prefix
 (`CisControl`, `CisSafeguard`, `CisAssetClass`) so they can be imported
-beside other vocabularies. Slots are snake_case. The identifiers sit in
-`cis_control_id` and `cis_safeguard_id`, and the fields of a Safeguard start
-with `safeguard_`. An identifier is CIS's own number as a string, such as
-`"4"` for Control 4 and `"4.1"` for Safeguard 4.1, so data joins with CIS's
-guide and the crosswalks that cite it. Quote it in YAML, which reads an
-unquoted `1.10` as the number 1.1. The enum values are upper case, such as
+beside other vocabularies. Slots are snake_case, and the fields of a
+Safeguard start with `safeguard_`. The enum values are upper case, such as
 `IG1`, `DEVICES` and `GOVERN`, each with CIS's spelling as its title. Every
 element is in the `cis_controls:` namespace
 (`https://w3id.org/lmodel/cis-controls/`).
+
+The identifiers sit in `cis_control_id` and `cis_safeguard_id`. An identifier
+is CIS's own number as a string, such as `"4"` for Control 4 and `"4.1"` for
+Safeguard 4.1, so data joins with CIS's guide and the crosswalks that cite it.
+Quote it in YAML, which reads an unquoted `1.10` as the number 1.1.
 
 The descriptions are this project's own words. CIS licenses the CIS Controls
 under CC BY-NC-ND 4.0, so the schema, its examples and these pages carry no

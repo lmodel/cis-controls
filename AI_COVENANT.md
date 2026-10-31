@@ -19,7 +19,9 @@ Do not submit anything you cannot fully stand behind.
 
 ## A note specific to this project
 
-This repository models someone else's framework. The Center for Internet Security (CIS) publishes the CIS Critical Security Controls: eighteen Controls, each with its Safeguards, and for each Safeguard an asset class, a security function and the Implementation Groups it belongs to. This project renders the structure of that framework as a LinkML schema. Two failure modes are worse here than elsewhere. One is a rule or element that a model produced, presented as what the CIS Controls say; a reader cannot tell it from CIS's own work. The other is CIS's text itself: the CIS Controls are licensed under CC BY-NC-ND 4.0, and this repository is Apache-2.0, so it carries none of CIS's words.
+This repository models someone else's framework. The Center for Internet Security (CIS) publishes the CIS Critical Security Controls: eighteen Controls, each with its Safeguards, and for each Safeguard an asset class, a security function and the Implementation Groups it belongs to. This project renders the structure of that framework as a LinkML schema.
+
+Two failure modes are worse here than elsewhere. One is a rule or element that a model produced, presented as what the CIS Controls say. A reader cannot tell it from CIS's own work. The other is CIS's text itself: the CIS Controls are licensed under CC BY-NC-ND 4.0, and this repository is Apache-2.0, so it carries none of CIS's words.
 
 So:
 

@@ -33,9 +33,11 @@ The schema models the structure of the [CIS Critical Security Controls, Version 
   * the Implementation Groups that include it (`CisImplementationGroup`): IG1 holds 56 Safeguards, IG2 130 and IG3 all 153, since each group includes the one before it.
 * **The edition** (`CisControls`): one edition of the CIS Controls as a single document that holds all of these.
 
-The schema carries none of CIS's text: no Control or Safeguard title or description. It names each element by its number, and records which Safeguards belong to which Control and the three properties above. The schema header's `version` is 8.1.2, and its `source` is CIS's page for Version 8.1. CIS publishes no openly licensed, machine-readable form of the Controls, so the repository holds no copy of them. A weekly workflow reads CIS's pages and opens an issue when they name a newer version or no longer name the pinned one.
+The schema carries none of CIS's text: no Control or Safeguard title or description. It names each element by its number, and records which Safeguards belong to which Control and the three properties above.
 
-The counts come from CIS's pages on [the Controls list](https://www.cisecurity.org/controls/cis-controls-list) and [the Implementation Groups](https://www.cisecurity.org/controls/implementation-groups). Release tags number the schema's versions.
+The schema header's `version` is 8.1.2, and its `source` is CIS's page for Version 8.1. Release tags number the schema's versions. CIS publishes no openly licensed, machine-readable form of the Controls, so the repository holds no copy of them. A weekly workflow reads CIS's pages and opens an issue when they name a newer version or no longer name the pinned one.
+
+The counts come from CIS's pages on [the Controls list](https://www.cisecurity.org/controls/cis-controls-list) and [the Implementation Groups](https://www.cisecurity.org/controls/implementation-groups).
 
 ## Influences
 
@@ -85,7 +87,9 @@ CisControl, CisSafeguard
 
 A concept writes the CIS number in `cis_control_id` or `cis_safeguard_id`, and a Safeguard's concept also writes its `safeguard_asset_class`, `safeguard_security_function` and `safeguard_implementation_groups`. A Safeguard's concept names its Control's concept in `isPartOf`. A name and a description are the concept's own `title` and `description`, in words the bundle has the right to use.
 
-A host imports the copy beside LOKF's schema, `lokf.yaml`, and beside other adapt copies. LinkML merges them into one namespace, where the last definition of a name wins silently. So no class, enum or type shares a name with LOKF's or with the released copies of slsa, github-actions, oscal, spdx, nist-sp-800-218, nist-sp-800-53, nist-sp-800-171, nist-csf-v2 and in-toto. A slot shares a name only where it carries LOKF's meaning and Internationalized Resource Identifier (IRI), as `title` and `description` do, so `lokf adapt` folds the two into LOKF's and renames nothing. The copy shares no other key with the nine neighbours, and `tests/test_schema_rules.py` fails on a new shared name.
+A host imports the copy beside LOKF's schema, `lokf.yaml`, and beside other adapt copies. LinkML merges them into one namespace, where the last definition of a name wins silently. So no class, enum or type shares a name with LOKF's or with the released copies of slsa, github-actions, oscal, spdx, nist-sp-800-218, nist-sp-800-53, nist-sp-800-171, nist-csf-v2 and in-toto.
+
+A slot shares a name only where it carries LOKF's meaning and Internationalized Resource Identifier (IRI), as `title` and `description` do, so `lokf adapt` folds the two into LOKF's and renames nothing. The copy shares no other key with the nine neighbours, and `tests/test_schema_rules.py` fails on a new shared name.
 
 ## License
 
