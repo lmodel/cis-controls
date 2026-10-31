@@ -6,6 +6,7 @@ offline. They show what the report says when CIS names a newer version,
 drops the pinned one, moves a page, or blocks the reader.
 """
 
+import http.client
 import importlib.util
 import urllib.error
 from pathlib import Path
@@ -140,13 +141,28 @@ def test_a_blocked_reader_could_not_finish(watch, tmp_path):
     _stub(watch, answers)
     code, text = _run(watch, tmp_path)
     assert code == 1
-    assert f"**The check of {watch.PAGES[0]} could not finish: HTTP Error 403" in text
-    assert f"**The check of {watch.PAGES[1]} could not finish: <urlopen error" in text
+    assert f"**The check of {watch.PAGES[0]} could not finish: `HTTP Error 403" in text
+    assert f"**The check of {watch.PAGES[1]} could not finish: `<urlopen error" in text
 
     _stub(watch, _answers(watch, "<html><title>Just a moment...</title></html>"))
     code, text = _run(watch, tmp_path)
     assert code == 1
     assert "the page names no version of the CIS Controls.**" in text
+
+
+def test_a_cut_connection_or_unknown_charset_could_not_finish(watch, tmp_path):
+    """A page cut off mid-read and a charset Python does not know are checks
+    that could not finish, and the other page is still checked."""
+    answers = _answers(watch)
+    answers[watch.PAGES[0]] = http.client.IncompleteRead(b"<html>")
+    answers[watch.PAGES[1]] = LookupError("unknown encoding: x-bogus")
+    _stub(watch, answers)
+    code, text = _run(watch, tmp_path)
+    assert code == 1
+    assert f"**The check of {watch.PAGES[0]} could not finish: `IncompleteRead" in text
+    assert (
+        f"**The check of {watch.PAGES[1]} could not finish: `unknown encoding" in text
+    )
 
 
 def test_a_redirect_is_reported(watch, tmp_path):
@@ -158,7 +174,17 @@ def test_a_redirect_is_reported(watch, tmp_path):
     _stub(watch, answers)
     code, text = _run(watch, tmp_path)
     assert code == 0, text
-    assert f"- {watch.PAGES[0]} redirected to {moved}." in text
+    assert f"- {watch.PAGES[0]} redirected to `{moved}`." in text
+
+
+def test_text_the_site_chose_is_quoted(watch, tmp_path):
+    """A redirect target is quoted as code, so it cannot mention a person in
+    the issue, and a backtick in it cannot end the quotation."""
+    answers = _answers(watch)
+    answers[watch.PAGES[0]] = ("https://example.org/@someone`x", PINNED_PAGE)
+    _stub(watch, answers)
+    text = _run(watch, tmp_path)[1]
+    assert "redirected to `https://example.org/@someone'x`." in text
 
 
 def test_no_credentials_are_sent(watch, monkeypatch):

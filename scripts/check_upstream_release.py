@@ -44,6 +44,7 @@ from __future__ import annotations
 
 import argparse
 import html
+import http.client
 import re
 import sys
 import urllib.error
@@ -112,6 +113,12 @@ def _shown(names: set[str]) -> str:
     return ", ".join(f"v{by_key[k]}" for k in sorted(by_key))
 
 
+def _code(text: object) -> str:
+    """Text the site chose, such as an address it redirected to, as a code
+    span, so it cannot mention a person or add a link in the issue."""
+    return "`" + str(text).replace("`", "'") + "`"
+
+
 def check_page(url: str) -> tuple[list[str], bool]:
     """Report the versions one page names, and whether one needs attention."""
     try:
@@ -125,7 +132,7 @@ def check_page(url: str) -> tuple[list[str], bool]:
         raise
     report = []
     if answered.rstrip("/") != url.rstrip("/"):
-        report.append(f"- {url} redirected to {answered}.")
+        report.append(f"- {url} redirected to {_code(answered)}.")
     found = versions(page)
     if not found:
         return report + [
@@ -174,8 +181,12 @@ def main(argv: list[str] | None = None) -> int:
     for url in PAGES:
         try:
             found, needs = check_page(url)
-        except (urllib.error.URLError, TimeoutError, OSError, ValueError) as err:
-            found, needs = [f"- **The check of {url} could not finish: {err}.**"], True
+        # OSError covers a refused or failed fetch and a timeout,
+        # HTTPException a connection cut off mid-page, and LookupError a
+        # charset Python does not know.
+        except (OSError, http.client.HTTPException, LookupError, ValueError) as err:
+            found = [f"- **The check of {url} could not finish: {_code(err)}.**"]
+            needs = True
         lines += found
         attention = attention or needs
     text = "\n".join(lines) + "\n"
