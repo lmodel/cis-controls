@@ -22,7 +22,9 @@ status: draft
 
 # Update the upstream pins
 
-`scripts/check_upstream_release.py` runs every Monday in [Upstream watch](../workflows/upstream-watch.md) with the standard library alone. CIS publishes no openly licensed, machine-readable form of the Controls, so nothing is copied or matched by hash. Instead, the script reads two public pages: CIS's page for Version 8.1 and the list of the Controls. It finds the version strings that CIS writes after the word Controls and in the address of a version's page. It matches those strings and not the markup, and it sends no token. It always writes a report. On each of these findings it exits 1, so that the workflow opens or updates an issue:[^check_upstream_release.py]
+`scripts/check_upstream_release.py` runs every Monday in [Upstream watch](../workflows/upstream-watch.md) with the standard library alone. CIS publishes no openly licensed, machine-readable form of the Controls, so nothing is copied or matched by hash.
+
+Instead, the script reads two public pages: CIS's page for Version 8.1 and the list of the Controls. It finds the version strings that CIS writes after the word Controls and in the address of a version's page. It matches those strings and not the markup, and it sends no token. It always writes a report. On each of these findings it exits 1, so that the workflow opens or updates an issue:[^check_upstream_release.py]
 
 - **A page names a newer version** than the pinned edition, 8.1.2, such as v8.2 or v9. Read what CIS changed, decide whether the schema moves to it, and move the pins.
 - **A page no longer names v8.1.** Find out whether CIS has replaced or withdrawn it.

@@ -23,7 +23,7 @@ status: draft
 
 # CIS Critical Security Controls, Version 8.1
 
-The Center for Internet Security (CIS) publishes the CIS Critical Security Controls as a guide. Its page for Version 8.1 offers the guide for download with a spreadsheet, a change log and a page on the Implementation Groups. The page describes Version 8.1 as a small update of Version 8: it realigned the security functions to the NIST Cybersecurity Framework 2.0, added the Govern function, and revised the asset classes.[^cis-v8-1] The guide's pages carry the label v8.1.2, and its change log names two minor revisions, v8.1.1 in August 2024 and v8.1.2 in March 2025.
+The Center for Internet Security (CIS) publishes the CIS Critical Security Controls as a guide. Its page for Version 8.1 offers the guide for download with a spreadsheet, a change log and a page on the Implementation Groups. The page says that Version 8.1, a small update of Version 8, realigned the security functions to the NIST Cybersecurity Framework 2.0, added the Govern function, and revised the asset classes.[^cis-v8-1] The guide's pages carry the label v8.1.2, and its change log names two minor revisions, v8.1.1 in August 2024 and v8.1.2 in March 2025.
 
 The schema header names this page in `source` and the label of the revision, 8.1.2, in `version`.[^cis_controls.yaml] CIS licenses the guide under CC BY-NC-ND 4.0 and requires its prior approval for commercial use. NOTICE says what that licence allows, and why the repository and this bundle carry none of the guide's text.[^notice] The download asks for a registration, so `scripts/check_upstream_release.py` watches CIS's public pages instead: see [Update the upstream pins](../playbooks/update-upstream-pins.md).
 

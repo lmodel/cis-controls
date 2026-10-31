@@ -34,7 +34,7 @@ status: draft
 
 # Implementation Group
 
-CIS's pages on the Implementation Groups say that each group is a set of Safeguards, and that an enterprise begins with IG1.[^cis-implementation-groups] IG1 holds 56 Safeguards.[^cis-ig1] IG2 adds 74 to those of IG1.[^cis-ig2] IG3 adds 23 more, which makes the 153 Safeguards of Versions 8 and 8.1.[^cis-ig3] So the groups are cumulative: a Safeguard in IG1 is in all three, and one in IG2 is in IG3 too. The schema renders the groups as `CisImplementationGroup`, with the values `IG1`, `IG2` and `IG3`, and a Safeguard lists its groups in `safeguard_implementation_groups`, which must hold `IG3`.[^cis_controls.yaml]
+CIS's pages on the Implementation Groups say that each group is a set of Safeguards, and that an enterprise begins with IG1.[^cis-implementation-groups] IG1 holds 56 Safeguards.[^cis-ig1] IG2 adds 74 to those of IG1.[^cis-ig2] IG3 adds 23 more, which makes the 153 Safeguards of Versions 8 and 8.1.[^cis-ig3] So the groups are cumulative: a Safeguard in IG1 is in all three, and one in IG2 is in IG3 too. The schema renders the groups as `CisImplementationGroup`, with the values `IG1`, `IG2` and `IG3`. A Safeguard lists its groups in `safeguard_implementation_groups`, which must hold `IG3`.[^cis_controls.yaml]
 
 [^cis-implementation-groups]: <https://www.cisecurity.org/controls/implementation-groups>, the total of Safeguards
 [^cis-ig1]: <https://www.cisecurity.org/controls/implementation-groups/ig1>, the count of IG1
