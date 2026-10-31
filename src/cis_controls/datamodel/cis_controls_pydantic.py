@@ -81,12 +81,14 @@ linkml_meta = LinkMLMeta({'annotations': {'cis_site_version': {'tag': 'cis_site_
                   "reports when CIS's pages name a newer version.",
                   'CIS licenses the CIS Controls under CC BY-NC-ND 4.0 and '
                   'requires its prior approval for commercial use, while this '
-                  'schema is Apache-2.0. So the schema carries no CIS text: no '
-                  'Control or Safeguard title or description, and none of the '
-                  "guide's overviews or explanations. The descriptions here are "
-                  "this project's own words. The text slots, title and "
-                  'description, are optional and hold text their user has the '
-                  "right to use; NOTICE says what CIS's licence allows.",
+                  'schema is Apache-2.0. So the schema carries no CIS text: none '
+                  "of the guide's titles, descriptions, overviews or explanations. "
+                  "The descriptions here are this project's own words, and so are "
+                  'the title and description that '
+                  'src/cis_controls/data/cis-controls-8.1.2.yaml gives each '
+                  'Control and Safeguard, written from what each requires. The '
+                  'text slots, title and description, are optional and hold text '
+                  'their user has the right to use; NOTICE states the position.',
                   'The edition holds 18 Controls and 153 Safeguards. '
                   'Implementation Group 1 holds 56 of the Safeguards, '
                   'Implementation Group 2 adds 74 to make 130, and Implementation '
@@ -277,8 +279,9 @@ class CisControl(ConfiguredBaseModel):
                       "lokf adapt folds it into LOKF's slot and a knowledge bundle "
                       'reads one title key.',
                       "CIS's own names for the Controls and Safeguards are CIS's text "
-                      "under CC BY-NC-ND 4.0, so the schema's examples leave them "
-                      'out.'],
+                      "under CC BY-NC-ND 4.0, so the schema's examples leave them out, "
+                      "and the edition file names each element in this project's "
+                      'words.'],
          'domain_of': ['CisControl', 'CisSafeguard'],
          'slot_uri': 'schema:name'} })
     description: Optional[str] = Field(default=None, description="""What the Control or Safeguard means to its user, in words its user has the right to use.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's description means and carries the same "
@@ -307,8 +310,9 @@ class CisSafeguard(ConfiguredBaseModel):
                       "lokf adapt folds it into LOKF's slot and a knowledge bundle "
                       'reads one title key.',
                       "CIS's own names for the Controls and Safeguards are CIS's text "
-                      "under CC BY-NC-ND 4.0, so the schema's examples leave them "
-                      'out.'],
+                      "under CC BY-NC-ND 4.0, so the schema's examples leave them out, "
+                      "and the edition file names each element in this project's "
+                      'words.'],
          'domain_of': ['CisControl', 'CisSafeguard'],
          'slot_uri': 'schema:name'} })
     description: Optional[str] = Field(default=None, description="""What the Control or Safeguard means to its user, in words its user has the right to use.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's description means and carries the same "

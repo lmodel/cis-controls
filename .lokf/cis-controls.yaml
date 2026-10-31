@@ -27,10 +27,11 @@ comments:
   Safeguards. The source is CIS's page for Version 8.1. scripts/check_upstream_release.py holds the same
   pins and reports when CIS's pages name a newer version.
 - 'CIS licenses the CIS Controls under CC BY-NC-ND 4.0 and requires its prior approval for commercial
-  use, while this schema is Apache-2.0. So the schema carries no CIS text: no Control or Safeguard title
-  or description, and none of the guide''s overviews or explanations. The descriptions here are this project''s
-  own words. The text slots, title and description, are optional and hold text their user has the right
-  to use; NOTICE says what CIS''s licence allows.'
+  use, while this schema is Apache-2.0. So the schema carries no CIS text: none of the guide''s titles,
+  descriptions, overviews or explanations. The descriptions here are this project''s own words, and so
+  are the title and description that src/cis_controls/data/cis-controls-8.1.2.yaml gives each Control
+  and Safeguard, written from what each requires. The text slots, title and description, are optional
+  and hold text their user has the right to use; NOTICE states the position.'
 - The edition holds 18 Controls and 153 Safeguards. Implementation Group 1 holds 56 of the Safeguards,
   Implementation Group 2 adds 74 to make 130, and Implementation Group 3 adds the last 23, so it holds
   all 153. CIS's pages on the CIS Controls list and on each Implementation Group state these numbers.
