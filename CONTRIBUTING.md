@@ -9,6 +9,7 @@ A LinkML schema of the structure of the CIS Critical Security Controls, which th
 | Path | Holds |
 | --- | --- |
 | `src/cis_controls/schema/cis_controls.yaml` | The LinkML schema. Edit this. |
+| `src/cis_controls/data/cis-controls-8.1.2.yaml` | The edition file, in the project's own words. |
 | `src/cis_controls/datamodel/`, `project/`, `docs/schema/` | Artefacts generated from the schema. |
 | `docs/` | The website's own pages. |
 | `tests/` | Python tests, and valid and invalid example data. |
@@ -27,7 +28,7 @@ just --list
 
 ### Agent skills (optional, only for this repo's `.lokf/` bundle)
 
-The bundle is maintained with the Knowledge Trust Ladder (KTL) skills, **installed, never committed**. Continuous integration (CI) installs the librarian skill at run time, pinned to a release. Nothing in the schema depends on them. [The install page](https://w3id.org/ktl/docs/install/) lists every route. With npm:
+The bundle is maintained with the Knowledge Trust Ladder (KTL) skills, **installed, never committed**. Continuous integration (CI) installs the librarian skill at run time, pinned to a release. [The install page](https://w3id.org/ktl/docs/install/) lists every route. With npm:
 
 ```bash
 npx skills add noelmcloughlin/knowledge-trust-ladder --skill ktl-librarian --yes   # derive concepts
@@ -37,10 +38,10 @@ npx skills add noelmcloughlin/knowledge-trust-ladder --skill ktl-curator --yes  
 ## Before opening a pull request
 
 - **Edit the schema, then regenerate.** Edit `src/cis_controls/schema/cis_controls.yaml`, run `just gen-project`, `just gen-doc` and `just lokf-adapt`, and commit the output. `project/`, `src/cis_controls/datamodel/`, `docs/schema/` and `.lokf/cis-controls.yaml` are generated.
-- **Carry no CIS text.** The CIS Controls are licensed CC BY-NC-ND 4.0, so no title, description or other passage of CIS's guide goes into the schema, the examples, the docs or the bundle, copied or closely paraphrased. Name elements by number and cite the guide's section in the pull request. [AI_COVENANT.md](AI_COVENANT.md) says why.
+- **Carry no CIS text.** The CIS Controls are licensed CC BY-NC-ND 4.0, so no title, description or other passage of CIS's guide goes into the schema, the edition file, the examples, the docs or the bundle, copied or closely paraphrased. Name elements by number and cite the guide's section in the pull request. Describe a Control or Safeguard from what it requires, in your own words, never by rewording CIS's sentence. [NOTICE](NOTICE) states the position; [AI_COVENANT.md](AI_COVENANT.md) says why.
 - **Render the pinned edition.** The schema header and `scripts/check_upstream_release.py` name the same edition, and `tests/test_upstream.py` holds them equal.
 - **Keep names apart.** A host imports this adapt copy beside the Linked Open Knowledge Format (LOKF) schema and the released neighbours' copies in `tests/neighbours/`, so a shared name carries one Internationalized Resource Identifier (IRI). `tests/test_schema_rules.py` checks this, and holds each mapping into a neighbour to a term its copy declares.
-- **Run the tests**: `just test` (schema generation, `pytest` and the examples under `tests/data/`). Example data goes in `tests/data/valid/` and `tests/data/invalid/`, named `ClassName-suffix.yaml`, with an invalid example per constraint whose first line, `# Fails at: <pointer>`, names where it fails.
+- **Run the tests**: `just test` (schema generation, `pytest` and the examples under `tests/data/`). Example data goes in `tests/data/valid/` and `tests/data/invalid/`, named `ClassName-suffix.yaml`; an invalid example's first line, `# Fails at: <pointer>`, names where it fails.
 - **Follow the schema's conventions**: UpperCamelCase classes and enums with the `Cis` prefix, snake_case slots, each identifier a top-level slot listed first in its class, a short description on every element. `just lint` checks, under `.linkmllint.yaml`.
 - **Run the pre-commit hooks** on what you staged: `uvx pre-commit run`.
 - **Lock files are part of the change.** CI installs with `uv sync --locked`, so a dependency edit without its `uv.lock` (or `.lokf/uv.lock`) fails.
