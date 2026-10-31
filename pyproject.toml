@@ -3,31 +3,30 @@ requires = ["hatchling", "uv-dynamic-versioning"]
 build-backend = "hatchling.build"
 
 [project]
-name = "cis_controls"
-description = "CIS Critical Security Controls: LinkML Schema"
+# Named like lmodel/slsa's slsa-linkml, so the PyPI name says what it holds;
+# the import package stays cis_controls. PyPI publishing is off.
+name = "cis-controls-linkml"
+description = "CIS Critical Security Controls v8.1 (LinkML)"
 authors = [
   {name = "Noel McLoughlin", email = "noel.mcloughlin@gmail.com"},
 ]
 license = "Apache-2.0"
-license-files = ["LICENSE"]
+license-files = ["LICENSE", "NOTICE"]
 readme = "README.md"
-requires-python = ">=3.9,<4.0"
+requires-python = ">=3.10"
 dynamic = ["version"]
 
 dependencies = [
   "linkml-runtime >=1.9.4",
-  "yamllint>=1.37.1",
 ]
 
 [dependency-groups]
 dev = [
     "linkml>=1.9.3",
-    "mkdocs-material>=8.2.8",
-    "mkdocs-mermaid2-plugin>=1.1.1",
-    "mkdocs-pymdownx-material-extras>=2.5.6",
-    "jupyter>=1.0.0",
-    "mknotebooks>= 0.8.0",
 ]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/cis_controls"]
 
 # See https://hatch.pypa.io/latest/config/build/#file-selection for how to
 # explicitly include files other than default into the build distributions.
@@ -45,6 +44,14 @@ fallback-version = "0.0.0"
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 
+# https://docs.astral.sh/ruff/configuration/
+[tool.ruff]
+exclude = [
+    "src/cis_controls/_version.py",
+]
+# Set oldest supported Python version
+target-version = "py310"
+
 # Ref.: https://github.com/codespell-project/codespell
 [tool.codespell]
 skip = [
@@ -54,6 +61,11 @@ skip = [
   "project/*",
   "src/cis_controls/datamodel/cis_controls_pydantic.py",
   "src/cis_controls/datamodel/cis_controls.py",
+  # The neighbours' adapt copies, copied as released, and files copied in by
+  # the KTL sidecar sync or written by npm, not by hand.
+  "tests/neighbours/*",
+  ".lokf/scripts/*",
+  "website/package-lock.json",
 ]
 
 # Reminder: words have to be lowercased for the ignore-words-list
@@ -63,6 +75,9 @@ quiet-level = 3
 # Ref.: https://github.com/crate-ci/typos (spell checker)
 [tool.typos.default.extend-words]
 linke = "linke"
+# The ND of CC BY-NC-ND, the CIS Controls' licence, is not a typo of "and".
+nd = "nd"
+
 [tool.typos.files]
 extend-exclude = [
   "LICENSE",
@@ -71,4 +86,7 @@ extend-exclude = [
   "project/*",
   "src/cis_controls/datamodel/cis_controls_pydantic.py",
   "src/cis_controls/datamodel/cis_controls.py",
+  "tests/neighbours/*",
+  ".lokf/scripts/*",
+  "website/package-lock.json",
 ]

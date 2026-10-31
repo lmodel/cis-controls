@@ -1,0 +1,5 @@
+# Policies
+
+* [AI covenant](ai-covenant.md) - The repository's rules for work done with artificial intelligence (AI): you own what you submit, an element under the schema renders the CIS Controls in the project's own words and cites CIS's guide, no CIS text is added however it was produced, and the scheduled librarian proposes changes only through reviewed pull requests.
+* [License and attribution](license-and-attribution.md) - The repository's licences: Apache 2.0 for the schema and the code; CIS's CC BY-NC-ND 4.0 for the CIS Controls, which is why the repository carries no CIS text and the text slots are for text their user may use; MIT for the copier template's scaffolding; Apache 2.0 for the KTL sidecar and website templates; and CC BY 4.0 for this bundle.
+* [Security policy](security-policy.md) - How to report a vulnerability (GitHub's private vulnerability reporting), which release receives fixes (the latest), what executes in the repository and what holds each surface, the ruleset on `main`, and the two repository settings that are not yet in force.

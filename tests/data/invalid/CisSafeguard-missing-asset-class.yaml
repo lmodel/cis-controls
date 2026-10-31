@@ -1,0 +1,5 @@
+# Fails at: /
+# Invalid: every Safeguard is about one asset class.
+cis_safeguard_id: "1.1"
+safeguard_security_function: IDENTIFY
+safeguard_implementation_groups: [IG1, IG2, IG3]

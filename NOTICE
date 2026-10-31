@@ -1,0 +1,87 @@
+CIS Critical Security Controls LinkML Schema (cis-controls)
+Copyright 2026 Noel McLoughlin
+
+The code in this repository is licensed under the Apache License,
+Version 2.0 (see LICENSE). The work it models is third-party work under
+its own terms, described below.
+
+The CIS Critical Security Controls
+----------------------------------
+
+src/cis_controls/schema/*.yaml, src/cis_controls/datamodel/ and project/
+model the structure of the CIS Critical Security Controls (CIS Controls),
+Version 8.1, as the Center for Internet Security, Inc. (CIS) revised it in
+March 2025, when the guide's pages were labelled v8.1.2:
+https://www.cisecurity.org/controls/v8-1, read on 2026-10-30. They are
+this project's work, written in its own words. They are not CIS's, and
+their use does not imply endorsement by CIS. CIS Critical Security
+Controls and CIS Controls are registered trademarks of CIS, named here
+only to say which framework is modelled.
+
+CIS licenses the CIS Controls under the Creative Commons
+Attribution-NonCommercial-NoDerivatives 4.0 International licence
+(CC BY-NC-ND 4.0, https://creativecommons.org/licenses/by-nc-nd/4.0/).
+That licence lets anyone copy and share CIS's guide unchanged, for
+non-commercial purposes, with credit to CIS and a link to the licence. It
+does not let anyone share a changed or adapted version, and CIS requires
+its prior approval for any commercial use. So this repository carries no
+CIS text: no Control or Safeguard title or description, and none of the
+guide's overviews, explanations or procedures. It names each Control and
+Safeguard by its number and records only the structure the guide sets
+out: which Safeguards belong to which Control, and each Safeguard's asset
+class, security function and Implementation Groups.
+
+The schema's text slots, such as title and description, are optional and
+hold whatever their user writes into them. Fill them only with text you
+have the right to use: your own words, or CIS's text under CIS's licence
+and any approval CIS has given you. The Apache License of this repository
+does not cover CIS's text.
+
+linkml-project-copier
+---------------------
+
+This project was generated from linkml-project-copier
+(https://github.com/linkml/linkml-project-copier), and its justfile,
+configuration and documentation scaffolding derive from that template:
+
+  The MIT License (MIT)
+  Copyright (c) 2025 David Linke
+
+  Permission is hereby granted, free of charge, to any person obtaining a
+  copy of this software and associated documentation files (the
+  "Software"), to deal in the Software without restriction, including
+  without limitation the rights to use, copy, modify, merge, publish,
+  distribute, sublicense, and/or sell copies of the Software, and to permit
+  persons to whom the Software is furnished to do so, subject to the
+  following conditions:
+
+  The above copyright notice and this permission notice shall be included
+  in all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+  OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+  NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+  DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+  USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+Knowledge bundle
+----------------
+
+This product maintains its documentation as a Linked Open Knowledge Format
+(LOKF) bundle under .lokf/: https://lokf.nolan-nichols.com/specification/
+
+LOKF is a semantic profile of the Open Knowledge Format (OKF) specification
+by Google Cloud Platform:
+https://github.com/GoogleCloudPlatform/open-knowledge-format/blob/main/SPEC.md
+
+The scripts under .lokf/scripts/ and .lokf/m365/ and the
+knowledge-librarian, knowledge-registrar, knowledge-release and
+knowledge-sync workflows under .github/workflows/ are copies of the
+ktl-sidecar templates in knowledge-trust-ladder
+(https://github.com/noelmcloughlin/knowledge-trust-ladder). The site under
+website/ and the knowledge-website workflow derive from the ktl-website
+templates in the same repository, and website/NOTICE lists the part
+adapted from the LOKF toolkit's site. All of them are licensed under the
+Apache License, Version 2.0.

@@ -1,0 +1,7 @@
+# Fails at: /cis_safeguard_id
+# Invalid: YAML reads an unquoted 1.10 as the number 1.1, which is neither a
+# string nor Safeguard 1.10, so the identifier is quoted.
+cis_safeguard_id: 1.10
+safeguard_asset_class: DEVICES
+safeguard_security_function: IDENTIFY
+safeguard_implementation_groups: [IG2, IG3]

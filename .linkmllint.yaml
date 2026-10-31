@@ -1,0 +1,12 @@
+# linkml-lint reads this file from the directory `just lint` runs in.
+# The recommended rules apply, with one setting changed: standard_naming
+# expects permissible values in upper case rather than snake case. The
+# Implementation Groups are IG1, IG2 and IG3 in CIS's guide, so a value
+# compares with CIS's labels without translating, and the asset classes and
+# security functions follow the same form, each with CIS's spelling in its
+# title. Class, slot and type names keep the rule's usual forms.
+extends: recommended
+rules:
+  standard_naming:
+    level: error
+    permissible_values_upper_case: true

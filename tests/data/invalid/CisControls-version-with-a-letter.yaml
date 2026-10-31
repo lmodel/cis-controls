@@ -1,0 +1,6 @@
+# Fails at: /cis_version
+# Invalid: the version is numbers and dots, as CIS numbers its editions,
+# without the v that CIS writes before it.
+cis_version: v8.1
+cis_controls:
+  - cis_control_id: "1"

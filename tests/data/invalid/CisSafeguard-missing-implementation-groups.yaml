@@ -1,0 +1,5 @@
+# Fails at: /
+# Invalid: every Safeguard is in at least one Implementation Group.
+cis_safeguard_id: "1.1"
+safeguard_asset_class: DEVICES
+safeguard_security_function: IDENTIFY

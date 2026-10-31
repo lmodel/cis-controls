@@ -1,84 +1,31 @@
 {
     "$defs": {
-        "AssetType": {
-            "description": "The category of enterprise asset primarily addressed by a Safeguard. Aligned with the CIS Controls Asset Classes taxonomy (v8.1, pg. 8). Sub-classes exist within each category but Safeguards reference the top-level class only.",
+        "CisAssetClass": {
+            "description": "One of the classes of enterprise asset that the CIS Controls sort their Safeguards by. Each Safeguard is about one class.",
             "enum": [
-                "Devices",
-                "Software",
-                "Data",
-                "Users",
-                "Network",
-                "Documentation"
+                "DEVICES",
+                "SOFTWARE",
+                "DATA",
+                "USERS",
+                "NETWORK",
+                "DOCUMENTATION"
             ],
-            "title": "AssetType",
+            "title": "CisAssetClass",
             "type": "string"
         },
-        "CISControl": {
+        "CisControl": {
             "additionalProperties": false,
-            "description": "One of the CIS Critical Security Controls; a high-level defensive action category that enterprises should implement to reduce cyber risk.",
+            "description": "One of the CIS Controls: a group of Safeguards on one subject, named by its number, such as Control 4.",
             "properties": {
-                "control_number": {
-                    "description": "Numeric identifier of the parent CIS Control (1\u201318).",
+                "cis_control_id": {
+                    "description": "The Control's identifier, its number, such as 4.",
                     "pattern": "^([1-9]|1[0-8])$",
                     "type": "string"
                 },
-                "id": {
-                    "description": "Composite identifier for the control (e.g. \"CIS-1\").",
-                    "pattern": "^CIS-([1-9]|1[0-8])$",
-                    "type": "string"
-                },
-                "overview": {
-                    "description": "Brief description of the intent of a Control and its utility as a defensive action.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "procedures_and_tools": {
-                    "description": "Technical description of the processes and technologies that enable implementation and automation of this Control.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "safeguards": {
-                    "description": "List of Safeguards belonging to a CIS Control.",
+                "control_safeguards": {
+                    "description": "The Safeguards of the Control. A knowledge bundle relates a Safeguard to its Control with isPartOf instead.",
                     "items": {
-                        "$ref": "#/$defs/Safeguard"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "title": {
-                    "description": "Human-readable title of the element.",
-                    "type": "string"
-                },
-                "why_critical": {
-                    "description": "Explanation of the importance of this Control in blocking, mitigating, or identifying attacks, and how attackers exploit its absence.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                }
-            },
-            "required": [
-                "id",
-                "title",
-                "control_number"
-            ],
-            "title": "CISControl",
-            "type": "object"
-        },
-        "CISControlsDocument": {
-            "additionalProperties": false,
-            "description": "Root container for a versioned edition of the CIS Critical Security Controls publication.",
-            "properties": {
-                "controls": {
-                    "description": "List of CIS Controls in this document.",
-                    "items": {
-                        "$ref": "#/$defs/CISControl"
+                        "$ref": "#/$defs/CisSafeguard"
                     },
                     "type": [
                         "array",
@@ -86,29 +33,14 @@
                     ]
                 },
                 "description": {
-                    "description": "Descriptive text for the element.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "id": {
-                    "description": "Unique identifier for the element.",
-                    "type": "string"
-                },
-                "publication_date": {
-                    "description": "Publication date of the CIS Controls document (ISO 8601).",
+                    "description": "What the Control or Safeguard means to its user, in words its user has the right to use.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "title": {
-                    "description": "Human-readable title of the element.",
-                    "type": "string"
-                },
-                "version": {
-                    "description": "Version string of the CIS Controls document (e.g. \"8.1\").",
+                    "description": "A name for the Control or Safeguard, in words its user has the right to use.",
                     "type": [
                         "string",
                         "null"
@@ -116,139 +48,138 @@
                 }
             },
             "required": [
-                "id",
-                "title"
+                "cis_control_id"
             ],
-            "title": "CISControlsDocument",
+            "title": "CisControl",
             "type": "object"
         },
-        "ImplementationGroup": {
-            "description": "Self-assessed tier of CIS Controls applicability based on an enterprise's risk profile and resources. Each IG is cumulative \u2014 IG2 includes IG1, IG3 includes both. Introduced in CIS Controls v7.1 as the recommended way to prioritize implementation.",
+        "CisControls": {
+            "additionalProperties": false,
+            "description": "One edition of the CIS Controls as a whole: its Controls, each holding its Safeguards.",
+            "properties": {
+                "cis_controls": {
+                    "description": "The Controls, in CIS's order.",
+                    "items": {
+                        "$ref": "#/$defs/CisControl"
+                    },
+                    "minItems": 1,
+                    "type": "array"
+                },
+                "cis_version": {
+                    "description": "The edition, as CIS numbers it, such as 8.1, or the revision the guide's pages carry, such as 8.1.2.",
+                    "pattern": "^[0-9]+\\.[0-9]+(\\.[0-9]+)?$",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "cis_version",
+                "cis_controls"
+            ],
+            "title": "CisControls",
+            "type": "object"
+        },
+        "CisImplementationGroup": {
+            "description": "One of the three Implementation Groups, CIS's tiers for deciding which Safeguards an enterprise puts in place first. Each group includes every Safeguard of the groups before it.",
             "enum": [
                 "IG1",
                 "IG2",
                 "IG3"
             ],
-            "title": "ImplementationGroup",
+            "title": "CisImplementationGroup",
             "type": "string"
         },
-        "Safeguard": {
+        "CisSafeguard": {
             "additionalProperties": false,
-            "description": "A specific, measurable action that an enterprise should take to implement a CIS Control. Formerly called \"Sub-Controls\" prior to CIS Controls v8.",
+            "description": "One Safeguard of a Control: a single action an enterprise takes, named by its Control's number and its own, such as Safeguard 4.1.",
             "properties": {
-                "asset_type": {
-                    "$ref": "#/$defs/AssetType",
-                    "description": "The class of enterprise asset primarily addressed by this Safeguard."
+                "cis_safeguard_id": {
+                    "description": "The Safeguard's identifier, its number, such as 4.1.",
+                    "pattern": "^([1-9]|1[0-8])\\.[1-9][0-9]?$",
+                    "type": "string"
                 },
                 "description": {
-                    "description": "Descriptive text for the element.",
+                    "description": "What the Control or Safeguard means to its user, in words its user has the right to use.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
-                "id": {
-                    "description": "Composite identifier for the safeguard (e.g. \"CIS-1.1\").",
-                    "pattern": "^CIS-([1-9]|1[0-8])\\.[0-9]+$",
-                    "type": "string"
+                "safeguard_asset_class": {
+                    "$ref": "#/$defs/CisAssetClass",
+                    "description": "The class of enterprise asset the Safeguard is about."
                 },
-                "implementation_groups": {
-                    "description": "Implementation Group(s) for which this Safeguard is applicable. A Safeguard listed under IG2 is also required for IG3 enterprises; a Safeguard listed under IG1 is required for all enterprises.",
-                    "items": {
-                        "$ref": "#/$defs/ImplementationGroup"
+                "safeguard_implementation_groups": {
+                    "contains": {
+                        "const": "IG3"
                     },
+                    "description": "The Implementation Groups that include the Safeguard.",
+                    "items": {
+                        "$ref": "#/$defs/CisImplementationGroup"
+                    },
+                    "maxItems": 3,
+                    "minItems": 1,
                     "type": "array"
                 },
-                "safeguard_number": {
-                    "description": "Dotted identifier of this Safeguard (e.g. \"1.1\"). Combines the parent control number with a sequential Safeguard index.",
-                    "pattern": "^([1-9]|1[0-8])\\.[0-9]+$",
-                    "type": "string"
-                },
-                "security_function": {
-                    "$ref": "#/$defs/SecurityFunction",
-                    "description": "NIST CSF 2.0 function category to which this Safeguard is mapped."
+                "safeguard_security_function": {
+                    "$ref": "#/$defs/CisSecurityFunction",
+                    "description": "The security function the Safeguard serves, one of the six functions of the NIST Cybersecurity Framework (CSF) 2.0."
                 },
                 "title": {
-                    "description": "Human-readable title of the element.",
-                    "type": "string"
+                    "description": "A name for the Control or Safeguard, in words its user has the right to use.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 }
             },
             "required": [
-                "id",
-                "title",
-                "safeguard_number",
-                "asset_type",
-                "security_function",
-                "implementation_groups"
+                "cis_safeguard_id",
+                "safeguard_asset_class",
+                "safeguard_security_function",
+                "safeguard_implementation_groups"
             ],
-            "title": "Safeguard",
+            "title": "CisSafeguard",
             "type": "object"
         },
-        "SecurityFunction": {
-            "description": "NIST Cybersecurity Framework 2.0 security function category to which a Safeguard is primarily mapped. Values correspond exactly to the six CSF 2.0 Functions; enum as a whole is a close match for nist_csf_v2:CSFFunction.",
+        "CisSecurityFunction": {
+            "description": "The security function a Safeguard serves. The values are the six functions of the NIST Cybersecurity Framework (CSF) 2.0, to which Version 8.1 aligned the CIS Controls.",
             "enum": [
-                "Govern",
-                "Identify",
-                "Protect",
-                "Detect",
-                "Respond",
-                "Recover"
+                "GOVERN",
+                "IDENTIFY",
+                "PROTECT",
+                "DETECT",
+                "RESPOND",
+                "RECOVER"
             ],
-            "title": "SecurityFunction",
+            "title": "CisSecurityFunction",
             "type": "string"
         }
     },
     "$id": "https://w3id.org/lmodel/cis-controls",
     "$schema": "https://json-schema.org/draft/2019-09/schema",
-    "additionalProperties": true,
-    "description": "Root container for a versioned edition of the CIS Critical Security Controls publication.",
-    "metamodel_version": "1.7.0",
+    "additionalProperties": false,
+    "description": "One edition of the CIS Controls as a whole: its Controls, each holding its Safeguards.",
+    "metamodel_version": "1.12.0",
     "properties": {
-        "controls": {
-            "description": "List of CIS Controls in this document.",
+        "cis_controls": {
+            "description": "The Controls, in CIS's order.",
             "items": {
-                "$ref": "#/$defs/CISControl"
+                "$ref": "#/$defs/CisControl"
             },
-            "type": [
-                "array",
-                "null"
-            ]
+            "minItems": 1,
+            "type": "array"
         },
-        "description": {
-            "description": "Descriptive text for the element.",
-            "type": [
-                "string",
-                "null"
-            ]
-        },
-        "id": {
-            "description": "Unique identifier for the element.",
+        "cis_version": {
+            "description": "The edition, as CIS numbers it, such as 8.1, or the revision the guide's pages carry, such as 8.1.2.",
+            "pattern": "^[0-9]+\\.[0-9]+(\\.[0-9]+)?$",
             "type": "string"
-        },
-        "publication_date": {
-            "description": "Publication date of the CIS Controls document (ISO 8601).",
-            "type": [
-                "string",
-                "null"
-            ]
-        },
-        "title": {
-            "description": "Human-readable title of the element.",
-            "type": "string"
-        },
-        "version": {
-            "description": "Version string of the CIS Controls document (e.g. \"8.1\").",
-            "type": [
-                "string",
-                "null"
-            ]
         }
     },
     "required": [
-        "id",
-        "title"
+        "cis_version",
+        "cis_controls"
     ],
-    "title": "cis-controls",
+    "title": "cis_controls",
     "type": "object",
     "version": "8.1.2"
 }

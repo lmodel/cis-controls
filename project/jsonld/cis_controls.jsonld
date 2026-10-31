@@ -1,10 +1,32 @@
 {
-  "name": "cis-controls",
-  "description": "LinkML schema for the CIS Critical Security Controls (CIS Controls) Version 8.1.2 (March 2025). Models the 18 Controls and their Safeguards, including asset types, security functions, and Implementation Groups as defined by the Center for Internet Security. Source document: CIS Controls v8.1.2 (March 2025), licensed CC BY-NC-ND 4.0 (https://creativecommons.org/licenses/by-nc-nd/4.0/).",
-  "title": "CIS Controls",
+  "name": "cis_controls",
+  "annotations": [
+    {
+      "tag": "cis_site_version",
+      "value": "8.1"
+    },
+    {
+      "tag": "revision_date",
+      "value": "2025-03"
+    },
+    {
+      "tag": "pages_read_on",
+      "value": "2026-10-30"
+    }
+  ],
+  "description": "A LinkML model of the structure of the CIS Critical Security Controls (CIS Controls), Version 8.1, which the Center for Internet Security (CIS) publishes. It models the Controls and the Safeguards of each Control. For each Safeguard it records the asset class, the security function and the Implementation Groups that include it. It names each Control and Safeguard by its number and carries none of CIS's text.",
+  "title": "CIS Critical Security Controls",
+  "comments": [
+    "The version is the label that the pages of CIS's guide carry for its revision of March 2025. CIS's site calls the edition Version 8.1. The guide's change log names two minor revisions of it, v8.1.1 in August 2024 and v8.1.2 in March 2025. They corrected small errors, among them the security function of two Safeguards. The source is CIS's page for Version 8.1. scripts/check_upstream_release.py holds the same pins and reports when CIS's pages name a newer version.",
+    "CIS licenses the CIS Controls under CC BY-NC-ND 4.0 and requires its prior approval for commercial use, while this schema is Apache-2.0. So the schema carries no CIS text: no Control or Safeguard title or description, and none of the guide's overviews or explanations. The descriptions here are this project's own words. The text slots, title and description, are optional and hold text their user has the right to use; NOTICE says what CIS's licence allows.",
+    "The edition holds 18 Controls and 153 Safeguards. Implementation Group 1 holds 56 of the Safeguards, Implementation Group 2 adds 74 to make 130, and Implementation Group 3 adds the last 23, so it holds all 153. CIS's pages on the CIS Controls list and on each Implementation Group state these numbers."
+  ],
+  "source": "https://www.cisecurity.org/controls/v8-1",
   "see_also": [
-    "https://www.cisecurity.org/controls/",
-    "https://lmodel.github.io/cis-controls"
+    "https://lmodel.github.io/cis-controls",
+    "https://www.cisecurity.org/controls/cis-controls-list",
+    "https://www.cisecurity.org/controls/implementation-groups",
+    "https://www.cisecurity.org/insights/white-papers/guide-to-asset-classes-cis-critical-security-controls-v8-1"
   ],
   "id": "https://w3id.org/lmodel/cis-controls",
   "version": "8.1.2",
@@ -22,82 +44,45 @@
       "prefix_reference": "https://w3id.org/linkml/"
     },
     {
-      "prefix_prefix": "schema",
-      "prefix_reference": "http://schema.org/"
-    },
-    {
-      "prefix_prefix": "dct",
-      "prefix_reference": "http://purl.org/dc/terms/"
-    },
-    {
-      "prefix_prefix": "skos",
-      "prefix_reference": "http://www.w3.org/2004/02/skos/core#"
-    },
-    {
-      "prefix_prefix": "rdfs",
-      "prefix_reference": "http://www.w3.org/2000/01/rdf-schema#"
-    },
-    {
-      "prefix_prefix": "xsd",
-      "prefix_reference": "http://www.w3.org/2001/XMLSchema#"
-    },
-    {
       "prefix_prefix": "nist_csf_v2",
       "prefix_reference": "https://w3id.org/lmodel/nist-csf-v2/"
     },
     {
-      "prefix_prefix": "iso27001",
-      "prefix_reference": "https://w3id.org/lmodel/iso27001/"
+      "prefix_prefix": "oscal",
+      "prefix_reference": "https://w3id.org/lmodel/oscal/"
     },
     {
-      "prefix_prefix": "WIKIDATA",
-      "prefix_reference": "https://www.wikidata.org/wiki/"
+      "prefix_prefix": "schema",
+      "prefix_reference": "http://schema.org/"
+    },
+    {
+      "prefix_prefix": "xsd",
+      "prefix_reference": "http://www.w3.org/2001/XMLSchema#"
     }
   ],
   "default_prefix": "cis_controls",
   "default_range": "string",
-  "subsets": [
-    {
-      "name": "essential_cyber_hygiene",
-      "definition_uri": "https://w3id.org/lmodel/cis-controls/EssentialCyberHygiene",
-      "description": "Profile containing Safeguards where implementation_groups includes IG1. The minimum set every enterprise should implement (\"Essential Cyber Hygiene\"). 56 safeguards across all 18 Controls.",
-      "from_schema": "https://w3id.org/lmodel/cis-controls",
-      "@type": "SubsetDefinition"
-    },
-    {
-      "name": "ig2_controls",
-      "definition_uri": "https://w3id.org/lmodel/cis-controls/Ig2Controls",
-      "description": "Profile containing Safeguards where implementation_groups includes IG2 (a superset of essential_cyber_hygiene). For organizations managing sensitive data with dedicated security staff.",
-      "from_schema": "https://w3id.org/lmodel/cis-controls",
-      "@type": "SubsetDefinition"
-    },
-    {
-      "name": "ig3_controls",
-      "definition_uri": "https://w3id.org/lmodel/cis-controls/Ig3Controls",
-      "description": "Profile containing Safeguards where implementation_groups includes IG3 (a superset of ig2_controls). For high-risk profiles with specialist security expertise. All 153 safeguards across 18 Controls.",
-      "from_schema": "https://w3id.org/lmodel/cis-controls",
-      "@type": "SubsetDefinition"
-    }
-  ],
   "types": [
     {
-      "name": "ControlId",
-      "definition_uri": "https://w3id.org/lmodel/cis-controls/ControlId",
-      "description": "Identifier for a CIS Control (e.g. \"1\", \"18\").",
+      "name": "cis_control_identifier",
+      "definition_uri": "https://w3id.org/lmodel/cis-controls/CisControlIdentifier",
+      "description": "A Control's identifier: its number from 1 to 18, as CIS writes it, such as 4 for Control 4.",
       "from_schema": "https://w3id.org/lmodel/cis-controls",
+      "typeof": "string",
       "base": "str",
       "uri": "http://www.w3.org/2001/XMLSchema#string",
       "pattern": "^([1-9]|1[0-8])$",
       "@type": "TypeDefinition"
     },
     {
-      "name": "SafeguardId",
-      "definition_uri": "https://w3id.org/lmodel/cis-controls/SafeguardId",
-      "description": "Identifier for a CIS Safeguard in the form <control>.<safeguard> (e.g. \"1.1\", \"16.14\").",
+      "name": "cis_safeguard_identifier",
+      "definition_uri": "https://w3id.org/lmodel/cis-controls/CisSafeguardIdentifier",
+      "description": "A Safeguard's identifier, as CIS writes it: the number of its Control, a dot and the Safeguard's number within the Control, such as 4.1 for Safeguard 4.1.",
       "from_schema": "https://w3id.org/lmodel/cis-controls",
+      "typeof": "string",
       "base": "str",
       "uri": "http://www.w3.org/2001/XMLSchema#string",
-      "pattern": "^([1-9]|1[0-8])\\.[0-9]+$",
+      "pattern": "^([1-9]|1[0-8])\\.[1-9][0-9]?$",
       "@type": "TypeDefinition"
     },
     {
@@ -105,7 +90,7 @@
       "definition_uri": "https://w3id.org/linkml/String",
       "description": "A character string",
       "notes": [
-        "In RDF serializations, a slot with range of string is treated as a literal or type xsd:string.   If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"string\"."
+        "In RDF serializations, a slot with range of string is treated as a literal or type xsd:string. If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"string\"."
       ],
       "from_schema": "https://w3id.org/linkml/types",
       "imported_from": "linkml:types",
@@ -411,549 +396,480 @@
   ],
   "enums": [
     {
-      "name": "ImplementationGroup",
-      "definition_uri": "https://w3id.org/lmodel/cis-controls/ImplementationGroup",
-      "description": "Self-assessed tier of CIS Controls applicability based on an enterprise's risk profile and resources. Each IG is cumulative \u2014 IG2 includes IG1, IG3 includes both. Introduced in CIS Controls v7.1 as the recommended way to prioritize implementation.",
+      "name": "CisImplementationGroup",
+      "definition_uri": "https://w3id.org/lmodel/cis-controls/CisImplementationGroup",
+      "description": "One of the three Implementation Groups, CIS's tiers for deciding which Safeguards an enterprise puts in place first. Each group includes every Safeguard of the groups before it.",
       "from_schema": "https://w3id.org/lmodel/cis-controls",
-      "permissible_values": [
-        {
-          "text": "IG1",
-          "description": "Small to medium-sized enterprise with limited IT and cybersecurity expertise to dedicate toward protecting IT assets and personnel. The principal concern is to keep the business operational; limited tolerance for downtime; data sensitivity is low, principally surrounding employee and financial information. Safeguards should be implementable with limited cybersecurity expertise and designed to thwart general, non-targeted attacks using COTS hardware and software. Also called \"Essential Cyber Hygiene.\""
-        },
-        {
-          "text": "IG2",
-          "description": "Enterprise employing individuals responsible for managing and protecting IT infrastructure. Supports multiple departments with differing risk profiles based on job function and mission; may have regulatory compliance burdens; often stores and processes sensitive client or enterprise information and can withstand short interruptions of service. A major concern is loss of public confidence if a breach occurs. Safeguards help security teams cope with increased operational complexity; some depend on enterprise-grade technology and specialized expertise to properly install and configure. Includes all IG1 safeguards."
-        },
-        {
-          "text": "IG3",
-          "description": "Enterprise employing security experts that specialize in the different facets of cybersecurity (e.g., risk management, penetration testing, application security). Assets and data contain sensitive information or functions subject to regulatory and compliance oversight; must address availability of services and the confidentiality and integrity of sensitive data; successful attacks can cause significant harm to the public welfare. Safeguards must abate targeted attacks from a sophisticated adversary and reduce the impact of zero-day attacks. Includes all IG1 and IG2 safeguards."
-        }
-      ]
-    },
-    {
-      "name": "AssetType",
-      "definition_uri": "https://w3id.org/lmodel/cis-controls/AssetType",
-      "description": "The category of enterprise asset primarily addressed by a Safeguard. Aligned with the CIS Controls Asset Classes taxonomy (v8.1, pg. 8). Sub-classes exist within each category but Safeguards reference the top-level class only.",
-      "from_schema": "https://w3id.org/lmodel/cis-controls",
-      "permissible_values": [
-        {
-          "text": "Devices",
-          "description": "Enterprise assets (data processing and storage assets), end-user devices (including portable and mobile devices), servers, Internet of Things (IoT) and non-computing devices, network devices, and removable media. Devices may exist in physical, virtual, or cloud-based environments and can remotely connect to these systems."
-        },
-        {
-          "text": "Software",
-          "description": "Sets of data and instructions used to direct a computer to complete a specific task. Includes applications, operating systems (with their services, libraries, and APIs), and firmware. Both applications and operating systems are considered software assets."
-        },
-        {
-          "text": "Data",
-          "description": "A collection of facts that can be examined, considered, and used for decision-making. Although data may be physical, the CIS Controls primarily provide protection for digital data stored, transferred, and processed by enterprise assets. Sub-classes: sensitive data, log data, and physical data."
-        },
-        {
-          "text": "Users",
-          "description": "Employees, third-party vendors, contractors, service providers, consultants, or any other person authorized to access an enterprise asset. Includes workforce, service providers, and user/administrator/service accounts."
-        },
-        {
-          "text": "Network",
-          "description": "A group of interconnected devices that exchange data. A superset of network infrastructure (hardware and software providing connectivity and communication) and network architecture (the logical and physical design of the network)."
-        },
-        {
-          "text": "Documentation",
-          "description": "Policies, processes, procedures, plans, diagrams, and other written material (physical or digital), such as compliance reports. Examples include methods of governance for an enterprise, processes users follow, or descriptions of network architecture. Sub-classes: plans, policies, processes, and procedures."
-        }
-      ]
-    },
-    {
-      "name": "SecurityFunction",
-      "definition_uri": "https://w3id.org/lmodel/cis-controls/SecurityFunction",
-      "description": "NIST Cybersecurity Framework 2.0 security function category to which a Safeguard is primarily mapped. Values correspond exactly to the six CSF 2.0 Functions; enum as a whole is a close match for nist_csf_v2:CSFFunction.",
-      "from_schema": "https://w3id.org/lmodel/cis-controls",
-      "close_mappings": [
-        "nist_csf_v2:CSFFunction"
+      "see_also": [
+        "https://www.cisecurity.org/controls/implementation-groups"
       ],
       "permissible_values": [
         {
-          "text": "Govern",
-          "description": "Establish and monitor the organization's cybersecurity risk management strategy, expectations, and policy.",
-          "meaning": "nist_csf_v2:GV"
+          "text": "IG1",
+          "description": "The first group, where every enterprise starts.",
+          "title": "Implementation Group 1"
         },
         {
-          "text": "Identify",
-          "description": "Develop an organizational understanding of cybersecurity risk to systems, people, assets, data, and capabilities.",
-          "meaning": "nist_csf_v2:ID"
+          "text": "IG2",
+          "description": "The second group, which adds Safeguards to the first.",
+          "title": "Implementation Group 2"
         },
         {
-          "text": "Protect",
-          "description": "Develop and implement appropriate safeguards to ensure delivery of critical services.",
-          "meaning": "nist_csf_v2:PR"
+          "text": "IG3",
+          "description": "The third group, which adds the rest and so holds every Safeguard.",
+          "title": "Implementation Group 3"
+        }
+      ]
+    },
+    {
+      "name": "CisAssetClass",
+      "definition_uri": "https://w3id.org/lmodel/cis-controls/CisAssetClass",
+      "description": "One of the classes of enterprise asset that the CIS Controls sort their Safeguards by. Each Safeguard is about one class.",
+      "comments": [
+        "CIS revised the classes, and which Safeguard is about which, in Version 8.1. CIS's guide divides each class further, but a Safeguard names only the class."
+      ],
+      "from_schema": "https://w3id.org/lmodel/cis-controls",
+      "see_also": [
+        "https://www.cisecurity.org/insights/white-papers/guide-to-asset-classes-cis-critical-security-controls-v8-1"
+      ],
+      "permissible_values": [
+        {
+          "text": "DEVICES",
+          "description": "The enterprise's hardware, wherever it runs.",
+          "title": "Devices"
         },
         {
-          "text": "Detect",
-          "description": "Develop and implement appropriate activities to identify the occurrence of a cybersecurity event.",
-          "meaning": "nist_csf_v2:DE"
+          "text": "SOFTWARE",
+          "description": "The programs and systems that run on the enterprise's devices.",
+          "title": "Software"
         },
         {
-          "text": "Respond",
-          "description": "Develop and implement appropriate activities to take action regarding a detected cybersecurity incident.",
-          "meaning": "nist_csf_v2:RS"
+          "text": "DATA",
+          "description": "The information the enterprise holds, uses and moves.",
+          "title": "Data"
         },
         {
-          "text": "Recover",
-          "description": "Develop and implement appropriate activities to maintain plans for resilience and to restore capabilities impaired by a cybersecurity incident.",
-          "meaning": "nist_csf_v2:RC"
+          "text": "USERS",
+          "description": "The people and accounts with access to the enterprise's assets.",
+          "title": "Users"
+        },
+        {
+          "text": "NETWORK",
+          "description": "How the enterprise's devices connect, and how its networks are laid out.",
+          "title": "Network"
+        },
+        {
+          "text": "DOCUMENTATION",
+          "description": "The enterprise's written governance, such as its policies and procedures.",
+          "title": "Documentation"
+        }
+      ]
+    },
+    {
+      "name": "CisSecurityFunction",
+      "definition_uri": "https://w3id.org/lmodel/cis-controls/CisSecurityFunction",
+      "description": "The security function a Safeguard serves. The values are the six functions of the NIST Cybersecurity Framework (CSF) 2.0, to which Version 8.1 aligned the CIS Controls.",
+      "comments": [
+        "lmodel/nist-csf-v2 v0.1.0 models a CSF function as an instance of its class CsfFunction, IRI nist_csf_v2:Function, named by the two letters in its csf_function_id. It publishes no IRI for each function, so the values carry no meaning; each value's csf_function_id annotation gives the letters, and the enum names the class in related_mappings."
+      ],
+      "from_schema": "https://w3id.org/lmodel/cis-controls",
+      "see_also": [
+        "https://www.cisecurity.org/controls/v8-1"
+      ],
+      "related_mappings": [
+        "nist_csf_v2:Function"
+      ],
+      "permissible_values": [
+        {
+          "text": "GOVERN",
+          "description": "The CSF 2.0 function GOVERN.",
+          "annotations": [
+            {
+              "tag": "csf_function_id",
+              "value": "GV"
+            }
+          ],
+          "title": "Govern"
+        },
+        {
+          "text": "IDENTIFY",
+          "description": "The CSF 2.0 function IDENTIFY.",
+          "annotations": [
+            {
+              "tag": "csf_function_id",
+              "value": "ID"
+            }
+          ],
+          "title": "Identify"
+        },
+        {
+          "text": "PROTECT",
+          "description": "The CSF 2.0 function PROTECT.",
+          "annotations": [
+            {
+              "tag": "csf_function_id",
+              "value": "PR"
+            }
+          ],
+          "title": "Protect"
+        },
+        {
+          "text": "DETECT",
+          "description": "The CSF 2.0 function DETECT.",
+          "annotations": [
+            {
+              "tag": "csf_function_id",
+              "value": "DE"
+            }
+          ],
+          "title": "Detect"
+        },
+        {
+          "text": "RESPOND",
+          "description": "The CSF 2.0 function RESPOND.",
+          "annotations": [
+            {
+              "tag": "csf_function_id",
+              "value": "RS"
+            }
+          ],
+          "title": "Respond"
+        },
+        {
+          "text": "RECOVER",
+          "description": "The CSF 2.0 function RECOVER.",
+          "annotations": [
+            {
+              "tag": "csf_function_id",
+              "value": "RC"
+            }
+          ],
+          "title": "Recover"
         }
       ]
     }
   ],
   "slots": [
     {
-      "name": "id",
-      "definition_uri": "https://w3id.org/lmodel/cis-controls/id",
-      "description": "Unique identifier for the element.",
+      "name": "cis_control_id",
+      "definition_uri": "https://w3id.org/lmodel/cis-controls/cis_control_id",
+      "description": "The Control's identifier, its number, such as 4.",
+      "comments": [
+        "The identifier is CIS's own number, so data joins with CIS's guide and with the crosswalks that cite it without a translation. It is a string, so quote it in YAML: YAML reads an unquoted 4 as a number and an unquoted 1.10 as the number 1.1. The validator rejects either as not a string, but a file loaded into the generated dataclasses without validation would turn 1.10 into 1.1."
+      ],
       "from_schema": "https://w3id.org/lmodel/cis-controls",
-      "mappings": [
-        "http://purl.org/dc/terms/identifier"
-      ],
-      "exact_mappings": [
-        "https://w3id.org/lmodel/nist-csf-v2/id"
-      ],
-      "slot_uri": "http://purl.org/dc/terms/identifier",
-      "identifier": true,
-      "owner": "Safeguard",
+      "slot_uri": "https://w3id.org/lmodel/cis-controls/cis_control_id",
+      "owner": "CisControl",
       "domain_of": [
-        "CISControlsDocument",
-        "CISControl",
-        "Safeguard"
+        "CisControl"
       ],
-      "range": "string",
+      "range": "cis_control_identifier",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cis_safeguard_id",
+      "definition_uri": "https://w3id.org/lmodel/cis-controls/cis_safeguard_id",
+      "description": "The Safeguard's identifier, its number, such as 4.1.",
+      "comments": [
+        "It starts with the number of the Control that holds the Safeguard. The validator cannot check that against the Control a Safeguard is listed under; tests/test_data.py checks it over the examples."
+      ],
+      "from_schema": "https://w3id.org/lmodel/cis-controls",
+      "slot_uri": "https://w3id.org/lmodel/cis-controls/cis_safeguard_id",
+      "owner": "CisSafeguard",
+      "domain_of": [
+        "CisSafeguard"
+      ],
+      "range": "cis_safeguard_identifier",
       "required": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "title",
       "definition_uri": "https://w3id.org/lmodel/cis-controls/title",
-      "description": "Human-readable title of the element.",
+      "description": "A name for the Control or Safeguard, in words its user has the right to use.",
+      "comments": [
+        "It means what LOKF's title means and carries the same IRI, so lokf adapt folds it into LOKF's slot and a knowledge bundle reads one title key.",
+        "CIS's own names for the Controls and Safeguards are CIS's text under CC BY-NC-ND 4.0, so the schema's examples leave them out."
+      ],
       "from_schema": "https://w3id.org/lmodel/cis-controls",
       "mappings": [
-        "http://purl.org/dc/terms/title"
+        "http://schema.org/name"
       ],
-      "exact_mappings": [
-        "https://w3id.org/lmodel/nist-csf-v2/title"
-      ],
-      "slot_uri": "http://purl.org/dc/terms/title",
-      "owner": "Safeguard",
+      "slot_uri": "http://schema.org/name",
+      "owner": "CisSafeguard",
       "domain_of": [
-        "CISControlsDocument",
-        "CISControl",
-        "Safeguard"
+        "CisControl",
+        "CisSafeguard"
       ],
       "range": "string",
-      "required": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "description",
       "definition_uri": "https://w3id.org/lmodel/cis-controls/description",
-      "description": "Descriptive text for the element.",
+      "description": "What the Control or Safeguard means to its user, in words its user has the right to use.",
+      "comments": [
+        "It means what LOKF's description means and carries the same IRI, so lokf adapt folds it into LOKF's slot and a knowledge bundle reads one description key."
+      ],
       "from_schema": "https://w3id.org/lmodel/cis-controls",
       "mappings": [
-        "http://purl.org/dc/terms/description"
+        "http://schema.org/description"
       ],
-      "close_mappings": [
-        "https://w3id.org/lmodel/nist-csf-v2/prose"
-      ],
-      "slot_uri": "http://purl.org/dc/terms/description",
-      "owner": "Safeguard",
+      "slot_uri": "http://schema.org/description",
+      "owner": "CisSafeguard",
       "domain_of": [
-        "CISControlsDocument",
-        "Safeguard"
+        "CisControl",
+        "CisSafeguard"
       ],
       "range": "string",
       "@type": "SlotDefinition"
     },
     {
-      "name": "overview",
-      "definition_uri": "https://w3id.org/lmodel/cis-controls/overview",
-      "description": "Brief description of the intent of a Control and its utility as a defensive action.",
+      "name": "cisControls__cis_version",
+      "description": "The edition, as CIS numbers it, such as 8.1, or the revision the guide's pages carry, such as 8.1.2.",
       "from_schema": "https://w3id.org/lmodel/cis-controls",
-      "close_mappings": [
-        "https://w3id.org/lmodel/nist-csf-v2/prose"
-      ],
-      "slot_uri": "https://w3id.org/lmodel/cis-controls/overview",
-      "owner": "CISControl",
+      "slot_uri": "https://w3id.org/lmodel/cis-controls/cis_version",
+      "alias": "cis_version",
+      "owner": "CisControls",
       "domain_of": [
-        "CISControl"
+        "CisControls"
       ],
       "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "why_critical",
-      "definition_uri": "https://w3id.org/lmodel/cis-controls/why_critical",
-      "description": "Explanation of the importance of this Control in blocking, mitigating, or identifying attacks, and how attackers exploit its absence.",
-      "from_schema": "https://w3id.org/lmodel/cis-controls",
-      "slot_uri": "https://w3id.org/lmodel/cis-controls/why_critical",
-      "owner": "CISControl",
-      "domain_of": [
-        "CISControl"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "procedures_and_tools",
-      "definition_uri": "https://w3id.org/lmodel/cis-controls/procedures_and_tools",
-      "description": "Technical description of the processes and technologies that enable implementation and automation of this Control.",
-      "from_schema": "https://w3id.org/lmodel/cis-controls",
-      "slot_uri": "https://w3id.org/lmodel/cis-controls/procedures_and_tools",
-      "owner": "CISControl",
-      "domain_of": [
-        "CISControl"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "control_number",
-      "definition_uri": "https://w3id.org/lmodel/cis-controls/control_number",
-      "description": "Numeric identifier of the parent CIS Control (1\u201318).",
-      "from_schema": "https://w3id.org/lmodel/cis-controls",
-      "slot_uri": "https://w3id.org/lmodel/cis-controls/control_number",
-      "owner": "CISControl",
-      "domain_of": [
-        "CISControl"
-      ],
-      "range": "ControlId",
       "required": true,
+      "pattern": "^[0-9]+\\.[0-9]+(\\.[0-9]+)?$",
       "@type": "SlotDefinition"
     },
     {
-      "name": "safeguard_number",
-      "definition_uri": "https://w3id.org/lmodel/cis-controls/safeguard_number",
-      "description": "Dotted identifier of this Safeguard (e.g. \"1.1\"). Combines the parent control number with a sequential Safeguard index.",
+      "name": "cisControls__cis_controls",
+      "description": "The Controls, in CIS's order.",
       "from_schema": "https://w3id.org/lmodel/cis-controls",
-      "slot_uri": "https://w3id.org/lmodel/cis-controls/safeguard_number",
-      "owner": "Safeguard",
+      "slot_uri": "https://w3id.org/lmodel/cis-controls/cis_controls",
+      "alias": "cis_controls",
+      "owner": "CisControls",
       "domain_of": [
-        "Safeguard"
+        "CisControls"
       ],
-      "range": "SafeguardId",
-      "required": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "asset_type",
-      "definition_uri": "https://w3id.org/lmodel/cis-controls/asset_type",
-      "description": "The class of enterprise asset primarily addressed by this Safeguard.",
-      "from_schema": "https://w3id.org/lmodel/cis-controls",
-      "slot_uri": "https://w3id.org/lmodel/cis-controls/asset_type",
-      "owner": "Safeguard",
-      "domain_of": [
-        "Safeguard"
-      ],
-      "range": "AssetType",
-      "required": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "security_function",
-      "definition_uri": "https://w3id.org/lmodel/cis-controls/security_function",
-      "description": "NIST CSF 2.0 function category to which this Safeguard is mapped.",
-      "from_schema": "https://w3id.org/lmodel/cis-controls",
-      "close_mappings": [
-        "https://w3id.org/lmodel/nist-csf-v2/groups"
-      ],
-      "slot_uri": "https://w3id.org/lmodel/cis-controls/security_function",
-      "owner": "Safeguard",
-      "domain_of": [
-        "Safeguard"
-      ],
-      "range": "SecurityFunction",
-      "required": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "implementation_groups",
-      "definition_uri": "https://w3id.org/lmodel/cis-controls/implementation_groups",
-      "description": "The Implementation Group(s) for which this Safeguard is applicable. IG2 implies IG1; IG3 implies IG1 and IG2.",
-      "from_schema": "https://w3id.org/lmodel/cis-controls",
-      "related_mappings": [
-        "https://w3id.org/lmodel/nist-csf-v2/props"
-      ],
-      "slot_uri": "https://w3id.org/lmodel/cis-controls/implementation_groups",
-      "owner": "Safeguard",
-      "domain_of": [
-        "Safeguard"
-      ],
-      "range": "ImplementationGroup",
+      "range": "CisControl",
       "required": true,
       "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "minimum_cardinality": 1,
       "@type": "SlotDefinition"
     },
     {
-      "name": "safeguards",
-      "definition_uri": "https://w3id.org/lmodel/cis-controls/safeguards",
-      "description": "List of Safeguards belonging to a CIS Control.",
+      "name": "cisControl__control_safeguards",
+      "description": "The Safeguards of the Control. A knowledge bundle relates a Safeguard to its Control with isPartOf instead.",
       "from_schema": "https://w3id.org/lmodel/cis-controls",
-      "close_mappings": [
-        "https://w3id.org/lmodel/nist-csf-v2/controls"
-      ],
-      "slot_uri": "https://w3id.org/lmodel/cis-controls/safeguards",
-      "owner": "CISControl",
+      "slot_uri": "https://w3id.org/lmodel/cis-controls/control_safeguards",
+      "alias": "control_safeguards",
+      "owner": "CisControl",
       "domain_of": [
-        "CISControl"
+        "CisControl"
       ],
-      "range": "Safeguard",
+      "range": "CisSafeguard",
       "multivalued": true,
       "inlined": true,
       "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
-      "name": "controls",
-      "definition_uri": "https://w3id.org/lmodel/cis-controls/controls",
-      "description": "List of CIS Controls in this document.",
+      "name": "cisSafeguard__safeguard_asset_class",
+      "description": "The class of enterprise asset the Safeguard is about.",
       "from_schema": "https://w3id.org/lmodel/cis-controls",
-      "close_mappings": [
-        "https://w3id.org/lmodel/nist-csf-v2/groups"
-      ],
-      "slot_uri": "https://w3id.org/lmodel/cis-controls/controls",
-      "owner": "CISControlsDocument",
+      "slot_uri": "https://w3id.org/lmodel/cis-controls/safeguard_asset_class",
+      "alias": "safeguard_asset_class",
+      "owner": "CisSafeguard",
       "domain_of": [
-        "CISControlsDocument"
+        "CisSafeguard"
       ],
-      "range": "CISControl",
-      "multivalued": true,
-      "inlined": true,
-      "inlined_as_list": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "version",
-      "definition_uri": "https://w3id.org/lmodel/cis-controls/version",
-      "description": "Version string of the CIS Controls document (e.g. \"8.1\").",
-      "from_schema": "https://w3id.org/lmodel/cis-controls",
-      "mappings": [
-        "http://purl.org/dc/terms/hasVersion"
-      ],
-      "exact_mappings": [
-        "https://w3id.org/lmodel/nist-csf-v2/version"
-      ],
-      "slot_uri": "http://purl.org/dc/terms/hasVersion",
-      "owner": "CISControlsDocument",
-      "domain_of": [
-        "CISControlsDocument"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "publication_date",
-      "definition_uri": "https://w3id.org/lmodel/cis-controls/publication_date",
-      "description": "Publication date of the CIS Controls document (ISO 8601).",
-      "from_schema": "https://w3id.org/lmodel/cis-controls",
-      "mappings": [
-        "http://purl.org/dc/terms/date"
-      ],
-      "slot_uri": "http://purl.org/dc/terms/date",
-      "owner": "CISControlsDocument",
-      "domain_of": [
-        "CISControlsDocument"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "CISControl_id",
-      "definition_uri": "https://w3id.org/lmodel/cis-controls/id",
-      "description": "Composite identifier for the control (e.g. \"CIS-1\").",
-      "from_schema": "https://w3id.org/lmodel/cis-controls",
-      "mappings": [
-        "http://purl.org/dc/terms/identifier"
-      ],
-      "exact_mappings": [
-        "https://w3id.org/lmodel/nist-csf-v2/id"
-      ],
-      "is_a": "id",
-      "domain": "CISControl",
-      "slot_uri": "http://purl.org/dc/terms/identifier",
-      "identifier": true,
-      "alias": "id",
-      "owner": "CISControl",
-      "domain_of": [
-        "CISControl"
-      ],
-      "is_usage_slot": true,
-      "usage_slot_name": "id",
-      "range": "string",
+      "range": "CisAssetClass",
       "required": true,
-      "pattern": "^CIS-([1-9]|1[0-8])$",
       "@type": "SlotDefinition"
     },
     {
-      "name": "Safeguard_id",
-      "definition_uri": "https://w3id.org/lmodel/cis-controls/id",
-      "description": "Composite identifier for the safeguard (e.g. \"CIS-1.1\").",
+      "name": "cisSafeguard__safeguard_security_function",
+      "description": "The security function the Safeguard serves, one of the six functions of the NIST Cybersecurity Framework (CSF) 2.0.",
       "from_schema": "https://w3id.org/lmodel/cis-controls",
-      "mappings": [
-        "http://purl.org/dc/terms/identifier"
-      ],
-      "exact_mappings": [
-        "https://w3id.org/lmodel/nist-csf-v2/id"
-      ],
-      "is_a": "id",
-      "domain": "Safeguard",
-      "slot_uri": "http://purl.org/dc/terms/identifier",
-      "identifier": true,
-      "alias": "id",
-      "owner": "Safeguard",
+      "slot_uri": "https://w3id.org/lmodel/cis-controls/safeguard_security_function",
+      "alias": "safeguard_security_function",
+      "owner": "CisSafeguard",
       "domain_of": [
-        "Safeguard"
+        "CisSafeguard"
       ],
-      "is_usage_slot": true,
-      "usage_slot_name": "id",
-      "range": "string",
+      "range": "CisSecurityFunction",
       "required": true,
-      "pattern": "^CIS-([1-9]|1[0-8])\\.[0-9]+$",
       "@type": "SlotDefinition"
     },
     {
-      "name": "Safeguard_implementation_groups",
-      "definition_uri": "https://w3id.org/lmodel/cis-controls/implementation_groups",
-      "description": "Implementation Group(s) for which this Safeguard is applicable. A Safeguard listed under IG2 is also required for IG3 enterprises; a Safeguard listed under IG1 is required for all enterprises.",
+      "name": "cisSafeguard__safeguard_implementation_groups",
+      "description": "The Implementation Groups that include the Safeguard.",
+      "comments": [
+        "The groups are cumulative: a Safeguard in IG1 is in IG2 and IG3 too, and one in IG2 is in IG3. The schema states the part of that rule the validator can check, that every Safeguard is in IG3. The JSON Schema that LinkML 1.12.1 generates drops the rest, so a list of IG1 and IG3 without IG2 passes the validator. tests/test_data.py checks the whole rule over the examples."
+      ],
       "from_schema": "https://w3id.org/lmodel/cis-controls",
-      "related_mappings": [
-        "https://w3id.org/lmodel/nist-csf-v2/props"
-      ],
-      "is_a": "implementation_groups",
-      "domain": "Safeguard",
-      "slot_uri": "https://w3id.org/lmodel/cis-controls/implementation_groups",
-      "alias": "implementation_groups",
-      "owner": "Safeguard",
+      "slot_uri": "https://w3id.org/lmodel/cis-controls/safeguard_implementation_groups",
+      "alias": "safeguard_implementation_groups",
+      "owner": "CisSafeguard",
       "domain_of": [
-        "Safeguard"
+        "CisSafeguard"
       ],
-      "is_usage_slot": true,
-      "usage_slot_name": "implementation_groups",
-      "range": "ImplementationGroup",
+      "range": "CisImplementationGroup",
       "required": true,
       "multivalued": true,
+      "minimum_cardinality": 1,
+      "maximum_cardinality": 3,
+      "has_member": {
+        "equals_string": "IG3",
+        "@type": "AnonymousSlotExpression"
+      },
       "@type": "SlotDefinition"
     }
   ],
   "classes": [
     {
-      "name": "CISControlsDocument",
-      "id_prefixes": [
-        "cis_controls"
-      ],
-      "definition_uri": "https://w3id.org/lmodel/cis-controls/CISControlsDocument",
-      "description": "Root container for a versioned edition of the CIS Critical Security Controls publication.",
+      "name": "CisControls",
+      "definition_uri": "https://w3id.org/lmodel/cis-controls/CisControls",
+      "description": "One edition of the CIS Controls as a whole: its Controls, each holding its Safeguards.",
       "from_schema": "https://w3id.org/lmodel/cis-controls",
       "see_also": [
-        "https://www.cisecurity.org/controls/"
+        "https://www.cisecurity.org/controls/cis-controls-list"
       ],
       "exact_mappings": [
-        "schema:CreativeWork"
+        "cis_controls:Controls"
       ],
-      "close_mappings": [
-        "nist_csf_v2:CSFDocument"
-      ],
-      "related_mappings": [
-        "iso27001:InformationSecurityManagementSystem"
+      "broad_mappings": [
+        "oscal:Catalog"
       ],
       "slots": [
-        "id",
-        "title",
-        "description",
-        "version",
-        "publication_date",
-        "controls"
+        "cisControls__cis_version",
+        "cisControls__cis_controls"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/cis-controls/CISControlsDocument",
+      "attributes": [
+        {
+          "name": "cis_version",
+          "description": "The edition, as CIS numbers it, such as 8.1, or the revision the guide's pages carry, such as 8.1.2.",
+          "required": true,
+          "pattern": "^[0-9]+\\.[0-9]+(\\.[0-9]+)?$",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "cis_controls",
+          "description": "The Controls, in CIS's order.",
+          "range": "CisControl",
+          "required": true,
+          "multivalued": true,
+          "inlined": true,
+          "inlined_as_list": true,
+          "minimum_cardinality": 1,
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/lmodel/cis-controls/Controls",
       "tree_root": true,
       "@type": "ClassDefinition"
     },
     {
-      "name": "CISControl",
-      "id_prefixes": [
-        "cis_controls"
-      ],
-      "definition_uri": "https://w3id.org/lmodel/cis-controls/CISControl",
-      "description": "One of the CIS Critical Security Controls; a high-level defensive action category that enterprises should implement to reduce cyber risk.",
+      "name": "CisControl",
+      "definition_uri": "https://w3id.org/lmodel/cis-controls/CisControl",
+      "description": "One of the CIS Controls: a group of Safeguards on one subject, named by its number, such as Control 4.",
       "from_schema": "https://w3id.org/lmodel/cis-controls",
       "see_also": [
-        "https://www.cisecurity.org/controls/"
+        "https://www.cisecurity.org/controls/cis-controls-list"
       ],
       "exact_mappings": [
-        "schema:Action"
+        "cis_controls:Control"
       ],
-      "close_mappings": [
-        "nist_csf_v2:CSFCategory"
-      ],
-      "related_mappings": [
-        "WIKIDATA:Q2695280"
+      "broad_mappings": [
+        "oscal:Group"
       ],
       "slots": [
-        "CISControl_id",
+        "cis_control_id",
         "title",
-        "control_number",
-        "overview",
-        "why_critical",
-        "procedures_and_tools",
-        "safeguards"
+        "description",
+        "cisControl__control_safeguards"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/cis-controls/CISControl",
+      "attributes": [
+        {
+          "name": "control_safeguards",
+          "description": "The Safeguards of the Control. A knowledge bundle relates a Safeguard to its Control with isPartOf instead.",
+          "range": "CisSafeguard",
+          "multivalued": true,
+          "inlined": true,
+          "inlined_as_list": true,
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/lmodel/cis-controls/Control",
       "@type": "ClassDefinition"
     },
     {
-      "name": "Safeguard",
-      "id_prefixes": [
-        "cis_controls"
-      ],
-      "definition_uri": "https://w3id.org/lmodel/cis-controls/Safeguard",
-      "description": "A specific, measurable action that an enterprise should take to implement a CIS Control. Formerly called \"Sub-Controls\" prior to CIS Controls v8.",
-      "in_subset": [
-        "essential_cyber_hygiene",
-        "ig2_controls",
-        "ig3_controls"
-      ],
+      "name": "CisSafeguard",
+      "definition_uri": "https://w3id.org/lmodel/cis-controls/CisSafeguard",
+      "description": "One Safeguard of a Control: a single action an enterprise takes, named by its Control's number and its own, such as Safeguard 4.1.",
       "from_schema": "https://w3id.org/lmodel/cis-controls",
       "see_also": [
-        "https://www.cisecurity.org/controls/"
-      ],
-      "aliases": [
-        "sub-control"
+        "https://www.cisecurity.org/controls/cis-controls-list"
       ],
       "exact_mappings": [
-        "schema:Action"
+        "cis_controls:Safeguard"
       ],
-      "close_mappings": [
-        "nist_csf_v2:CSFSubcategory"
-      ],
-      "related_mappings": [
-        "iso27001:SecurityControl"
+      "broad_mappings": [
+        "oscal:Control"
       ],
       "slots": [
-        "Safeguard_id",
+        "cis_safeguard_id",
         "title",
-        "safeguard_number",
         "description",
-        "asset_type",
-        "security_function",
-        "Safeguard_implementation_groups"
+        "cisSafeguard__safeguard_asset_class",
+        "cisSafeguard__safeguard_security_function",
+        "cisSafeguard__safeguard_implementation_groups"
       ],
       "slot_usage": {},
+      "attributes": [
+        {
+          "name": "safeguard_asset_class",
+          "description": "The class of enterprise asset the Safeguard is about.",
+          "range": "CisAssetClass",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "safeguard_security_function",
+          "description": "The security function the Safeguard serves, one of the six functions of the NIST Cybersecurity Framework (CSF) 2.0.",
+          "range": "CisSecurityFunction",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "safeguard_implementation_groups",
+          "description": "The Implementation Groups that include the Safeguard.",
+          "comments": [
+            "The groups are cumulative: a Safeguard in IG1 is in IG2 and IG3 too, and one in IG2 is in IG3. The schema states the part of that rule the validator can check, that every Safeguard is in IG3. The JSON Schema that LinkML 1.12.1 generates drops the rest, so a list of IG1 and IG3 without IG2 passes the validator. tests/test_data.py checks the whole rule over the examples."
+          ],
+          "range": "CisImplementationGroup",
+          "required": true,
+          "multivalued": true,
+          "minimum_cardinality": 1,
+          "maximum_cardinality": 3,
+          "has_member": {
+            "equals_string": "IG3",
+            "@type": "AnonymousSlotExpression"
+          },
+          "@type": "SlotDefinition"
+        }
+      ],
       "class_uri": "https://w3id.org/lmodel/cis-controls/Safeguard",
       "@type": "ClassDefinition"
     }
   ],
-  "metamodel_version": "1.7.0",
+  "metamodel_version": "1.12.0",
   "source_file": "cis_controls.yaml",
-  "source_file_date": "2026-04-15T23:28:25",
-  "source_file_size": 14606,
-  "generation_date": "2026-04-15T23:30:03",
+  "source_file_date": "2026-10-31T01:26:46",
+  "source_file_size": 12261,
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/cis_controls.context.jsonld",

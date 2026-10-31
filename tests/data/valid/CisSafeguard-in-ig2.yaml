@@ -1,0 +1,6 @@
+# Safeguard 1.3, from Implementation Group 2 on, as CIS's guide gives it at
+# v8.1.2; no text of CIS's is here.
+cis_safeguard_id: "1.3"
+safeguard_asset_class: DEVICES
+safeguard_security_function: DETECT
+safeguard_implementation_groups: [IG2, IG3]

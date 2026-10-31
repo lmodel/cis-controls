@@ -1,0 +1,6 @@
+# Fails at: /safeguard_implementation_groups/1
+# Invalid: there are three Implementation Groups, IG1 to IG3.
+cis_safeguard_id: "1.5"
+safeguard_asset_class: DEVICES
+safeguard_security_function: DETECT
+safeguard_implementation_groups: [IG3, IG4]

@@ -1,0 +1,12 @@
+# Control 16 with the two Safeguards whose security function CIS corrected
+# after v8.1, as its guide gives them at v8.1.2; no text of CIS's is here.
+cis_control_id: "16"
+control_safeguards:
+  - cis_safeguard_id: "16.11"
+    safeguard_asset_class: SOFTWARE
+    safeguard_security_function: PROTECT
+    safeguard_implementation_groups: [IG2, IG3]
+  - cis_safeguard_id: "16.13"
+    safeguard_asset_class: SOFTWARE
+    safeguard_security_function: DETECT
+    safeguard_implementation_groups: [IG3]
