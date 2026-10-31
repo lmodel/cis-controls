@@ -19,13 +19,13 @@ sources:
     title: the class CisControl
 generated:
   by: process:ktl-librarian
-  at: "2026-10-31T00:10:19Z"
+  at: "2026-10-31T12:14:49Z"
 status: draft
 ---
 
 # Control
 
-CIS's list of the Controls names 18 of them.[^cis-controls-list] Each Control groups the Safeguards on one subject, and CIS names it by its number. The schema renders a Control as `CisControl`, with its number in `cis_control_id`, such as `"4"`, and its Safeguards in `control_safeguards`.[^cis_controls.yaml] In a knowledge bundle a Safeguard names its Control with `isPartOf` instead. The bundle describes each Control under [controls](../controls/index.md), by its number alone.
+CIS's list of the Controls names 18 of them.[^cis-controls-list] Each Control groups the Safeguards on one subject, and CIS names it by its number. The schema renders a Control as `CisControl`, with its number in `cis_control_id`, such as `"4"`, and its Safeguards in `control_safeguards`.[^cis_controls.yaml] In a knowledge bundle a Safeguard names its Control with `isPartOf` instead. The bundle describes each Control under [controls](../controls/index.md) by its number, with the title and description the edition file gives it in the project's own words.
 
 [^cis-controls-list]: <https://www.cisecurity.org/controls/cis-controls-list>, the page's title
 [^cis_controls.yaml]: src/cis_controls/schema/cis_controls.yaml, the class CisControl

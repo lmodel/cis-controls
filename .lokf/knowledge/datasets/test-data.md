@@ -3,7 +3,7 @@ type: Dataset
 id: https://w3id.org/lmodel/cis-controls/knowledge/datasets/test-data
 genre: reference
 title: Test data and tests
-description: "The schema's tests: seven valid examples and 20 counter-examples under `tests/data/`, `tests/test_data.py`, which holds each to the validator and checks the rules it cannot, `tests/test_upstream.py`, which holds the schema header and the upstream watch to the same edition, `tests/test_watch.py`, which runs the watch against stubbed pages, and `tests/test_schema_rules.py`, which holds the adapt copy apart from LOKF and nine released lmodel copies in `tests/neighbours/`."
+description: "The schema's tests: seven valid examples and 20 counter-examples under `tests/data/`, `tests/test_data.py`, which holds each to the validator and checks the rules it cannot, `tests/test_edition.py`, which holds the edition file to the schema and the guide's counts, `tests/test_upstream.py`, which holds the schema header and the upstream watch to the same edition, `tests/test_watch.py`, which runs the watch against stubbed pages, and `tests/test_schema_rules.py`, which holds the adapt copy apart from LOKF and nine released lmodel copies in `tests/neighbours/`."
 resource: tests
 about:
   - https://w3id.org/lmodel/cis-controls/knowledge/datasets/cis-controls-linkml-schema
@@ -13,6 +13,9 @@ sources:
     title: the valid and invalid folders
   - id: test_data.py
     resource: tests/test_data.py
+    title: the six tests
+  - id: test_edition.py
+    resource: tests/test_edition.py
     title: the four tests
   - id: test_upstream.py
     resource: tests/test_upstream.py
@@ -25,7 +28,7 @@ sources:
     title: NEIGHBOURS, ROOTS and the tests
 generated:
   by: process:ktl-librarian
-  at: "2026-10-31T01:04:53Z"
+  at: "2026-10-31T12:14:49Z"
 status: draft
 ---
 
@@ -38,6 +41,13 @@ status: draft
 - a Safeguard's Implementation Groups are one of the three cumulative sets, and never repeat a group;
 - a Safeguard listed under a Control carries that Control's number;
 - no example repeats a Control or Safeguard identifier.
+
+`tests/test_edition.py` holds the edition file, `src/cis_controls/data/cis-controls-8.1.2.yaml`, to the schema and to the guide. It checks that:[^test_edition.py]
+
+- the file passes the validator and loads into the generated dataclasses;
+- it is edition 8.1.2, holds the 18 Controls in order, numbers each Control's Safeguards from 1 without a gap, and fills each Implementation Group to the count CIS states;
+- its Implementation Groups are cumulative and never repeat a group, and no Safeguard is listed under a Control other than its own;
+- every Control and Safeguard has a title and a description, each title is short, and no two elements share a title.
 
 `tests/test_upstream.py` checks that the schema header's `version` and `source` and its annotations name the edition and the page that `scripts/check_upstream_release.py` pins.[^test_upstream.py]
 
@@ -58,7 +68,8 @@ status: draft
 - each mapping into oscal or nist-csf-v2 names a term that neighbour's copy declares.[^test_schema_rules.py]
 
 [^data]: tests/data, valid and invalid
-[^test_data.py]: tests/test_data.py, the four tests
+[^test_data.py]: tests/test_data.py, the six tests
+[^test_edition.py]: tests/test_edition.py, the four tests
 [^test_upstream.py]: tests/test_upstream.py, the two tests
 [^test_watch.py]: tests/test_watch.py, the tests
 [^test_schema_rules.py]: tests/test_schema_rules.py, NEIGHBOURS, ROOTS and the tests
