@@ -2,6 +2,8 @@
 
 ## 2026-10-31
 
+* **Changed**: `tests/test_data.py` now checks that no example repeats a Control or Safeguard identifier, so the validate-data playbook and the test-data concept say it checks all three rules.
+* **Changed**: the security policy now names the three assets a release carries, as SECURITY.md does.
 * **Changed**: the Controls and Safeguards are named by CIS's own numbers, such as "4" and "4.1", as the schema now names them.
 
 ## 2026-10-30

@@ -13,7 +13,7 @@ sources:
     title: Validating data
 generated:
   by: process:ktl-librarian
-  at: "2026-10-30T23:47:49Z"
+  at: "2026-10-31T01:04:53Z"
 status: draft
 ---
 
@@ -32,6 +32,6 @@ No validator checks three rules:
 - a list never repeats an identifier or an Implementation Group;
 - the Implementation Groups are cumulative: the validator checks that every Safeguard is in IG3, but not that a Safeguard in IG1 is in IG2 too.
 
-`tests/test_data.py` checks the first and the last over every valid example, and that no Safeguard repeats a group.
+`tests/test_data.py` checks all three over every valid example.
 
 [^docs-index.md]: docs/index.md, Validating data

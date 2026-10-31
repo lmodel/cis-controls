@@ -25,7 +25,7 @@ sources:
     title: NEIGHBOURS, ROOTS and the tests
 generated:
   by: process:ktl-librarian
-  at: "2026-10-31T00:10:19Z"
+  at: "2026-10-31T01:04:53Z"
 status: draft
 ---
 
@@ -33,9 +33,9 @@ status: draft
 
 `tests/data/valid/` holds seven examples: one edition with two Controls, two Controls and four Safeguards. `tests/data/invalid/` holds 20 counter-examples, each invalid for one reason.[^data] A file's class is the part of its name before the first hyphen, such as `CisSafeguard-without-ig3.yaml`. A counter-example's first line names where it fails, as `# Fails at:` and a JSON pointer such as `/safeguard_implementation_groups`. The examples name each Control and Safeguard by its number and carry no CIS text. One Safeguard example shows the text slots holding a user's own note.
 
-`tests/test_data.py` loads each valid example into the generated dataclasses and validates it, checks that each counter-example fails at the place its first line names, and checks that each class has a valid example. It also checks the rules the validator cannot: that a Safeguard's Implementation Groups are one of the three cumulative sets, never repeating a group, and that a Safeguard listed under a Control carries that Control's number.[^test_data.py]
+`tests/test_data.py` loads each valid example into the generated dataclasses and validates it, checks that each counter-example fails at the place its first line names, and checks that each class has a valid example. It also checks the rules the validator cannot: that a Safeguard's Implementation Groups are one of the three cumulative sets, never repeating a group, that a Safeguard listed under a Control carries that Control's number, and that no example repeats a Control or Safeguard identifier.[^test_data.py]
 
-`tests/test_upstream.py` checks that the schema header's `version` and `source` and its annotations name the edition and the page that `scripts/check_upstream_release.py` pins.[^test_upstream.py] `tests/test_watch.py` runs the watch against stubbed pages: nothing changed, a newer version, a revision past the pinned one, the pinned version gone, a page gone, a blocked reader, a redirect, and no credentials sent.[^test_watch.py]
+`tests/test_upstream.py` checks that the schema header's `version` and `source` and its annotations name the edition and the page that `scripts/check_upstream_release.py` pins.[^test_upstream.py] `tests/test_watch.py` runs the watch against stubbed pages: nothing changed, a newer version, a revision past the pinned one, the pinned version gone, a page gone, a blocked reader, a connection cut off or a charset Python does not know, a redirect, the site's text quoted as code, and no credentials sent.[^test_watch.py]
 
 `tests/test_schema_rules.py` checks the adapt copy. It holds each neighbour copy in `tests/neighbours/` to its release's checksum: slsa v0.7.0, github-actions v0.3.0, oscal v0.1.2, spdx v0.1.0, nist-sp-800-218 v0.1.1, nist-sp-800-53 v0.1.0, nist-sp-800-171 v0.1.0, nist-csf-v2 v0.1.0 and in-toto v0.1.0. It checks that:
 

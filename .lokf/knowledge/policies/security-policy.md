@@ -14,7 +14,7 @@ sources:
     title: the five update entries
 generated:
   by: process:ktl-librarian
-  at: "2026-10-30T23:47:49Z"
+  at: "2026-10-31T01:04:53Z"
 status: draft
 ---
 
@@ -22,7 +22,7 @@ status: draft
 
 `SECURITY.md` asks for a vulnerability to be reported through GitHub's private vulnerability reporting, not in a public issue. It says that one person maintains the repository, so a first reply takes days and there is no bounty. It also says that only the latest release receives fixes.[^security.md]
 
-The repository releases the schema, the Python models generated from it, and the adapt copy as a release asset. Nothing is published to PyPI. The upstream watch reads two public pages of CIS, sends no credentials and writes nothing but its report.
+The repository releases the schema and the Python models generated from it. Nothing is published to PyPI. When the bundle or the schema has changed, the knowledge release attaches the adapt copy, the bundle as a zip and a Microsoft 365 Copilot skill zip, each with its `.sha256` and a build-provenance attestation. The upstream watch reads two public pages of CIS, sends no credentials and writes nothing but its report.
 
 The policy's table of surfaces names each workflow and what holds it. The pull request checks run read-only. The release job runs only on a push to `main`, in the `release` Environment. The website's deploy job alone holds the Pages scopes. The upstream watch writes only issues. The librarian's agent runs without a write token, and its `publish` job runs no agent.
 
