@@ -108,3 +108,18 @@ def test_valid_examples_keep_the_rules_no_validator_checks(filepath):
         assert set(groups) in CUMULATIVE, safeguard
         if control:
             assert safeguard["cis_safeguard_id"].startswith(f"{control}."), safeguard
+
+
+def _repeated(ids):
+    return sorted({i for i in ids if ids.count(i) > 1})
+
+
+@pytest.mark.parametrize("filepath", VALID_EXAMPLE_FILES)
+def test_valid_examples_repeat_no_identifier(filepath):
+    """An edition lists each Control once, and the edition as a whole lists
+    each Safeguard once, which the validator cannot check either."""
+    data = yaml.safe_load(Path(filepath).read_text())
+    controls = [c["cis_control_id"] for c in data.get("cis_controls", [])]
+    assert not _repeated(controls), _repeated(controls)
+    safeguards = [s["cis_safeguard_id"] for s, _ in _safeguards(data)]
+    assert not _repeated(safeguards), _repeated(safeguards)

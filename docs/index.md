@@ -37,5 +37,4 @@ No validator checks these rules:
 - that the Implementation Groups are cumulative. The validator checks that
   every Safeguard is in IG3, but not that a Safeguard in IG1 is in IG2 too.
 
-`tests/test_data.py` checks the first and the last over every valid
-example, and that no Safeguard repeats a group.
+`tests/test_data.py` checks all three over every valid example.
