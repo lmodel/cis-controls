@@ -73,12 +73,12 @@ linkml_meta = LinkMLMeta({'annotations': {'cis_site_version': {'tag': 'cis_site_
                      'revision_date': {'tag': 'revision_date', 'value': '2025-03'}},
      'comments': ["The version is the label that the pages of CIS's guide carry "
                   "for its revision of March 2025. CIS's site calls the edition "
-                  "Version 8.1, and the guide's change log names two minor "
-                  'revisions of it, v8.1.1 in August 2024 and v8.1.2 in March '
-                  '2025, which corrected small errors, among them the security '
-                  "function of two Safeguards. The source is CIS's page for "
-                  'Version 8.1. scripts/check_upstream_release.py holds the same '
-                  "pins and reports when CIS's pages name a newer version.",
+                  "Version 8.1. The guide's change log names two minor revisions "
+                  'of it, v8.1.1 in August 2024 and v8.1.2 in March 2025. They '
+                  'corrected small errors, among them the security function of two '
+                  "Safeguards. The source is CIS's page for Version 8.1. "
+                  'scripts/check_upstream_release.py holds the same pins and '
+                  "reports when CIS's pages name a newer version.",
                   'CIS licenses the CIS Controls under CC BY-NC-ND 4.0 and '
                   'requires its prior approval for commercial use, while this '
                   'schema is Apache-2.0. So the schema carries no CIS text: no '
@@ -97,11 +97,11 @@ linkml_meta = LinkMLMeta({'annotations': {'cis_site_version': {'tag': 'cis_site_
      'default_range': 'string',
      'description': 'A LinkML model of the structure of the CIS Critical Security '
                     'Controls (CIS Controls), Version 8.1, which the Center for '
-                    'Internet Security (CIS) publishes: its Controls, the '
-                    'Safeguards of each Control, and for each Safeguard its asset '
-                    'class, its security function and the Implementation Groups '
-                    'that include it. It names each Control and Safeguard by its '
-                    "number and carries none of CIS's text.",
+                    'Internet Security (CIS) publishes. It models the Controls and '
+                    'the Safeguards of each Control. For each Safeguard it records '
+                    'the asset class, the security function and the Implementation '
+                    'Groups that include it. It names each Control and Safeguard '
+                    "by its number and carries none of CIS's text.",
      'id': 'https://w3id.org/lmodel/cis-controls',
      'imports': ['linkml:types'],
      'license': 'Apache-2.0',
@@ -321,10 +321,10 @@ class CisSafeguard(ConfiguredBaseModel):
     safeguard_implementation_groups: list[CisImplementationGroup] = Field(default=..., description="""The Implementation Groups that include the Safeguard.""", min_length=1, max_length=3, json_schema_extra = { "linkml_meta": {'comments': ['The groups are cumulative: a Safeguard in IG1 is in IG2 and IG3 '
                       'too, and one in IG2 is in IG3. The schema states the part of '
                       'that rule the validator can check, that every Safeguard is in '
-                      'IG3. It cannot state the rest in a form the JSON Schema that '
-                      'LinkML 1.12.1 generates enforces, so a list of IG1 and IG3 '
-                      'without IG2 passes the validator; tests/test_data.py checks the '
-                      'whole rule over the examples.'],
+                      'IG3. The JSON Schema that LinkML 1.12.1 generates drops the '
+                      'rest, so a list of IG1 and IG3 without IG2 passes the '
+                      'validator. tests/test_data.py checks the whole rule over the '
+                      'examples.'],
          'domain_of': ['CisSafeguard'],
          'has_member': {'equals_string': 'IG3'}} })
 

@@ -3,10 +3,11 @@
 id: https://w3id.org/lmodel/cis-controls-lokf
 name: cis-controls
 title: CIS Critical Security Controls
-description: 'A LinkML model of the structure of the CIS Critical Security Controls (CIS Controls), Version
-  8.1, which the Center for Internet Security (CIS) publishes: its Controls, the Safeguards of each Control,
-  and for each Safeguard its asset class, its security function and the Implementation Groups that include
-  it. It names each Control and Safeguard by its number and carries none of CIS''s text.'
+description: A LinkML model of the structure of the CIS Critical Security Controls (CIS Controls), Version
+  8.1, which the Center for Internet Security (CIS) publishes. It models the Controls and the Safeguards
+  of each Control. For each Safeguard it records the asset class, the security function and the Implementation
+  Groups that include it. It names each Control and Safeguard by its number and carries none of CIS's
+  text.
 version: 8.1.2
 source: https://www.cisecurity.org/controls/v8-1
 license: Apache-2.0
@@ -21,10 +22,10 @@ annotations:
   pages_read_on: '2026-10-30'
 comments:
 - The version is the label that the pages of CIS's guide carry for its revision of March 2025. CIS's site
-  calls the edition Version 8.1, and the guide's change log names two minor revisions of it, v8.1.1 in
-  August 2024 and v8.1.2 in March 2025, which corrected small errors, among them the security function
-  of two Safeguards. The source is CIS's page for Version 8.1. scripts/check_upstream_release.py holds
-  the same pins and reports when CIS's pages name a newer version.
+  calls the edition Version 8.1. The guide's change log names two minor revisions of it, v8.1.1 in August
+  2024 and v8.1.2 in March 2025. They corrected small errors, among them the security function of two
+  Safeguards. The source is CIS's page for Version 8.1. scripts/check_upstream_release.py holds the same
+  pins and reports when CIS's pages name a newer version.
 - 'CIS licenses the CIS Controls under CC BY-NC-ND 4.0 and requires its prior approval for commercial
   use, while this schema is Apache-2.0. So the schema carries no CIS text: no Control or Safeguard title
   or description, and none of the guide''s overviews or explanations. The descriptions here are this project''s
@@ -159,9 +160,8 @@ classes:
         comments:
         - 'The groups are cumulative: a Safeguard in IG1 is in IG2 and IG3 too, and one in IG2 is in IG3.
           The schema states the part of that rule the validator can check, that every Safeguard is in
-          IG3. It cannot state the rest in a form the JSON Schema that LinkML 1.12.1 generates enforces,
-          so a list of IG1 and IG3 without IG2 passes the validator; tests/test_data.py checks the whole
-          rule over the examples.'
+          IG3. The JSON Schema that LinkML 1.12.1 generates drops the rest, so a list of IG1 and IG3 without
+          IG2 passes the validator. tests/test_data.py checks the whole rule over the examples.'
     slot_usage:
       title:
         range: string

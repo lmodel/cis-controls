@@ -2,7 +2,7 @@
 # Schema: cis_controls
 #
 # id: https://w3id.org/lmodel/cis-controls
-# description: A LinkML model of the structure of the CIS Critical Security Controls (CIS Controls), Version 8.1, which the Center for Internet Security (CIS) publishes: its Controls, the Safeguards of each Control, and for each Safeguard its asset class, its security function and the Implementation Groups that include it. It names each Control and Safeguard by its number and carries none of CIS's text.
+# description: A LinkML model of the structure of the CIS Critical Security Controls (CIS Controls), Version 8.1, which the Center for Internet Security (CIS) publishes. It models the Controls and the Safeguards of each Control. For each Safeguard it records the asset class, the security function and the Implementation Groups that include it. It names each Control and Safeguard by its number and carries none of CIS's text.
 # license: Apache-2.0
 
 import dataclasses
