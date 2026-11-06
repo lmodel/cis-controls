@@ -1,5 +1,9 @@
 # Change Log
 
+## 2026-11-06
+
+* **Changed**: `lokf.yaml` and `cis-controls.yaml` moved into `.lokf/schema/`, where KTL v0.62.0 keeps a sidecar's schema files, and the concepts that name them follow.
+
 ## 2026-10-31
 
 * **Changed**: the 18 Control concepts give each Control's title and description from the edition file, in the project's own words, and no longer say it is named by its number alone.
