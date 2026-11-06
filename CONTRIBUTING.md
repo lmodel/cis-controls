@@ -36,7 +36,7 @@ npx skills add noelmcloughlin/knowledge-trust-ladder --skill ktl-curator --yes  
 
 ## Before opening a pull request
 
-- **Edit the schema, then regenerate.** Edit `src/cis_controls/schema/cis_controls.yaml`, run `just gen-project`, `just gen-doc` and `just lokf-adapt`, and commit the output. `project/`, `src/cis_controls/datamodel/`, `docs/schema/` and `.lokf/cis-controls.yaml` are generated.
+- **Edit the schema, then regenerate.** Edit `src/cis_controls/schema/cis_controls.yaml`, run `just gen-project`, `just gen-doc` and `just lokf-adapt`, and commit the output. `project/`, `src/cis_controls/datamodel/`, `docs/schema/` and `.lokf/schema/cis-controls.yaml` are generated.
 - **Carry no CIS text.** The CIS Controls are licensed CC BY-NC-ND 4.0, so no title, description or other passage of CIS's guide goes into the schema, the edition file, the examples, the docs or the bundle, copied or closely paraphrased. Name elements by number and cite the guide's section in the pull request. [NOTICE](NOTICE) states the position on describing an element in your own words; [AI_COVENANT.md](AI_COVENANT.md) says why.
 - **Render the pinned edition.** The schema header and `scripts/check_upstream_release.py` name the same edition, and `tests/test_upstream.py` holds them equal.
 - **Keep names apart.** A host imports this adapt copy beside the Linked Open Knowledge Format (LOKF) schema and the released neighbours' copies in `tests/neighbours/`, so a shared name carries one Internationalized Resource Identifier (IRI). `tests/test_schema_rules.py` checks this, and holds each mapping into a neighbour to a term its copy declares.
