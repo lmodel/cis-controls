@@ -3,7 +3,7 @@ type: Dataset
 id: https://w3id.org/lmodel/cis-controls/knowledge/datasets/generated-artefacts
 genre: reference
 title: Generated artefacts
-description: "What the LinkML generators and `lokf adapt` write from the schema: `project/` (JSON Schema, OWL, SHACL, ShEx, JSON-LD, GraphQL, protobuf, SQL, TypeScript, Excel and Java), the Python dataclasses and Pydantic models in `src/cis_controls/datamodel/`, `docs/schema/` and `docs/elements/`, and `.lokf/cis-controls.yaml`. None is edited by hand."
+description: "What the LinkML generators and `lokf adapt` write from the schema: `project/` (JSON Schema, OWL, SHACL, ShEx, JSON-LD, GraphQL, protobuf, SQL, TypeScript, Excel and Java), the Python dataclasses and Pydantic models in `src/cis_controls/datamodel/`, `docs/schema/` and `docs/elements/`, and `.lokf/schema/cis-controls.yaml`. None is edited by hand."
 resource: project
 isPartOf:
   - https://w3id.org/lmodel/cis-controls/knowledge/datasets/cis-controls-linkml-schema
@@ -26,7 +26,7 @@ sources:
     title: the exclude pattern
 generated:
   by: process:ktl-librarian
-  at: "2026-10-30T23:47:49Z"
+  at: "2026-11-06T21:17:10Z"
 status: draft
 ---
 
@@ -36,7 +36,7 @@ Every file here is generated from `src/cis_controls/schema/cis_controls.yaml`, s
 
 `just gen-project` runs `gen-project` with `.linkml/generators.yaml` into `project/`, moves the Python dataclasses into `src/cis_controls/datamodel/`, and writes the Pydantic models beside them. It then runs `gen-java`, `gen-typescript` and `gen-owl` separately, because some generators ignore the configuration or cannot create their folders, as its comment says.[^justfile] `.linkml/generators.yaml` leaves out the Markdown generator and merges imports for the others.[^generators.yaml] `project/` holds a folder each for Excel, GraphQL, Java, JSON-LD, JSON Schema, OWL, the prefix map, protobuf, SHACL, ShEx, SQL and TypeScript.[^project] The Java folder holds one class per schema class, three in all.
 
-`just gen-doc` writes `docs/schema/cis_controls.yaml` and the element pages under `docs/elements/`, which git ignores and the website builds. `just lokf-adapt` writes `.lokf/cis-controls.yaml`. `just test` regenerates the dataclasses too, and leaves no change, because the generated files carry no generation date.
+`just gen-doc` writes `docs/schema/cis_controls.yaml` and the element pages under `docs/elements/`, which git ignores and the website builds. `just lokf-adapt` writes `.lokf/schema/cis-controls.yaml`. `just test` regenerates the dataclasses too, and leaves no change, because the generated files carry no generation date.
 
 The pre-commit hooks leave these folders alone, and also the neighbours' copies, the release tools' lockfile and the sidecar's scripts, because no hook may rewrite a file the repository does not write by hand.[^pre-commit-config.yaml]
 

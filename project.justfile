@@ -6,8 +6,8 @@
 
 # ============ Knowledge bundle: the adapted domain schema ============
 
-# `.lokf/cis-controls.yaml` is the copy `lokf adapt` writes from the schema
-# so that it can sit beside `.lokf/lokf.yaml` (`lokf adapt --help` lists the
+# `.lokf/schema/cis-controls.yaml` is the copy `lokf adapt` writes from the schema
+# so that it can sit beside `.lokf/schema/lokf.yaml` (`lokf adapt --help` lists the
 # moves). The roots are the classes a knowledge concept may use as its
 # `type`: the Control and the Safeguard, the two elements CIS numbers and
 # that other documents cite. CisControls is the document that holds an
@@ -18,12 +18,12 @@
 lokf_cmd := env_var_or_default("LOKF_CMD", "uv run --project .lokf lokf")
 lokf_adapt_roots := "--root CisControl --root CisSafeguard"
 
-# Rewrite .lokf/cis-controls.yaml from the schema (run after every schema change)
+# Rewrite .lokf/schema/cis-controls.yaml from the schema (run after every schema change)
 [group('knowledge bundle')]
 lokf-adapt:
-  {{lokf_cmd}} adapt {{source_schema_path}} {{lokf_adapt_roots}} --lokf .lokf/lokf.yaml -o .lokf/cis-controls.yaml
+  {{lokf_cmd}} adapt {{source_schema_path}} {{lokf_adapt_roots}} --lokf .lokf/schema/lokf.yaml -o .lokf/schema/cis-controls.yaml
 
-# Fail when .lokf/cis-controls.yaml is stale against the schema or .lokf/lokf.yaml
+# Fail when .lokf/schema/cis-controls.yaml is stale against the schema or .lokf/schema/lokf.yaml
 [group('knowledge bundle')]
 lokf-adapt-check:
-  {{lokf_cmd}} adapt {{source_schema_path}} {{lokf_adapt_roots}} --lokf .lokf/lokf.yaml -o .lokf/cis-controls.yaml --check
+  {{lokf_cmd}} adapt {{source_schema_path}} {{lokf_adapt_roots}} --lokf .lokf/schema/lokf.yaml -o .lokf/schema/cis-controls.yaml --check

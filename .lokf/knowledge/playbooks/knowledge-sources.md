@@ -13,7 +13,7 @@ sources:
   - resource: src/cis_controls/data
   - resource: src/cis_controls/datamodel
   - resource: project.justfile
-  - resource: .lokf/cis-controls.yaml
+  - resource: .lokf/schema/cis-controls.yaml
   - resource: .lokf/justfile
   - resource: .lokf/pyproject.toml
   - resource: NOTICE
@@ -82,7 +82,7 @@ exclusions:
     reason: The sidecar's link to the bundle.
   - resource: .github/PULL_REQUEST_TEMPLATE
     reason: The sidecar sync's pull request template.
-  - resource: .lokf/lokf.yaml
+  - resource: .lokf/schema/lokf.yaml
     reason: LOKF's schema, pinned by the sidecar.
   - resource: .lokf/scripts
     reason: The sidecar's scripts, which the weekly sync replaces.
@@ -102,7 +102,7 @@ exclusions:
     reason: The sidecar's git settings.
 generated:
   by: process:ktl-librarian
-  at: "2026-10-31T12:14:49Z"
+  at: "2026-11-06T21:17:10Z"
 status: draft
 ---
 
@@ -116,7 +116,7 @@ Each concept derived from a file or folder of this repository names it by its pa
 | --- | --- | --- |
 | `src/cis_controls/schema/cis_controls.yaml` | `datasets/cis-controls-linkml-schema`, the five `glossary/` terms | re-read the header's `version`, `source`, annotations and comments, each class's required slots, the patterns, the enums and the mappings |
 | `src/cis_controls/data/cis-controls-8.1.2.yaml` | `datasets/edition-file`, the 18 `controls/` concepts | re-read each Control's title and description, and re-count each Control's Safeguards and Implementation Groups |
-| `project.justfile`, `.lokf/cis-controls.yaml`, `.lokf/justfile`, `.lokf/pyproject.toml`, the README's Knowledge Trust Ladder (KTL) section | the domain-schema section of `datasets/cis-controls-linkml-schema` | re-read the `--root` list, the copy's notes, the `schema :=` line and the `[tool.lokf]` table |
+| `project.justfile`, `.lokf/schema/cis-controls.yaml`, `.lokf/justfile`, `.lokf/pyproject.toml`, the README's Knowledge Trust Ladder (KTL) section | the domain-schema section of `datasets/cis-controls-linkml-schema` | re-read the `--root` list, the copy's notes, the `schema :=` line and the `[tool.lokf]` table |
 | `scripts/check_upstream_release.py`, `.github/scripts/` | `playbooks/update-upstream-pins`, `workflows/upstream-watch` | re-read the pins, the docstring and the issue title |
 | `README.md` (What it models, Influences, Mappings, Not modelled here), `docs/about.md`, `.linkmllint.yaml`, `CHANGELOG.md` | `explanations/scope-and-influences`, `explanations/element-names` | re-read each section and the lint comment |
 | `justfile`, `.linkml/generators.yaml`, `project/`, `src/cis_controls/datamodel/`, `docs/schema/`, `docs/elements/`, `.pre-commit-config.yaml` | `datasets/generated-artefacts` | re-read the `gen-project`, `gen-doc` and `test` recipes and the `excludes`; re-list `project/*/` |

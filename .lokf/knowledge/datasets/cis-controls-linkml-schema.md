@@ -3,7 +3,7 @@ type: Dataset
 id: https://w3id.org/lmodel/cis-controls/knowledge/datasets/cis-controls-linkml-schema
 genre: reference
 title: cis-controls LinkML schema
-description: "The LinkML schema of the structure of the CIS Critical Security Controls, `src/cis_controls/schema/cis_controls.yaml` (schema id `https://w3id.org/lmodel/cis-controls`, version 8.1.2): three classes, three enums and two identifier types, with no CIS text. Its `lokf adapt` copy `.lokf/cis-controls.yaml`, rooted on the Control and the Safeguard, is the bundle's domain schema."
+description: "The LinkML schema of the structure of the CIS Critical Security Controls, `src/cis_controls/schema/cis_controls.yaml` (schema id `https://w3id.org/lmodel/cis-controls`, version 8.1.2): three classes, three enums and two identifier types, with no CIS text. Its `lokf adapt` copy `.lokf/schema/cis-controls.yaml`, rooted on the Control and the Safeguard, is the bundle's domain schema."
 resource: src/cis_controls/schema/cis_controls.yaml
 version: 8.1.2
 license: Apache-2.0
@@ -21,7 +21,7 @@ sources:
     resource: project.justfile
     title: the lokf-adapt recipes and their roots
   - id: cis-controls.yaml
-    resource: .lokf/cis-controls.yaml
+    resource: .lokf/schema/cis-controls.yaml
     title: the notes lokf adapt wrote
   - resource: .lokf/justfile
     title: the schema line
@@ -29,7 +29,7 @@ sources:
     title: the tool.lokf table
 generated:
   by: process:ktl-librarian
-  at: "2026-10-31T00:10:19Z"
+  at: "2026-11-06T21:17:10Z"
 status: draft
 ---
 
@@ -66,7 +66,7 @@ Each class names a class of lmodel/oscal in `broad_mappings`: `oscal:Catalog` fo
 
 ## As the bundle's domain schema
 
-A domain schema of the Linked Open Knowledge Format (LOKF) is a LinkML schema that imports LOKF's `lokf.yaml` and adds a host's classes and keys, so that `lokf validate` checks the concepts typed with them. The README says that this bundle's domain schema is `.lokf/cis-controls.yaml`, which `lokf adapt` writes from the schema. Edit the source, never the copy. The `schema :=` line of `.lokf/justfile` and the `[tool.lokf]` table of `.lokf/pyproject.toml` both name the copy.
+A domain schema of the Linked Open Knowledge Format (LOKF) is a LinkML schema that imports LOKF's `lokf.yaml` and adds a host's classes and keys, so that `lokf validate` checks the concepts typed with them. The README says that this bundle's domain schema is `.lokf/schema/cis-controls.yaml`, which `lokf adapt` writes from the schema. Edit the source, never the copy. The `schema :=` line of `.lokf/justfile` and the `[tool.lokf]` table of `.lokf/pyproject.toml` both name the copy.
 
 `project.justfile` passes two roots to `lokf adapt`: `CisControl` and `CisSafeguard`. Its comment says that these are the two elements that CIS numbers and other documents cite. It also says that `CisControls` is the document that holds an edition's Controls.[^project.justfile] The copy's notes say that `lokf adapt` re-rooted the two classes on `lokf:Concept` and folded `title` and `description` into LOKF's slots.[^cis-controls.yaml] The copy renames nothing, and `CisControls` is no longer a tree root in it. The concepts under `controls/` in this bundle are typed `CisControl`.
 
@@ -75,4 +75,4 @@ The generated models, `project/` and the adapt copy come from this file: see [Ge
 [^cis_controls.yaml]: src/cis_controls/schema/cis_controls.yaml, the header and the classes
 [^readme.md]: README.md, the Mappings section
 [^project.justfile]: project.justfile, the knowledge bundle recipes
-[^cis-controls.yaml]: .lokf/cis-controls.yaml, the notes
+[^cis-controls.yaml]: .lokf/schema/cis-controls.yaml, the notes
