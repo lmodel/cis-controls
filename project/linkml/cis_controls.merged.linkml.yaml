@@ -1,0 +1,774 @@
+{
+  "name": "cis_controls",
+  "annotations": {
+    "cis_site_version": {
+      "tag": "cis_site_version",
+      "value": "8.1"
+    },
+    "revision_date": {
+      "tag": "revision_date",
+      "value": "2025-03"
+    },
+    "pages_read_on": {
+      "tag": "pages_read_on",
+      "value": "2026-10-30"
+    }
+  },
+  "description": "A LinkML model of the structure of the CIS Critical Security Controls (CIS Controls), Version 8.1, which the Center for Internet Security (CIS) publishes. It models the Controls and the Safeguards of each Control. For each Safeguard it records the asset class, the security function and the Implementation Groups that include it. It names each Control and Safeguard by its number and carries none of CIS's text.",
+  "title": "CIS Critical Security Controls",
+  "comments": [
+    "The version is the label that the pages of CIS's guide carry for its revision of March 2025. CIS's site calls the edition Version 8.1. The guide's change log names two minor revisions of it, v8.1.1 in August 2024 and v8.1.2 in March 2025. They corrected small errors, among them the security function of two Safeguards. The source is CIS's page for Version 8.1. scripts/check_upstream_release.py holds the same pins and reports when CIS's pages name a newer version.",
+    "CIS licenses the CIS Controls under CC BY-NC-ND 4.0 and requires its prior approval for commercial use, while this schema is Apache-2.0. So the schema carries no CIS text: none of the guide's titles, descriptions, overviews or explanations. The descriptions here are this project's own words, and so are the title and description that src/cis_controls/data/cis-controls-8.1.2.yaml gives each Control and Safeguard, written from what each requires. The text slots, title and description, are optional and hold text their user has the right to use; NOTICE states the position.",
+    "The edition holds 18 Controls and 153 Safeguards. Implementation Group 1 holds 56 of the Safeguards, Implementation Group 2 adds 74 to make 130, and Implementation Group 3 adds the last 23, so it holds all 153. CIS's pages on the CIS Controls list and on each Implementation Group state these numbers."
+  ],
+  "source": "https://www.cisecurity.org/controls/v8-1",
+  "see_also": [
+    "https://lmodel.github.io/cis-controls",
+    "https://www.cisecurity.org/controls/cis-controls-list",
+    "https://www.cisecurity.org/controls/implementation-groups",
+    "https://www.cisecurity.org/insights/white-papers/guide-to-asset-classes-cis-critical-security-controls-v8-1"
+  ],
+  "id": "https://w3id.org/lmodel/cis-controls",
+  "version": "8.1.2",
+  "license": "Apache-2.0",
+  "prefixes": {
+    "cis_controls": {
+      "prefix_prefix": "cis_controls",
+      "prefix_reference": "https://w3id.org/lmodel/cis-controls/"
+    },
+    "linkml": {
+      "prefix_prefix": "linkml",
+      "prefix_reference": "https://w3id.org/linkml/"
+    },
+    "nist_csf_v2": {
+      "prefix_prefix": "nist_csf_v2",
+      "prefix_reference": "https://w3id.org/lmodel/nist-csf-v2/"
+    },
+    "oscal": {
+      "prefix_prefix": "oscal",
+      "prefix_reference": "https://w3id.org/lmodel/oscal/"
+    },
+    "schema": {
+      "prefix_prefix": "schema",
+      "prefix_reference": "http://schema.org/"
+    },
+    "xsd": {
+      "prefix_prefix": "xsd",
+      "prefix_reference": "http://www.w3.org/2001/XMLSchema#"
+    },
+    "shex": {
+      "prefix_prefix": "shex",
+      "prefix_reference": "http://www.w3.org/ns/shex#"
+    }
+  },
+  "default_prefix": "cis_controls",
+  "default_range": "string",
+  "types": {
+    "cis_control_identifier": {
+      "name": "cis_control_identifier",
+      "description": "A Control's identifier: its number from 1 to 18, as CIS writes it, such as 4 for Control 4.",
+      "from_schema": "https://w3id.org/lmodel/cis-controls",
+      "typeof": "string",
+      "base": "str",
+      "uri": "xsd:string",
+      "pattern": "^([1-9]|1[0-8])$"
+    },
+    "cis_safeguard_identifier": {
+      "name": "cis_safeguard_identifier",
+      "description": "A Safeguard's identifier, as CIS writes it: the number of its Control, a dot and the Safeguard's number within the Control, such as 4.1 for Safeguard 4.1.",
+      "from_schema": "https://w3id.org/lmodel/cis-controls",
+      "typeof": "string",
+      "base": "str",
+      "uri": "xsd:string",
+      "pattern": "^([1-9]|1[0-8])\\.[1-9][0-9]?$"
+    },
+    "string": {
+      "name": "string",
+      "description": "A character string",
+      "notes": [
+        "In RDF serializations, a slot with range of string is treated as a literal or type xsd:string. If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"string\"."
+      ],
+      "from_schema": "https://w3id.org/lmodel/cis-controls",
+      "exact_mappings": [
+        "schema:Text"
+      ],
+      "base": "str",
+      "uri": "xsd:string"
+    },
+    "integer": {
+      "name": "integer",
+      "description": "An integer",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"integer\"."
+      ],
+      "from_schema": "https://w3id.org/lmodel/cis-controls",
+      "exact_mappings": [
+        "schema:Integer"
+      ],
+      "base": "int",
+      "uri": "xsd:integer"
+    },
+    "boolean": {
+      "name": "boolean",
+      "description": "A binary (true or false) value",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"boolean\"."
+      ],
+      "from_schema": "https://w3id.org/lmodel/cis-controls",
+      "exact_mappings": [
+        "schema:Boolean"
+      ],
+      "base": "Bool",
+      "uri": "xsd:boolean",
+      "repr": "bool"
+    },
+    "float": {
+      "name": "float",
+      "description": "A real number that conforms to the xsd:float specification",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"float\"."
+      ],
+      "from_schema": "https://w3id.org/lmodel/cis-controls",
+      "exact_mappings": [
+        "schema:Float"
+      ],
+      "base": "float",
+      "uri": "xsd:float"
+    },
+    "double": {
+      "name": "double",
+      "description": "A real number that conforms to the xsd:double specification",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"double\"."
+      ],
+      "from_schema": "https://w3id.org/lmodel/cis-controls",
+      "close_mappings": [
+        "schema:Float"
+      ],
+      "base": "float",
+      "uri": "xsd:double"
+    },
+    "decimal": {
+      "name": "decimal",
+      "description": "A real number with arbitrary precision that conforms to the xsd:decimal specification",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"decimal\"."
+      ],
+      "from_schema": "https://w3id.org/lmodel/cis-controls",
+      "broad_mappings": [
+        "schema:Number"
+      ],
+      "base": "Decimal",
+      "uri": "xsd:decimal"
+    },
+    "time": {
+      "name": "time",
+      "description": "A time object represents a (local) time of day, independent of any particular day",
+      "notes": [
+        "URI is dateTime because OWL reasoners do not work with straight date or time",
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"time\"."
+      ],
+      "from_schema": "https://w3id.org/lmodel/cis-controls",
+      "exact_mappings": [
+        "schema:Time"
+      ],
+      "base": "XSDTime",
+      "uri": "xsd:time",
+      "repr": "str"
+    },
+    "date": {
+      "name": "date",
+      "description": "a date (year, month and day) in an idealized calendar",
+      "notes": [
+        "URI is dateTime because OWL reasoners don't work with straight date or time",
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"date\"."
+      ],
+      "from_schema": "https://w3id.org/lmodel/cis-controls",
+      "exact_mappings": [
+        "schema:Date"
+      ],
+      "base": "XSDDate",
+      "uri": "xsd:date",
+      "repr": "str"
+    },
+    "datetime": {
+      "name": "datetime",
+      "description": "The combination of a date and time",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"datetime\"."
+      ],
+      "from_schema": "https://w3id.org/lmodel/cis-controls",
+      "exact_mappings": [
+        "schema:DateTime"
+      ],
+      "base": "XSDDateTime",
+      "uri": "xsd:dateTime",
+      "repr": "str"
+    },
+    "date_or_datetime": {
+      "name": "date_or_datetime",
+      "description": "Either a date or a datetime",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"date_or_datetime\"."
+      ],
+      "from_schema": "https://w3id.org/lmodel/cis-controls",
+      "base": "str",
+      "uri": "linkml:DateOrDatetime",
+      "repr": "str"
+    },
+    "uriorcurie": {
+      "name": "uriorcurie",
+      "description": "a URI or a CURIE",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"uriorcurie\"."
+      ],
+      "from_schema": "https://w3id.org/lmodel/cis-controls",
+      "base": "URIorCURIE",
+      "uri": "xsd:anyURI",
+      "repr": "str"
+    },
+    "curie": {
+      "name": "curie",
+      "conforms_to": "https://www.w3.org/TR/curie/",
+      "description": "a compact URI",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"curie\"."
+      ],
+      "comments": [
+        "in RDF serializations this MUST be expanded to a URI",
+        "in non-RDF serializations MAY be serialized as the compact representation"
+      ],
+      "from_schema": "https://w3id.org/lmodel/cis-controls",
+      "base": "Curie",
+      "uri": "xsd:string",
+      "repr": "str"
+    },
+    "uri": {
+      "name": "uri",
+      "conforms_to": "https://www.ietf.org/rfc/rfc3987.txt",
+      "description": "a complete URI",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"uri\"."
+      ],
+      "comments": [
+        "in RDF serializations a slot with range of uri is treated as a literal or type xsd:anyURI unless it is an identifier or a reference to an identifier, in which case it is translated directly to a node"
+      ],
+      "from_schema": "https://w3id.org/lmodel/cis-controls",
+      "close_mappings": [
+        "schema:URL"
+      ],
+      "base": "URI",
+      "uri": "xsd:anyURI",
+      "repr": "str"
+    },
+    "ncname": {
+      "name": "ncname",
+      "description": "Prefix part of CURIE",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"ncname\"."
+      ],
+      "from_schema": "https://w3id.org/lmodel/cis-controls",
+      "base": "NCName",
+      "uri": "xsd:string",
+      "repr": "str"
+    },
+    "objectidentifier": {
+      "name": "objectidentifier",
+      "description": "A URI or CURIE that represents an object in the model.",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"objectidentifier\"."
+      ],
+      "comments": [
+        "Used for inheritance and type checking"
+      ],
+      "from_schema": "https://w3id.org/lmodel/cis-controls",
+      "base": "ElementIdentifier",
+      "uri": "shex:iri",
+      "repr": "str"
+    },
+    "nodeidentifier": {
+      "name": "nodeidentifier",
+      "description": "A URI, CURIE or BNODE that represents a node in a model.",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"nodeidentifier\"."
+      ],
+      "from_schema": "https://w3id.org/lmodel/cis-controls",
+      "base": "NodeIdentifier",
+      "uri": "shex:nonLiteral",
+      "repr": "str"
+    },
+    "jsonpointer": {
+      "name": "jsonpointer",
+      "conforms_to": "https://datatracker.ietf.org/doc/html/rfc6901",
+      "description": "A string encoding a JSON Pointer. The value of the string MUST conform to JSON Point syntax and SHOULD dereference to a valid object within the current instance document when encoded in tree form.",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"jsonpointer\"."
+      ],
+      "from_schema": "https://w3id.org/lmodel/cis-controls",
+      "base": "str",
+      "uri": "xsd:string",
+      "repr": "str"
+    },
+    "jsonpath": {
+      "name": "jsonpath",
+      "conforms_to": "https://www.ietf.org/archive/id/draft-goessner-dispatch-jsonpath-00.html",
+      "description": "A string encoding a JSON Path. The value of the string MUST conform to JSON Point syntax and SHOULD dereference to zero or more valid objects within the current instance document when encoded in tree form.",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"jsonpath\"."
+      ],
+      "from_schema": "https://w3id.org/lmodel/cis-controls",
+      "base": "str",
+      "uri": "xsd:string",
+      "repr": "str"
+    },
+    "sparqlpath": {
+      "name": "sparqlpath",
+      "conforms_to": "https://www.w3.org/TR/sparql11-query/#propertypaths",
+      "description": "A string encoding a SPARQL Property Path. The value of the string MUST conform to SPARQL syntax and SHOULD dereference to zero or more valid objects within the current instance document when encoded as RDF.",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"sparqlpath\"."
+      ],
+      "from_schema": "https://w3id.org/lmodel/cis-controls",
+      "base": "str",
+      "uri": "xsd:string",
+      "repr": "str"
+    }
+  },
+  "enums": {
+    "CisImplementationGroup": {
+      "name": "CisImplementationGroup",
+      "description": "One of the three Implementation Groups, CIS's tiers for deciding which Safeguards an enterprise puts in place first. Each group includes every Safeguard of the groups before it.",
+      "from_schema": "https://w3id.org/lmodel/cis-controls",
+      "see_also": [
+        "https://www.cisecurity.org/controls/implementation-groups"
+      ],
+      "permissible_values": {
+        "IG1": {
+          "text": "IG1",
+          "description": "The first group, where every enterprise starts.",
+          "title": "Implementation Group 1"
+        },
+        "IG2": {
+          "text": "IG2",
+          "description": "The second group, which adds Safeguards to the first.",
+          "title": "Implementation Group 2"
+        },
+        "IG3": {
+          "text": "IG3",
+          "description": "The third group, which adds the rest and so holds every Safeguard.",
+          "title": "Implementation Group 3"
+        }
+      }
+    },
+    "CisAssetClass": {
+      "name": "CisAssetClass",
+      "description": "One of the classes of enterprise asset that the CIS Controls sort their Safeguards by. Each Safeguard is about one class.",
+      "comments": [
+        "CIS revised the classes, and which Safeguard is about which, in Version 8.1. CIS's guide divides each class further, but a Safeguard names only the class."
+      ],
+      "from_schema": "https://w3id.org/lmodel/cis-controls",
+      "see_also": [
+        "https://www.cisecurity.org/insights/white-papers/guide-to-asset-classes-cis-critical-security-controls-v8-1"
+      ],
+      "permissible_values": {
+        "DEVICES": {
+          "text": "DEVICES",
+          "description": "The enterprise's hardware, wherever it runs.",
+          "title": "Devices"
+        },
+        "SOFTWARE": {
+          "text": "SOFTWARE",
+          "description": "The programs and systems that run on the enterprise's devices.",
+          "title": "Software"
+        },
+        "DATA": {
+          "text": "DATA",
+          "description": "The information the enterprise holds, uses and moves.",
+          "title": "Data"
+        },
+        "USERS": {
+          "text": "USERS",
+          "description": "The people and accounts with access to the enterprise's assets.",
+          "title": "Users"
+        },
+        "NETWORK": {
+          "text": "NETWORK",
+          "description": "How the enterprise's devices connect, and how its networks are laid out.",
+          "title": "Network"
+        },
+        "DOCUMENTATION": {
+          "text": "DOCUMENTATION",
+          "description": "The enterprise's written governance, such as its policies and procedures.",
+          "title": "Documentation"
+        }
+      }
+    },
+    "CisSecurityFunction": {
+      "name": "CisSecurityFunction",
+      "description": "The security function a Safeguard serves. The values are the six functions of the NIST Cybersecurity Framework (CSF) 2.0, to which Version 8.1 aligned the CIS Controls.",
+      "comments": [
+        "lmodel/nist-csf-v2 v0.1.0 models a CSF function as an instance of its class CsfFunction, IRI nist_csf_v2:Function, named by the two letters in its csf_function_id. It publishes no IRI for each function, so the values carry no meaning; each value's csf_function_id annotation gives the letters, and the enum names the class in related_mappings."
+      ],
+      "from_schema": "https://w3id.org/lmodel/cis-controls",
+      "see_also": [
+        "https://www.cisecurity.org/controls/v8-1"
+      ],
+      "related_mappings": [
+        "nist_csf_v2:Function"
+      ],
+      "permissible_values": {
+        "GOVERN": {
+          "text": "GOVERN",
+          "description": "The CSF 2.0 function GOVERN.",
+          "annotations": {
+            "csf_function_id": {
+              "tag": "csf_function_id",
+              "value": "GV"
+            }
+          },
+          "title": "Govern"
+        },
+        "IDENTIFY": {
+          "text": "IDENTIFY",
+          "description": "The CSF 2.0 function IDENTIFY.",
+          "annotations": {
+            "csf_function_id": {
+              "tag": "csf_function_id",
+              "value": "ID"
+            }
+          },
+          "title": "Identify"
+        },
+        "PROTECT": {
+          "text": "PROTECT",
+          "description": "The CSF 2.0 function PROTECT.",
+          "annotations": {
+            "csf_function_id": {
+              "tag": "csf_function_id",
+              "value": "PR"
+            }
+          },
+          "title": "Protect"
+        },
+        "DETECT": {
+          "text": "DETECT",
+          "description": "The CSF 2.0 function DETECT.",
+          "annotations": {
+            "csf_function_id": {
+              "tag": "csf_function_id",
+              "value": "DE"
+            }
+          },
+          "title": "Detect"
+        },
+        "RESPOND": {
+          "text": "RESPOND",
+          "description": "The CSF 2.0 function RESPOND.",
+          "annotations": {
+            "csf_function_id": {
+              "tag": "csf_function_id",
+              "value": "RS"
+            }
+          },
+          "title": "Respond"
+        },
+        "RECOVER": {
+          "text": "RECOVER",
+          "description": "The CSF 2.0 function RECOVER.",
+          "annotations": {
+            "csf_function_id": {
+              "tag": "csf_function_id",
+              "value": "RC"
+            }
+          },
+          "title": "Recover"
+        }
+      }
+    }
+  },
+  "slots": {
+    "cis_control_id": {
+      "name": "cis_control_id",
+      "description": "The Control's identifier, its number, such as 4.",
+      "comments": [
+        "The identifier is CIS's own number, so data joins with CIS's guide and with the crosswalks that cite it without a translation. It is a string, so quote it in YAML: YAML reads an unquoted 4 as a number and an unquoted 1.10 as the number 1.1. The validator rejects either as not a string, but a file loaded into the generated dataclasses without validation would turn 1.10 into 1.1."
+      ],
+      "from_schema": "https://w3id.org/lmodel/cis-controls",
+      "domain_of": [
+        "CisControl"
+      ],
+      "range": "cis_control_identifier",
+      "required": true
+    },
+    "cis_safeguard_id": {
+      "name": "cis_safeguard_id",
+      "description": "The Safeguard's identifier, its number, such as 4.1.",
+      "comments": [
+        "It starts with the number of the Control that holds the Safeguard. The validator cannot check that against the Control a Safeguard is listed under; tests/test_data.py checks it over the examples."
+      ],
+      "from_schema": "https://w3id.org/lmodel/cis-controls",
+      "domain_of": [
+        "CisSafeguard"
+      ],
+      "range": "cis_safeguard_identifier",
+      "required": true
+    },
+    "title": {
+      "name": "title",
+      "description": "A name for the Control or Safeguard, in words its user has the right to use.",
+      "comments": [
+        "It means what LOKF's title means and carries the same IRI, so lokf adapt folds it into LOKF's slot and a knowledge bundle reads one title key.",
+        "CIS's own names for the Controls and Safeguards are CIS's text under CC BY-NC-ND 4.0, so the schema's examples leave them out, and the edition file names each element in this project's words."
+      ],
+      "from_schema": "https://w3id.org/lmodel/cis-controls",
+      "slot_uri": "schema:name",
+      "domain_of": [
+        "CisControl",
+        "CisSafeguard"
+      ]
+    },
+    "description": {
+      "name": "description",
+      "description": "What the Control or Safeguard means to its user, in words its user has the right to use.",
+      "comments": [
+        "It means what LOKF's description means and carries the same IRI, so lokf adapt folds it into LOKF's slot and a knowledge bundle reads one description key."
+      ],
+      "from_schema": "https://w3id.org/lmodel/cis-controls",
+      "slot_uri": "schema:description",
+      "domain_of": [
+        "CisControl",
+        "CisSafeguard"
+      ]
+    }
+  },
+  "classes": {
+    "CisControls": {
+      "name": "CisControls",
+      "description": "One edition of the CIS Controls as a whole: its Controls, each holding its Safeguards.",
+      "from_schema": "https://w3id.org/lmodel/cis-controls",
+      "see_also": [
+        "https://www.cisecurity.org/controls/cis-controls-list"
+      ],
+      "broad_mappings": [
+        "oscal:Catalog"
+      ],
+      "attributes": {
+        "cis_version": {
+          "name": "cis_version",
+          "description": "The edition, as CIS numbers it, such as 8.1, or the revision the guide's pages carry, such as 8.1.2.",
+          "from_schema": "https://w3id.org/lmodel/cis-controls",
+          "owner": "CisControls",
+          "domain_of": [
+            "CisControls"
+          ],
+          "range": "string",
+          "required": true,
+          "pattern": "^[0-9]+\\.[0-9]+(\\.[0-9]+)?$"
+        },
+        "cis_controls": {
+          "name": "cis_controls",
+          "description": "The Controls, in CIS's order.",
+          "from_schema": "https://w3id.org/lmodel/cis-controls",
+          "owner": "CisControls",
+          "domain_of": [
+            "CisControls"
+          ],
+          "range": "CisControl",
+          "required": true,
+          "multivalued": true,
+          "inlined": true,
+          "inlined_as_list": true,
+          "minimum_cardinality": 1
+        }
+      },
+      "class_uri": "cis_controls:Controls",
+      "tree_root": true
+    },
+    "CisControl": {
+      "name": "CisControl",
+      "description": "One of the CIS Controls: a group of Safeguards on one subject, named by its number, such as Control 4.",
+      "from_schema": "https://w3id.org/lmodel/cis-controls",
+      "see_also": [
+        "https://www.cisecurity.org/controls/cis-controls-list"
+      ],
+      "broad_mappings": [
+        "oscal:Group"
+      ],
+      "slots": [
+        "cis_control_id",
+        "title",
+        "description"
+      ],
+      "attributes": {
+        "control_safeguards": {
+          "name": "control_safeguards",
+          "description": "The Safeguards of the Control. A knowledge bundle relates a Safeguard to its Control with isPartOf instead.",
+          "from_schema": "https://w3id.org/lmodel/cis-controls",
+          "owner": "CisControl",
+          "domain_of": [
+            "CisControl"
+          ],
+          "range": "CisSafeguard",
+          "multivalued": true,
+          "inlined": true,
+          "inlined_as_list": true
+        },
+        "cis_control_id": {
+          "name": "cis_control_id",
+          "description": "The Control's identifier, its number, such as 4.",
+          "comments": [
+            "The identifier is CIS's own number, so data joins with CIS's guide and with the crosswalks that cite it without a translation. It is a string, so quote it in YAML: YAML reads an unquoted 4 as a number and an unquoted 1.10 as the number 1.1. The validator rejects either as not a string, but a file loaded into the generated dataclasses without validation would turn 1.10 into 1.1."
+          ],
+          "from_schema": "https://w3id.org/lmodel/cis-controls",
+          "owner": "CisControl",
+          "domain_of": [
+            "CisControl"
+          ],
+          "range": "cis_control_identifier",
+          "required": true
+        },
+        "title": {
+          "name": "title",
+          "description": "A name for the Control or Safeguard, in words its user has the right to use.",
+          "comments": [
+            "It means what LOKF's title means and carries the same IRI, so lokf adapt folds it into LOKF's slot and a knowledge bundle reads one title key.",
+            "CIS's own names for the Controls and Safeguards are CIS's text under CC BY-NC-ND 4.0, so the schema's examples leave them out, and the edition file names each element in this project's words."
+          ],
+          "from_schema": "https://w3id.org/lmodel/cis-controls",
+          "slot_uri": "schema:name",
+          "owner": "CisControl",
+          "domain_of": [
+            "CisControl",
+            "CisSafeguard"
+          ],
+          "range": "string"
+        },
+        "description": {
+          "name": "description",
+          "description": "What the Control or Safeguard means to its user, in words its user has the right to use.",
+          "comments": [
+            "It means what LOKF's description means and carries the same IRI, so lokf adapt folds it into LOKF's slot and a knowledge bundle reads one description key."
+          ],
+          "from_schema": "https://w3id.org/lmodel/cis-controls",
+          "slot_uri": "schema:description",
+          "owner": "CisControl",
+          "domain_of": [
+            "CisControl",
+            "CisSafeguard"
+          ],
+          "range": "string"
+        }
+      },
+      "class_uri": "cis_controls:Control"
+    },
+    "CisSafeguard": {
+      "name": "CisSafeguard",
+      "description": "One Safeguard of a Control: a single action an enterprise takes, named by its Control's number and its own, such as Safeguard 4.1.",
+      "from_schema": "https://w3id.org/lmodel/cis-controls",
+      "see_also": [
+        "https://www.cisecurity.org/controls/cis-controls-list"
+      ],
+      "broad_mappings": [
+        "oscal:Control"
+      ],
+      "slots": [
+        "cis_safeguard_id",
+        "title",
+        "description"
+      ],
+      "attributes": {
+        "safeguard_asset_class": {
+          "name": "safeguard_asset_class",
+          "description": "The class of enterprise asset the Safeguard is about.",
+          "from_schema": "https://w3id.org/lmodel/cis-controls",
+          "owner": "CisSafeguard",
+          "domain_of": [
+            "CisSafeguard"
+          ],
+          "range": "CisAssetClass",
+          "required": true
+        },
+        "safeguard_security_function": {
+          "name": "safeguard_security_function",
+          "description": "The security function the Safeguard serves, one of the six functions of the NIST Cybersecurity Framework (CSF) 2.0.",
+          "from_schema": "https://w3id.org/lmodel/cis-controls",
+          "owner": "CisSafeguard",
+          "domain_of": [
+            "CisSafeguard"
+          ],
+          "range": "CisSecurityFunction",
+          "required": true
+        },
+        "safeguard_implementation_groups": {
+          "name": "safeguard_implementation_groups",
+          "description": "The Implementation Groups that include the Safeguard.",
+          "comments": [
+            "The groups are cumulative: a Safeguard in IG1 is in IG2 and IG3 too, and one in IG2 is in IG3. The schema states the part of that rule the validator can check, that every Safeguard is in IG3. The JSON Schema that LinkML 1.12.1 generates drops the rest, so a list of IG1 and IG3 without IG2 passes the validator. tests/test_data.py checks the whole rule over the examples."
+          ],
+          "from_schema": "https://w3id.org/lmodel/cis-controls",
+          "owner": "CisSafeguard",
+          "domain_of": [
+            "CisSafeguard"
+          ],
+          "range": "CisImplementationGroup",
+          "required": true,
+          "multivalued": true,
+          "minimum_cardinality": 1,
+          "maximum_cardinality": 3,
+          "has_member": {
+            "equals_string": "IG3"
+          }
+        },
+        "cis_safeguard_id": {
+          "name": "cis_safeguard_id",
+          "description": "The Safeguard's identifier, its number, such as 4.1.",
+          "comments": [
+            "It starts with the number of the Control that holds the Safeguard. The validator cannot check that against the Control a Safeguard is listed under; tests/test_data.py checks it over the examples."
+          ],
+          "from_schema": "https://w3id.org/lmodel/cis-controls",
+          "owner": "CisSafeguard",
+          "domain_of": [
+            "CisSafeguard"
+          ],
+          "range": "cis_safeguard_identifier",
+          "required": true
+        },
+        "title": {
+          "name": "title",
+          "description": "A name for the Control or Safeguard, in words its user has the right to use.",
+          "comments": [
+            "It means what LOKF's title means and carries the same IRI, so lokf adapt folds it into LOKF's slot and a knowledge bundle reads one title key.",
+            "CIS's own names for the Controls and Safeguards are CIS's text under CC BY-NC-ND 4.0, so the schema's examples leave them out, and the edition file names each element in this project's words."
+          ],
+          "from_schema": "https://w3id.org/lmodel/cis-controls",
+          "slot_uri": "schema:name",
+          "owner": "CisSafeguard",
+          "domain_of": [
+            "CisControl",
+            "CisSafeguard"
+          ],
+          "range": "string"
+        },
+        "description": {
+          "name": "description",
+          "description": "What the Control or Safeguard means to its user, in words its user has the right to use.",
+          "comments": [
+            "It means what LOKF's description means and carries the same IRI, so lokf adapt folds it into LOKF's slot and a knowledge bundle reads one description key."
+          ],
+          "from_schema": "https://w3id.org/lmodel/cis-controls",
+          "slot_uri": "schema:description",
+          "owner": "CisSafeguard",
+          "domain_of": [
+            "CisControl",
+            "CisSafeguard"
+          ],
+          "range": "string"
+        }
+      },
+      "class_uri": "cis_controls:Safeguard"
+    }
+  },
+  "metamodel_version": "1.12.0",
+  "source_file": "src/cis_controls/schema/cis_controls.yaml",
+  "@type": "SchemaDefinition"
+}
