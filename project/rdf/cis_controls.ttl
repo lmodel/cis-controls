@@ -1,0 +1,492 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix linkml: <https://w3id.org/linkml/> .
+@prefix pav: <http://purl.org/pav/> .
+<https://w3id.org/lmodel/cis-controls/CisAssetClass> rdfs:seeAlso "https://www.cisecurity.org/insights/white-papers/guide-to-asset-classes-cis-critical-security-controls-v8-1"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/lmodel/cis-controls"^^xsd:anyURI ;
+	skos:note "CIS revised the classes, and which Safeguard is about which, in Version 8.1. CIS's guide divides each class further, but a Safeguard names only the class." ;
+	linkml:definition_uri "https://w3id.org/lmodel/cis-controls/CisAssetClass"^^xsd:anyURI ;
+	linkml:description "One of the classes of enterprise asset that the CIS Controls sort their Safeguards by. Each Safeguard is about one class." ;
+	linkml:permissible_values <https://w3id.org/lmodel/cis-controls/DATA> , <https://w3id.org/lmodel/cis-controls/DEVICES> , <https://w3id.org/lmodel/cis-controls/DOCUMENTATION> , <https://w3id.org/lmodel/cis-controls/NETWORK> , <https://w3id.org/lmodel/cis-controls/SOFTWARE> , <https://w3id.org/lmodel/cis-controls/USERS> .
+<https://w3id.org/lmodel/cis-controls/CisControl> a linkml:ClassDefinition ;
+	rdfs:seeAlso "https://www.cisecurity.org/controls/cis-controls-list"^^xsd:anyURI ;
+	skos:broadMatch "oscal:Group"^^xsd:anyURI ;
+	skos:exactMatch "cis_controls:Control"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/lmodel/cis-controls"^^xsd:anyURI ;
+	linkml:attributes <https://w3id.org/lmodel/cis-controls/control_safeguards> ;
+	linkml:class_uri "https://w3id.org/lmodel/cis-controls/Control"^^xsd:anyURI ;
+	linkml:definition_uri "https://w3id.org/lmodel/cis-controls/CisControl"^^xsd:anyURI ;
+	linkml:description "One of the CIS Controls: a group of Safeguards on one subject, named by its number, such as Control 4." ;
+	linkml:slot_usage _:c14n7 ;
+	linkml:slots <https://w3id.org/lmodel/cis-controls/cisControl__control_safeguards> , <https://w3id.org/lmodel/cis-controls/cis_control_id> , <https://w3id.org/lmodel/cis-controls/description> , <https://w3id.org/lmodel/cis-controls/title> .
+<https://w3id.org/lmodel/cis-controls/CisControls> a linkml:ClassDefinition ;
+	rdfs:seeAlso "https://www.cisecurity.org/controls/cis-controls-list"^^xsd:anyURI ;
+	skos:broadMatch "oscal:Catalog"^^xsd:anyURI ;
+	skos:exactMatch "cis_controls:Controls"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/lmodel/cis-controls"^^xsd:anyURI ;
+	linkml:attributes <https://w3id.org/lmodel/cis-controls/cis_controls> , <https://w3id.org/lmodel/cis-controls/cis_version> ;
+	linkml:class_uri "https://w3id.org/lmodel/cis-controls/Controls"^^xsd:anyURI ;
+	linkml:definition_uri "https://w3id.org/lmodel/cis-controls/CisControls"^^xsd:anyURI ;
+	linkml:description "One edition of the CIS Controls as a whole: its Controls, each holding its Safeguards." ;
+	linkml:slot_usage _:c14n9 ;
+	linkml:slots <https://w3id.org/lmodel/cis-controls/cisControls__cis_controls> , <https://w3id.org/lmodel/cis-controls/cisControls__cis_version> ;
+	linkml:tree_root true .
+<https://w3id.org/lmodel/cis-controls/CisImplementationGroup> rdfs:seeAlso "https://www.cisecurity.org/controls/implementation-groups"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/lmodel/cis-controls"^^xsd:anyURI ;
+	linkml:definition_uri "https://w3id.org/lmodel/cis-controls/CisImplementationGroup"^^xsd:anyURI ;
+	linkml:description "One of the three Implementation Groups, CIS's tiers for deciding which Safeguards an enterprise puts in place first. Each group includes every Safeguard of the groups before it." ;
+	linkml:permissible_values <https://w3id.org/lmodel/cis-controls/IG1> , <https://w3id.org/lmodel/cis-controls/IG2> , <https://w3id.org/lmodel/cis-controls/IG3> .
+<https://w3id.org/lmodel/cis-controls/CisSafeguard> a linkml:ClassDefinition ;
+	rdfs:seeAlso "https://www.cisecurity.org/controls/cis-controls-list"^^xsd:anyURI ;
+	skos:broadMatch "oscal:Control"^^xsd:anyURI ;
+	skos:exactMatch "cis_controls:Safeguard"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/lmodel/cis-controls"^^xsd:anyURI ;
+	linkml:attributes <https://w3id.org/lmodel/cis-controls/safeguard_asset_class> , <https://w3id.org/lmodel/cis-controls/safeguard_implementation_groups> , <https://w3id.org/lmodel/cis-controls/safeguard_security_function> ;
+	linkml:class_uri "https://w3id.org/lmodel/cis-controls/Safeguard"^^xsd:anyURI ;
+	linkml:definition_uri "https://w3id.org/lmodel/cis-controls/CisSafeguard"^^xsd:anyURI ;
+	linkml:description "One Safeguard of a Control: a single action an enterprise takes, named by its Control's number and its own, such as Safeguard 4.1." ;
+	linkml:slot_usage _:c14n12 ;
+	linkml:slots <https://w3id.org/lmodel/cis-controls/cisSafeguard__safeguard_asset_class> , <https://w3id.org/lmodel/cis-controls/cisSafeguard__safeguard_implementation_groups> , <https://w3id.org/lmodel/cis-controls/cisSafeguard__safeguard_security_function> , <https://w3id.org/lmodel/cis-controls/cis_safeguard_id> , <https://w3id.org/lmodel/cis-controls/description> , <https://w3id.org/lmodel/cis-controls/title> .
+<https://w3id.org/lmodel/cis-controls/CisSecurityFunction> rdfs:seeAlso "https://www.cisecurity.org/controls/v8-1"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/lmodel/cis-controls"^^xsd:anyURI ;
+	skos:note "lmodel/nist-csf-v2 v0.1.0 models a CSF function as an instance of its class CsfFunction, IRI nist_csf_v2:Function, named by the two letters in its csf_function_id. It publishes no IRI for each function, so the values carry no meaning; each value's csf_function_id annotation gives the letters, and the enum names the class in related_mappings." ;
+	skos:relatedMatch "nist_csf_v2:Function"^^xsd:anyURI ;
+	linkml:definition_uri "https://w3id.org/lmodel/cis-controls/CisSecurityFunction"^^xsd:anyURI ;
+	linkml:description "The security function a Safeguard serves. The values are the six functions of the NIST Cybersecurity Framework (CSF) 2.0, to which Version 8.1 aligned the CIS Controls." ;
+	linkml:permissible_values <https://w3id.org/lmodel/cis-controls/DETECT> , <https://w3id.org/lmodel/cis-controls/GOVERN> , <https://w3id.org/lmodel/cis-controls/IDENTIFY> , <https://w3id.org/lmodel/cis-controls/PROTECT> , <https://w3id.org/lmodel/cis-controls/RECOVER> , <https://w3id.org/lmodel/cis-controls/RESPOND> .
+<https://w3id.org/lmodel/cis-controls/DATA> dcterms:title "Data" ;
+	linkml:description "The information the enterprise holds, uses and moves." .
+<https://w3id.org/lmodel/cis-controls/DETECT> dcterms:title "Detect" ;
+	linkml:annotations _:c14n19 ;
+	linkml:description "The CSF 2.0 function DETECT." .
+<https://w3id.org/lmodel/cis-controls/DEVICES> dcterms:title "Devices" ;
+	linkml:description "The enterprise's hardware, wherever it runs." .
+<https://w3id.org/lmodel/cis-controls/DOCUMENTATION> dcterms:title "Documentation" ;
+	linkml:description "The enterprise's written governance, such as its policies and procedures." .
+<https://w3id.org/lmodel/cis-controls/GOVERN> dcterms:title "Govern" ;
+	linkml:annotations _:c14n13 ;
+	linkml:description "The CSF 2.0 function GOVERN." .
+<https://w3id.org/lmodel/cis-controls/IDENTIFY> dcterms:title "Identify" ;
+	linkml:annotations _:c14n15 ;
+	linkml:description "The CSF 2.0 function IDENTIFY." .
+<https://w3id.org/lmodel/cis-controls/IG1> dcterms:title "Implementation Group 1" ;
+	linkml:description "The first group, where every enterprise starts." .
+<https://w3id.org/lmodel/cis-controls/IG2> dcterms:title "Implementation Group 2" ;
+	linkml:description "The second group, which adds Safeguards to the first." .
+<https://w3id.org/lmodel/cis-controls/IG3> dcterms:title "Implementation Group 3" ;
+	linkml:description "The third group, which adds the rest and so holds every Safeguard." .
+<https://w3id.org/lmodel/cis-controls/NETWORK> dcterms:title "Network" ;
+	linkml:description "How the enterprise's devices connect, and how its networks are laid out." .
+<https://w3id.org/lmodel/cis-controls/PROTECT> dcterms:title "Protect" ;
+	linkml:annotations _:c14n4 ;
+	linkml:description "The CSF 2.0 function PROTECT." .
+<https://w3id.org/lmodel/cis-controls/RECOVER> dcterms:title "Recover" ;
+	linkml:annotations _:c14n1 ;
+	linkml:description "The CSF 2.0 function RECOVER." .
+<https://w3id.org/lmodel/cis-controls/RESPOND> dcterms:title "Respond" ;
+	linkml:annotations _:c14n16 ;
+	linkml:description "The CSF 2.0 function RESPOND." .
+<https://w3id.org/lmodel/cis-controls/SOFTWARE> dcterms:title "Software" ;
+	linkml:description "The programs and systems that run on the enterprise's devices." .
+<https://w3id.org/lmodel/cis-controls/USERS> dcterms:title "Users" ;
+	linkml:description "The people and accounts with access to the enterprise's assets." .
+<https://w3id.org/lmodel/cis-controls/boolean> a linkml:TypeDefinition ;
+	skos:editorialNote "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"boolean\"." ;
+	skos:exactMatch "schema:Boolean"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/linkml/types"^^xsd:anyURI ;
+	linkml:base "Bool" ;
+	linkml:definition_uri "https://w3id.org/linkml/Boolean"^^xsd:anyURI ;
+	linkml:description "A binary (true or false) value" ;
+	linkml:imported_from "linkml:types" ;
+	linkml:repr "bool" ;
+	linkml:uri "http://www.w3.org/2001/XMLSchema#boolean"^^xsd:anyURI .
+<https://w3id.org/lmodel/cis-controls/cisControl__control_safeguards> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/cis-controls"^^xsd:anyURI ;
+	skos:prefLabel "control_safeguards" ;
+	linkml:description "The Safeguards of the Control. A knowledge bundle relates a Safeguard to its Control with isPartOf instead." ;
+	linkml:domain_of <https://w3id.org/lmodel/cis-controls/CisControl> ;
+	linkml:inlined true ;
+	linkml:inlined_as_list true ;
+	linkml:multivalued true ;
+	linkml:owner <https://w3id.org/lmodel/cis-controls/CisControl> ;
+	linkml:range <https://w3id.org/lmodel/cis-controls/CisSafeguard> ;
+	linkml:slot_uri "https://w3id.org/lmodel/cis-controls/control_safeguards"^^xsd:anyURI .
+<https://w3id.org/lmodel/cis-controls/cisControls__cis_controls> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/cis-controls"^^xsd:anyURI ;
+	skos:prefLabel "cis_controls" ;
+	linkml:description "The Controls, in CIS's order." ;
+	linkml:domain_of <https://w3id.org/lmodel/cis-controls/CisControls> ;
+	linkml:inlined true ;
+	linkml:inlined_as_list true ;
+	linkml:minimum_cardinality 1 ;
+	linkml:multivalued true ;
+	linkml:owner <https://w3id.org/lmodel/cis-controls/CisControls> ;
+	linkml:range <https://w3id.org/lmodel/cis-controls/CisControl> ;
+	linkml:required true ;
+	linkml:slot_uri "https://w3id.org/lmodel/cis-controls/cis_controls"^^xsd:anyURI .
+<https://w3id.org/lmodel/cis-controls/cisControls__cis_version> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/cis-controls"^^xsd:anyURI ;
+	skos:prefLabel "cis_version" ;
+	linkml:description "The edition, as CIS numbers it, such as 8.1, or the revision the guide's pages carry, such as 8.1.2." ;
+	linkml:domain_of <https://w3id.org/lmodel/cis-controls/CisControls> ;
+	linkml:owner <https://w3id.org/lmodel/cis-controls/CisControls> ;
+	linkml:pattern "^[0-9]+\\.[0-9]+(\\.[0-9]+)?$" ;
+	linkml:range <https://w3id.org/lmodel/cis-controls/string> ;
+	linkml:required true ;
+	linkml:slot_uri "https://w3id.org/lmodel/cis-controls/cis_version"^^xsd:anyURI .
+<https://w3id.org/lmodel/cis-controls/cisSafeguard__safeguard_asset_class> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/cis-controls"^^xsd:anyURI ;
+	skos:prefLabel "safeguard_asset_class" ;
+	linkml:description "The class of enterprise asset the Safeguard is about." ;
+	linkml:domain_of <https://w3id.org/lmodel/cis-controls/CisSafeguard> ;
+	linkml:owner <https://w3id.org/lmodel/cis-controls/CisSafeguard> ;
+	linkml:range <https://w3id.org/lmodel/cis-controls/CisAssetClass> ;
+	linkml:required true ;
+	linkml:slot_uri "https://w3id.org/lmodel/cis-controls/safeguard_asset_class"^^xsd:anyURI .
+<https://w3id.org/lmodel/cis-controls/cisSafeguard__safeguard_implementation_groups> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/cis-controls"^^xsd:anyURI ;
+	skos:note "The groups are cumulative: a Safeguard in IG1 is in IG2 and IG3 too, and one in IG2 is in IG3. The schema states the part of that rule the validator can check, that every Safeguard is in IG3. The JSON Schema that LinkML 1.12.1 generates drops the rest, so a list of IG1 and IG3 without IG2 passes the validator. tests/test_data.py checks the whole rule over the examples." ;
+	skos:prefLabel "safeguard_implementation_groups" ;
+	linkml:description "The Implementation Groups that include the Safeguard." ;
+	linkml:domain_of <https://w3id.org/lmodel/cis-controls/CisSafeguard> ;
+	linkml:has_member _:c14n17 ;
+	linkml:maximum_cardinality 3 ;
+	linkml:minimum_cardinality 1 ;
+	linkml:multivalued true ;
+	linkml:owner <https://w3id.org/lmodel/cis-controls/CisSafeguard> ;
+	linkml:range <https://w3id.org/lmodel/cis-controls/CisImplementationGroup> ;
+	linkml:required true ;
+	linkml:slot_uri "https://w3id.org/lmodel/cis-controls/safeguard_implementation_groups"^^xsd:anyURI .
+<https://w3id.org/lmodel/cis-controls/cisSafeguard__safeguard_security_function> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/cis-controls"^^xsd:anyURI ;
+	skos:prefLabel "safeguard_security_function" ;
+	linkml:description "The security function the Safeguard serves, one of the six functions of the NIST Cybersecurity Framework (CSF) 2.0." ;
+	linkml:domain_of <https://w3id.org/lmodel/cis-controls/CisSafeguard> ;
+	linkml:owner <https://w3id.org/lmodel/cis-controls/CisSafeguard> ;
+	linkml:range <https://w3id.org/lmodel/cis-controls/CisSecurityFunction> ;
+	linkml:required true ;
+	linkml:slot_uri "https://w3id.org/lmodel/cis-controls/safeguard_security_function"^^xsd:anyURI .
+<https://w3id.org/lmodel/cis-controls/cis_control_id> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/cis-controls"^^xsd:anyURI ;
+	skos:note "The identifier is CIS's own number, so data joins with CIS's guide and with the crosswalks that cite it without a translation. It is a string, so quote it in YAML: YAML reads an unquoted 4 as a number and an unquoted 1.10 as the number 1.1. The validator rejects either as not a string, but a file loaded into the generated dataclasses without validation would turn 1.10 into 1.1." ;
+	linkml:definition_uri "https://w3id.org/lmodel/cis-controls/cis_control_id"^^xsd:anyURI ;
+	linkml:description "The Control's identifier, its number, such as 4." ;
+	linkml:domain_of <https://w3id.org/lmodel/cis-controls/CisControl> ;
+	linkml:owner <https://w3id.org/lmodel/cis-controls/CisControl> ;
+	linkml:range <https://w3id.org/lmodel/cis-controls/cis_control_identifier> ;
+	linkml:required true ;
+	linkml:slot_uri "https://w3id.org/lmodel/cis-controls/cis_control_id"^^xsd:anyURI .
+<https://w3id.org/lmodel/cis-controls/cis_control_identifier> a linkml:TypeDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/cis-controls"^^xsd:anyURI ;
+	linkml:base "str" ;
+	linkml:definition_uri "https://w3id.org/lmodel/cis-controls/CisControlIdentifier"^^xsd:anyURI ;
+	linkml:description "A Control's identifier: its number from 1 to 18, as CIS writes it, such as 4 for Control 4." ;
+	linkml:pattern "^([1-9]|1[0-8])$" ;
+	linkml:typeof <https://w3id.org/lmodel/cis-controls/string> ;
+	linkml:uri "http://www.w3.org/2001/XMLSchema#string"^^xsd:anyURI .
+<https://w3id.org/lmodel/cis-controls/cis_controls> dcterms:license "Apache-2.0" ;
+	dcterms:source "https://www.cisecurity.org/controls/v8-1"^^xsd:anyURI ;
+	dcterms:title "CIS Critical Security Controls" ;
+	pav:version "8.1.2" ;
+	a linkml:SchemaDefinition , linkml:SlotDefinition ;
+	rdfs:seeAlso "https://lmodel.github.io/cis-controls"^^xsd:anyURI , "https://www.cisecurity.org/controls/cis-controls-list"^^xsd:anyURI , "https://www.cisecurity.org/controls/implementation-groups"^^xsd:anyURI , "https://www.cisecurity.org/insights/white-papers/guide-to-asset-classes-cis-critical-security-controls-v8-1"^^xsd:anyURI ;
+	skos:note "CIS licenses the CIS Controls under CC BY-NC-ND 4.0 and requires its prior approval for commercial use, while this schema is Apache-2.0. So the schema carries no CIS text: none of the guide's titles, descriptions, overviews or explanations. The descriptions here are this project's own words, and so are the title and description that src/cis_controls/data/cis-controls-8.1.2.yaml gives each Control and Safeguard, written from what each requires. The text slots, title and description, are optional and hold text their user has the right to use; NOTICE states the position." , "The edition holds 18 Controls and 153 Safeguards. Implementation Group 1 holds 56 of the Safeguards, Implementation Group 2 adds 74 to make 130, and Implementation Group 3 adds the last 23, so it holds all 153. CIS's pages on the CIS Controls list and on each Implementation Group state these numbers." , "The version is the label that the pages of CIS's guide carry for its revision of March 2025. CIS's site calls the edition Version 8.1. The guide's change log names two minor revisions of it, v8.1.1 in August 2024 and v8.1.2 in March 2025. They corrected small errors, among them the security function of two Safeguards. The source is CIS's page for Version 8.1. scripts/check_upstream_release.py holds the same pins and reports when CIS's pages name a newer version." ;
+	sh:declare _:c14n0 , _:c14n11 , _:c14n18 , _:c14n2 , _:c14n6 , _:c14n8 ;
+	linkml:annotations _:c14n14 , _:c14n3 , _:c14n5 ;
+	linkml:classes <https://w3id.org/lmodel/cis-controls/CisControl> , <https://w3id.org/lmodel/cis-controls/CisControls> , <https://w3id.org/lmodel/cis-controls/CisSafeguard> ;
+	linkml:default_prefix "cis_controls" ;
+	linkml:default_range <https://w3id.org/lmodel/cis-controls/string> ;
+	linkml:description "A LinkML model of the structure of the CIS Critical Security Controls (CIS Controls), Version 8.1, which the Center for Internet Security (CIS) publishes. It models the Controls and the Safeguards of each Control. For each Safeguard it records the asset class, the security function and the Implementation Groups that include it. It names each Control and Safeguard by its number and carries none of CIS's text." , "The Controls, in CIS's order." ;
+	linkml:enums <https://w3id.org/lmodel/cis-controls/CisAssetClass> , <https://w3id.org/lmodel/cis-controls/CisImplementationGroup> , <https://w3id.org/lmodel/cis-controls/CisSecurityFunction> ;
+	linkml:id "https://w3id.org/lmodel/cis-controls"^^xsd:anyURI ;
+	linkml:imports "linkml:types"^^xsd:anyURI ;
+	linkml:inlined true ;
+	linkml:inlined_as_list true ;
+	linkml:metamodel_version "1.12.0" ;
+	linkml:minimum_cardinality 1 ;
+	linkml:multivalued true ;
+	linkml:range <https://w3id.org/lmodel/cis-controls/CisControl> ;
+	linkml:required true ;
+	linkml:slots <https://w3id.org/lmodel/cis-controls/cisControl__control_safeguards> , <https://w3id.org/lmodel/cis-controls/cisControls__cis_controls> , <https://w3id.org/lmodel/cis-controls/cisControls__cis_version> , <https://w3id.org/lmodel/cis-controls/cisSafeguard__safeguard_asset_class> , <https://w3id.org/lmodel/cis-controls/cisSafeguard__safeguard_implementation_groups> , <https://w3id.org/lmodel/cis-controls/cisSafeguard__safeguard_security_function> , <https://w3id.org/lmodel/cis-controls/cis_control_id> , <https://w3id.org/lmodel/cis-controls/cis_safeguard_id> , <https://w3id.org/lmodel/cis-controls/description> , <https://w3id.org/lmodel/cis-controls/title> ;
+	linkml:source_file "cis_controls.yaml" ;
+	linkml:source_file_date "2026-11-07T02:03:56"^^xsd:dateTime ;
+	linkml:source_file_size 12458 ;
+	linkml:types <https://w3id.org/lmodel/cis-controls/boolean> , <https://w3id.org/lmodel/cis-controls/cis_control_identifier> , <https://w3id.org/lmodel/cis-controls/cis_safeguard_identifier> , <https://w3id.org/lmodel/cis-controls/curie> , <https://w3id.org/lmodel/cis-controls/date> , <https://w3id.org/lmodel/cis-controls/date_or_datetime> , <https://w3id.org/lmodel/cis-controls/datetime> , <https://w3id.org/lmodel/cis-controls/decimal> , <https://w3id.org/lmodel/cis-controls/double> , <https://w3id.org/lmodel/cis-controls/float> , <https://w3id.org/lmodel/cis-controls/integer> , <https://w3id.org/lmodel/cis-controls/jsonpath> , <https://w3id.org/lmodel/cis-controls/jsonpointer> , <https://w3id.org/lmodel/cis-controls/ncname> , <https://w3id.org/lmodel/cis-controls/nodeidentifier> , <https://w3id.org/lmodel/cis-controls/objectidentifier> , <https://w3id.org/lmodel/cis-controls/sparqlpath> , <https://w3id.org/lmodel/cis-controls/string> , <https://w3id.org/lmodel/cis-controls/time> , <https://w3id.org/lmodel/cis-controls/uri> , <https://w3id.org/lmodel/cis-controls/uriorcurie> .
+<https://w3id.org/lmodel/cis-controls/cis_safeguard_id> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/cis-controls"^^xsd:anyURI ;
+	skos:note "It starts with the number of the Control that holds the Safeguard. The validator cannot check that against the Control a Safeguard is listed under; tests/test_data.py checks it over the examples." ;
+	linkml:definition_uri "https://w3id.org/lmodel/cis-controls/cis_safeguard_id"^^xsd:anyURI ;
+	linkml:description "The Safeguard's identifier, its number, such as 4.1." ;
+	linkml:domain_of <https://w3id.org/lmodel/cis-controls/CisSafeguard> ;
+	linkml:owner <https://w3id.org/lmodel/cis-controls/CisSafeguard> ;
+	linkml:range <https://w3id.org/lmodel/cis-controls/cis_safeguard_identifier> ;
+	linkml:required true ;
+	linkml:slot_uri "https://w3id.org/lmodel/cis-controls/cis_safeguard_id"^^xsd:anyURI .
+<https://w3id.org/lmodel/cis-controls/cis_safeguard_identifier> a linkml:TypeDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/cis-controls"^^xsd:anyURI ;
+	linkml:base "str" ;
+	linkml:definition_uri "https://w3id.org/lmodel/cis-controls/CisSafeguardIdentifier"^^xsd:anyURI ;
+	linkml:description "A Safeguard's identifier, as CIS writes it: the number of its Control, a dot and the Safeguard's number within the Control, such as 4.1 for Safeguard 4.1." ;
+	linkml:pattern "^([1-9]|1[0-8])\\.[1-9][0-9]?$" ;
+	linkml:typeof <https://w3id.org/lmodel/cis-controls/string> ;
+	linkml:uri "http://www.w3.org/2001/XMLSchema#string"^^xsd:anyURI .
+<https://w3id.org/lmodel/cis-controls/cis_version> a linkml:SlotDefinition ;
+	linkml:description "The edition, as CIS numbers it, such as 8.1, or the revision the guide's pages carry, such as 8.1.2." ;
+	linkml:pattern "^[0-9]+\\.[0-9]+(\\.[0-9]+)?$" ;
+	linkml:required true .
+<https://w3id.org/lmodel/cis-controls/control_safeguards> a linkml:SlotDefinition ;
+	linkml:description "The Safeguards of the Control. A knowledge bundle relates a Safeguard to its Control with isPartOf instead." ;
+	linkml:inlined true ;
+	linkml:inlined_as_list true ;
+	linkml:multivalued true ;
+	linkml:range <https://w3id.org/lmodel/cis-controls/CisSafeguard> .
+<https://w3id.org/lmodel/cis-controls/curie> dcterms:conformsTo "https://www.w3.org/TR/curie/" ;
+	a linkml:TypeDefinition ;
+	skos:editorialNote "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"curie\"." ;
+	skos:inScheme "https://w3id.org/linkml/types"^^xsd:anyURI ;
+	skos:note "in RDF serializations this MUST be expanded to a URI" , "in non-RDF serializations MAY be serialized as the compact representation" ;
+	linkml:base "Curie" ;
+	linkml:definition_uri "https://w3id.org/linkml/Curie"^^xsd:anyURI ;
+	linkml:description "a compact URI" ;
+	linkml:imported_from "linkml:types" ;
+	linkml:repr "str" ;
+	linkml:uri "http://www.w3.org/2001/XMLSchema#string"^^xsd:anyURI .
+<https://w3id.org/lmodel/cis-controls/date> a linkml:TypeDefinition ;
+	skos:editorialNote "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"date\"." , "URI is dateTime because OWL reasoners don't work with straight date or time" ;
+	skos:exactMatch "schema:Date"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/linkml/types"^^xsd:anyURI ;
+	linkml:base "XSDDate" ;
+	linkml:definition_uri "https://w3id.org/linkml/Date"^^xsd:anyURI ;
+	linkml:description "a date (year, month and day) in an idealized calendar" ;
+	linkml:imported_from "linkml:types" ;
+	linkml:repr "str" ;
+	linkml:uri "http://www.w3.org/2001/XMLSchema#date"^^xsd:anyURI .
+<https://w3id.org/lmodel/cis-controls/date_or_datetime> a linkml:TypeDefinition ;
+	skos:editorialNote "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"date_or_datetime\"." ;
+	skos:inScheme "https://w3id.org/linkml/types"^^xsd:anyURI ;
+	linkml:base "str" ;
+	linkml:definition_uri "https://w3id.org/linkml/DateOrDatetime"^^xsd:anyURI ;
+	linkml:description "Either a date or a datetime" ;
+	linkml:imported_from "linkml:types" ;
+	linkml:repr "str" ;
+	linkml:uri "https://w3id.org/linkml/DateOrDatetime"^^xsd:anyURI .
+<https://w3id.org/lmodel/cis-controls/datetime> a linkml:TypeDefinition ;
+	skos:editorialNote "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"datetime\"." ;
+	skos:exactMatch "schema:DateTime"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/linkml/types"^^xsd:anyURI ;
+	linkml:base "XSDDateTime" ;
+	linkml:definition_uri "https://w3id.org/linkml/Datetime"^^xsd:anyURI ;
+	linkml:description "The combination of a date and time" ;
+	linkml:imported_from "linkml:types" ;
+	linkml:repr "str" ;
+	linkml:uri "http://www.w3.org/2001/XMLSchema#dateTime"^^xsd:anyURI .
+<https://w3id.org/lmodel/cis-controls/decimal> a linkml:TypeDefinition ;
+	skos:broadMatch "schema:Number"^^xsd:anyURI ;
+	skos:editorialNote "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"decimal\"." ;
+	skos:inScheme "https://w3id.org/linkml/types"^^xsd:anyURI ;
+	linkml:base "Decimal" ;
+	linkml:definition_uri "https://w3id.org/linkml/Decimal"^^xsd:anyURI ;
+	linkml:description "A real number with arbitrary precision that conforms to the xsd:decimal specification" ;
+	linkml:imported_from "linkml:types" ;
+	linkml:uri "http://www.w3.org/2001/XMLSchema#decimal"^^xsd:anyURI .
+<https://w3id.org/lmodel/cis-controls/description> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/cis-controls"^^xsd:anyURI ;
+	skos:mappingRelation "http://schema.org/description"^^xsd:anyURI ;
+	skos:note "It means what LOKF's description means and carries the same IRI, so lokf adapt folds it into LOKF's slot and a knowledge bundle reads one description key." ;
+	linkml:definition_uri "https://w3id.org/lmodel/cis-controls/description"^^xsd:anyURI ;
+	linkml:description "What the Control or Safeguard means to its user, in words its user has the right to use." ;
+	linkml:domain_of <https://w3id.org/lmodel/cis-controls/CisControl> , <https://w3id.org/lmodel/cis-controls/CisSafeguard> ;
+	linkml:owner <https://w3id.org/lmodel/cis-controls/CisSafeguard> ;
+	linkml:range <https://w3id.org/lmodel/cis-controls/string> ;
+	linkml:slot_uri "http://schema.org/description"^^xsd:anyURI .
+<https://w3id.org/lmodel/cis-controls/double> a linkml:TypeDefinition ;
+	skos:closeMatch "schema:Float"^^xsd:anyURI ;
+	skos:editorialNote "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"double\"." ;
+	skos:inScheme "https://w3id.org/linkml/types"^^xsd:anyURI ;
+	linkml:base "float" ;
+	linkml:definition_uri "https://w3id.org/linkml/Double"^^xsd:anyURI ;
+	linkml:description "A real number that conforms to the xsd:double specification" ;
+	linkml:imported_from "linkml:types" ;
+	linkml:uri "http://www.w3.org/2001/XMLSchema#double"^^xsd:anyURI .
+<https://w3id.org/lmodel/cis-controls/float> a linkml:TypeDefinition ;
+	skos:editorialNote "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"float\"." ;
+	skos:exactMatch "schema:Float"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/linkml/types"^^xsd:anyURI ;
+	linkml:base "float" ;
+	linkml:definition_uri "https://w3id.org/linkml/Float"^^xsd:anyURI ;
+	linkml:description "A real number that conforms to the xsd:float specification" ;
+	linkml:imported_from "linkml:types" ;
+	linkml:uri "http://www.w3.org/2001/XMLSchema#float"^^xsd:anyURI .
+<https://w3id.org/lmodel/cis-controls/integer> a linkml:TypeDefinition ;
+	skos:editorialNote "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"integer\"." ;
+	skos:exactMatch "schema:Integer"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/linkml/types"^^xsd:anyURI ;
+	linkml:base "int" ;
+	linkml:definition_uri "https://w3id.org/linkml/Integer"^^xsd:anyURI ;
+	linkml:description "An integer" ;
+	linkml:imported_from "linkml:types" ;
+	linkml:uri "http://www.w3.org/2001/XMLSchema#integer"^^xsd:anyURI .
+<https://w3id.org/lmodel/cis-controls/jsonpath> dcterms:conformsTo "https://www.ietf.org/archive/id/draft-goessner-dispatch-jsonpath-00.html" ;
+	a linkml:TypeDefinition ;
+	skos:editorialNote "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"jsonpath\"." ;
+	skos:inScheme "https://w3id.org/linkml/types"^^xsd:anyURI ;
+	linkml:base "str" ;
+	linkml:definition_uri "https://w3id.org/linkml/Jsonpath"^^xsd:anyURI ;
+	linkml:description "A string encoding a JSON Path. The value of the string MUST conform to JSON Point syntax and SHOULD dereference to zero or more valid objects within the current instance document when encoded in tree form." ;
+	linkml:imported_from "linkml:types" ;
+	linkml:repr "str" ;
+	linkml:uri "http://www.w3.org/2001/XMLSchema#string"^^xsd:anyURI .
+<https://w3id.org/lmodel/cis-controls/jsonpointer> dcterms:conformsTo "https://datatracker.ietf.org/doc/html/rfc6901" ;
+	a linkml:TypeDefinition ;
+	skos:editorialNote "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"jsonpointer\"." ;
+	skos:inScheme "https://w3id.org/linkml/types"^^xsd:anyURI ;
+	linkml:base "str" ;
+	linkml:definition_uri "https://w3id.org/linkml/Jsonpointer"^^xsd:anyURI ;
+	linkml:description "A string encoding a JSON Pointer. The value of the string MUST conform to JSON Point syntax and SHOULD dereference to a valid object within the current instance document when encoded in tree form." ;
+	linkml:imported_from "linkml:types" ;
+	linkml:repr "str" ;
+	linkml:uri "http://www.w3.org/2001/XMLSchema#string"^^xsd:anyURI .
+<https://w3id.org/lmodel/cis-controls/ncname> a linkml:TypeDefinition ;
+	skos:editorialNote "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"ncname\"." ;
+	skos:inScheme "https://w3id.org/linkml/types"^^xsd:anyURI ;
+	linkml:base "NCName" ;
+	linkml:definition_uri "https://w3id.org/linkml/Ncname"^^xsd:anyURI ;
+	linkml:description "Prefix part of CURIE" ;
+	linkml:imported_from "linkml:types" ;
+	linkml:repr "str" ;
+	linkml:uri "http://www.w3.org/2001/XMLSchema#string"^^xsd:anyURI .
+<https://w3id.org/lmodel/cis-controls/nodeidentifier> a linkml:TypeDefinition ;
+	skos:editorialNote "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"nodeidentifier\"." ;
+	skos:inScheme "https://w3id.org/linkml/types"^^xsd:anyURI ;
+	linkml:base "NodeIdentifier" ;
+	linkml:definition_uri "https://w3id.org/linkml/Nodeidentifier"^^xsd:anyURI ;
+	linkml:description "A URI, CURIE or BNODE that represents a node in a model." ;
+	linkml:imported_from "linkml:types" ;
+	linkml:repr "str" ;
+	linkml:uri "http://www.w3.org/ns/shex#nonLiteral"^^xsd:anyURI .
+<https://w3id.org/lmodel/cis-controls/objectidentifier> a linkml:TypeDefinition ;
+	skos:editorialNote "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"objectidentifier\"." ;
+	skos:inScheme "https://w3id.org/linkml/types"^^xsd:anyURI ;
+	skos:note "Used for inheritance and type checking" ;
+	linkml:base "ElementIdentifier" ;
+	linkml:definition_uri "https://w3id.org/linkml/Objectidentifier"^^xsd:anyURI ;
+	linkml:description "A URI or CURIE that represents an object in the model." ;
+	linkml:imported_from "linkml:types" ;
+	linkml:repr "str" ;
+	linkml:uri "http://www.w3.org/ns/shex#iri"^^xsd:anyURI .
+<https://w3id.org/lmodel/cis-controls/safeguard_asset_class> a linkml:SlotDefinition ;
+	linkml:description "The class of enterprise asset the Safeguard is about." ;
+	linkml:range <https://w3id.org/lmodel/cis-controls/CisAssetClass> ;
+	linkml:required true .
+<https://w3id.org/lmodel/cis-controls/safeguard_implementation_groups> a linkml:SlotDefinition ;
+	skos:note "The groups are cumulative: a Safeguard in IG1 is in IG2 and IG3 too, and one in IG2 is in IG3. The schema states the part of that rule the validator can check, that every Safeguard is in IG3. The JSON Schema that LinkML 1.12.1 generates drops the rest, so a list of IG1 and IG3 without IG2 passes the validator. tests/test_data.py checks the whole rule over the examples." ;
+	linkml:description "The Implementation Groups that include the Safeguard." ;
+	linkml:has_member _:c14n10 ;
+	linkml:maximum_cardinality 3 ;
+	linkml:minimum_cardinality 1 ;
+	linkml:multivalued true ;
+	linkml:range <https://w3id.org/lmodel/cis-controls/CisImplementationGroup> ;
+	linkml:required true .
+<https://w3id.org/lmodel/cis-controls/safeguard_security_function> a linkml:SlotDefinition ;
+	linkml:description "The security function the Safeguard serves, one of the six functions of the NIST Cybersecurity Framework (CSF) 2.0." ;
+	linkml:range <https://w3id.org/lmodel/cis-controls/CisSecurityFunction> ;
+	linkml:required true .
+<https://w3id.org/lmodel/cis-controls/sparqlpath> dcterms:conformsTo "https://www.w3.org/TR/sparql11-query/#propertypaths" ;
+	a linkml:TypeDefinition ;
+	skos:editorialNote "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"sparqlpath\"." ;
+	skos:inScheme "https://w3id.org/linkml/types"^^xsd:anyURI ;
+	linkml:base "str" ;
+	linkml:definition_uri "https://w3id.org/linkml/Sparqlpath"^^xsd:anyURI ;
+	linkml:description "A string encoding a SPARQL Property Path. The value of the string MUST conform to SPARQL syntax and SHOULD dereference to zero or more valid objects within the current instance document when encoded as RDF." ;
+	linkml:imported_from "linkml:types" ;
+	linkml:repr "str" ;
+	linkml:uri "http://www.w3.org/2001/XMLSchema#string"^^xsd:anyURI .
+<https://w3id.org/lmodel/cis-controls/string> a linkml:TypeDefinition ;
+	skos:editorialNote "In RDF serializations, a slot with range of string is treated as a literal or type xsd:string. If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"string\"." ;
+	skos:exactMatch "schema:Text"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/linkml/types"^^xsd:anyURI ;
+	linkml:base "str" ;
+	linkml:definition_uri "https://w3id.org/linkml/String"^^xsd:anyURI ;
+	linkml:description "A character string" ;
+	linkml:imported_from "linkml:types" ;
+	linkml:uri "http://www.w3.org/2001/XMLSchema#string"^^xsd:anyURI .
+<https://w3id.org/lmodel/cis-controls/time> a linkml:TypeDefinition ;
+	skos:editorialNote "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"time\"." , "URI is dateTime because OWL reasoners do not work with straight date or time" ;
+	skos:exactMatch "schema:Time"^^xsd:anyURI ;
+	skos:inScheme "https://w3id.org/linkml/types"^^xsd:anyURI ;
+	linkml:base "XSDTime" ;
+	linkml:definition_uri "https://w3id.org/linkml/Time"^^xsd:anyURI ;
+	linkml:description "A time object represents a (local) time of day, independent of any particular day" ;
+	linkml:imported_from "linkml:types" ;
+	linkml:repr "str" ;
+	linkml:uri "http://www.w3.org/2001/XMLSchema#time"^^xsd:anyURI .
+<https://w3id.org/lmodel/cis-controls/title> a linkml:SlotDefinition ;
+	skos:inScheme "https://w3id.org/lmodel/cis-controls"^^xsd:anyURI ;
+	skos:mappingRelation "http://schema.org/name"^^xsd:anyURI ;
+	skos:note "CIS's own names for the Controls and Safeguards are CIS's text under CC BY-NC-ND 4.0, so the schema's examples leave them out, and the edition file names each element in this project's words." , "It means what LOKF's title means and carries the same IRI, so lokf adapt folds it into LOKF's slot and a knowledge bundle reads one title key." ;
+	linkml:definition_uri "https://w3id.org/lmodel/cis-controls/title"^^xsd:anyURI ;
+	linkml:description "A name for the Control or Safeguard, in words its user has the right to use." ;
+	linkml:domain_of <https://w3id.org/lmodel/cis-controls/CisControl> , <https://w3id.org/lmodel/cis-controls/CisSafeguard> ;
+	linkml:owner <https://w3id.org/lmodel/cis-controls/CisSafeguard> ;
+	linkml:range <https://w3id.org/lmodel/cis-controls/string> ;
+	linkml:slot_uri "http://schema.org/name"^^xsd:anyURI .
+<https://w3id.org/lmodel/cis-controls/uri> dcterms:conformsTo "https://www.ietf.org/rfc/rfc3987.txt" ;
+	a linkml:TypeDefinition ;
+	skos:closeMatch "schema:URL"^^xsd:anyURI ;
+	skos:editorialNote "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"uri\"." ;
+	skos:inScheme "https://w3id.org/linkml/types"^^xsd:anyURI ;
+	skos:note "in RDF serializations a slot with range of uri is treated as a literal or type xsd:anyURI unless it is an identifier or a reference to an identifier, in which case it is translated directly to a node" ;
+	linkml:base "URI" ;
+	linkml:definition_uri "https://w3id.org/linkml/Uri"^^xsd:anyURI ;
+	linkml:description "a complete URI" ;
+	linkml:imported_from "linkml:types" ;
+	linkml:repr "str" ;
+	linkml:uri "http://www.w3.org/2001/XMLSchema#anyURI"^^xsd:anyURI .
+<https://w3id.org/lmodel/cis-controls/uriorcurie> a linkml:TypeDefinition ;
+	skos:editorialNote "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"uriorcurie\"." ;
+	skos:inScheme "https://w3id.org/linkml/types"^^xsd:anyURI ;
+	linkml:base "URIorCURIE" ;
+	linkml:definition_uri "https://w3id.org/linkml/Uriorcurie"^^xsd:anyURI ;
+	linkml:description "a URI or a CURIE" ;
+	linkml:imported_from "linkml:types" ;
+	linkml:repr "str" ;
+	linkml:uri "http://www.w3.org/2001/XMLSchema#anyURI"^^xsd:anyURI .
+_:c14n0 sh:namespace "https://w3id.org/linkml/"^^xsd:anyURI ;
+	sh:prefix "linkml" .
+_:c14n1 skos:example "RC" ;
+	linkml:tag "csf_function_id"^^xsd:anyURI .
+_:c14n10 a linkml:AnonymousSlotExpression ;
+	linkml:equals_string "IG3" .
+_:c14n11 sh:namespace "http://www.w3.org/2001/XMLSchema#"^^xsd:anyURI ;
+	sh:prefix "xsd" .
+_:c14n13 skos:example "GV" ;
+	linkml:tag "csf_function_id"^^xsd:anyURI .
+_:c14n14 skos:example "2025-03" ;
+	linkml:tag "revision_date"^^xsd:anyURI .
+_:c14n15 skos:example "ID" ;
+	linkml:tag "csf_function_id"^^xsd:anyURI .
+_:c14n16 skos:example "RS" ;
+	linkml:tag "csf_function_id"^^xsd:anyURI .
+_:c14n17 a linkml:AnonymousSlotExpression ;
+	linkml:equals_string "IG3" .
+_:c14n18 sh:namespace "https://w3id.org/lmodel/oscal/"^^xsd:anyURI ;
+	sh:prefix "oscal" .
+_:c14n19 skos:example "DE" ;
+	linkml:tag "csf_function_id"^^xsd:anyURI .
+_:c14n2 sh:namespace "http://schema.org/"^^xsd:anyURI ;
+	sh:prefix "schema" .
+_:c14n3 skos:example "2026-10-30" ;
+	linkml:tag "pages_read_on"^^xsd:anyURI .
+_:c14n4 skos:example "PR" ;
+	linkml:tag "csf_function_id"^^xsd:anyURI .
+_:c14n5 skos:example "8.1" ;
+	linkml:tag "cis_site_version"^^xsd:anyURI .
+_:c14n6 sh:namespace "https://w3id.org/lmodel/cis-controls/"^^xsd:anyURI ;
+	sh:prefix "cis_controls" .
+_:c14n8 sh:namespace "https://w3id.org/lmodel/nist-csf-v2/"^^xsd:anyURI ;
+	sh:prefix "nist_csf_v2" .
+
