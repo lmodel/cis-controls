@@ -19,13 +19,13 @@ sources:
     title: lokf-adapt and lokf-adapt-check
 generated:
   by: process:ktl-librarian
-  at: "2026-11-06T21:17:10Z"
+  at: "2026-11-15T10:34:04Z"
 status: draft
 ---
 
 # Regenerate and test after a schema change
 
-1. Install the toolchain once: Python 3.10 or later, `uv` and `just`, then `uv sync --group dev` in the clone.[^contributing.md]
+1. Install the toolchain once: Python 3.11 or later, `uv` and `just`, then `uv sync --group dev` in the clone.[^contributing.md]
 2. Edit `src/cis_controls/schema/cis_controls.yaml`. It is the one file to write by hand. `project/`, `src/cis_controls/datamodel/`, `docs/schema/` and `.lokf/schema/cis-controls.yaml` are generated from it. Put no CIS text in it, name elements by number, and say in the pull request which part of CIS's guide a new or changed element renders.
 3. Run `just lint`, which runs `linkml-lint --ignore-warnings` under `.linkmllint.yaml`.[^justfile]
 4. Run `just gen-project` and `just gen-doc`, then `just lokf-adapt`, which rewrites the adapt copy with the two roots.[^project.justfile] Commit the output.
