@@ -15,11 +15,9 @@ sources:
   - id: readme.md
     resource: README.md
     title: the License section
-  - resource: website/NOTICE
-    title: the part adapted from the LOKF toolkit's site
 generated:
   by: process:ktl-librarian
-  at: "2026-10-30T23:47:49Z"
+  at: "2026-11-15T02:33:31Z"
 status: draft
 ---
 
@@ -31,7 +29,7 @@ The schema and the code are under the Apache License, Version 2.0.[^license] NOT
 - CIS licenses the CIS Controls under CC BY-NC-ND 4.0. NOTICE says that the licence lets anyone share the guide unchanged, for non-commercial purposes and with credit to CIS. It also says that the licence lets no one share a changed version, and that CIS requires its prior approval for commercial use. So the repository carries no CIS text, copied or paraphrased. It names each Control and Safeguard by its number, records the structure the guide sets out, and in `src/cis_controls/data/cis-controls-8.1.2.yaml` describes each Control and Safeguard in its own words, written from what each requires, under the stricter reading that European law allows.
 - The schema's `title` and `description` slots are for text their user has the right to use: the user's own words, or CIS's under CIS's terms. The Apache License does not cover CIS's text.
 - The justfile, configuration and documentation scaffolding derive from linkml-project-copier, under the MIT License, whose text NOTICE carries.
-- The sidecar's scripts and workflows are copies of the ktl-sidecar templates, and the site under `website/` derives from the ktl-website templates, all under the Apache License 2.0. `website/NOTICE` lists the part adapted from the site of the Linked Open Knowledge Format (LOKF) toolkit.
+- The sidecar's scripts and workflows are copies of the ktl-sidecar templates, and the site under `website/` derives from the ktl-website templates, all under the Apache License 2.0.
 
 The README says that the knowledge bundle in `.lokf/knowledge/` is under the Creative Commons Attribution 4.0 International licence (CC BY 4.0), as its `index.md` declares. It adds that this is not an official CIS project, and that its use implies no endorsement by CIS.[^readme.md]
 
